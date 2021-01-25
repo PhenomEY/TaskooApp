@@ -1,0 +1,24 @@
+@import 'src/scss/vars/variables';
+
+.taskoo-search {
+ input {
+   border-radius:$taskoo-select-radius;
+   -moz-appearance: none;
+   -webkit-appearance: none;
+   appearance: none;
+   border:1px solid $taskoo-search-border-color;
+   height:28px;
+   padding: 3px 20px;
+   font-family: "Noto Sans JP";
+   font-size:14px;
+   transition: border-color 100ms, max-width 200ms;
+   width: 100%;
+   max-width: $taskgroup-width;
+   background:$taskoo-search-bg;
+
+   &:focus {
+     outline: none;
+     border-color:$taskoo-search-focus-border-color;
+   }
+ }
+}

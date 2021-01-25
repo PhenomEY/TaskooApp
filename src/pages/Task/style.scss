@@ -1,0 +1,32 @@
+@import 'src/scss/vars/variables';
+
+.task-wrapper {
+  position: relative;
+  display:flex;
+  flex:1;
+  background:$taskoo-light-grey;
+
+  &.slideOut {
+    animation-name: slideOut;
+    animation-fill-mode: forwards;
+    animation-duration: 200ms;
+  }
+}
+
+@keyframes slideIn {
+  from   {
+    transform:translateX(-100%);
+  }
+  to {
+    transform:translateX(0);
+  }
+}
+
+@keyframes slideOut {
+  from   {
+    transform:translateX(0);
+  }
+  to {
+    transform:translateX(-100%);
+  }
+}

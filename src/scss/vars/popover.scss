@@ -1,0 +1,181 @@
+@import './variables';
+
+//TaskooSelect Menu
+.taskoo-select-menu {
+  display: block !important;
+  z-index: 10000;
+  background: transparent;
+  outline:none;
+
+  .taskoo-select-options {
+    border-radius: $taskoo-border-radius;
+    border:1px solid $taskoo-border-color;
+    box-shadow: 0px 1px 4px rgba(0,0,0,0.1);
+    background:#ffffff;
+    outline:none;
+    .option {
+      padding: 3px 20px;
+      min-width: 150px;
+      color: rgba(0,0,0,0.7);
+      cursor:pointer;
+      text-align: center;
+
+      &:hover {
+        color:$taskoo-main;
+      }
+    }
+  }
+}
+
+
+//default popover menu user for ex. in taskgroups
+  .tooltip {
+    display: block !important;
+    z-index: 10000;
+
+    .tooltip-inner {
+      background: #ffffff;
+      color: rgba(0,0,0,0.7);
+      border-radius: $taskoo-border-radius;
+      border:1px solid $taskoo-border-color;
+      box-shadow: 0px 1px 4px rgba(0,0,0,0.1);
+
+      .task-group-options {
+        font-size: 11px;
+
+        .option {
+          padding: 3px 6px;
+          cursor:pointer;
+          &:hover {
+            background:$taskoo-light-grey;
+          }
+
+          &.disabled {
+            opacity:0.3;
+            cursor:not-allowed;
+          }
+        }
+      }
+
+      .notification-popover {
+        padding:5px 10px;
+        max-width: 400px;
+        max-height: 500px;
+        overflow-y: auto;
+
+        .notifications {
+          .entry {
+            border-top:1px solid #eaeaea;
+            font-size:12px;
+
+            &:first-child {
+              border:none;
+            }
+
+            .message {
+              .to-notification {
+                font-weight:bold;
+                cursor:pointer;
+              }
+            }
+
+            .time {
+              font-size:10px;
+              color:rgba(0,0,0,0.5);
+              white-space: nowrap;
+            }
+          }
+        }
+      }
+    }
+
+    .tooltip-arrow {
+      width: 0;
+      height: 0;
+      border-style: solid;
+      position: absolute;
+      margin: 5px;
+      border-color: $taskoo-border-color;
+    }
+
+    &[x-placement^="top"] {
+      margin-bottom: 5px;
+
+      .tooltip-arrow {
+        border-width: 5px 5px 0 5px;
+        border-left-color: transparent !important;
+        border-right-color: transparent !important;
+        border-bottom-color: transparent !important;
+        bottom: -5px;
+        left: calc(50% - 5px);
+        margin-top: 0;
+        margin-bottom: 0;
+      }
+    }
+
+    &[x-placement^="bottom"] {
+      margin-top: 5px;
+
+      .tooltip-arrow {
+        border-width: 0 5px 5px 5px;
+        border-left-color: transparent !important;
+        border-right-color: transparent !important;
+        border-top-color: transparent !important;
+        top: -5px;
+        left: calc(50% - 5px);
+        margin-top: 0;
+        margin-bottom: 0;
+      }
+    }
+
+    &[x-placement^="right"] {
+      margin-left: 5px;
+
+      .tooltip-arrow {
+        border-width: 5px 5px 5px 0;
+        border-left-color: transparent !important;
+        border-top-color: transparent !important;
+        border-bottom-color: transparent !important;
+        left: -5px;
+        top: calc(50% - 5px);
+        margin-left: 0;
+        margin-right: 0;
+      }
+    }
+
+    &[x-placement^="left"] {
+      margin-right: 5px;
+
+      .tooltip-arrow {
+        border-width: 5px 0 5px 5px;
+        border-top-color: transparent !important;
+        border-right-color: transparent !important;
+        border-bottom-color: transparent !important;
+        right: -5px;
+        top: calc(50% - 5px);
+        margin-left: 0;
+        margin-right: 0;
+      }
+    }
+
+    &[aria-hidden='true'] {
+      visibility: hidden;
+      opacity: 0;
+      transition: opacity .15s, visibility .15s;
+
+      &:focus {
+        outline:none;
+      }
+    }
+
+    &[aria-hidden='false'] {
+      visibility: visible;
+      opacity: 1;
+      transition: opacity .15s;
+
+      &:focus {
+        outline:none;
+      }
+    }
+  }
+

@@ -1,0 +1,131 @@
+@import '../../scss/vars/variables';
+
+
+.dashboard-wrapper {
+  padding:16px;
+  background:$taskoo-light-grey;
+  flex:1;
+  display: flex;
+  justify-content: center;
+
+  .dashboard {
+    width:100%;
+    max-width: 800px;
+
+    .first-row {
+      display:flex;
+    }
+
+    .tile {
+      border-radius:$taskoo-border-radius;
+      color:#ffffff;
+      padding:0 20px;
+
+      &.welcome {
+        width: 100%;
+        max-width: 450px;
+        background: #fc4a1a;  /* fallback for old browsers */
+        background: -webkit-linear-gradient(to top, #fc4a1a, #f7b733);  /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to top, #fc4a1a, #f7b733); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        min-height:80px;
+        font-size: 28px;
+        font-weight:800;
+        display: flex;
+        align-items: center;
+        margin-right:16px;
+      }
+
+      &.date {
+        width: 100%;
+        max-width: 350px;
+        display: flex;
+        align-items: center;
+        background: #16222A;  /* fallback for old browsers */
+        background: -webkit-linear-gradient(to top, #16222A, #3A6073);  /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to top, #16222A, #3A6073); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+        .day {
+          font-size: 38px;
+          font-weight: bold;
+          line-height: 38px;
+        }
+
+        .month-time {
+          margin-left:10px;
+
+          .month {
+            font-size: 18px;
+          }
+
+          .time {
+          }
+        }
+      }
+    }
+
+    .notifications {
+      background:#ffffff;
+      border:1px solid $taskoo-border-color;
+      border-radius:$taskoo-border-radius;
+      margin-top:16px;
+
+      &.skeleton {
+        background:transparent;
+        border:none;
+
+        .entry {
+          border:none;
+          min-height: 80px;
+          padding:0;
+        }
+      }
+
+      .entry {
+        display:flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 30px;
+        font-size: 12px;
+        padding:0 10px;
+        border-top:1px solid #eaeaea;
+        transition:background 100ms;
+
+        .to-notification {
+          font-weight:bold;
+          cursor:pointer;
+        }
+
+        .time {
+          color:rgba(0,0,0,0.5);
+        }
+
+        &.title {
+          flex:1;
+          border:none;
+          font-weight:bold;
+
+          &:hover {
+            background:#ffffff;
+          }
+        }
+
+        &:hover {
+          background:#f5f5f5;
+        }
+      }
+    }
+
+    .taskoo-tasklist {
+      margin-top:16px;
+
+      &.skeleton {
+        .entry {
+          display:flex;
+          height: 100px;
+        }
+      }
+    }
+
+  }
+
+}

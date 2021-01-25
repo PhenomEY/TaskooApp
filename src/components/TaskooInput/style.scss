@@ -1,0 +1,35 @@
+@import 'src/scss/vars/variables';
+
+.taskoo-input {
+  font-family: "Noto Sans JP";
+  color:rgba(0,0,0,0.67);
+  width: 100%;
+  max-width: 350px;
+  .input-label {
+    display:block;
+    font-size:16px;
+    font-weight:bold;
+    margin-bottom:5px;
+  }
+
+  input {
+    -webkit-appearance: none;
+    font-family: "Noto Sans JP";
+    border-radius:$taskoo-border-radius;
+    border:1px solid $taskoo-border-color;
+    padding: 5px 10px;
+    width: 100%;
+    height:40px;
+    margin-bottom:10px;
+    font-size:16px;
+
+    &::placeholder {
+      color:rgba(0,0,0,0.3);
+    }
+
+    &:focus {
+      border-color:$taskoo-main;
+      outline:none;
+    }
+  }
+}

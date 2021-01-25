@@ -1,0 +1,24 @@
+.inputfield-editable {
+  width: 100%;
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  input {
+    background: transparent;
+    border: none;
+    resize: none;
+    flex: 1;
+    font-family: unset;
+    color: var(--md-theme-default-text-primary-on-accent);
+    height:100%;
+    width: 100%;
+    text-overflow: ellipsis;
+
+    &:focus {
+      border: none;
+      outline: none;
+    }
+  }
+}

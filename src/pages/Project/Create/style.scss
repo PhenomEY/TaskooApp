@@ -1,0 +1,25 @@
+@import '../../../scss/vars/variables';
+
+.create-project {
+  padding:16px;
+  .title {
+    font-weight: bold;
+    margin-bottom:2px;
+  }
+
+  .taskoo-button {
+    border:none;
+    color:#ffffff;
+    font-family: "Noto Sans JP";
+    border-radius:$taskoo-border-radius;
+    width: 250px;
+    box-shadow: none;
+    background:$taskoo-main;
+    min-height:38px;
+    cursor:pointer;
+
+    &:hover {
+      background:#1ec81e;
+    }
+  }
+}

@@ -1,0 +1,297 @@
+@import "src/scss/vars/variables";
+
+.task-window {
+  width:100%;
+  height:100%;
+  background:#ffffff;
+  padding: 16px 0;
+  background:$taskoo-light-grey;
+  overflow-y: auto;
+  position: absolute;
+  top:0;
+  left:0;
+
+  &::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #ddd;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: $taskoo-scrollbar-thumb;
+    border-radius: 6px;
+  }
+
+  textarea {
+    -webkit-appearance: none;
+    resize: none;
+    border-radius: $taskoo-border-radius;
+    border:1px solid $taskoo-border-color;
+    font-family: 'Roboto', sans-serif;
+    font-size:16px;
+    width: 100%;
+    padding: 9px 10px;
+    transition: border-color 100ms;
+
+    &.name {
+      overflow:hidden;
+      height:40px;
+    }
+
+    &:focus {
+      outline: none;
+      border-color:$taskoo-border-h-color;
+    }
+  }
+
+  .label {
+    display:block;
+    font-size:16px;
+    margin:0 0 5px 5px;
+    color:rgba(0, 0, 0, 0.8);
+  }
+
+  .done-info {
+    border-radius:$taskoo-border-radius;
+    border:1px solid $taskoo-done-color;
+    color:$taskoo-done-color;
+    font-size: 12px;
+    background: #fff;
+    padding: 10px 20px;
+    margin:0 16px;
+  }
+
+  .taskbar {
+    padding:0 16px;
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .header {
+      display: flex;
+      align-items: center;
+      .project-title {
+        margin-right:10px;
+        font-size:21px;
+      }
+
+      .main-task {
+        font-size:14px;
+
+        .md-icon {
+          font-size:18px !important;
+          width: 15px;
+          height:15px;
+          min-width: 15px;
+        }
+      }
+
+      .deadline {
+        font-size:14px;
+        font-weight:bold;
+      }
+    }
+
+
+    .right {
+      display: flex;
+      align-items: center;
+
+      .finish-button {
+        color:#ffffff;
+        border:1px solid $taskoo-done-color;
+        font-size: 12px;
+        padding: 2px 10px;
+        border-radius: 6px;
+        background: $taskoo-done-color;
+        display: flex;
+        align-items: center;
+        cursor:pointer;
+
+        &.done {
+          background: #ffffff;
+          border-color:$taskoo-done-color;
+          color:$taskoo-done-color;
+
+          .md-icon {
+            color:$taskoo-done-color;
+          }
+        }
+
+
+        &:hover {
+          background: #ffffff;
+          border-color:$taskoo-done-color;
+          color:$taskoo-done-color;
+
+          .md-icon {
+            color:$taskoo-done-color;
+          }
+
+        }
+
+        .md-icon {
+          color:#ffffff;
+          margin-right:3px;
+        }
+      }
+    }
+  }
+
+  .task-content {
+    padding:0 16px;
+    flex:1;
+    margin-top:20px;
+
+    .task-description {
+      margin-top:20px;
+      text-align: right;
+
+      .quillWrapper {
+        box-shadow: $taskoo-box-shadow;
+      }
+
+
+      &.is-focused {
+        .ql-toolbar {
+          max-height:30px;
+          padding:4px 8px 8px 8px;
+          border-bottom: 1px solid #eaeaea;
+          border-top: 1px solid $taskoo-border-h-color;
+          border-left: 1px solid $taskoo-border-h-color;
+          border-right: 1px solid $taskoo-border-h-color;
+        }
+
+        .ql-container {
+          border-radius:0;
+
+          &.ql-snow {
+            border-top:none;
+            border-color:$taskoo-border-h-color;
+          }
+
+        }
+      }
+
+      .ql-toolbar {
+        text-align: left;
+        background:#ffffff;
+        border-top-left-radius: $taskoo-border-radius;
+        border-top-right-radius: $taskoo-border-radius;
+        border-color:$taskoo-border-color;
+        border:none;
+
+        //not focused - hide it
+        max-height: 0;
+        padding: 0;
+        transition:max-height 100ms, padding 100ms;
+
+
+        .ql-formats {
+          margin-right:10px;
+          margin-bottom:0;
+          button {
+            svg {
+              width:16px;
+              height:16px;
+            }
+          }
+        }
+      }
+
+      .ql-container {
+        background:#ffffff;
+        border-color:$taskoo-border-color;
+        border-radius: 6px;
+        transition:border-radius 100ms;
+
+        &.ql-snow {
+          border-top:1px solid $taskoo-border-color;
+        }
+
+        .ql-editor {
+          min-height:100px;
+          font-family:'Noto Sans JP';
+          font-size:14px;
+        }
+      }
+
+      .save-button {
+        background:$taskoo-main;
+        color:#ffffff;
+        padding: 7px 20px;
+        margin-top:10px;
+        border-radius:$taskoo-border-radius;
+        border:none;
+        font-family: "Noto Sans JP";
+        cursor:pointer;
+
+        &[disabled] {
+          cursor:not-allowed;
+        }
+      }
+    }
+
+    .task-users {
+      margin-top:20px;
+    }
+
+    .date-due {
+      margin-top:20px;
+      .taskoo-datepicker {
+        max-width: 300px;
+      }
+    }
+  }
+
+  .md-icon-button {
+    min-width: 25px;
+    width: 25px;
+    height:25px;
+  }
+
+
+  &.skeleton {
+
+    .taskbar {
+      .header {
+        width: 100%;
+        height: 50px;
+      }
+    }
+
+    .task-content {
+      .task-name {
+        display: flex;
+        width: 100%;
+        height:40px;
+      }
+
+      .task-description {
+        margin-top:20px;
+        display: flex;
+        height:200px;
+        width: 100%;
+      }
+
+      .date-due {
+        width: 100%;
+        max-width: 300px;
+        height:40px;
+      }
+
+      .task-users {
+        width: 100%;
+        max-width: 300px;
+        height:40px;
+      }
+    }
+
+    .taskoo-skeleton {
+      flex:1;
+      height:100%;
+    }
+  }
+}

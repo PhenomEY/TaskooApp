@@ -1,0 +1,70 @@
+@import '../../scss/vars/variables';
+
+.tasks-wrapper {
+  flex:1;
+  background:$taskoo-light-grey;
+  position: relative;
+  display: flex;
+  overflow: hidden;
+
+  .tasks-content {
+    padding:16px 0 0 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+    .tasks-header {
+      display: flex;
+      align-items: center;
+      margin-bottom:5px;
+      padding:0 16px;
+      justify-content: space-between;
+      .title {
+        margin-right:15px;
+        font-size:21px;
+      }
+
+      .finish-button {
+        font-size: 12px;
+        padding: 2px 10px;
+        border-radius: 6px;
+        display: flex;
+        align-items: center;
+        cursor:pointer;
+        background: #ffffff;
+        border:1px solid $taskoo-done-color;
+        color:$taskoo-done-color;
+
+        .md-icon {
+          color:$taskoo-done-color;
+          margin-right:3px;
+        }
+
+        &.done {
+          background: $taskoo-done-color;
+          border-color:$taskoo-done-color;
+          color:#ffffff;
+
+          .md-icon {
+            color:#ffffff;
+          }
+        }
+      }
+    }
+
+    .tasks {
+      padding:0 16px;
+
+      .taskoo-tasklist {
+        margin-top:16px;
+
+        &.skeleton {
+          .entry {
+            display:flex;
+            height: 200px;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,127 @@
+@import '../../scss/vars/variables';
+
+.project-wrapper {
+  flex:1;
+  background:$taskoo-light-grey;
+  position: relative;
+  display: flex;
+  overflow: hidden;
+
+  .project-content {
+    padding:16px 0 0 0;
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+
+    .project-header {
+      display: flex;
+      align-items: center;
+      margin-bottom:5px;
+      padding:0 16px;
+
+      .title {
+        margin-right:15px;
+        font-size:21px;
+      }
+
+      .deadline {
+        font-size:14px;
+        font-weight:bold;
+      }
+
+      .project-options {
+        margin-left:15px;
+        .md-icon-button {
+          min-width: 25px;
+          width: 25px;
+          height:25px;
+        }
+      }
+
+      .project-users {
+        .user {
+          transform: translateX(-50%);
+          height:30px;
+          width: 30px;
+          min-width: 30px;
+          background:orange;
+          font-size:14px;
+
+          &:first-child {
+            transform: none;
+            background:limegreen;
+          }
+
+          &:hover {
+            z-index:100;
+          }
+        }
+      }
+    }
+
+    .task-groups {
+      display: flex;
+      overflow-x: auto;
+      flex:1;
+      padding:0 16px;
+      .transition-group {
+        display:flex;
+      }
+
+      .task-group-item {
+        list-style-type: none;
+      }
+
+
+      &::-webkit-scrollbar {
+        width: 5px;
+        height:8px;
+      }
+
+      &::-webkit-scrollbar-track {
+        background: #ddd;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background: $taskoo-scrollbar-thumb;
+        border-radius: 6px;
+      }
+    }
+  }
+
+  .project-loader {
+
+    .project-header {
+      width: 100%;
+      height:50px;
+    }
+
+    .task-groups {
+      overflow: hidden;
+      .task-group {
+        width: $taskgroup-width;
+        min-height: 400px;
+      }
+    }
+
+    .taskoo-skeleton {
+      flex:1;
+      height:100%;
+    }
+  }
+}
+
+@media all and (max-width: 599px) {
+  .project-wrapper {
+    .project-content {
+      .task-groups {
+        overflow-x: hidden;
+
+        .transition-group {
+          transition: transform 200ms;
+          transform:translateX(0px);
+        }
+      }
+    }
+  }
+}

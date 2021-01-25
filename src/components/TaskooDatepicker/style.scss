@@ -1,0 +1,115 @@
+@import '../../scss/vars/variables';
+
+.taskoo-datepicker {
+
+  .datepicker {
+    width: 100%;
+    max-width: 350px;
+    font-family: "Roboto";
+    border-radius: $taskoo-border-radius;
+    border: 1px solid $taskoo-border-color;
+    margin-bottom: 10px;
+    height: 40px;
+    min-height: 40px;
+    background: #ffffff;
+    position: relative;
+    box-shadow: $taskoo-box-shadow;
+
+    &:hover {
+      border-color: $taskoo-border-h-color;
+    }
+
+    .datepicker-icon {
+      position: absolute;
+      left: 10px;
+      top: 8px;
+    }
+
+    .vdp-datepicker {
+      width: 100%;
+      height: 40px;
+      background: transparent;
+      position: relative;
+
+
+      input {
+        background: transparent;
+        padding: 7px 30px 7px 45px;
+        border: none;
+        outline: none;
+        width: 100%;
+        height: 40px;
+        font-family: "Noto Sans JP";
+        cursor: pointer;
+      }
+
+      .vdp-datepicker__clear-button {
+        position: absolute;
+        right: 10px;
+        top: 8px;
+
+        .close-datepicker {
+          &:before {
+            content: 'close';
+            display: block;
+          }
+        }
+      }
+
+      .vdp-datepicker__calendar {
+        border:1px solid $taskoo-border-h-color;
+        box-shadow:$taskoo-box-shadow;
+
+        header {
+          .prev {
+            background:$taskoo-main;
+            color:#ffffff;
+
+            &:after {
+              border-right: 10px solid #fff;
+            }
+          }
+
+          .day__month_btn {
+            background:$taskoo-main;
+            color:#ffffff;
+          }
+
+          .next {
+            background:$taskoo-main;
+            color:#ffffff;
+
+
+            &:after {
+              border-left: 10px solid #fff;
+            }
+          }
+        }
+
+        .cell {
+          &.selected {
+            background:$taskoo-main;
+            color:#ffffff;
+          }
+
+          &:not(.blank):not(.disabled).day:hover {
+            border:1px solid $taskoo-main;
+          }
+        }
+      }
+    }
+  }
+
+
+
+  .input-label {
+    display: block;
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+
+  input {
+
+  }
+}

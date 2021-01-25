@@ -1,0 +1,91 @@
+
+@import '../../scss/vars/variables';
+body {
+  background:#ffffff;
+}
+
+
+.login-wrapper {
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  min-height:100%;
+
+  .taskoo-login {
+    padding:16px;
+    max-width: 450px;
+    flex:1;
+    background:#ffffff;
+    border-radius:$taskoo-border-radius;
+    margin-top:10%;
+
+    .header {
+      text-align:center;
+      svg {
+        width:150px;
+        margin:0 auto;
+        display: block;
+        fill:$taskoo-main;
+      }
+
+      .taskoo-slogan {
+        font-family: "Noto Sans JP";
+        color:$taskoo-main;
+        display: block;
+        font-size:12px;
+      }
+    }
+
+    .form {
+      display:flex;
+      align-items: center;
+      flex-direction: column;
+      margin-top:30px;
+
+      .error {
+        font-family: "Noto Sans JP";
+        color:$taskoo-error;
+        border:1px solid $taskoo-error;
+        border-radius:$taskoo-border-radius;
+        padding:5px;
+        text-align: center;
+        width: 100%;
+        max-width: 350px;
+        font-size: 12px;
+        margin-bottom:20px;
+      }
+
+      .taskoo-button {
+        border:none;
+        color:#ffffff;
+        font-family: "Noto Sans JP";
+        border-radius:$taskoo-border-radius;
+        width: 100%;
+        max-width: 350px;
+        box-shadow: none;
+        background:$taskoo-main;
+        min-height:40px;
+        cursor:pointer;
+
+        &:hover {
+          background:#1ec81e;
+        }
+      }
+
+
+      .links {
+        width: 100%;
+        text-align: center;
+        margin-top:30px;
+        a {
+          color:$taskoo-main;
+          font-size:12px;
+
+          &.lost-password {
+            margin-right:25px;
+          }
+        }
+      }
+    }
+  }
+}
