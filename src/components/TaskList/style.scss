@@ -167,3 +167,19 @@
     }
   }
 }
+
+@media all and (max-width: 600px) {
+  .taskoo-tasklist {
+    .tasklist {
+      .task {
+        .list-task-right {
+          .list-task-secondary {
+            .sub-date-due, .has-subtasks, .has-description {
+              display:none;
+            }
+          }
+        }
+      }
+    }
+  }
+}

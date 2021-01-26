@@ -22,11 +22,6 @@
   height: inherit;
 }
 
-.taskoo-skeleton {
-  flex:1;
-  height:100%;
-}
-
 @keyframes SkeletonLoading {
   0% {
     background-position: -200px 0;

@@ -1,17 +1,21 @@
 <template>
   <div class="taskoo-taskbar">
 
+    <div class="menu-toggle" @click="toggleMenu">
+      <md-icon>menu</md-icon>
+    </div>
+
     <taskoo-searchfield></taskoo-searchfield>
 
-    <taskoo-select :model="currentOrg" type="single" @changed="orgChanged(...arguments)" placeholder="Bitte auswählen...">
-      <div class="option" :t-value="1" v-close-popover>
-        webpiloten
-      </div>
+<!--    <taskoo-select :model="currentOrg" type="single" @changed="orgChanged(...arguments)" placeholder="Bitte auswählen...">-->
+<!--      <div class="option" :t-value="1" v-close-popover>-->
+<!--        webpiloten-->
+<!--      </div>-->
 
-      <div class="option" :t-value="2" v-close-popover>
-        bitpiloten
-      </div>
-    </taskoo-select>
+<!--      <div class="option" :t-value="2" v-close-popover>-->
+<!--        bitpiloten-->
+<!--      </div>-->
+<!--    </taskoo-select>-->
     <div class="icons-right">
       <taskoo-refresh :interval="refreshInterval"></taskoo-refresh>
 

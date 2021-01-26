@@ -103,6 +103,7 @@
           flex:1;
           border:none;
           font-weight:bold;
+          height:30px;
 
           &:hover {
             background:#ffffff;
@@ -127,5 +128,25 @@
     }
 
   }
+}
 
+
+@media all and (max-width: 600px) {
+  .dashboard-wrapper {
+    .dashboard {
+
+      .tile {
+        &.welcome {
+          font-size:22px;
+        }
+      }
+
+      .notifications {
+        .entry {
+          min-height:30px;
+          height: auto;
+        }
+      }
+    }
+  }
 }

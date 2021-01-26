@@ -65,6 +65,15 @@ export default {
         closedNotifications() {
             this.notificationCount = 0;
             this.notifications = null;
-        }
+        },
+
+      toggleMenu() {
+        let body = document.body;
+          if(!body.classList.contains('open-menu')) {
+            body.classList.add('open-menu')
+          } else {
+            body.classList.remove('open-menu')
+          }
+      }
     }
 }

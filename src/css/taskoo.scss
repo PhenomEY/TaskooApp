@@ -1,0 +1,31 @@
+html,body {
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  -moz-text-size-adjust: none;
+  -ms-text-size-adjust: none;
+}
+
+
+//nav open
+body {
+  &.open-menu {
+    .md-drawer {
+      &.md-permanent {
+        position: relative;
+        transform: translate3D(0,0,0);
+      }
+    }
+  }
+}
+
+
+.taskoo-skeleton {
+  flex:1;
+  height:100%;
+}
+
+h1 {
+  font-weight: inherit;
+  line-height: inherit;
+  letter-spacing: inherit;
+}
