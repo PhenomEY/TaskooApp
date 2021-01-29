@@ -1,16 +1,19 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 
-// we first import the module
-// import showcase from './showcase'
+
+import auth from './auth'
+import user from './user'
+import misc from './misc'
 
 Vue.use(Vuex)
 
 export default function (/* { ssrContext } */) {
   const Store = new Vuex.Store({
     modules: {
-      // then we reference it
-      // showcase
+      auth,
+      user,
+      misc
     },
 
     // enable strict mode (adds overhead!)
@@ -25,12 +28,12 @@ export default function (/* { ssrContext } */) {
     get into our production build (and it shouldn't).
   */
 
-  if (process.env.DEV && module.hot) {
-    module.hot.accept(['./showcase'], () => {
-      const newShowcase = require('./showcase').default
-      Store.hotUpdate({ modules: { showcase: newShowcase } })
-    })
-  }
+  // if (process.env.DEV && module.hot) {
+  //   module.hot.accept(['./auth'], () => {
+  //     const newAuth = require('./auth').default
+  //     Store.hotUpdate({ modules: { auth: newAuth } })
+  //   })
+  // }
 
   return Store
 }

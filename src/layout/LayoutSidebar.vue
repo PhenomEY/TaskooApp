@@ -149,7 +149,7 @@ export default {
 
   computed: {
     userType: function() {
-      return this.$store.state.user.role
+      return this.$store.state.user.user.role
     }
   },
   methods: {

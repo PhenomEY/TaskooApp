@@ -17,7 +17,6 @@
     &.main-nav {
       width: 230px;
       max-width: calc(100vw - 125px);
-      background:#444444 !important;
     }
 
 
@@ -45,14 +44,8 @@
       }
 
       &.project-nav {
-        background:#444444 !important;
-
         .md-list-item {
           border:none;
-          .md-list-item-text, .md-icon {
-            color:#ffffff;
-          }
-
         }
       }
     }

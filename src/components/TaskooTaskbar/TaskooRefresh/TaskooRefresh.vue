@@ -58,11 +58,11 @@ export default {
 
   watch: {
     '$store.state.contentRefreshActive': function() {
-      this.active = this.$store.state.contentRefreshActive;
+      this.active = this.$store.state.misc.contentRefreshActive;
     },
 
     '$store.state.contentRefresh': function() {
-      if (this.$store.state.contentRefresh == true) {
+      if (this.$store.state.misc.contentRefresh == true) {
         this.isRefreshing = true;
       } else {
         this.isRefreshing = false;
@@ -72,7 +72,7 @@ export default {
   },
 
   mounted() {
-    this.active = this.$store.state.contentRefreshActive;
+    this.active = this.$store.state.misc.contentRefreshActive;
 
     if(this.active == 'true' || this.active == true) {
       this.loop = setInterval(() => {this.refresh()}, 1000);
@@ -88,7 +88,7 @@ export default {
         if(this.isRefreshing == true) { return;}
 
         if(this.second == parseInt(this.interval)) {
-          this.$store.commit('toggleRefresh', true);
+          this.$store.commit('misc/toggleRefresh', true);
           this.second = 0;
         } else {
           this.loadingValue = this.loadingValue + (100 / this.interval);
@@ -97,14 +97,14 @@ export default {
       },
 
     deactivate() {
-      this.$store.commit('toggleRefreshActive', false);
+      this.$store.commit('misc/toggleRefreshActive', false);
         clearInterval(this.loop);
         this.second = 0;
         this.loadingValue = 0;
     },
 
     activate() {
-      this.$store.commit('toggleRefreshActive', true);
+      this.$store.commit('misc/toggleRefreshActive', true);
       this.active = true;
       this.loop = setInterval(() => {this.refresh()}, 1000);
     }

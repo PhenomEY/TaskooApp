@@ -23,13 +23,13 @@ export default {
     }),
 
     watch: {
-        '$store.state.contentRefresh': function() {
-            if (this.$store.state.contentRefresh == true) {
+        '$store.state.misc.contentRefresh': function() {
+            if (this.$store.state.misc.contentRefresh == true) {
                 this.loading = true;
                 this.getProjectData(true)
             }
 
-            return this.$store.state.contentRefresh;
+            return this.$store.state.misc.contentRefresh;
         },
 
         '$store.state.isMobile': function() {

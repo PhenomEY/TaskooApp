@@ -79,6 +79,7 @@ m1270 -10 c189 -30 340 -186 403 -416 29 -105 31 -334 4 -438 -47 -182 -151
 <script>
   import LayoutSidebar from "./layout/LayoutSidebar";
   import axios from "axios";
+  import store from "src/store";
   export default {
     name: 'taskoo',
     components: {LayoutSidebar},
@@ -96,6 +97,8 @@ m1270 -10 c189 -30 340 -186 403 -416 29 -105 31 -334 4 -438 -47 -182 -151
     },
 
     mounted() {
+      axios.defaults.headers.common['Authorization'] = this.$store.state.auth.authToken
+
       this.setTitle(this.$t('taskoo.title'));
 
       axios
@@ -115,8 +118,8 @@ m1270 -10 c189 -30 340 -186 403 -416 29 -105 31 -334 4 -438 -47 -182 -151
 
             if(response.data.success == true) {
               setTimeout(() => (
-                  this.$store.commit('setVerifiedUser', true),
-                  this.$store.commit('setUser', response.data.user)
+                  this.$store.commit('auth/setVerifiedUser', true),
+                  this.$store.commit('user/setUser', response.data.user)
               ), 700);
             } else {
               setTimeout(() => (
@@ -128,7 +131,7 @@ m1270 -10 c189 -30 340 -186 403 -416 29 -105 31 -334 4 -438 -47 -182 -151
           })
 
       if(this.screenWidth < 600) {
-        this.$store.commit('toggleMobile', true)
+        this.$store.commit('misc/toggleMobile', true)
       }
 
       //check if screen is mobile to disable dragging
@@ -136,20 +139,20 @@ m1270 -10 c189 -30 340 -186 403 -416 29 -105 31 -334 4 -438 -47 -182 -151
         this.screenWidth = window.innerWidth
 
         if(this.screenWidth < 600) {
-          this.$store.commit('toggleMobile', true)
+          this.$store.commit('misc/toggleMobile', true)
         } else {
-          this.$store.commit('toggleMobile', false)
+          this.$store.commit('misc/toggleMobile', false)
         }
       }
     },
 
     computed: {
       loggingIn: function() {
-        return this.$store.state.loggingIn
+        return this.$store.state.auth.loggingIn
       },
 
       verifiedUser: function() {
-        return this.$store.state.verifiedUser
+        return this.$store.state.auth.verifiedUser
       }
     },
 

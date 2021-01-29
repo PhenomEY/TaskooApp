@@ -29,10 +29,9 @@ export default {
                         this.formError = true;
 
                     } else if(response.data.success == true) {
-                        this.$store.commit('setAuthToken', response.data.auth)
-                        console.log(localStorage.getItem('authToken'));
-                        this.$store.commit('setUser', response.data.user)
-                        this.$store.commit('setVerifiedUser', true)
+                        this.$store.commit('auth/setAuthToken', response.data.auth)
+                        this.$store.commit('user/setUser', response.data.user)
+                        this.$store.commit('auth/setVerifiedUser', true)
                         this.$router.push({
                             name: 'Dashboard'
                         });

@@ -30,9 +30,8 @@ export default {
     methods: {
         logout() {
             console.log('logout')
-            this.$store.commit('setUserToken', null)
-            this.$store.commit('setUserId', null)
-            this.$store.commit('setVerifiedUser', false)
+            this.$store.commit('auth/setAuthToken', null)
+            this.$store.commit('auth/setVerifiedUser', false)
             this.$router.push({
                 name: 'Login'
             })
