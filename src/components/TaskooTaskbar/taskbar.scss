@@ -20,7 +20,7 @@
   }
 
   .menu-toggle {
-    //display:none;
+    display:none;
     margin-right:10px;
   }
 
@@ -81,5 +81,14 @@
     border-right:3px solid blue;
     border-bottom:3px solid blue;
     border-left:3px solid blue;
+  }
+}
+
+
+@media all and (max-width: 600px) {
+  .taskoo-taskbar {
+    .menu-toggle {
+      display:block;
+    }
   }
 }

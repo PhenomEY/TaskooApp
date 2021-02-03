@@ -35,7 +35,15 @@ export default new Router({
     {
       path: '/tasks',
       name: 'Tasks',
-      component: require('../pages/Tasks/Tasks').default
+      component: require('../pages/Tasks/Tasks').default,
+      children: [
+        {
+          path: 'done',
+          name: 'DoneTasks',
+          component: require('../pages/Tasks/Tasks').default
+        },
+      ]
+
     },
     {
       path: '/admin',

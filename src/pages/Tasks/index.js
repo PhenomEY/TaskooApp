@@ -20,10 +20,24 @@ export default {
             }
 
             return this.$store.state.contentRefresh;
-        }
+        },
+
+      '$route.name': function() {
+          if (this.$route.name === 'DoneTasks') {
+            this.doneTasks = true;
+            this.getUserTasks();
+          } else {
+            this.doneTasks = false;
+            this.getUserTasks();
+          }
+      }
     },
 
     mounted() {
+      if(this.$route.name === 'DoneTasks') {
+        this.doneTasks = true;
+      }
+
         this.getUserTasks()
     },
 
@@ -98,11 +112,18 @@ export default {
         },
 
         showDoneTasks() {
-            this.doneTasks = !this.doneTasks;
+          if(this.$route.name === 'DoneTasks') {
+            this.$router.push({
+              name: 'Tasks'
+            })
 
-            this.loadingTasks = true;
+            return
+          }
 
-            this.getUserTasks();
+          this.$router.push({
+            name: 'DoneTasks'
+          })
+
         }
     }
 }

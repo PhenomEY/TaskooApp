@@ -96,11 +96,20 @@ m1270 -10 c189 -30 340 -186 403 -416 29 -105 31 -334 4 -438 -47 -182 -151
 <!--              </div>-->
 <!--            </div>-->
 
+            <md-list-item class="title">
+              <span class="md-list-item-text">{{ $t('navigation.projects.favorites') }}</span>
+            </md-list-item>
 
-            <md-list-item>
+            <md-list-item @click="goToPath('/project/', 2)">
+              <span class="color-brick"></span>
+              <span class="md-list-item-text">Fav. Project</span>
+            </md-list-item>
+
+            <md-list-item class="title">
               <span class="md-list-item-text">{{ $t('navigation.projects.title') }}</span>
             </md-list-item>
             <md-list-item v-for="project in projects" @click="goToPath('/project/', project.id)">
+              <span class="color-brick"></span>
               <span class="md-list-item-text">{{ project.name }}</span>
             </md-list-item>
 
@@ -116,6 +125,10 @@ m1270 -10 c189 -30 340 -186 403 -416 29 -105 31 -334 4 -438 -47 -182 -151
               <span class="md-list-item-text">PROJECT2</span>
             </md-list-item>
           </md-list>
+
+          <div class="bottom-nav">
+            <a href="#">{{ $t('login.links.about') }}</a>
+          </div>
         </md-app-drawer>
 
         <md-app-content>
@@ -129,52 +142,5 @@ m1270 -10 c189 -30 340 -186 403 -416 29 -105 31 -334 4 -438 -47 -182 -151
 
 <style src="./layout.scss" lang="scss"></style>
 
-<script>
-import axios from "axios";
-import TaskooTaskbar from "../components/TaskooTaskbar/TaskooTaskbar";
-
-export default {
-  name: 'LayoutSidebar',
-  components: {TaskooTaskbar},
-  data: () => ({
-    projects: null
-  }),
-
-  mounted() {
-    this.getTestData()
-  },
-
-  watch: {
-  },
-
-  computed: {
-    userType: function() {
-      return this.$store.state.user.user.role
-    }
-  },
-  methods: {
-    getTestData() {
-      axios
-          .get('https://api.taskoo.de/api/getProjectNavTestData')
-          .catch(function (error) {
-          })
-          .then(response => {
-            this.projects = response.data.data.projects
-          })
-    },
-
-
-    goToName(target) {
-      this.$router.push({
-        name: target
-      })
-    },
-
-    goToPath(target, id) {
-      this.$router.push({
-        path: target+id
-      })
-    },
-  }
-}
+<script src="./index.js">
 </script>

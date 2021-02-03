@@ -14,8 +14,9 @@ export default {
     "admin": "Administration",
 
     "projects": {
-    "title": "Deine Projekte",
-      "create": "Projekt anlegen"
+      "title": "Deine Projekte",
+      "create": "Projekt anlegen",
+      "favorites": "Favoriten"
   }
 },
 

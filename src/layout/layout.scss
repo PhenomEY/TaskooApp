@@ -17,6 +17,9 @@
     &.main-nav {
       width: 230px;
       max-width: calc(100vw - 125px);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
     }
 
 
@@ -24,10 +27,11 @@
     .md-list {
       &.main {
         padding-bottom:0;
+        flex:0;
       }
 
       .md-list-item {
-        border-right: 1px solid #eaeaea;
+        border-right: 1px solid $taskoo-sb-border-color;
 
         &.taskoo-logo {
           border:none;
@@ -44,12 +48,56 @@
       }
 
       &.project-nav {
+        flex:1;
+        height:100%;
+        border-right: 1px solid $taskoo-sb-border-color;
+        padding-top:15px;
+
         .md-list-item {
           border:none;
+
+          .color-brick {
+            width:8px;
+            height:8px;
+            background:$taskoo-main;
+            margin-right:10px;
+          }
+
+          &.title {
+            .md-list-item-content {
+              .md-list-item-text {
+                font-size:12px;
+                font-weight:bold;
+                border-bottom: 1px solid $taskoo-sb-border-color;
+                padding-bottom: 8px;
+              }
+            }
+          }
+
+          .md-list-item-content {
+            min-height:35px;
+            height:35px;
+          }
+
         }
       }
     }
 
+    .bottom-nav {
+      padding:10px;
+      background:$taskoo-main;
+      color:#ffffff;
+      display:flex;
+
+      a {
+        color:#ffffff;
+        font-size:12px;
+
+        &:hover {
+          color:#ffffff;
+        }
+      }
+    }
 
   }
 
