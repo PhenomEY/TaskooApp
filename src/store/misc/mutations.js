@@ -5,6 +5,8 @@ export function someMutation (state) {
 
 export function toggleMobile(state, value) {
   state.isMobile = value
+  console.log('is Mobile:');
+  console.log(state.isMobile)
 }
 
 export function toggleRefresh(state, value) {

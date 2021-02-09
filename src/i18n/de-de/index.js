@@ -8,7 +8,7 @@ export default {
 },
 
   "navigation": {
-  "dashboard": "Dashboard",
+    "dashboard": "Dashboard",
     "tasks": "Meine Aufgaben",
     "settings": "Einstellungen",
     "admin": "Administration",
@@ -83,7 +83,7 @@ export default {
 
   "dashboard": {
   "title": "Taskoo - Dashboard",
-    "welcome": "Willkommen",
+    "welcome": "Willkommen {name}",
     "notifications": "Benachrichtigungen",
     "dueTasks": "Diese Aufgaben sind demnächst fällig",
     "notification": {

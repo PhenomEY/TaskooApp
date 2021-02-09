@@ -32,8 +32,8 @@ export default {
             return this.$store.state.misc.contentRefresh;
         },
 
-        '$store.state.isMobile': function() {
-          this.isMobile = this.$store.state.isMobile
+        '$store.state.misc.isMobile': function() {
+          this.isMobile = this.$store.state.misc.isMobile
             if(this.isMobile === false) {
                 const transitionGroup = document.querySelector('.task-groups .transition-group');
                 transitionGroup.style.transform = 'translateX(0)'
@@ -55,7 +55,7 @@ export default {
     mounted() {
         this.getProjectData()
 
-        this.isMobile = this.$store.state.isMobile
+        this.isMobile = this.$store.state.misc.isMobile
     },
 
     computed: {
@@ -241,6 +241,7 @@ export default {
                 })
                 .then(response => {
                     if(!response) {
+                      this.groups[groupKey]['tasks'].shift();
                         return
                     }
 
@@ -248,6 +249,7 @@ export default {
                         this.groups[groupKey]['tasks'][0]['id'] = response.data.createdId;
                         this.$vToastify.success("Task created");
                         this.addingTask = false
+
                     } else {
                         this.groups[groupKey]['tasks'].shift();
                         this.$vToastify.error("Task creation failed");
@@ -387,7 +389,7 @@ export default {
             const currentX = matrix.m41;
 
 
-            if(!this.$store.state.isMobile) { return }
+            if(!this.$store.state.misc.isMobile) { return }
 
            if(direction === 'left' && currentX !== -(maxWidth -groupWidth)) {
                transitionGroup.style.transform = 'translateX('+(currentX-groupWidth)+'px)'

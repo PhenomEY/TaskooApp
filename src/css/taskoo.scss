@@ -11,8 +11,9 @@ body {
   &.open-menu {
     .md-drawer {
       &.md-permanent {
-        position: relative;
+        position: absolute;
         transform: translate3D(0,0,0);
+        width: 100%;
       }
     }
   }

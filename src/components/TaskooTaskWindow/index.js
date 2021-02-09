@@ -23,7 +23,7 @@ export default {
             availableUsers: null,
             dateDue: null,
             assignedUsers: [],
-            isMobile: this.$store.state.isMobile,
+            isMobile: this.$store.state.misc.isMobile,
             addingSubTask: false,
             changingPositions: false
         }
@@ -38,7 +38,7 @@ export default {
 
     watch: {
         '$store.state.isMobile': function() {
-            this.isMobile = this.$store.state.isMobile
+            this.isMobile = this.$store.state.misc.isMobile
         },
 
         '$route.params.taskId': function() {

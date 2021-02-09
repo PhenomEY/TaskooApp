@@ -51,7 +51,7 @@
   </div>
 
   <draggable :disabled="disabled || isMobile" class="task-group-inner" :list="model" group="taskgroups"  v-bind="dragOptions" @change="changedTaskPositions(model, groupId, ...arguments)">
-      <div class="task item box-shadow" v-for="(item, key) in model" :key="key" v-bind:class="{'is-done': (item.isDone)}">
+      <div class="task item box-shadow" v-for="(item, key) in model" :key="key" v-bind:class="{'is-done': (item.isDone)}" v-bind:taskid="item.id">
 
         <div class="main">
           <inputfield-editable @leftField="toggleDragging(false)" @editInput="toggleDragging(true)" :value="item.name" rows="1" @saveInput="changeTaskName(groupKey, key, item.id, ...arguments)"></inputfield-editable>

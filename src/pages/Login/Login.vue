@@ -64,7 +64,7 @@ m1270 -10 c189 -30 340 -186 403 -416 29 -105 31 -334 4 -438 -47 -182 -151
           {{ $t('login.login_failed') }}
         </div>
 
-        <taskoo-input type="text" :model="username" placeholder="user@taskoo.de" :label="$t('login.labels.email')" @modelChanged="setUsername(...arguments)"></taskoo-input>
+        <taskoo-input type="email" :model="username" placeholder="user@taskoo.de" :label="$t('login.labels.email')" @modelChanged="setUsername(...arguments)"></taskoo-input>
 
 
         <taskoo-input type="password" :model="password" :placeholder="$t('login.labels.password')" :label="$t('login.labels.password')" @modelChanged="setPassword(...arguments)"></taskoo-input>

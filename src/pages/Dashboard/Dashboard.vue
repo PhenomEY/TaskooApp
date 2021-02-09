@@ -5,7 +5,7 @@
       <div class="first-row">
         <div class="welcome tile box-shadow">
           <span class="welcome-text">
-            {{ $t('dashboard.welcome') }} Damian
+            {{ $t('dashboard.welcome', {'name': $store.state.user.user.firstname}) }}
           </span>
         </div>
 
