@@ -5,13 +5,13 @@ body {
 }
 
 
-.login-wrapper {
+.offpage-wrapper {
   display:flex;
   align-items: center;
   justify-content: center;
   min-height:100%;
 
-  .taskoo-login {
+  .slim-container {
     padding:16px;
     max-width: 450px;
     flex:1;

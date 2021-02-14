@@ -1,6 +1,9 @@
 <template>
   <div>
-    ListUsers
+    <router-view></router-view>
+
+    <div v-if="$route.name === 'AdminUser'">ListUsers</div>
+
   </div>
 </template>
 

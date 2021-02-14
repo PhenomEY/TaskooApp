@@ -33,6 +33,11 @@ export default new Router({
       component: require('pages/Login/Login').default
     },
     {
+      path: '/invite/:id',
+      name: 'Invite',
+      component: require('pages/Invite/Invite').default
+    },
+    {
       path: '/tasks',
       name: 'Tasks',
       component: require('pages/Tasks/Tasks').default,
@@ -51,12 +56,16 @@ export default new Router({
       component: require('pages/Administration/Administration').default,
       children: [
         {
-          path: 'user/create',
-          component: require('components/Admin/UserCreate/UserCreate').default,
-        },
-        {
-          path: 'user/list',
-          component: require('components/Admin/UserList/UserList').default,
+          name: 'AdminUser',
+          path: 'user',
+          component: require('components/Admin/User/User').default,
+          children: [
+            {
+              path: 'create',
+              name: 'AdminUserCreate',
+              component: require('components/Admin/User/Create/Create').default,
+            },
+          ]
         },
       ]
     },

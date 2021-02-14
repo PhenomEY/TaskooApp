@@ -22,13 +22,15 @@ export default {
                         password: this.password
                     }
                 })
-                .catch(function (error) {
+                .catch(error => {
+                  this.formError = true;
                 })
                 .then(response => {
-                    if (response.data.success == false) {
-                        this.formError = true;
+                  if(!response) {
+                    return
+                  }
 
-                    } else if(response.data.success == true) {
+                  if(response.data.success == true) {
                         this.$store.commit('auth/setAuthToken', response.data.auth)
                         this.$store.commit('user/setUser', response.data.user)
                         this.$store.commit('auth/setVerifiedUser', true)

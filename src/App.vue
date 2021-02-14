@@ -1,88 +1,24 @@
 <template>
   <div id="q-app">
-    <layout-sidebar #content v-if="verifiedUser">
+
+    <router-view v-if="$route.name === 'Login' || $route.name === 'Invite'"></router-view>
+
+    <layout-sidebar #content v-else-if="verifiedUser">
       <router-view></router-view>
     </layout-sidebar>
 
-    <div v-else-if="$route.name == 'Login'">
-      <router-view></router-view>
-    </div>
-
-    <div class="taskoo-loading" v-else>
-      <div class="sk-cube-grid">
-        <div class="sk-cube sk-cube1"></div>
-        <div class="sk-cube sk-cube2"></div>
-        <div class="sk-cube sk-cube3"></div>
-        <div class="sk-cube sk-cube4"></div>
-        <div class="sk-cube sk-cube5"></div>
-        <div class="sk-cube sk-cube6"></div>
-        <div class="sk-cube sk-cube7"></div>
-        <div class="sk-cube sk-cube8"></div>
-        <div class="sk-cube sk-cube9"></div>
-      </div>
-
-      <div class="loading-logo">
-          <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
-               viewBox="0 0 923.000000 253.000000"
-               preserveAspectRatio="xMidYMid meet">
-
-            <g transform="translate(0.000000,253.000000) scale(0.100000,-0.100000)"
-               stroke="none">
-              <path d="M4982 2507 l-22 -23 0 -1196 c0 -1145 1 -1196 18 -1211 14 -13 39
--17 109 -17 81 0 92 2 111 23 21 22 22 31 22 231 l0 208 123 146 c67 79 133
-158 147 174 l25 29 248 -406 249 -405 109 0 108 0 16 30 c9 17 13 36 9 43 -4
-7 -135 215 -291 463 -155 248 -283 457 -283 463 0 6 109 145 243 307 133 162
-244 300 246 305 1 6 -2 23 -9 40 l-12 29 -112 0 -111 0 -350 -432 -350 -431
--5 805 c-6 944 9 848 -130 848 -78 0 -89 -2 -108 -23z"/>
-              <path d="M22 2307 c-18 -19 -22 -35 -22 -93 0 -122 -25 -114 361 -114 l329 0
-0 -1003 c0 -960 1 -1005 18 -1020 28 -26 202 -24 225 1 15 17 17 105 19 1018
-l3 999 324 3 c285 2 327 4 343 19 26 24 26 172 0 196 -17 16 -87 17 -799 17
-l-780 0 -21 -23z"/>
-              <path d="M2210 1759 c-113 -24 -254 -80 -358 -144 -129 -78 -123 -63 -66 -152
-62 -97 86 -107 151 -62 63 44 197 104 273 124 77 21 218 24 277 7 110 -32 185
--139 205 -294 6 -48 10 -90 7 -92 -3 -3 -54 -12 -114 -21 -263 -39 -440 -87
--595 -163 -245 -120 -354 -338 -295 -590 73 -307 413 -438 764 -292 65 27 190
-98 224 128 23 21 29 12 34 -50 8 -104 1 -98 106 -98 150 0 137 -51 137 541 0
-665 -10 760 -92 923 -105 208 -356 298 -658 235z m490 -1058 l0 -229 -72 -55
-c-154 -117 -274 -167 -400 -167 -104 0 -170 22 -222 73 -49 50 -66 99 -66 191
-0 206 167 314 605 391 72 13 136 24 143 24 9 1 12 -51 12 -228z"/>
-              <path d="M3855 1774 c-110 -17 -226 -70 -300 -137 -168 -152 -192 -413 -55
--587 66 -83 176 -145 423 -239 280 -107 357 -173 357 -309 0 -112 -71 -204
--184 -237 -65 -20 -225 -19 -301 0 -79 20 -167 64 -249 124 -89 65 -106 61
--180 -38 -64 -85 -65 -79 29 -146 268 -192 622 -238 871 -115 174 85 274 241
-274 425 0 169 -81 304 -240 397 -35 21 -156 74 -269 119 -220 87 -294 127
--332 180 -20 29 -24 46 -24 111 0 69 3 80 30 120 21 28 50 53 90 73 55 28 65
-30 174 30 138 0 189 -17 310 -100 l77 -52 69 90 69 90 -45 39 c-53 46 -201
-121 -284 143 -59 16 -252 28 -310 19z"/>
-              <path d="M7037 1764 c-245 -53 -444 -226 -537 -467 -57 -146 -65 -195 -64
--402 0 -204 11 -264 68 -405 163 -405 625 -584 1011 -393 93 45 187 122 248
-203 27 36 53 66 57 68 4 1 20 -16 35 -40 196 -295 607 -403 928 -242 152 76
-257 184 338 349 73 150 93 244 93 445 1 210 -24 329 -99 480 -182 363 -618
-511 -981 334 -93 -46 -192 -128 -255 -213 l-52 -69 -57 77 c-74 97 -152 161
--265 216 -147 72 -312 92 -468 59z m222 -225 c189 -30 340 -186 403 -416 29
--105 31 -334 4 -438 -47 -182 -151 -326 -280 -386 -240 -112 -495 -16 -615
-233 -50 104 -70 184 -77 318 -20 346 145 630 399 685 78 17 88 17 166 4z
-m1270 -10 c189 -30 340 -186 403 -416 29 -105 31 -334 4 -438 -47 -182 -151
--326 -280 -386 -240 -112 -495 -16 -615 233 -50 104 -70 184 -77 318 -20 346
-145 630 399 685 78 17 88 17 166 4z"/>
-              <path d="M7179 687 c-105 -69 -104 -265 1 -335 29 -20 45 -23 93 -20 69 5 103
-27 135 88 45 90 19 217 -57 267 -47 32 -125 32 -172 0z"/>
-              <path d="M8429 667 c-105 -69 -104 -265 1 -335 29 -20 45 -23 93 -20 69 5 103
-27 135 88 45 90 19 217 -57 267 -47 32 -125 32 -172 0z"/>
-            </g>
-          </svg>
-      </div>
-    </div>
+    <taskoo-loader v-else></taskoo-loader>
   </div>
 </template>
 
 <script>
   import LayoutSidebar from "./layout/LayoutSidebar";
+  import TaskooLoader from "components/TaskooLoader/TaskooLoader";
   import axios from "axios";
   import store from "src/store";
   export default {
     name: 'taskoo',
-    components: {LayoutSidebar},
+    components: {LayoutSidebar, TaskooLoader},
     data: () => ({
       test: true,
       screenWidth: window.innerWidth
@@ -96,39 +32,19 @@ m1270 -10 c189 -30 340 -186 403 -416 29 -105 31 -334 4 -438 -47 -182 -151
       }
     },
 
+    beforeUpdate() {
+      if(!this.verifiedUser) {
+        this.checkAuth()
+      }
+    },
+
     mounted() {
       axios.defaults.headers.common['Authorization'] = this.$store.state.auth.authToken
+      console.log('mounted')
+
+      this.checkAuth()
 
       this.setTitle(this.$t('taskoo.title'));
-
-      axios
-          .get(axios.defaults.baseURL+'/auth/check')
-          .catch(function (error) {
-          })
-          .then(response => {
-
-            if(!response) {
-              setTimeout(() => (
-                  this.$router.push({
-                    name: 'Login'
-                  })
-              ), 700);
-              return;
-            }
-
-            if(response.data.success == true) {
-              setTimeout(() => (
-                  this.$store.commit('auth/setVerifiedUser', true),
-                  this.$store.commit('user/setUser', response.data.user)
-              ), 700);
-            } else {
-              setTimeout(() => (
-                  this.$router.push({
-                    name: 'Login'
-                  })
-              ), 700);
-            }
-          })
 
       if(this.screenWidth < 600) {
         this.$store.commit('misc/toggleMobile', true)
@@ -168,6 +84,37 @@ m1270 -10 c189 -30 340 -186 403 -416 29 -105 31 -334 4 -438 -47 -182 -151
               } else {
               }
             })
+      },
+
+      checkAuth() {
+        axios
+          .get(axios.defaults.baseURL+'/auth/check')
+          .catch(function (error) {
+          })
+          .then(response => {
+
+            if(!response) {
+              setTimeout(() => (
+                this.$router.push({
+                  name: 'Login'
+                })
+              ), 700);
+              return;
+            }
+
+            if(response.data.success == true) {
+              setTimeout(() => (
+                this.$store.commit('auth/setVerifiedUser', true),
+                  this.$store.commit('user/setUser', response.data.user)
+              ), 700);
+            } else {
+              setTimeout(() => (
+                this.$router.push({
+                  name: 'Login'
+                })
+              ), 700);
+            }
+          })
       }
     }
   }

@@ -1,26 +1,21 @@
 export default {
-    name: 'UserList',
+    name: 'TaskooLoader',
     components: {},
 
     data() {
-        return {
-        }
-    },
-
-    mounted() {
+      return {
+      }
     },
 
     watch: {
     },
 
-    props: {
+    mounted() {
     },
 
     computed: {
     },
 
-
     methods: {
-
     }
 }

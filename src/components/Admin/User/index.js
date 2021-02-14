@@ -1,5 +1,5 @@
 export default {
-    name: 'UserCreate',
+    name: 'AdminUser',
     components: {},
 
     data() {

@@ -5,10 +5,7 @@
         AAA
       </md-tab>
 
-      <md-tab id="user-create" md-label="Create User" to="/admin/user/create" exact>
-        <router-view></router-view>
-      </md-tab>
-      <md-tab id="user-list" md-label="Users" to="/admin/user/list">
+      <md-tab id="user-list" md-label="Users" to="/admin/user">
         <router-view></router-view>
       </md-tab>
     </md-tabs>
