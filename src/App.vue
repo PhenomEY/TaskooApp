@@ -1,7 +1,7 @@
 <template>
   <div id="q-app">
 
-    <router-view v-if="$route.name === 'Login' || $route.name === 'Invite'"></router-view>
+    <router-view v-if="publicUrls.includes($route.name)"></router-view>
 
     <layout-sidebar #content v-else-if="verifiedUser">
       <router-view></router-view>
@@ -21,7 +21,11 @@
     components: {LayoutSidebar, TaskooLoader},
     data: () => ({
       test: true,
-      screenWidth: window.innerWidth
+      screenWidth: window.innerWidth,
+      publicUrls: [
+        'Login',
+        'Invite'
+      ]
     }),
 
     watch: {
@@ -33,7 +37,7 @@
     },
 
     beforeUpdate() {
-      if(!this.verifiedUser) {
+      if(!this.verifiedUser && !this.publicUrls.includes(this.$route.name)) {
         this.checkAuth()
       }
     },
@@ -42,7 +46,12 @@
       axios.defaults.headers.common['Authorization'] = this.$store.state.auth.authToken
       console.log('mounted')
 
-      this.checkAuth()
+
+      //if site isnt public, check for auth
+      if(!this.publicUrls.includes(this.$route.name)) {
+        this.checkAuth()
+      }
+
 
       this.setTitle(this.$t('taskoo.title'));
 
@@ -102,7 +111,7 @@
               return;
             }
 
-            if(response.data.success == true) {
+            else if(response.data.success == true) {
               setTimeout(() => (
                 this.$store.commit('auth/setVerifiedUser', true),
                   this.$store.commit('user/setUser', response.data.user)

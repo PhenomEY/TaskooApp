@@ -8,7 +8,32 @@ export default {
 
     data: () => ({
       verifying: true,
+      invitedUser: null
     }),
-    methods: {
+
+    mounted() {
+      this.checkInvite()
+    },
+
+  watch: {
+    '$route.params.id': function () {
+      this.checkInvite()
+    }
+  },
+
+
+  methods: {
+      checkInvite() {
+        axios
+          .get(axios.defaults.baseURL+'/invite/'+this.$route.params.id)
+          .catch(error => {
+            this.$router.push({ name: `Dashboard`});
+          })
+          .then(response => {
+              if(response) {
+                this.verifying = false;
+              }
+          })
+      }
     }
 }
