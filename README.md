@@ -1,6 +1,6 @@
 # Taskoo - Easy task management
 
-Easy task management
+<p align="center"><a href="https://shopware.com" target="_blank" rel="noopener noreferrer"><img width="250" src="https://taskoo.de/TaskooMedia/Logo_GREEN.svg"></a></p>
 
 ## Install the dependencies
 ```bash
