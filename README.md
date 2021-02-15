@@ -1,4 +1,4 @@
-# Taskoo (taskoo)
+# Taskoo - Easy task management
 
 Easy task management
 
