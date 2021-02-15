@@ -1,7 +1,6 @@
-# Taskoo (taskoo)
+# Taskoo - Easy task management
 
-Easy task management
-
+<img width="250" src="https://taskoo.de/TaskooMedia/Logo_GREEN.svg">
 ## Install the dependencies
 ```bash
 npm install
