@@ -33,6 +33,8 @@ export default {
 
 
     goToName(target) {
+      if (this.$route.name === target) return
+
       this.$router.push({
         name: target
       })

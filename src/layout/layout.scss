@@ -32,6 +32,10 @@
       .md-list-item {
         border-right: 1px solid $taskoo-sb-border-color;
 
+        &.active {
+          background:rgba(0,0,0,0.07);
+        }
+
         &.taskoo-logo {
           border:none;
           background:#ffffff;

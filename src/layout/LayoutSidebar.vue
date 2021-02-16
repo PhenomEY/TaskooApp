@@ -58,27 +58,22 @@ m1270 -10 c189 -30 340 -186 403 -416 29 -105 31 -334 4 -438 -47 -182 -151
                 </svg>
             </md-list-item>
 
-            <md-list-item @click="goToName('Dashboard')">
+            <md-list-item v-bind:class="{'active': ($route.name === 'Dashboard')}" @click="goToName('Dashboard')">
               <md-icon>dashboard</md-icon>
               <span class="md-list-item-text">{{ $t('navigation.dashboard') }}</span>
             </md-list-item>
 
-            <md-list-item @click="goToName('Tasks')">
+            <md-list-item v-bind:class="{'active': ($route.name === 'Tasks')}" @click="goToName('Tasks')">
               <md-icon>view_list</md-icon>
               <span class="md-list-item-text">{{ $t('navigation.tasks') }}</span>
             </md-list-item>
 
-            <md-list-item @click="goToName('Settings')">
+            <md-list-item v-bind:class="{'active': ($route.name === 'Settings')}" @click="goToName('Settings')">
               <md-icon>settings</md-icon>
               <span class="md-list-item-text">{{ $t('navigation.settings') }}</span>
             </md-list-item>
 
-            <md-list-item @click="goToName('Login')">
-              <md-icon>settings</md-icon>
-              <span class="md-list-item-text">Login</span>
-            </md-list-item>
-
-            <md-list-item v-if="userType == 10" class="admin-area" @click="goToName('Administration')">
+            <md-list-item v-bind:class="{'active': ($route.name === 'Administration')}" v-if="userType == 10" class="admin-area" @click="goToName('Administration')">
               <md-icon>settings</md-icon>
               <span class="md-list-item-text">{{ $t('navigation.admin') }}</span>
             </md-list-item>
@@ -115,14 +110,6 @@ m1270 -10 c189 -30 340 -186 403 -416 29 -105 31 -334 4 -438 -47 -182 -151
 
             <md-list-item v-if="userType == 10" @click="goToName('CreateProject')">
               <span class="md-list-item-text">{{ $t('navigation.projects.create') }}</span>
-            </md-list-item>
-
-
-            <md-list-item @click="goToPath('/project/', 2)">
-              <span class="md-list-item-text">PROJECT2</span>
-            </md-list-item>
-            <md-list-item @click="goToPath('/task/', 2000)">
-              <span class="md-list-item-text">PROJECT2</span>
             </md-list-item>
           </md-list>
 

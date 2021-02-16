@@ -15,6 +15,7 @@ export default {
             required: true
         },
 
+        error: Boolean,
         label: String,
         placeholder: String,
         required: Boolean,
@@ -22,6 +23,9 @@ export default {
     },
 
     watch: {
+      model: function() {
+        this.inputModel = this.model
+      }
     },
 
 

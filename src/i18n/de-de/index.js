@@ -1,10 +1,11 @@
 export default {
   "taskoo": {
-  "slogan": "Easy Task Management",
+    "slogan": "Easy Task Management",
     "title": "Taskoo - Easy Task Management",
     "days": ["Sonntag", "Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag"],
     "shortDays": ["So", "Mo", "Di", "Mi", "Do", "Fr", "Sa"],
-    "shorterDays": ["So", "Mo", "Di", "Mi", "Do", "Fr", "Sa"]
+    "shorterDays": ["So", "Mo", "Di", "Mi", "Do", "Fr", "Sa"],
+    "save": "Speichern"
 },
 
   "navigation": {
@@ -99,8 +100,18 @@ export default {
 },
 
   "tasks": {
-  "title": "Meine Aufgaben",
+  "title": "Taskoo - Meine Aufgaben",
     "doneTasks": "Abgeschlossene Aufgaben"
-}
+  },
+
+  "settings": {
+    "main": {
+      "title": "Grundeinstellungen",
+      "appurl": "App URL",
+      "appurl_placeholder": "https://app.taskoo.de"
+    },
+    "users": "Benutzer",
+
+  }
 
 }

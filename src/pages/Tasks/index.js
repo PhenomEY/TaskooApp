@@ -37,7 +37,7 @@ export default {
       if(this.$route.name === 'DoneTasks') {
         this.doneTasks = true;
       }
-
+        this.setTitle(this.$t('tasks.title'));
         this.getUserTasks()
     },
 

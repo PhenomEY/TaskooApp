@@ -1,11 +1,11 @@
 <template>
   <div class="administration-wrapper">
     <md-tabs md-sync-route>
-      <md-tab id="system" md-label="Grundeinstellungen" to="/admin" exact>
-        AAA
+      <md-tab id="system" :md-label="$t('settings.main.title')" to="/admin" exact>
+        <admin-main></admin-main>
       </md-tab>
 
-      <md-tab id="user-list" md-label="Users" to="/admin/user">
+      <md-tab id="user-list" :md-label="$t('settings.users.title')" to="/admin/user">
         <router-view></router-view>
       </md-tab>
     </md-tabs>

@@ -92,7 +92,7 @@
 
       <div class="task-description"  v-bind:class="{'is-focused': (descriptionisFocused)}">
         <vue-editor v-model="task.description" :placeholder="$t('task.description')" :editor-toolbar="taskToolbar" @text-change="activateDescriptionSave" @focus="descriptionisFocused = true" @blur="descriptionisFocused = false"></vue-editor>
-        <button class="save-button" :disabled="!descriptionSave" @click="saveDescription(task.id)">Speichern</button>
+        <button class="save-button" :disabled="!descriptionSave" @click="saveDescription(task.id)">{{ $t('taskoo.save') }}</button>
       </div>
 
       <div class="task-subtasks" v-if="!task.mainTask">
