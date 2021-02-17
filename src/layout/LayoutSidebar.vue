@@ -81,16 +81,6 @@ m1270 -10 c189 -30 340 -186 403 -416 29 -105 31 -334 4 -438 -47 -182 -151
 
           <md-list class="project-nav">
 
-<!--            <div class="favorites">-->
-<!--              <div class="project-entry title">-->
-<!--                  Favoriten-->
-<!--              </div>-->
-
-<!--              <div class="project-entry">-->
-<!--                  Taskoo-->
-<!--              </div>-->
-<!--            </div>-->
-
             <md-list-item class="title">
               <span class="md-list-item-text">{{ $t('navigation.projects.favorites') }}</span>
             </md-list-item>

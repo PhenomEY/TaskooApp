@@ -4,11 +4,11 @@ export default {
 
     data() {
         return {
+          invite: true
         }
     },
 
     mounted() {
-      console.log(this.$route)
     },
 
     watch: {
@@ -22,6 +22,14 @@ export default {
 
 
     methods: {
+      toggleInvite(state) {
+        this.invite = state
+      },
 
+      returnTo() {
+        this.$router.push({
+          name: 'AdminUser'
+        })
+      }
     }
 }

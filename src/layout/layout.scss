@@ -30,7 +30,7 @@
       }
 
       .md-list-item {
-        border-right: 1px solid $taskoo-sb-border-color;
+        border-right: 1px solid $taskoo-border-color-secondary;
 
         &.active {
           background:rgba(0,0,0,0.07);
@@ -53,7 +53,7 @@
       &.project-nav {
         flex:1;
         height:100%;
-        border-right: 1px solid $taskoo-sb-border-color;
+        border-right: 1px solid $taskoo-border-color-secondary;
         padding-top:15px;
 
         .md-list-item {
@@ -71,7 +71,7 @@
               .md-list-item-text {
                 font-size:12px;
                 font-weight:bold;
-                border-bottom: 1px solid $taskoo-sb-border-color;
+                border-bottom: 1px solid $taskoo-border-color-secondary;
                 padding-bottom: 8px;
               }
             }

@@ -157,7 +157,7 @@ export default {
             this.addingGroup = true
             this.groups.push({
                 'id': null,
-                'name': 'Neue Gruppe',
+                'name': this.$t('taskGroup.defaultName'),
                 'tasks': []
             })
 
@@ -380,6 +380,7 @@ export default {
 
 
         swipeHandler (direction) {
+            //JannySlider
             const transitionGroup = document.querySelector('.task-groups .transition-group');
             const maxWidth = transitionGroup.offsetWidth
             const taskGroup = document.querySelector('[data-groupKey="0"]')

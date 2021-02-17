@@ -35,13 +35,14 @@ export default {
 },
 
   "project": {
-  "deadline": "Geplanter Abschluss am",
-    "notFound": "Projekt konnte nicht gefunden werden"
+    "deadline": "Geplanter Abschluss am",
+    "notFound": "Projekt konnte nicht gefunden werden",
 },
 
   "taskGroup": {
-  "menu": {
-    "deleteGroup": "Gruppe löschen",
+    "defaultName": "Neue Gruppe",
+    "menu": {
+      "deleteGroup": "Gruppe löschen",
       "showDoneTasks": "Abgeschlossene Aufgaben anzeigen",
       "showOpenTasks": "Offene Aufgaben anzeigen",
       "createGroup": "Neue Gruppe erstellen"
@@ -110,7 +111,22 @@ export default {
       "appurl": "App URL",
       "appurl_placeholder": "https://app.taskoo.de"
     },
-    "users": "Benutzer",
+    "users": {
+      "title": "Benutzer",
+      "createUser": "Neuen Benutzer anlegen",
+      "list": {
+        "id": "ID",
+        "name": "Name",
+        "email": "E-Mail",
+        "active": "Aktiv",
+        "role": "Rolle"
+      },
+
+      "create": {
+        "invite": "Benutzer einladen",
+        "manually": "Benutzer manuell anlegen"
+      }
+    },
 
   }
 

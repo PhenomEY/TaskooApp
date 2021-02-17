@@ -1,7 +1,5 @@
 import Vue from 'vue'
 import VueI18n from 'vue-i18n'
-import de from 'src/locales/de'
-import en from 'src/locales/en'
 import messages from 'src/i18n'
 
 Vue.use(VueI18n)

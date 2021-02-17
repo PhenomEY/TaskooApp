@@ -93,6 +93,11 @@
         .to-notification {
           font-weight:bold;
           cursor:pointer;
+          max-width: 200px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          display:inline-flex;
+          white-space: nowrap;
         }
 
         .time {

@@ -1,93 +1,80 @@
 @import 'src/scss/vars/variables';
 
-.taskoo-select {
-  display: flex;
+.administration-wrapper {
 
-  button.opener {
-    -moz-appearance: none;
-    -webkit-appearance: none;
-    appearance: none;
-    border: none;
-    font-family: "Noto Sans JP";
-    color:#ffffff;
-    padding:3px 20px;
-    outline:none;
+  .create-user-button {
+    padding:6px 10px;
+    border:1px solid $taskoo-done-color;
+    width: 250px;
+    text-align: center;
+    border-radius: $taskoo-border-radius;
+    background:transparent;
     cursor:pointer;
-    background: transparent;
-    text-align: center;
-    text-align-last: center;
-    min-width: 150px;
-    border-radius: $taskoo-select-radius;
-    background:$taskoo-main;
-    text-align: center;
-    height:28px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    /* webkit*/
-
   }
 
-  &.user-select {
-    button.opener {
-      background:$taskoo-user-select;
-      padding: 3px 10px;
-      min-width: auto;
+  .user-list {
+    margin-top:20px;
+    display:flex;
+    flex-direction: column;
+    border-radius:$taskoo-border-radius;
+    max-width: 700px;
 
-      .md-icon {
-        color:#ffffff;
-        opacity: 0.7;
-        transition: opacity 150ms;
-      }
-
-      &:hover {
-        .md-icon {
-          opacity: 1;
-        }
-      }
-    }
-
-    .v-popover {
-      flex:0;
-    }
-  }
-
-  .users {
-    display: flex;
-    align-items: center;
-    flex:1;
-    margin-left:20px;
-    flex-direction: row;
-    flex-wrap: wrap;
-
-    .user-chip {
-      display: flex;
+    .entry {
+      padding:6px;
+      display:flex;
+      flex-direction: row;
       align-items: center;
-      color:#ffffff;
-      background: $taskoo-user-select;
-      padding:3px 10px 3px 20px;
-      border-radius: $taskoo-select-radius;
-      opacity:0.7;
-      transition: opacity 150ms;
-      font-size: 11px;
-      margin-right:10px;
-      margin-bottom:5px;
+      border-top:1px solid $taskoo-border-color-secondary;
 
-      .md-icon-button {
-        min-width: 20px;
-        width: 20px;
-        height: 20px;
+      div {
+        padding:0 3px;
+      }
 
-        .md-icon {
-          color:#ffffff;
-          font-size: 14px !important;
+      .id {
+        width: 40px;
+        text-align: center;
+      }
+
+      .name, .email {
+        width: 200px;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+      }
+
+      .active {
+        &.true {
+          span {
+            background:$taskoo-main;
+          }
+        }
+
+        span {
+          display: block;
+          border-radius: 50%;
+          background: $taskoo-error;
+          width: 10px;
+          height:10px;
+          margin:0 10px;
         }
       }
 
-      &:hover {
-        opacity: 1;
+      .role {
+        width: 100px;
+        margin-left:10px;
+      }
+
+      .actions {
+        display: flex;
+        flex: 1;
+        justify-content: flex-end;
+
+        .md-icon-button {
+          min-width: 25px;
+          width: 25px;
+          height: 25px;
+        }
       }
     }
   }
 }
-
