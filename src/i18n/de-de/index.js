@@ -22,17 +22,28 @@ export default {
 },
 
   "login": {
-  "login_failed": "Login fehlgeschlagen",
-    "submit": "Anmelden",
-    "labels": {
-    "email": "E-Mail-Adresse",
-      "password": "Passwort"
-  },
+      "login_failed": "Login fehlgeschlagen",
+      "submit": "Anmelden",
+      "labels": {
+      "email": "E-Mail-Adresse",
+      "password": "Passwort",
+      "password_verification": "Passwort bestätigen"
+      },
+
   "links": {
     "lostPassword": "Passwort vergessen",
       "about": "Über Taskoo"
   }
 },
+
+  "invite": {
+    "submit": "Anmeldung abschließen",
+    "headline": "Hallo {name}!",
+    "inviteText": "Schließe deine Anmeldung ab um Zugang zu Taskoo zu erhalten.",
+    "passwordError": "Überprüfe deine Eingabe",
+    "successText": "Deine Anmeldung wurde erfolgreich abgeschlossen.",
+    "redirect": "Du wirst zum Login weitergeleitet."
+  },
 
   "project": {
     "deadline": "Geplanter Abschluss am",

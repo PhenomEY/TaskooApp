@@ -18,6 +18,7 @@
     flex-direction: column;
     border-radius:$taskoo-border-radius;
     max-width: 700px;
+    overflow: hidden;
 
     .entry {
       padding:6px;
@@ -25,6 +26,11 @@
       flex-direction: row;
       align-items: center;
       border-top:1px solid $taskoo-border-color-secondary;
+      background: #ffffff;
+
+      &:first-child {
+        border:none;
+      }
 
       div {
         padding:0 3px;

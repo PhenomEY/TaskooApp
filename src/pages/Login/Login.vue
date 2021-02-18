@@ -60,7 +60,7 @@ m1270 -10 c189 -30 340 -186 403 -416 29 -105 31 -334 4 -438 -47 -182 -151
 
       <form novalidate class="form" @submit.prevent="login">
 
-        <div class="error" v-if="formError">
+        <div class="error-message" v-if="formError">
           {{ $t('login.login_failed') }}
         </div>
 

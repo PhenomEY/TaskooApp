@@ -1,4 +1,23 @@
 @import '../../scss/vars/variables';
-body {
-  background:#ffffff;
+
+
+.invite-wrapper {
+  .invite-header {
+    color: $taskoo-main;
+    max-width: $taskoo-input-width;
+    margin:0 auto;
+
+    .headline {
+      font-size:22px;
+    }
+  }
+
+  .invite-success {
+    color:$taskoo-main;
+    text-align:center;
+    font-weight:bold;
+    margin-top:35px;
+  }
+
 }
+

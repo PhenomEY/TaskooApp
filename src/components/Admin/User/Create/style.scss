@@ -7,7 +7,7 @@
   .create-user {
 
     .create-header {
-      max-width: 400px;
+      max-width: $taskoo-input-width;
       display:flex;
       flex-direction: row;
       align-items: center;
@@ -23,9 +23,12 @@
       flex-direction: row;
       border:1px solid $taskoo-done-color;
       border-radius:$taskoo-border-radius;
-
+      margin-bottom:20px;
+      width: 100%;
+      max-width: $taskoo-input-width;
+      font-size: 12px;
       div {
-        padding:6px 12px;
+        padding:6px 6px;
         cursor:pointer;
 
         &.active {
@@ -39,6 +42,8 @@
       }
 
       .invite {
+        display: flex;
+        flex: 1;
         border-right:1px solid $taskoo-done-color;
       }
 
