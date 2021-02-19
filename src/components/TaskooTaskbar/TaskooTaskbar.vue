@@ -48,9 +48,25 @@
 
       </md-badge>
 
-      <md-avatar class="md-avatar-icon taskoo-avatar">
-        <img src="./avatar.gif" alt="Avatar" @click="logout()">
-      </md-avatar>
+
+        <v-popover offset="0">
+          <md-avatar class="md-avatar-icon taskoo-avatar">
+            <img src="./avatar.gif" alt="Avatar" class="tooltip-target">
+          </md-avatar>
+          <template slot="popover">
+            <div class="taskoo-popover-options">
+              <div class="option profile" v-close-popover @click="">
+                  <md-icon>settings</md-icon>
+                  {{ $t('navigation.settings') }}
+              </div>
+
+              <div class="option logout" v-close-popover @click="logout()">
+                <md-icon>logout</md-icon> {{ $t('navigation.logout') }}
+              </div>
+            </div>
+          </template>
+        </v-popover>
+
     </div>
   </div>
 </template>

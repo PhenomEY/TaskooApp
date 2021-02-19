@@ -52,7 +52,7 @@
 
 
           <template slot="popover">
-            <div class="task-group-options">
+            <div class="taskoo-popover-options">
               <div class="option remove" v-close-popover>
                 <md-icon>delete</md-icon>
                 {{ $t('task.menu.delete') }}

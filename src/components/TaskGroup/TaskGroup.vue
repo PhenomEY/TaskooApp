@@ -8,14 +8,12 @@
         <md-icon v-if="!isMobile" class="group-drag">multiple_stop</md-icon>
 
         <v-popover offset="16">
-
                 <md-button class="md-icon-button md-list-action tooltip-target">
                   <md-icon>more_vert</md-icon>
                 </md-button>
 
-
           <template slot="popover">
-            <div class="task-group-options">
+            <div class="taskoo-popover-options">
                 <div class="option add" v-bind:class="{'disabled': (addingGroup == true)}" v-close-popover @click="addGroup()">
                   <md-icon>add</md-icon> {{ $t('taskGroup.menu.createGroup') }}
                 </div>

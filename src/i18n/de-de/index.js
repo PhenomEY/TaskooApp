@@ -13,6 +13,8 @@ export default {
     "tasks": "Meine Aufgaben",
     "settings": "Einstellungen",
     "admin": "Administration",
+    "logout": "Abmelden",
+    "myProfile": "Mein Profil",
 
     "projects": {
       "title": "Deine Projekte",
@@ -135,7 +137,10 @@ export default {
 
       "create": {
         "invite": "Benutzer einladen",
-        "manually": "Benutzer manuell anlegen"
+        "manually": "Benutzer manuell anlegen",
+        "formError": "Bitte fülle die markierten Felder aus",
+        "submitInvite": "Einladung senden",
+        "createUser": "Benutzer anlegen"
       }
     },
 
