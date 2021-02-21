@@ -114,8 +114,9 @@ export default {
 },
 
   "tasks": {
-  "title": "Taskoo - Meine Aufgaben",
-    "doneTasks": "Abgeschlossene Aufgaben"
+    "title": "Taskoo - Meine Aufgaben",
+    "doneTasks": "Abgeschlossene Aufgaben",
+    "emptyTasks": "Deine Aufgabenliste ist aktuell leer"
   },
 
   "settings": {

@@ -15,6 +15,14 @@
       </div>
 
       <draggable handle=".list-task-dragger" :disabled="changingPositions || isMobile || disabled || noDragging" class="task-list-inner" :list="tasks" v-bind="dragOptions" @change="positionsChanged(tasks)">
+
+        <div class="empty" v-if="tasks && noDragging && tasks.length === 0">
+          <md-empty-state
+            md-icon="check_circle_outline"
+            :md-label="$t('tasks.emptyTasks')">
+          </md-empty-state>
+        </div>
+
       <div class="task item" v-for="(task,key) in tasks" v-bind:class="{'is-done': (task.isDone)}">
         <div class="list-task-left">
           <div class="list-task-dragger" v-if="!isMobile && !noDragging">

@@ -35,7 +35,7 @@
         </div>
       </div>
 
-      <div class="notifications box-shadow" v-if="notifications && !loadingNotifications">
+      <div class="notifications box-shadow" v-if="notifications && !loadingNotifications && notifications.length > 0">
         <div class="entry title">
           {{ $t('dashboard.notifications') }}
         </div>
