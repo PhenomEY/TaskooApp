@@ -133,7 +133,11 @@ export default {
         "name": "Name",
         "email": "E-Mail",
         "active": "Aktiv",
-        "role": "Rolle"
+        "role": "Rolle",
+        "warnings": {
+          "password": "Dieser Benutzer hat noch kein Passwort definiert",
+          "organisations": "Dieser Benutzer ist noch keiner Abteilung zugewiesen"
+        }
       },
 
       "create": {

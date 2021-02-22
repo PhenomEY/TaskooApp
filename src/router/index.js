@@ -65,6 +65,11 @@ export default new Router({
               name: 'AdminUserCreate',
               component: require('components/Admin/User/Create/Create').default,
             },
+            {
+              path: 'edit/:id',
+              name: 'AdminUserEdit',
+              component: require('components/Admin/User/Edit/Edit').default,
+            },
           ]
         },
       ]

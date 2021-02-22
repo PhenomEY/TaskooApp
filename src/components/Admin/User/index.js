@@ -6,7 +6,8 @@ export default {
 
     data() {
         return {
-          users:null
+          users:null,
+          loading:true
         }
     },
 
@@ -26,11 +27,14 @@ export default {
 
     methods: {
       getUsers() {
+        this.loading = true
+
         axios
           .get(axios.defaults.baseURL+'/users')
           .catch(function (error) {
           })
           .then(response => {
+            this.loading = false
             this.users = response.data.users;
           })
       },

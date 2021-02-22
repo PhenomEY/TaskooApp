@@ -1,5 +1,9 @@
 @import 'src/scss/vars/variables';
 
+.warning-tooltip.md-tooltip {
+  height:auto !important;
+}
+
 .administration-wrapper {
 
   .create-user-button {
@@ -20,6 +24,18 @@
     max-width: 700px;
     overflow: hidden;
 
+    .actions {
+      padding:3px;
+      display:flex;
+      justify-content: flex-end;
+
+      .md-icon-button {
+        width: 20px;
+        min-width: 20px;
+        height:20px;
+      }
+    }
+
     .entry {
       padding:6px;
       display:flex;
@@ -27,6 +43,11 @@
       align-items: center;
       border-top:1px solid $taskoo-border-color-secondary;
       background: #ffffff;
+
+      &.loading {
+        align-items: center;
+        justify-content: center;
+      }
 
       &:first-child {
         border:none;
@@ -68,6 +89,12 @@
       .role {
         width: 100px;
         margin-left:10px;
+      }
+
+      .warnings {
+        .md-icon {
+          color:#dabc4e;
+        }
       }
 
       .actions {

@@ -10,6 +10,12 @@
       </button>
 
       <div class="user-list box-shadow">
+        <div class="actions">
+          <md-button class="md-icon-button" @click="getUsers">
+            <md-icon>refresh</md-icon>
+          </md-button>
+        </div>
+
         <div class="entry title">
           <div class="id">
             {{ $t('settings.users.list.id') }}
@@ -32,7 +38,11 @@
           </div>
         </div>
 
-        <div class="entry" v-for="user in users">
+        <div class="entry loading" v-if="loading">
+          <md-progress-spinner :md-diameter="30" :md-stroke="3" md-mode="indeterminate"></md-progress-spinner>
+        </div>
+
+        <div class="entry" v-if="!loading" v-for="user in users">
           <div class="id">
             {{ user.id }}
           </div>
@@ -53,8 +63,16 @@
             {{ $store.state.auth.userRoles[user.role] }}
           </div>
 
+          <div class="warnings" v-if="user.warnings">
+            <md-tooltip class="warning-tooltip" md-direction="top">
+              <div v-if="user.warnings.password">{{ $t('settings.users.list.warnings.password') }}</div>
+              <div v-if="user.warnings.organisations">{{ $t('settings.users.list.warnings.organisations') }}</div>
+            </md-tooltip>
+            <md-icon>warning</md-icon>
+          </div>
+
           <div class="actions">
-            <md-button class="md-icon-button md-list-action">
+            <md-button class="md-icon-button md-list-action" :to="{ name: 'AdminUserEdit', params: { id: user.id }}">
               <md-icon>edit</md-icon>
             </md-button>
           </div>
