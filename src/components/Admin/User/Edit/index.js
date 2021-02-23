@@ -6,62 +6,43 @@ export default {
     components: { TaskooInput },
 
     data() {
-        return {
-          invite: true,
-          inviteError: false,
-          createError: false,
-          sendingInvite: false,
-          creatingUser: false,
-          password_ver: {
+      return {
+        loading: true,
+        password_ver: {
+          value: null,
+          error: false
+        },
+
+        formError: false,
+        updatingUser: false,
+
+        userForm: {
+          firstname: {
             value: null,
-            error: false
+            error: false,
+            required: true
           },
-
-          inviteForm: {
-            firstname: {
-              value: null,
-              error: false,
-              required: true
-            },
-            lastname: {
-              value: null,
-              error: false,
-              required: true
-            },
-            email: {
-              value: null,
-              error: false,
-              required: true
-            },
+          lastname: {
+            value: null,
+            error: false,
+            required: true
           },
-
-          manualForm: {
-            firstname: {
-              value: null,
-              error: false,
-              required: true
-            },
-            lastname: {
-              value: null,
-              error: false,
-              required: true
-            },
-            email: {
-              value: null,
-              error: false,
-              required: true
-            },
-
-            password: {
-              value: null,
-              error: false,
-              required: true
-            }
-          }
-        }
+          email: {
+            value: null,
+            error: false,
+            required: true
+          },
+          password: {
+            value: null,
+            error: false,
+            required: false
+          },
+        },
+      }
     },
 
     mounted() {
+      this.getUser()
     },
 
     watch: {
@@ -75,6 +56,27 @@ export default {
 
 
     methods: {
+      getUser() {
+        const userId = this.$route.params.id;
+        this.loading = true;
+
+        axios
+          .get(axios.defaults.baseURL+'/user/'+userId)
+          .catch(error => {
+          })
+          .then(response => {
+            if(!response) return;
+
+            if(response.data.success == true) {
+              this.userForm.firstname.value = response.data.firstname;
+              this.userForm.lastname.value = response.data.lastname;
+              this.userForm.email.value = response.data.email;
+            }
+
+          })
+
+      },
+
       toggleInvite(state) {
         this.invite = state
       },
@@ -85,71 +87,26 @@ export default {
         })
       },
 
-      sendInvite() {
-        if (this.sendingInvite === true) return
+      updateUser() {
+        if (this.updatingUser === true) return
 
-        this.sendingInvite = true;
+        const userId = this.$route.params.id;
+        this.updatingUser = true;
 
         //validate form
-        const form = this.formValidator(this.inviteForm);
-        this.inviteForm = form.form;
+        const form = this.formValidator(this.userForm);
+        this.userForm = form.form;
 
         if(form.hasErrors === true) {
-          this.inviteError = true;
-          this.sendingInvite = false;
+          this.formError = true;
+          this.updatingUser = false;
           return;
         } else {
-          this.inviteError = false;
+          this.formError = false;
         }
 
         axios
-          .post(axios.defaults.baseURL+'/invite', {
-            email: form.form.email.value,
-            firstname: form.form.firstname.value,
-            lastname: form.form.lastname.value
-          })
-          .catch(error => {
-            this.$vToastify.error(error.response.data.message);
-            this.sendingInvite = false;
-          })
-          .then(response => {
-            if(!response) return;
-
-            if(response.data.success == true) {
-              this.$vToastify.success('User invited');
-              this.sendingInvite = false;
-            }
-
-          })
-      },
-
-      createUser() {
-        if (this.creatingUser === true) return
-
-        this.creatingUser = true;
-
-        //validate form
-        const form = this.formValidator(this.manualForm);
-        this.manualForm = form.form;
-
-        if(form.hasErrors === true) {
-          this.createError = true;
-          this.creatingUser = false;
-          return;
-        } else {
-          this.createError = false;
-        }
-
-        if(form.form.password.value !== this.password_ver.value) {
-          this.password_ver.error = true;
-          this.creatingUser = false
-          return;
-        } else {
-          this.password_ver.error = false;
-        }
-
-        axios
-          .post(axios.defaults.baseURL+'/user', {
+          .put(axios.defaults.baseURL+'/user/'+userId, {
             email: form.form.email.value,
             firstname: form.form.firstname.value,
             lastname: form.form.lastname.value,
@@ -157,51 +114,26 @@ export default {
           })
           .catch(error => {
             this.$vToastify.error(error.response.data.message);
-            this.creatingUser = false;
+            this.updatingUser = false;
           })
           .then(response => {
             if(!response) return;
 
             if(response.data.success == true) {
-              this.$vToastify.success('User created');
-              this.creatingUser = false;
+              this.$vToastify.success('User updated');
+              this.updatingUser = false;
             }
 
           })
       },
 
-      setInviteFormValue(name, value) {
-        this.inviteForm[name].value = value;
+      setUserFormValue(name, value) {
+        this.userForm[name].value = value;
       },
 
-      setManualFormValue(name, value) {
-        this.manualForm[name].value = value;
-      },
 
       setVerifiedPassword(value) {
         this.password_ver.value = value
-      },
-
-      formValidator(form) {
-        let hasErrors = false;
-
-        Object.values(form).forEach((entry) => {
-          if(entry.required) {
-            entry.error = !entry.value;
-
-            if(entry.error === true) {
-              hasErrors = true;
-            }
-          }
-        })
-
-        let returnForm = {
-          form: form,
-          hasErrors: hasErrors
-        };
-
-        return returnForm;
-
       },
 
       verifyPassword() {

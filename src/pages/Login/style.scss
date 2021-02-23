@@ -83,8 +83,9 @@ body {
   background:$taskoo-main;
   min-height:40px;
   cursor:pointer;
+  transition: background 50ms;
 
   &:hover {
-    background:#1ec81e;
+    background:#25a725;
   }
 }

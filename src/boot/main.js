@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import axios from 'axios'
 
-import titleMixin from '../mixins/title'
+import TaskooMixins from '../mixins/TaskooMixins'
 
 import store from '../store'
 
@@ -35,7 +35,7 @@ Vue.use(Skeleton)
 Vue.use(VueEditor)
 Vue.use(Vue2TouchEvents)
 
-Vue.mixin(titleMixin)
+Vue.mixin(TaskooMixins)
 
 
 //datePicker settings

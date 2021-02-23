@@ -8,6 +8,11 @@ export default {
     "save": "Speichern"
 },
 
+  "user": {
+    "firstname": "Vorname",
+    "lastname": "Nachname"
+  },
+
   "navigation": {
     "dashboard": "Dashboard",
     "tasks": "Meine Aufgaben",
