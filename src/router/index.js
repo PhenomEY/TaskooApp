@@ -77,6 +77,12 @@ export default new Router({
             },
           ]
         },
+
+        {
+          name: 'AdminOrganisations',
+          path: 'organisations',
+          component: require('components/Admin/Organisations/Organisations').default,
+        }
       ]
     },
     {

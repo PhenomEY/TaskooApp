@@ -28,7 +28,7 @@
                   </span>
                 </div>
 
-                <div class="option remove" v-close-popover @click="removeGroup(groupId, groupKey)">
+                <div class="option remove" v-close-popover @click="removeGroup(groupId, groupKey, groupName)">
                   <md-icon>delete</md-icon>
                   {{ $t('taskGroup.menu.deleteGroup') }}
                 </div>

@@ -8,6 +8,10 @@
       <md-tab id="user-list" :md-label="$t('settings.users.title')" to="/admin/user">
         <router-view></router-view>
       </md-tab>
+
+      <md-tab id="organisations" :md-label="$t('settings.organisations.title')" to="/admin/organisations">
+        <router-view></router-view>
+      </md-tab>
     </md-tabs>
   </div>
 </template>

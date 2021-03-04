@@ -166,6 +166,10 @@ export default {
         "save": "Benutzer speichern"
       }
     },
+
+    "organisations": {
+      "title": "Abteilungen"
+    }
   },
 
   "prompts": {
@@ -177,7 +181,7 @@ export default {
         "cancel": "abbrechen"
       },
       "taskGroup": {
-        "title": "Möchtest du diese Gruppe löschen?",
+        "title": "Möchtest du die Gruppe „{name}” wirklich löschen?",
         "description": "Aufgaben in dieser Gruppe werden unwiderruflich gelöscht.",
         "confirm": "löschen",
         "cancel": "abbrechen"

@@ -111,9 +111,9 @@
       </div>
 
     <!--    delete taskgroup dialog-->
-    <md-dialog-confirm
+    <md-dialog-confirm v-if="deleteData"
       :md-active.sync="showDeleteDialog"
-      :md-title="$t('prompts.delete.taskGroup.title')"
+      :md-title="$t('prompts.delete.taskGroup.title', {name: deleteData.name})"
       :md-content="$t('prompts.delete.taskGroup.description')"
       :md-confirm-text="$t('prompts.delete.taskGroup.confirm')"
       :md-cancel-text="$t('prompts.delete.taskGroup.cancel')"

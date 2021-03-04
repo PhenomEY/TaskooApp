@@ -39,17 +39,22 @@
       }
 
       .project-users {
+        display:flex;
+        flex-direction: row;
         .user {
-          transform: translateX(-50%);
+          margin-left:-40%;
           height:30px;
           width: 30px;
           min-width: 30px;
-          background:orange;
+          background:limegreen;
           font-size:14px;
 
+          &:nth-child(even) {
+            background:orange;
+          }
+
           &:first-child {
-            transform: none;
-            background:limegreen;
+            margin-left:0;
           }
 
           &:hover {

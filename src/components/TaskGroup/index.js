@@ -79,10 +79,11 @@ export default {
             }
         },
 
-        removeGroup(id, key) {
+        removeGroup(id, key, name) {
             const data = {
                 'groupId': id,
-                'groupKey': key
+                'groupKey': key,
+                'name': name
             }
             this.$emit('deleteGroup', data)
         },

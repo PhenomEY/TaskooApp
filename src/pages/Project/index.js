@@ -310,8 +310,9 @@ export default {
         },
 
       toggleDeleteDialog(data) {
-          this.showDeleteDialog = !this.showDeleteDialog;
           this.deleteData = data
+          this.showDeleteDialog = !this.showDeleteDialog;
+
       }
     }
 }
