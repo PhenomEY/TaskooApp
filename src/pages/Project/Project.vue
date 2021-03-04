@@ -70,6 +70,13 @@
           </md-avatar>
         </div>
       </div>
+
+      <div class="add-first-group" v-if="groups.length === 0" @click="addNewGroup">
+        <md-button class="md-icon-button md-list-action">
+          <md-icon>add</md-icon>
+        </md-button>
+      </div>
+
         <draggable v-touch:swipe="swipeHandler" :disabled="isMobile" v-model="groups" class="task-groups" v-bind="dragOptions" handle=".group-drag" @change="changedGroupPositions(groups)">
           <transition-group type="transition" class="transition-group">
             <li
@@ -96,12 +103,25 @@
                           @finishTask="finishTask(...arguments)"
                           @getDoneTasks="getDoneTasks(...arguments)"
                           @getOpenTasks="getOpenTasks(...arguments)"
-                          @deleteGroup="deleteGroup(...arguments)"
+                          @deleteGroup="toggleDeleteDialog(...arguments)"
               ></task-group>
             </li>
           </transition-group>
         </draggable>
       </div>
+
+    <!--    delete taskgroup dialog-->
+    <md-dialog-confirm
+      :md-active.sync="showDeleteDialog"
+      :md-title="$t('prompts.delete.taskGroup.title')"
+      :md-content="$t('prompts.delete.taskGroup.description')"
+      :md-confirm-text="$t('prompts.delete.taskGroup.confirm')"
+      :md-cancel-text="$t('prompts.delete.taskGroup.cancel')"
+      @md-cancel="toggleDeleteDialog"
+      @md-confirm="deleteGroup"
+      class="taskoo-dialog"
+    />
+
     </div>
 </template>
 

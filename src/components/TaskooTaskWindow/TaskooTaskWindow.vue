@@ -53,7 +53,7 @@
 
           <template slot="popover">
             <div class="taskoo-popover-options">
-              <div class="option remove" @click="deleteTask" v-close-popover>
+              <div class="option remove" @click="toggleDeleteDialog" v-close-popover>
                 <md-icon>delete</md-icon>
                 {{ $t('task.menu.delete') }}
               </div>
@@ -116,7 +116,17 @@
       </div>
     </div>
 
-
+<!--    delete task dialog-->
+    <md-dialog-confirm
+      :md-active.sync="showDeleteDialog"
+      :md-title="$t('prompts.delete.task.title')"
+      :md-content="$t('prompts.delete.task.description')"
+      :md-confirm-text="$t('prompts.delete.task.confirm')"
+      :md-cancel-text="$t('prompts.delete.task.cancel')"
+      @md-cancel="toggleDeleteDialog"
+      @md-confirm="deleteTask"
+      class="taskoo-dialog"
+    />
   </div>
 
 

@@ -36,7 +36,8 @@ export default {
                 "value": 1
               },
             ],
-          taskPriority: null
+          taskPriority: null,
+          showDeleteDialog: false
         }
     },
 
@@ -256,8 +257,19 @@ export default {
       async deleteTask() {
         const taskId = this.$route.params.taskId;
 
-        const deleted = await TaskService.delete(taskId)
-        console.log(deleted)
+        const deleted = await TaskService.delete(taskId, this)
+
+        if(deleted) {
+          if(this.task.mainTask) {
+            this.$router.push({ name: `Task`, params: {taskId: this.task.mainTaskId} });
+          } else {
+            this.$router.push({ name: `Project`, params: {projectId: this.task.projectId} });
+          }
+        }
+      },
+
+      toggleDeleteDialog() {
+          this.showDeleteDialog = !this.showDeleteDialog
       }
     }
 }

@@ -166,7 +166,23 @@ export default {
         "save": "Benutzer speichern"
       }
     },
+  },
 
+  "prompts": {
+    "delete": {
+      "task": {
+        "title": "Möchtest du diese Aufgabe löschen?",
+        "description": "Unteraufgaben werden unwiderruflich gelöscht.",
+        "confirm": "löschen",
+        "cancel": "abbrechen"
+      },
+      "taskGroup": {
+        "title": "Möchtest du diese Gruppe löschen?",
+        "description": "Aufgaben in dieser Gruppe werden unwiderruflich gelöscht.",
+        "confirm": "löschen",
+        "cancel": "abbrechen"
+      },
+    }
   }
 
 }

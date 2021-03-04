@@ -2,12 +2,10 @@ import draggable from 'vuedraggable'
 import TaskGroup from '../../components/TaskGroup/TaskGroup';
 import Taskoo404 from '../../components/TaskooNotFound/TaskooNotFound';
 import Skeleton from 'vue-loading-skeleton';
-import axios from "axios";
 
 import TaskService from "src/services/TaskooTaskService";
 import ProjectService from "src/services/TaskooProjectService";
 import TaskGroupService from "src/services/TaskooTaskGroupService";
-import form from "quasar/src/mixins/form";
 
 
 export default {
@@ -22,7 +20,9 @@ export default {
         addingTask: false,
         project: {
         },
-        isMobile: false
+        isMobile: false,
+        showDeleteDialog: false,
+        deleteData: null
     }),
 
     watch: {
@@ -274,13 +274,15 @@ export default {
           }
         },
 
-        async deleteGroup(data) {
-            const groupId = data.groupId;
-            const groupKey = data.groupKey;
+        async deleteGroup() {
+            const groupId = this.deleteData.groupId;
+            const groupKey = this.deleteData.groupKey;
 
             const deleted = await TaskGroupService.delete(groupId, this)
             if(deleted) {
               this.groups.splice(groupKey, 1)
+              console.log(this.groups)
+              this.deleteData = null
             }
         },
 
@@ -305,6 +307,11 @@ export default {
             if(direction === 'right' && currentX < 0) {
                 transitionGroup.style.transform = 'translateX('+(currentX+groupWidth)+'px)'
             }
-        }
+        },
+
+      toggleDeleteDialog(data) {
+          this.showDeleteDialog = !this.showDeleteDialog;
+          this.deleteData = data
+      }
     }
 }
