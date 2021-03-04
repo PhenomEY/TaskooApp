@@ -1,5 +1,4 @@
 import TaskooRefresh from "./TaskooRefresh/TaskooRefresh"
-import TaskooSelect from "../TaskooSelect/TaskooSelect";
 import TaskooSearchfield from "../TaskooSearchfield/TaskooSearchfield";
 import axios from "axios";
 
@@ -7,7 +6,7 @@ import axios from "axios";
 export default {
     name: 'TaskooTaskbar',
 
-    components: {TaskooRefresh, TaskooSelect, TaskooSearchfield},
+    components: {TaskooRefresh, TaskooSearchfield},
 
     data: () => ({
         refreshInterval: 10,

@@ -1,12 +1,20 @@
 @import '../../scss/vars/variables';
 
-.administration-wrapper {
+.settings-wrapper {
   padding:16px 0;
   display: flex;
   flex:1;
   background:$taskoo-light-grey;
+  justify-content: center;
 
   .md-tabs.md-theme-default  {
+    background:$taskoo-default-bg;
+    box-shadow:$taskoo-box-shadow;
+    border-radius: $taskoo-border-radius;
+    max-width: 732px;
+    width: 100%;
+    position: absolute;
+
     .md-tabs-navigation {
       background: transparent;
     }
@@ -15,6 +23,7 @@
       background:transparent;
       display: flex;
       flex: 1;
+      height: auto !important;
     }
   }
 }

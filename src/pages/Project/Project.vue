@@ -44,6 +44,16 @@
           {{ $t('project.deadline') }} {{ project.deadline.date | moment('LL') }}
         </span>
         <div class="project-options">
+          <md-icon v-show="project.isClosed">
+            <md-tooltip md-direction="top">{{ $t('project.closed') }}</md-tooltip>
+            lock
+          </md-icon>
+
+          <md-icon v-show="!project.isClosed">
+            <md-tooltip md-direction="top">{{ $t('project.public') }}</md-tooltip>
+            public
+          </md-icon>
+
           <md-button class="md-icon-button md-list-action">
             <md-icon>star</md-icon>
           </md-button>
@@ -53,14 +63,10 @@
           </md-button>
         </div>
 
-        <div class="project-users" v-if="!isMobile">
-          <md-avatar class="user md-avatar-icon">
-            <md-tooltip md-direction="top">Damian Plewka</md-tooltip>
-            DP
-          </md-avatar>
-          <md-avatar class="user md-avatar-icon">
-            <md-tooltip md-direction="top">Ioannis Pourliotis</md-tooltip>
-            IP
+        <div class="project-users" v-if="!isMobile && project.users">
+          <md-avatar class="user md-avatar-icon" v-for="user in project.users">
+            <md-tooltip md-direction="top">{{ user.firstname }} {{ user.lastname }}</md-tooltip>
+            {{ user.firstname.charAt(0) }}{{ user.lastname.charAt(0) }}
           </md-avatar>
         </div>
       </div>

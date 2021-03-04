@@ -38,6 +38,11 @@ export default new Router({
       component: require('pages/Invite/Invite').default
     },
     {
+      path: '/user/:id',
+      name: 'User',
+      component: require('pages/User/User').default
+    },
+    {
       path: '/tasks',
       name: 'Tasks',
       component: require('pages/Tasks/Tasks').default,

@@ -1,7 +1,7 @@
 
 @import '../../scss/vars/variables';
 body {
-  background:#ffffff;
+  background:$taskoo-default-bg;
 }
 
 
@@ -15,7 +15,7 @@ body {
     padding:16px;
     max-width: 450px;
     flex:1;
-    background:#ffffff;
+    background:$taskoo-default-bg;
     border-radius:$taskoo-border-radius;
     margin-top:10%;
 

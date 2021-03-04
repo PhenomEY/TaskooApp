@@ -73,7 +73,7 @@ m1270 -10 c189 -30 340 -186 403 -416 29 -105 31 -334 4 -438 -47 -182 -151
               <span class="md-list-item-text">{{ $t('navigation.settings') }}</span>
             </md-list-item>
 
-            <md-list-item v-bind:class="{'active': ($route.name === 'Administration')}" v-if="userType == 10" class="admin-area" @click="goToName('Administration')">
+            <md-list-item v-bind:class="{'active': ($route.name === 'Administration' || $route.matched[0].name === 'Administration')}" v-if="userType == 10" class="admin-area" @click="goToName('Administration')">
               <md-icon>settings</md-icon>
               <span class="md-list-item-text">{{ $t('navigation.admin') }}</span>
             </md-list-item>

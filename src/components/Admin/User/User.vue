@@ -1,8 +1,8 @@
 <template>
-  <div>
+  <div class="user-view">
     <router-view></router-view>
 
-    <div v-if="$route.name === 'AdminUser'">
+    <div v-if="$route.path === '/admin/user'">
 
       <button class="create-user-button" @click="createUser()">
         <md-icon>add_circle_outline</md-icon>

@@ -4,6 +4,11 @@ import Taskoo404 from '../../components/TaskooNotFound/TaskooNotFound';
 import Skeleton from 'vue-loading-skeleton';
 import axios from "axios";
 
+import TaskService from "src/services/TaskooTaskService";
+import ProjectService from "src/services/TaskooProjectService";
+import TaskGroupService from "src/services/TaskooTaskGroupService";
+import form from "quasar/src/mixins/form";
+
 
 export default {
     name: 'Project',
@@ -16,8 +21,6 @@ export default {
         addingGroup: false,
         addingTask: false,
         project: {
-            name: null,
-            deadline: null
         },
         isMobile: false
     }),
@@ -26,7 +29,7 @@ export default {
         '$store.state.misc.contentRefresh': function() {
             if (this.$store.state.misc.contentRefresh == true) {
                 this.loading = true;
-                this.getProjectData(true)
+                this.loadProject(true)
             }
 
             return this.$store.state.misc.contentRefresh;
@@ -48,12 +51,12 @@ export default {
             }
             this.notFound = false
             this.loading = true
-            this.getProjectData()
+            this.loadProject()
         }
     },
 
     mounted() {
-        this.getProjectData()
+        this.loadProject()
 
         this.isMobile = this.$store.state.misc.isMobile
     },
@@ -70,90 +73,56 @@ export default {
     },
 
     methods: {
-        getProjectData(toggle) {
+        async loadProject(toggle) {
             const projectId = this.$route.params.projectId
 
-            axios
-                .get(axios.defaults.baseURL+'/project/'+projectId)
-                .catch(error => {
-                    this.loading = false;
-                    this.notFound = true;
-                })
-                .then(response => {
-                    if(!response) {
-                        return
-                    }
+            const loaded = await ProjectService.load(projectId, this);
 
-                    if(response.data.success == true) {
-                        this.project.name = response.data.project.name;
-                        this.setTitle(this.project.name);
-                        this.project.deadline = response.data.project.deadline;
-                        this.groups = response.data.groups;
-                        this.loading = false;
-                    } else {
-                        this.loading = false;
-                        this.notFound = true;
-                    }
+            if(loaded) {
+              this.project = loaded.project;
+              this.setTitle(this.project.name);
+              this.groups = loaded.groups;
+              this.loading = false;
+            } else {
+              this.loading = false;
+              this.notFound = true;
+            }
 
-                    if(toggle === true) {
-                        this.$store.commit('toggleRefresh', false);
-                    }
-                })
+          if(toggle === true) {
+            this.$store.commit('toggleRefresh', false);
+          }
         },
 
-        changedGroupPositions(model) {
-
+        async changedGroupPositions(model) {
             const groups = model;
+
             //returns array which only includes the ids of taskgroups - we dont need more data
             const mapped = groups.map(x => x.id);
             const projectId = this.$route.params.projectId
 
-            axios
-                .put(axios.defaults.baseURL+'/project/'+projectId, {
-                    groupPositions: mapped
-                })
-                .then(response => {
-                    if(response.data.success == true) {
-
-                    } else {
-
-                    }
-
-                })
-
+            const formData = {
+              groupPositions: mapped
+            }
+            const updated = await ProjectService.update(projectId, formData, this, true);
         },
 
-        changeTaskPositions(data) {
+        async changeTaskPositions(data) {
                 const tasks = data.tasks;
                 const groupId = data.groupId;
-                const projectId = this.$route.params.projectId;
 
                 //returns array which only includes the ids of tasks - we dont need more data
                 const mapped = tasks.map(x => x.id);
 
-            axios
-                .put(axios.defaults.baseURL+'/taskgroup/'+groupId, {
-                    projectId: projectId,
-                    groupId: groupId,
-                    taskPositions: mapped
-                })
-                .catch(function (error) {
-                })
-                .then(response => {
-                    if(!response) {
-                        return
-                    }
+                const formData = {
+                  groupId: groupId,
+                  taskPositions: mapped
+                }
 
-                    if(response.data.success == true) {
-
-                    } else {
-
-                    }
-
-                })
+                const updated = await TaskGroupService.update(groupId, formData, this);
         },
 
-        addNewGroup() {
+        async addNewGroup() {
+            const projectId = this.$route.params.projectId;
             this.addingGroup = true
             this.groups.push({
                 'id': null,
@@ -163,55 +132,41 @@ export default {
 
             const addedGroup = this.groups[this.groups.length-1];
             const position = this.groups.length-1;
-            const projectId = this.$route.params.projectId;
 
-            axios
-                .post(axios.defaults.baseURL+'/taskgroup', {
-                    projectId: projectId,
-                    name: addedGroup.name,
-                    position: position
-                })
-                .catch(function (error) {
-                })
-                .then(response => {
-                    if(response.data.success == true) {
-                        this.groups[position]['id'] = response.data.createdId;
-                        this.$vToastify.success("Group created");
-                        this.addingGroup = false
-                    } else {
-                        this.addingGroup = false
-                        this.groups.pop();
-                        this.$vToastify.error("Group not created");
-                    }
+            const formData = {
+              name: addedGroup.name,
+              position: position,
+              projectId: projectId
+            }
 
-                })
+            const created = await TaskGroupService.create(formData, this)
 
-
+            if(created) {
+              this.groups[position]['id'] = created.createdId;
+            } else {
+              this.groups.pop();
+            }
+            this.addingGroup = false
         },
 
-        changeGroupName(data) {
-            const id = data.id;
-            const name = data.newName;
+        async changeGroupName(data) {
+            const groupId = data.id;
             const key = data.key;
 
-            axios
-                .put(axios.defaults.baseURL+'/taskgroup/'+id, {
-                    name: name
-                })
-                .then(response => {
-                    if(response.data.success == true) {
-                        this.$vToastify.success("name changed");
-                        this.groups[key]['name'] = name
-                    } else {
-                        this.$vToastify.error("name changed failed");
-                    }
-                })
+            const formData = {
+              name: data.newName
+            }
+
+            const updated = await TaskGroupService.update(groupId, formData, this);
+
+            if(updated) {
+              this.groups[key]['name'] = formData.name
+            }
         },
 
-        addTask(data) {
+      async addTask(data) {
             this.addingTask = true
 
-            const projectId = this.$route.params.projectId;
             const groupId = data.id;
             const groupKey = data.key;
 
@@ -229,153 +184,104 @@ export default {
 
             const addedTask = this.groups[groupKey]['tasks'][0];
 
-            axios
-                .post(axios.defaults.baseURL+'/task', {
-                    projectId: projectId,
-                    groupId: groupId,
-                    taskName: addedTask.name
-                })
-                .catch(function (error) {
-                    this.groups[groupKey]['tasks'].shift();
-                    this.addingTask = false
-                })
-                .then(response => {
-                    if(!response) {
-                      this.groups[groupKey]['tasks'].shift();
-                        return
-                    }
+            const formData = {
+              groupId: groupId,
+              taskName: addedTask.name
+            }
 
-                    if(response.data.success === true) {
-                        this.groups[groupKey]['tasks'][0]['id'] = response.data.createdId;
-                        this.$vToastify.success("Task created");
-                        this.addingTask = false
+            const created = await TaskService.create(formData, this);
 
-                    } else {
-                        this.groups[groupKey]['tasks'].shift();
-                        this.$vToastify.error("Task creation failed");
-                        this.addingTask = false
-                    }
-                })
+            if(created) {
+              //success
+              this.groups[groupKey]['tasks'][0]['id'] = created.createdId;
+              this.addingTask = false
+            } else {
+              //error
+              this.groups[groupKey]['tasks'].shift();
+              this.addingTask = false
+            }
         },
 
 
-        changeTaskName(data) {
+        async changeTaskName(data) {
             const groupKey = data.groupKey;
             const taskKey = data.taskKey;
             const taskId = data.id;
             const name = data.newName;
-            const projectId = this.$route.params.projectId;
 
-            axios
-                .put(axios.defaults.baseURL+'/task/'+taskId, {
-                    projectId: projectId,
-                    name: name
-                })
-                .catch(function (error) {
-                })
-                .then(response => {
-                    if(response.data.success === true) {
-                        this.$vToastify.success("task name changed");
-                        this.groups[groupKey]['tasks'][taskKey]['name'] = name;
-                    } else {
-                        this.$vToastify.error("task name changed failed");
-                    }
-                })
+            const formData = {
+              name: name
+            }
 
+            const updated = await TaskService.update(taskId, formData, this);
+
+            if(updated) {
+              this.groups[groupKey]['tasks'][taskKey]['name'] = name;
+            }
         },
 
-        finishTask(data) {
+        async finishTask(data) {
             const groupKey = data.groupKey;
             const key = data.taskKey;
             const taskId = data.taskId;
             const state = data.state;
-            const projectId = this.$route.params.projectId;
 
             //set task done
             this.groups[groupKey]['tasks'][key]['isDone'] = !state;
 
-            axios
-                .put(axios.defaults.baseURL+'/task/'+taskId, {
-                    projectId: projectId,
-                    done: !state
-                })
-                .catch(function (error) {
-                })
-                .then(response => {
-                    if(response.data.success === true) {
-                        setTimeout(() => {
-                            this.groups[groupKey]['tasks'].splice(key, 1);
-                        }, 300)
+            const formData = {
+              done: !state
+            }
 
-                    } else {
-                    }
-                })
+            const updated = await TaskService.update(taskId, formData, this);
+
+            if(updated) {
+              setTimeout(() => {
+                this.groups[groupKey]['tasks'].splice(key, 1);
+              }, 300)
+            }
         },
 
-        getDoneTasks(data) {
+        async getDoneTasks(data) {
             const groupKey = data.groupKey;
             const groupId = data.groupId;
 
             this.groups[groupKey]['tasksLoading'] = true;
             this.groups[groupKey]['showDoneTasks'] = true;
 
-            axios
-                .get(axios.defaults.baseURL+'/taskgroup/'+groupId, {
-                    params: {
-                        done: true
-                    }
-                })
-                .catch(function (error) {
-                })
-                .then(response => {
-                    if(response.data.success === true) {
-                        this.groups[groupKey]['showDoneTasks'] = true;
-                        this.groups[groupKey]['tasks'] = response.data.tasks;
-                        this.groups[groupKey]['tasksLoading'] = false;
-                    } else {
-                    }
-                })
+            const loaded = await TaskGroupService.load(groupId, true, this);
+
+            if(loaded) {
+              this.groups[groupKey]['showDoneTasks'] = true;
+              this.groups[groupKey]['tasks'] = loaded.tasks;
+              this.groups[groupKey]['tasksLoading'] = false;
+            }
         },
 
-        getOpenTasks(data) {
+        async getOpenTasks(data) {
             const groupKey = data.groupKey;
             const groupId = data.groupId;
 
             this.groups[groupKey]['tasksLoading'] = true;
             this.groups[groupKey]['showDoneTasks'] = false;
 
-            axios
-                .get(axios.defaults.baseURL+'/taskgroup/'+groupId, {
-                    params: {
-                        done: false
-                    }
-                })
-                .catch(function (error) {
-                })
-                .then(response => {
-                    if(response.data.success === true) {
-                        this.groups[groupKey]['showDoneTasks'] = false;
-                        this.groups[groupKey]['tasks'] = response.data.tasks;
-                        this.groups[groupKey]['tasksLoading'] = false;
-                    } else {
-                    }
-                })
+          const loaded = await TaskGroupService.load(groupId, false, this);
+
+          if(loaded) {
+            this.groups[groupKey]['showDoneTasks'] = false;
+            this.groups[groupKey]['tasks'] = loaded.tasks;
+            this.groups[groupKey]['tasksLoading'] = false;
+          }
         },
 
-        deleteGroup(data) {
+        async deleteGroup(data) {
             const groupId = data.groupId;
             const groupKey = data.groupKey;
 
-            axios
-                .delete(axios.defaults.baseURL+'/taskgroup/'+groupId)
-                .catch(function (error) {
-                })
-                .then(response => {
-                    if(response.data.success === true) {
-                        this.groups.splice(groupKey, 1)
-                    } else {
-                    }
-                })
+            const deleted = await TaskGroupService.delete(groupId, this)
+            if(deleted) {
+              this.groups.splice(groupKey, 1)
+            }
         },
 
 

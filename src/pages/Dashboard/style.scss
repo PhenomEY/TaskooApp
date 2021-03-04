@@ -64,7 +64,7 @@
     }
 
     .notifications {
-      background:#ffffff;
+      background:$taskoo-default-bg;
       border:1px solid $taskoo-border-color;
       border-radius:$taskoo-border-radius;
       margin-top:16px;
@@ -111,7 +111,7 @@
           height:30px;
 
           &:hover {
-            background:#ffffff;
+            background:$taskoo-default-bg;
           }
         }
 

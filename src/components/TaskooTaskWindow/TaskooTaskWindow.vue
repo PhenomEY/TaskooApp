@@ -39,7 +39,7 @@
 
       <div class="right">
 
-        <div class="finish-button" v-bind:class="{'done': (task.isDone)}" @click="finishTask(task.id, task.isDone)">
+        <div class="finish-button" v-bind:class="{'done': (task.isDone)}" @click="finishTask(task.isDone)">
           <md-icon>check_circle_outline</md-icon>
           <span v-if="task.isDone">{{ $t('task.detail.taskFinished') }}</span>
           <span v-else>{{ $t('task.detail.finishTask') }}</span>
@@ -53,7 +53,7 @@
 
           <template slot="popover">
             <div class="taskoo-popover-options">
-              <div class="option remove" v-close-popover>
+              <div class="option remove" @click="deleteTask" v-close-popover>
                 <md-icon>delete</md-icon>
                 {{ $t('task.menu.delete') }}
               </div>
@@ -74,14 +74,14 @@
     <div class="task-content">
       <div class="task-name">
         <span class="label">{{ $t('task.task') }}</span>
-        <textarea class="name box-shadow" v-model="task.name" @change="updateTaskName(task.name)"></textarea>
+        <textarea class="name box-shadow" v-model="task.name" @change="update({name: task.name})"></textarea>
       </div>
 
       <div class="task-users" v-if="task.availableUsers">
         <span class="label">{{ $t('task.assignedUsers') }}</span>
         <taskoo-user-select :multi="true" :model="assignedUsers" :options="task.availableUsers"
-                            @removedUser="removeUser(...arguments)"
-                            @addedUser="addUser(...arguments)"
+                            @removedUser="removeUser"
+                            @addedUser="addUser"
         ></taskoo-user-select>
       </div>
 
@@ -90,14 +90,29 @@
         <taskoo-datepicker :model="dateDue" @modelChanged="setDate(...arguments)"></taskoo-datepicker>
       </div>
 
+      <div class="priority">
+        <span class="label">{{ $t('task.priority') }}</span>
+        <multiselect class="taskoo-select"
+                     v-model="taskPriority"
+                     :options="priorityOptions"
+                     @select="updatePriority"
+        >
+          <template slot="singleLabel" slot-scope="props"> <span>{{props.option.name}}</span></template>
+
+          <template slot="option" slot-scope="props">
+            <span>{{ props.option.name }}</span>
+          </template>
+        </multiselect>
+      </div>
+
       <div class="task-description"  v-bind:class="{'is-focused': (descriptionisFocused)}">
         <vue-editor v-model="task.description" :placeholder="$t('task.description')" :editor-toolbar="taskToolbar" @text-change="activateDescriptionSave" @focus="descriptionisFocused = true" @blur="descriptionisFocused = false"></vue-editor>
-        <button class="save-button" :disabled="!descriptionSave" @click="saveDescription(task.id)">{{ $t('taskoo.save') }}</button>
+        <button class="save-button" :disabled="!descriptionSave" @click="update({description: task.description})">{{ $t('taskoo.save') }}</button>
       </div>
 
       <div class="task-subtasks" v-if="!task.mainTask">
         <span class="label">{{ $t('task.subTasks') }}</span>
-        <task-list :addButton="true" :addingTask="addingSubTask" :disabled="changingPositions" @finishTask="finishSubTask(...arguments)" @positionsChanged="changedSubPositions(...arguments)" @addSubTask="addSubTask" @changedTaskName="changeSubTaskName(...arguments)" :tasks="task.subTasks" type="sub"></task-list>
+        <task-list :addButton="true" :addingTask="addingSubTask" :disabled="changingPositions" @finishTask="finishSubTask" @positionsChanged="changedSubPositions" @addSubTask="addSubTask" @changedTaskName="changeSubTaskName" :tasks="task.subTasks" type="sub"></task-list>
       </div>
     </div>
 

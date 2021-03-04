@@ -7,6 +7,11 @@ export default {
 
     data: () => ({
     }),
-    methods: {
+
+    mounted() {
+      this.setTitle(this.$t('settings.title'));
+    },
+
+  methods: {
     }
 }

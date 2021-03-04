@@ -1,0 +1,14 @@
+@import 'src/scss/vars/variables';
+
+
+.user-wrapper {
+  padding:16px 0;
+  display: flex;
+  flex:1;
+  background:$taskoo-light-grey;
+  justify-content: center;
+
+  .taskoo-profile {
+    position: absolute;
+  }
+}

@@ -1,5 +1,6 @@
 import axios from "axios";
 import TaskList from "../../components/TaskList/TaskList";
+import TaskService from "src/services/TaskooTaskService";
 
 export default {
     name: 'Dashboard',
@@ -95,45 +96,35 @@ export default {
             this.$router.push({ name: `Project`, params: {projectId: projectId} });
         },
 
-        finishTask(data) {
+        async finishTask(data) {
             const taskId = data.id;
-            const state = data.state;
             const key = data.key;
 
-            this.tasks[key].isDone = state;
+            const formData = {
+              done: data.state
+            }
 
-            axios
-                .put(axios.defaults.baseURL+'/task/'+taskId, {
-                    done: state
-                })
-                .catch(function (error) {
-                })
-                .then(response => {
-                    if(response.data.success === true) {
-                        this.tasks[key].doneAt = response.data.doneAt
-                    } else {
-                    }
-                })
+            this.tasks[key].isDone = formData.done;
+
+            const updated = await TaskService.update(taskId, formData, this)
+
+            if(updated) {
+              this.tasks[key].doneAt = updated.doneAt
+            }
         },
 
-        changeTaskName(data) {
-            const name = data.newName;
+        async changeTaskName(data) {
             const key = data.key
             const taskId = data.id
-            axios
-                .put(axios.defaults.baseURL+'/task/'+taskId, {
-                    name: name
-                })
-                .catch(function (error) {
-                })
-                .then(response => {
-                    if(response.data.success === true) {
-                        this.$vToastify.success("task name changed");
-                        this.tasks[key]['name'] = name;
-                    } else {
-                        this.$vToastify.error("task name changed failed");
-                    }
-                })
+
+            const formData = {
+              name: data.newName
+            }
+            const updated = await TaskService.update(taskId, formData, this)
+
+            if(updated) {
+              this.tasks[key]['name'] = formData.name;
+            }
         }
     }
 }

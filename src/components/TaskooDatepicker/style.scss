@@ -3,8 +3,7 @@
 .taskoo-datepicker {
 
   .datepicker {
-    width: 100%;
-    max-width: 350px;
+    width: $taskoo-input-width;
     font-family: "Roboto";
     border-radius: $taskoo-border-radius;
     border: 1px solid $taskoo-border-color;

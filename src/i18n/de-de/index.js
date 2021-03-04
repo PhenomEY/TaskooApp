@@ -55,6 +55,8 @@ export default {
   "project": {
     "deadline": "Geplanter Abschluss am",
     "notFound": "Projekt konnte nicht gefunden werden",
+    "closed": "Projekt nur für zugewiesene Nutzer sichtbar",
+    "public": "Dieses Projekt ist öffentlich"
 },
 
   "taskGroup": {
@@ -64,29 +66,34 @@ export default {
       "showDoneTasks": "Abgeschlossene Aufgaben anzeigen",
       "showOpenTasks": "Offene Aufgaben anzeigen",
       "createGroup": "Neue Gruppe erstellen"
-  },
-
-  "doneTasks": "Abgeschlossene Aufgaben"
+    },
+    "doneTasks": "Abgeschlossene Aufgaben"
 },
 
   "task": {
-  "defaultName": "Neue Aufgabe",
+    "defaultName": "Neue Aufgabe",
     "doneAt": "Abgeschlossen am",
     "notFound": "Aufgabe konnte nicht gefunden werden",
     "notFoundTitle": "(╯°□°）╯︵ ┻━┻",
     "task": "Aufgabe",
     "description": "Beschreibung...",
     "dateDue": "Fällig am",
+    "priority": "Priorität",
     "hasDescription": "Enthält Beschreibung",
     "hasSubTasks": "Enthält Unteraufgaben",
     "assignedUsers": "Zugewiesene Mitarbeiter",
     "subTasks": "Weitere Aufgaben",
     "addSubTask": "Weitere Aufgabe hinzufügen",
     "detail": {
-    "doneAt": "Aufgabe abgeschlossen am {date} von {firstname} {lastname}",
+      "doneAt": "Aufgabe abgeschlossen am {date} von {firstname} {lastname}",
       "finishTask": "Aufgabe erledigen",
       "taskFinished": "Aufgabe erledigt"
-  },
+    },
+
+    "priorities": {
+      "high": "Hoch",
+      "normal": "Normal"
+    },
 
   "userSelect": {
     "placeholder": "Mitarbeiter auswählen",
@@ -125,6 +132,7 @@ export default {
   },
 
   "settings": {
+    "title": "Taskoo - Administration",
     "main": {
       "title": "Grundeinstellungen",
       "appurl": "App URL",
@@ -133,6 +141,7 @@ export default {
     "users": {
       "title": "Benutzer",
       "createUser": "Neuen Benutzer anlegen",
+      "editUser": "Benutzer bearbeiten",
       "list": {
         "id": "ID",
         "name": "Name",
@@ -151,6 +160,10 @@ export default {
         "formError": "Bitte fülle die markierten Felder aus",
         "submitInvite": "Einladung senden",
         "createUser": "Benutzer anlegen"
+      },
+
+      "edit": {
+        "save": "Benutzer speichern"
       }
     },
 

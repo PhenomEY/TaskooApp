@@ -1,5 +1,11 @@
 @import 'src/scss/vars/variables';
 
 
-.administration-wrapper {
+.edit-user {
+  .loader {
+    .taskoo-input {
+      height:$taskoo-input-height;
+      margin-bottom: 10px;
+    }
+  }
 }

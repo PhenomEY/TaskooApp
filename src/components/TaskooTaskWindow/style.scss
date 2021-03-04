@@ -3,7 +3,7 @@
 .task-window {
   width:100%;
   height:100%;
-  background:#ffffff;
+  background:$taskoo-default-bg;
   padding: 16px 0;
   background:$taskoo-light-grey;
   overflow-y: auto;
@@ -177,7 +177,7 @@
 
       .ql-toolbar {
         text-align: left;
-        background:#ffffff;
+        background:$taskoo-default-bg;
         border-top-left-radius: $taskoo-border-radius;
         border-top-right-radius: $taskoo-border-radius;
         border-color:$taskoo-border-color;
@@ -202,7 +202,7 @@
       }
 
       .ql-container {
-        background:#ffffff;
+        background:$taskoo-default-bg;
         border-color:$taskoo-border-color;
         border-radius: 6px;
         transition:border-radius 100ms;

@@ -55,7 +55,7 @@
              {{ $t('task.dateDue') }} {{ task.dateDue.date | moment('LL') }}
             </span>
 
-            <div class="list-task-done" v-if="task.isDone">
+            <div class="list-task-done" v-if="task.isDone && task.doneAt">
               {{ $t('task.doneAt') }} {{ task.doneAt.date | moment('LL') }}
             </div>
 

@@ -3,13 +3,13 @@ import Taskoo404 from '../TaskooNotFound/TaskooNotFound';
 import TaskooUserSelect from '../TaskoouserSelect/TaskooUserSelect';
 import TaskooDatepicker from "../TaskooDatepicker/TaskooDatepicker";
 import TaskList from "../TaskList/TaskList";
-import axios from "axios";
+import Multiselect from 'vue-multiselect'
 
-
+import TaskService from 'src/services/TaskooTaskService';
 
 export default {
     name: 'TaskooTaskWindow',
-    components: {TaskooInput, Taskoo404, TaskooUserSelect, TaskooDatepicker, TaskList},
+    components: {TaskooInput, Taskoo404, TaskooUserSelect, TaskooDatepicker, TaskList, Multiselect},
     data() {
         return {
             task: null,
@@ -25,7 +25,18 @@ export default {
             assignedUsers: [],
             isMobile: this.$store.state.misc.isMobile,
             addingSubTask: false,
-            changingPositions: false
+            changingPositions: false,
+            priorityOptions: [
+              {
+                "name": this.$t('task.priorities.normal'),
+                "value": 0
+              },
+              {
+                "name": this.$t('task.priorities.high'),
+                "value": 1
+              },
+            ],
+          taskPriority: null
         }
     },
 
@@ -33,7 +44,7 @@ export default {
     },
 
     mounted() {
-          this.getTask();
+          this.load();
     },
 
     watch: {
@@ -42,8 +53,7 @@ export default {
         },
 
         '$route.params.taskId': function() {
-            this.task = null;
-            this.getTask()
+            this.load();
         },
     },
 
@@ -51,164 +61,94 @@ export default {
     },
 
     methods: {
+        async load()
+        {
+          const taskId = this.$route.params.taskId;
+
+          //reset vars
+          this.task = null;
+          this.dateDue = null;
+
+          const data = await TaskService.load(taskId, this, true);
+
+          if(data) {
+            //Task loaded
+            this.task = data.task
+            this.assignedUsers = data.task.users
+            this.setTitle(this.task.name)
+            if(data.task.dateDue) {
+              this.dateDue = new Date(this.task.dateDue.date)
+            }
+
+            this.taskPriority = this.getPriority(this.task.highPriority)
+          } else {
+            //error handling
+            this.notFound = true
+          }
+        },
+
+        async update(data) {
+          const taskId = this.$route.params.taskId;
+
+          const updated = await TaskService.update(taskId, data, this);
+
+          if(updated) {
+            if ('done' in data) {
+              this.task.isDone = !this.task.isDone;
+              this.task.doneAt = updated.doneAt;
+              this.task.doneBy = updated.doneBy;
+            }
+          } else {
+            //error
+          }
+        },
+
         returnTo() {
             if(this.task.mainTask) {
                 this.$router.push({ name: `Task`, params: {taskId: this.task.mainTaskId} });
             } else {
                 this.$router.push({ name: `Project`, params: {projectId: this.task.projectId} });
             }
-
-
         },
 
-        getTask() {
-            const taskId = this.$route.params.taskId;
-
-            //reset vars
-            this.task = null;
-            this.dateDue = null;
-
-            axios
-                .get(axios.defaults.baseURL+'/task/'+taskId, {params: {
-                    subTasks: true
-                    }
-                })
-                .catch(error => {
-                    this.notFound = true
-                })
-                .then(response => {
-                    if(!response) {
-                        this.notFound = true
-                        return
-                    }
-
-                    if(response.data.success == true) {
-                        this.task = response.data.task
-                        this.assignedUsers = response.data.task.users
-                        this.setTitle(this.task.name)
-                        if(response.data.task.dateDue) {
-                            this.dateDue = new Date(this.task.dateDue.date)
-                        }
-                    } else {
-                        this.notFound = true
-                    }
-
-                })
-        },
-
-        finishTask(id, value) {
-            const taskId = id;
-            const state = value;
-            const projectId = this.$route.params.projectId;
-
-            axios
-                .put(axios.defaults.baseURL+'/task/'+taskId, {
-                    projectId: projectId,
-                    done: !state
-                })
-                .catch(function (error) {
-                })
-                .then(response => {
-                    if(response.data.success === true) {
-                        this.task.isDone = !state;
-                        this.task.doneAt = response.data.doneAt;
-                        this.task.doneBy = response.data.doneBy;
-                    } else {
-                    }
-                })
+        finishTask(value) {
+            this.update({
+              done: !value
+            });
         },
 
         activateDescriptionSave() {
             this.descriptionSave = true
         },
 
-        saveDescription(id) {
-            const description = this.task.description;
-            const taskId = id;
-            const projectId = this.$route.params.projectId;
-
-            axios
-                .put(axios.defaults.baseURL+'/task/'+taskId, {
-                    projectId: projectId,
-                    description: description
-                })
-                .catch(function (error) {
-                })
-                .then(response => {
-                    if(response.data.success === true) {
-                        this.$vToastify.success("description saved");
-                    } else {
-                    }
-                })
-        },
-
         addUser(addedUser) {
-            const userId = addedUser.id;
-            const projectId = this.$route.params.projectId;
-            const taskId = this.$route.params.taskId;
-
-            axios
-                .put(axios.defaults.baseURL+'/task/'+taskId, {
-                    projectId: projectId,
-                    addUser: userId
-                })
-                .catch(function (error) {
-                })
-                .then(response => {
-                    if(response.data.success === true) {
-                        this.$vToastify.success("user added");
-                    } else {
-                    }
-                })
+          const userId = addedUser.id
+          this.update({
+            addUser: userId
+          });
         },
 
-        removeUser(removedOption) {
-            const userId = removedOption.id;
-            const projectId = this.$route.params.projectId;
-            const taskId = this.$route.params.taskId;
-
-            axios
-                .put(axios.defaults.baseURL+'/task/'+taskId, {
-                    projectId: projectId,
-                    removeUser: userId
-                })
-                .catch(function (error) {
-                })
-                .then(response => {
-                    if(response.data.success === true) {
-                        this.$vToastify.success("user removed");
-                    } else {
-                    }
-                })
+        removeUser(removedUser) {
+            const userId = removedUser.id;
+            this.update({
+              removeUser: userId
+            });
         },
 
         setDate(dateDue) {
             let date = dateDue;
-            const projectId = this.$route.params.projectId;
-            const taskId = this.$route.params.taskId;
 
             if(date === null) {
                 date = 'null'
             }
 
-            axios
-                .put(axios.defaults.baseURL+'/task/'+taskId, {
-                    projectId: projectId,
-                    dateDue: date
-                })
-                .catch(function (error) {
-                })
-                .then(response => {
-                    if(response.data.success === true) {
-                        this.$vToastify.success("date changed");
-                    } else {
-                    }
-                })
+            this.update({
+              dateDue: date
+            });
         },
 
-        addSubTask() {
+        async addSubTask() {
             const taskId = this.$route.params.taskId;
-            const projectId = this.$route.params.projectId;
 
             if(this.task.subTasks === null) {
                 this.task.subTasks = []
@@ -221,123 +161,103 @@ export default {
                 'name': this.$t('task.defaultName')
             })
 
-            axios
-                .post(axios.defaults.baseURL+'/task', {
-                    mainTaskId: taskId,
-                    projectId: projectId,
-                    taskName: this.$t('task.defaultName')
-                })
-                .catch(function (error) {
-                    this.task.subTasks.shift();
-                    this.addingSubTask = false
-                })
-                .then(response => {
-                    if(!response) {
-                        return
-                    }
+            const formData = {
+              mainTaskId: taskId,
+              taskName: this.$t('task.defaultName')
+            }
 
-                    if(response.data.success === true) {
-                        this.task.subTasks[0]['id'] = response.data.createdId;
-                        this.$vToastify.success("Task created");
-                        this.addingSubTask = false
-                    }
-                })
+            const created = await TaskService.create(formData, this)
+
+            if(created) {
+              //success
+              this.task.subTasks[0]['id'] = created.createdId;
+            } else {
+              //error
+              this.task.subTasks.shift();
+            }
+
+            this.addingSubTask = false
         },
 
-        changeSubTaskName(data) {
+        async changeSubTaskName(data) {
             const name = data.newName;
             const key = data.key
-            const projectId = this.$route.params.projectId;
             const taskId = data.id
-            axios
-                .put(axios.defaults.baseURL+'/task/'+taskId, {
-                    projectId: projectId,
-                    name: name
-                })
-                .catch(function (error) {
-                })
-                .then(response => {
-                    if(response.data.success === true) {
-                        this.$vToastify.success("task name changed");
-                        this.task.subTasks[key]['name'] = name;
-                    } else {
-                        this.$vToastify.error("task name changed failed");
-                    }
-                })
+
+            const formData = {
+              name: name
+            }
+
+            const updated = await TaskService.update(taskId, formData, this);
+
+            if(updated) {
+              //success
+              this.task.subTasks[key]['name'] = name;
+            } else {
+              //error
+            }
         },
 
-        changedSubPositions(tasks) {
-            const projectId = this.$route.params.projectId;
+        async changedSubPositions(tasks) {
             const taskId = this.$route.params.taskId
 
             //returns array which only includes the ids of tasks - we dont need more data
             const mapped = tasks.map(x => x.id);
 
             this.changingPositions = true;
-            axios
-                .put(axios.defaults.baseURL+'/task/'+taskId, {
-                    projectId: projectId,
-                    subTaskPositions: mapped
-                })
-                .catch(function (error) {
-                    this.changingPositions = false;
-                })
-                .then(response => {
-                    if(!response) {
-                        return
-                    }
-                    if(response.data.success == true) {
-                        this.changingPositions = false;
-                    } else {
-                    }
 
-                })
+            const formData = {
+              subTaskPositions: mapped
+            }
+
+            const updated = await TaskService.update(taskId, formData, this);
+
+            this.changingPositions = false;
+
         },
 
-        finishSubTask(data) {
+       async finishSubTask(data) {
             const taskId = data.id;
             const state = data.state;
             const key = data.key;
-            const projectId = this.$route.params.projectId;
 
-            this.task.subTasks[key].isDone = state;
+            const formData = {
+              done: state
+            }
 
-            axios
-                .put(axios.defaults.baseURL+'/task/'+taskId, {
-                    projectId: projectId,
-                    done: state
-                })
-                .catch(function (error) {
-                })
-                .then(response => {
-                    if(response.data.success === true) {
-                        this.task.subTasks[key].doneAt = response.data.doneAt
-                    } else {
-                    }
-                })
+         this.task.subTasks[key].isDone = state;
+            const updated = await TaskService.update(taskId, formData, this);
+
+            if(updated) {
+              this.task.subTasks[key].doneAt = updated.doneAt
+            } else {
+              this.task.subTasks[key].isDone = !state;
+            }
+
         },
 
-        updateTaskName(name) {
-            const newName = name;
-            const taskId = this.$route.params.taskId;
-            const projectId = this.$route.params.projectId;
 
-            axios
-                .put(axios.defaults.baseURL+'/task/'+taskId, {
-                    projectId: projectId,
-                    name: newName
-                })
-                .catch(function (error) {
-                })
-                .then(response => {
-                    if(!response) {
-                        return
-                    }
-                    if(response.data.success == true) {
-                    } else {
-                    }
+      getPriority(id) {
+          if(id === true) {
+            id = 1;
+          } else {
+            id = 0;
+          }
 
-                })
-        },
+          return this.priorityOptions.find(element => element.value === id);
+      },
+
+      updatePriority(option) {
+        this.update({
+          priority: option.value
+        })
+      },
+
+      async deleteTask() {
+        const taskId = this.$route.params.taskId;
+
+        const deleted = await TaskService.delete(taskId)
+        console.log(deleted)
+      }
     }
 }

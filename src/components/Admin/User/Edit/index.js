@@ -37,6 +37,11 @@ export default {
             error: false,
             required: false
           },
+          active: {
+            value: false,
+            error:false,
+            required: false
+          }
         },
       }
     },
@@ -68,9 +73,11 @@ export default {
             if(!response) return;
 
             if(response.data.success == true) {
+              this.loading = false;
               this.userForm.firstname.value = response.data.firstname;
               this.userForm.lastname.value = response.data.lastname;
               this.userForm.email.value = response.data.email;
+              this.userForm.active.value = response.data.active;
             }
 
           })
@@ -110,7 +117,8 @@ export default {
             email: form.form.email.value,
             firstname: form.form.firstname.value,
             lastname: form.form.lastname.value,
-            password: form.form.password.value
+            password: form.form.password.value,
+            active: form.form.active.value
           })
           .catch(error => {
             this.$vToastify.error(error.response.data.message);

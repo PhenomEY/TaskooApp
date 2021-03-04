@@ -38,7 +38,7 @@
 
 
   .tasklist {
-    background:#ffffff;
+    background:$taskoo-default-bg;
     border:1px solid $taskoo-border-color;
     box-shadow:$taskoo-box-shadow;
     border-radius:$taskoo-border-radius;
@@ -90,7 +90,7 @@
         }
 
         &:hover {
-          background:#ffffff;
+          background:$taskoo-default-bg;
         }
 
       }

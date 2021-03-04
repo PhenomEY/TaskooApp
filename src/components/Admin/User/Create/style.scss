@@ -1,23 +1,10 @@
 @import 'src/scss/vars/variables';
 
 
-.administration-wrapper {
+.settings-wrapper {
 
 
   .create-user {
-
-    .create-header {
-      max-width: $taskoo-input-width;
-      display:flex;
-      flex-direction: row;
-      align-items: center;
-      justify-content: space-between;
-      .title {
-        margin-right: 15px;
-        font-size: 21px;
-      }
-    }
-
     .create-switch {
       display:inline-flex;
       flex-direction: row;
@@ -50,6 +37,17 @@
     }
   }
 
+  .create-header {
+    max-width: $taskoo-input-width;
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    .title {
+      margin-right: 15px;
+      font-size: 21px;
+    }
+  }
 
 
 }
