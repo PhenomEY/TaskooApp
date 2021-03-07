@@ -37,7 +37,11 @@
         <div class="list-task-right">
           <div class="list-task-project">
             <span class="project-entry"  v-if="type === 'myTasks' && task.projectName">
-              <span class="label">Projekt: </span> <span class="project" @click="goToProject(task.projectId)">{{ task.projectName }}</span>
+              <span class="label">Projekt: </span>
+              <span class="project" @click="goToProject(task.projectId)">
+                <span class="color-brick" :title="task.organisationName" v-bind:style= "[task.organisationColor ? {background: task.organisationColor} : {}]"></span>
+                {{ task.projectName }}
+              </span>
             </span>
 
           </div>

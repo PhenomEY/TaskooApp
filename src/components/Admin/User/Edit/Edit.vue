@@ -50,6 +50,28 @@
 
       <button type="submit" class="taskoo-button" :disabled="updatingUser" @click="updateUser">{{ $t('settings.users.edit.save') }}</button>
     </form>
+
+    <span class="label">Zugewiesene Abteilungen</span>
+    <multiselect v-if="organisations" class="taskoo-select"
+                 v-model="assignedOrganisations"
+                 :options="organisations"
+                 :multiple="true"
+                 track-by="id"
+                 @select="setOrganisation"
+                 @remove="removeOrganisation"
+    >
+
+      <template slot="tag" slot-scope="props">
+                  <span class="multiselect__tag user-tag">
+                  <span>{{props.option.name}}</span>
+                  <i aria-hidden="true" tabindex="1" @mousedown.prevent="props.remove(props.option)" class="multiselect__tag-icon"></i>
+                </span>
+      </template>
+
+      <template slot="option" slot-scope="props">
+        <span>{{ props.option.name }}</span>
+      </template>
+    </multiselect>
   </div>
 </template>
 

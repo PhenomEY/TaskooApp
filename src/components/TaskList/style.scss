@@ -132,6 +132,14 @@
             cursor:pointer;
             transition: color 100ms;
 
+            .color-brick {
+              height:8px;
+              width: 8px;
+              display:inline-block;
+              margin-left:5px;
+              background:$taskoo-main;
+            }
+
             &:hover {
               color: rgba(0, 0, 0, 0.9);
             }

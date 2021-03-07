@@ -57,11 +57,11 @@ export default {
   },
 
   watch: {
-    '$store.state.contentRefreshActive': function() {
+    '$store.state.misc.contentRefreshActive': function() {
       this.active = this.$store.state.misc.contentRefreshActive;
     },
 
-    '$store.state.contentRefresh': function() {
+    '$store.state.misc.contentRefresh': function() {
       if (this.$store.state.misc.contentRefresh == true) {
         this.isRefreshing = true;
       } else {

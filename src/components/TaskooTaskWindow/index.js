@@ -59,6 +59,9 @@ export default {
     },
 
     computed: {
+      currentOrganisation: function() {
+        return this.$store.state.organisations.currentOrganisation
+      }
     },
 
     methods: {
@@ -82,6 +85,11 @@ export default {
             }
 
             this.taskPriority = this.getPriority(this.task.highPriority)
+
+            if(data.task.project.organisation && (data.task.project.organisation !== this.currentOrganisation.id)) {
+              this.$store.commit('organisations/setOrganisation', data.task.project.organisation.id);
+            }
+
           } else {
             //error handling
             this.notFound = true
@@ -108,7 +116,7 @@ export default {
             if(this.task.mainTask) {
                 this.$router.push({ name: `Task`, params: {taskId: this.task.mainTaskId} });
             } else {
-                this.$router.push({ name: `Project`, params: {projectId: this.task.projectId} });
+                this.$router.push({ name: `Project`, params: {projectId: this.task.project.id} });
             }
         },
 

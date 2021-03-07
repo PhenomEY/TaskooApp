@@ -7,6 +7,23 @@
 
     <taskoo-searchfield></taskoo-searchfield>
 
+    <multiselect v-if="availableOrganisations.length > 1" class="taskoo-select organisations"
+                 v-model="currentOrganisation"
+                 :options="availableOrganisations"
+                 selectLabel=""
+                 deselectLabel=""
+                 selectedLabel=""
+                 :searchable="false"
+                 :allowEmpty="false"
+                 v-bind:style= "[currentOrganisation.color ? {background: currentOrganisation.color} : {}]"
+    >
+      <template slot="singleLabel" slot-scope="props"> <span>{{props.option.name}}</span></template>
+
+      <template slot="option" slot-scope="props" style="background:red">
+        <span>{{ props.option.name }}</span>
+      </template>
+    </multiselect>
+
     <div class="icons-right">
       <taskoo-refresh :interval="refreshInterval"></taskoo-refresh>
 

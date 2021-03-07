@@ -37,10 +37,11 @@
 
     <div v-else class="project-content">
       <div class="project-header">
+        <span v-if="project.organisation" class="color-brick box-shadow" :title="project.organisation.name" v-bind:style= "[project.organisation.color ? {background: project.organisation.color} : {}]"></span>
         <h1 class="title">
             {{ project.name }}
         </h1>
-        <span class="deadline" v-if="!isMobile">
+        <span class="deadline" v-if="!isMobile && project.deadline">
           {{ $t('project.deadline') }} {{ project.deadline.date | moment('LL') }}
         </span>
         <div class="project-options">
@@ -111,7 +112,7 @@
       </div>
 
     <!--    delete taskgroup dialog-->
-    <md-dialog-confirm v-if="deleteData"
+    <md-dialog-confirm
       :md-active.sync="showDeleteDialog"
       :md-title="$t('prompts.delete.taskGroup.title', {name: deleteData.name})"
       :md-content="$t('prompts.delete.taskGroup.description')"

@@ -1,16 +1,16 @@
 import TaskooRefresh from "./TaskooRefresh/TaskooRefresh"
 import TaskooSearchfield from "../TaskooSearchfield/TaskooSearchfield";
+import Multiselect from 'vue-multiselect'
 import axios from "axios";
 
 
 export default {
     name: 'TaskooTaskbar',
 
-    components: {TaskooRefresh, TaskooSearchfield},
+    components: {TaskooRefresh, TaskooSearchfield, Multiselect},
 
     data: () => ({
         refreshInterval: 10,
-        currentOrg: 1,
         notificationCount: 0,
         notifications: null
     }),
@@ -23,6 +23,21 @@ export default {
     },
 
     computed: {
+      currentOrganisation: {
+        // getter
+        get: function () {
+          return this.$store.state.organisations.currentOrganisation
+        },
+        // setter
+        set: function (newValue) {
+          this.$store.commit('organisations/saveOrganisation', newValue)
+        }
+
+      },
+
+      availableOrganisations() {
+        return this.$store.state.organisations.availableOrganisations
+      },
     },
 
 
@@ -34,11 +49,6 @@ export default {
             this.$router.push({
                 name: 'Login'
             })
-        },
-
-        orgChanged(val) {
-            console.log('org changed to')
-            console.log(val)
         },
 
         getNotifications() {
@@ -72,6 +82,6 @@ export default {
           } else {
             body.classList.remove('open-menu')
           }
-      }
+      },
     }
 }

@@ -29,11 +29,6 @@
     }),
 
     watch: {
-      verifiedUser: function(val) {
-        if(val === true) {
-          this.getOrganisations();
-        }
-      }
     },
 
     beforeUpdate() {
@@ -44,14 +39,11 @@
 
     mounted() {
       axios.defaults.headers.common['Authorization'] = this.$store.state.auth.authToken
-      console.log('mounted')
-
 
       //if site isnt public, check for auth
       if(!this.publicUrls.includes(this.$route.name)) {
         this.checkAuth()
       }
-
 
       this.setTitle(this.$t('taskoo.title'));
 
@@ -82,19 +74,6 @@
     },
 
     methods: {
-      getOrganisations() {
-        axios
-            .get(axios.defaults.baseURL+'/organisation/get')
-            .catch(function (error) {
-            })
-            .then(response => {
-              if(response.data.success == true) {
-                this.$store.commit('setOrganisations', response.data.organisations)
-              } else {
-              }
-            })
-      },
-
       checkAuth() {
         axios
           .get(axios.defaults.baseURL+'/auth/check')
@@ -113,15 +92,11 @@
 
             else if(response.data.success == true) {
               setTimeout(() => (
-                this.$store.commit('auth/setVerifiedUser', true),
-                  this.$store.commit('user/setUser', response.data.user)
+                  this.$store.commit('auth/setVerifiedUser', true),
+                  this.$store.commit('user/setUser', response.data.user),
+                  this.$store.commit('organisations/setAvailableOrganisations', response.data.organisations)
               ), 700);
-            } else {
-              setTimeout(() => (
-                this.$router.push({
-                  name: 'Login'
-                })
-              ), 700);
+
             }
           })
       }

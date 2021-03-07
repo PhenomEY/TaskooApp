@@ -6,10 +6,13 @@ export default {
 
     data() {
         return {
+          loading: true,
+          organisations: null
         }
     },
 
     mounted() {
+      this.load()
     },
 
     watch: {
@@ -23,5 +26,16 @@ export default {
 
 
     methods: {
+      load() {
+        this.loading = true
+
+        axios
+          .get(axios.defaults.baseURL+'/organisation')
+          .catch(function (error) {
+          })
+          .then(response => {
+            this.organisations = response.data.organisations
+          })
+      }
     }
 }

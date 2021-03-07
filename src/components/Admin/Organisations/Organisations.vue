@@ -1,6 +1,8 @@
 <template>
   <div class="organisations-wrapper">
-    ORGAS
+    <div v-for="organisation in organisations">
+      {{ organisation.id }} {{ organisation.name }}
+    </div>
   </div>
 </template>
 

@@ -24,7 +24,7 @@
     <div class="taskbar">
       <div class="header">
         <h1 class="project-title">
-          {{ task.projectName }}
+          {{ task.project.name }}
         </h1>
 
         <md-icon v-if="task.mainTask">chevron_right</md-icon>

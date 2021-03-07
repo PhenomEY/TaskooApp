@@ -64,6 +64,7 @@
             height:8px;
             background:$taskoo-main;
             margin-right:10px;
+            transition:background 100ms;
           }
 
           &.title {

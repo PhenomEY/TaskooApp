@@ -22,7 +22,9 @@ export default {
         },
         isMobile: false,
         showDeleteDialog: false,
-        deleteData: null
+        deleteData: {
+          name: null
+        }
     }),
 
     watch: {
@@ -55,12 +57,6 @@ export default {
         }
     },
 
-    mounted() {
-        this.loadProject()
-
-        this.isMobile = this.$store.state.misc.isMobile
-    },
-
     computed: {
         dragOptions() {
             return {
@@ -70,6 +66,16 @@ export default {
                 ghostClass: "ghost"
             };
         },
+
+
+      currentOrganisation: function() {
+        return this.$store.state.organisations.currentOrganisation
+      }
+    },
+
+    mounted() {
+      this.loadProject()
+      this.isMobile = this.$store.state.misc.isMobile
     },
 
     methods: {
@@ -82,7 +88,12 @@ export default {
               this.project = loaded.project;
               this.setTitle(this.project.name);
               this.groups = loaded.groups;
+
+              if(loaded.project.organisation && (loaded.project.organisation !== this.currentOrganisation.id)) {
+                this.$store.commit('organisations/setOrganisation', loaded.project.organisation.id);
+              }
               this.loading = false;
+
             } else {
               this.loading = false;
               this.notFound = true;
@@ -281,8 +292,10 @@ export default {
             const deleted = await TaskGroupService.delete(groupId, this)
             if(deleted) {
               this.groups.splice(groupKey, 1)
-              console.log(this.groups)
-              this.deleteData = null
+
+              this.deleteData = {
+                name: null
+              }
             }
         },
 

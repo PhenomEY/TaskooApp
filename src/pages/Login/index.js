@@ -34,6 +34,7 @@ export default {
                         this.$store.commit('auth/setAuthToken', response.data.auth)
                         this.$store.commit('user/setUser', response.data.user)
                         this.$store.commit('auth/setVerifiedUser', true)
+                        this.$store.commit('organisations/setAvailableOrganisations', response.data.organisations)
                         this.$router.push({
                             name: 'Dashboard'
                         });

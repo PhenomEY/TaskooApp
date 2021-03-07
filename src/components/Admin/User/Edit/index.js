@@ -1,9 +1,10 @@
 import TaskooInput from "components/TaskooInput/TaskooInput";
+import Multiselect from 'vue-multiselect'
 import axios from "axios";
 
 export default {
     name: 'AdminUserEdit',
-    components: { TaskooInput },
+    components: { TaskooInput, Multiselect },
 
     data() {
       return {
@@ -43,11 +44,15 @@ export default {
             required: false
           }
         },
+
+        organisations: null,
+        assignedOrganisations: null
       }
     },
 
     mounted() {
       this.getUser()
+      this.getOrganisations()
     },
 
     watch: {
@@ -78,10 +83,21 @@ export default {
               this.userForm.lastname.value = response.data.lastname;
               this.userForm.email.value = response.data.email;
               this.userForm.active.value = response.data.active;
+              this.assignedOrganisations = response.data.organisations;
             }
 
           })
 
+      },
+
+      getOrganisations() {
+        axios
+          .get(axios.defaults.baseURL+'/organisation')
+          .catch(function (error) {
+          })
+          .then(response => {
+            this.organisations = response.data.organisations
+          })
       },
 
       toggleInvite(state) {
@@ -109,6 +125,16 @@ export default {
           this.updatingUser = false;
           return;
         } else {
+          this.formError = false;
+        }
+
+        if(form.form.password.value != this.password_ver.value) {
+          this.password_ver.error = true;
+          this.formError = true;
+          this.updatingUser = false;
+          return;
+        } else {
+          this.password_ver.error = false;
           this.formError = false;
         }
 
@@ -146,6 +172,34 @@ export default {
 
       verifyPassword() {
 
+      },
+
+      setOrganisation(organisation) {
+        const userId = this.$route.params.id;
+
+        axios
+          .put(axios.defaults.baseURL+'/user/'+userId, {
+            addOrganisation: organisation.id
+          })
+          .catch(error => {
+          })
+          .then(response => {
+            console.log(response)
+          })
+      },
+
+      removeOrganisation(organisation) {
+        const userId = this.$route.params.id;
+
+        axios
+          .put(axios.defaults.baseURL+'/user/'+userId, {
+            removeOrganisation: organisation.id
+          })
+          .catch(error => {
+          })
+          .then(response => {
+            console.log(response)
+          })
       }
     }
 }

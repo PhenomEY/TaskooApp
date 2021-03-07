@@ -1,6 +1,6 @@
 <template>
   <div class="settings-wrapper">
-    <md-tabs md-sync-route>
+    <md-tabs v-if="verifiedAdmin" md-sync-route>
       <md-tab id="system" :md-label="$t('settings.main.title')" to="/admin" exact>
         <admin-main></admin-main>
       </md-tab>

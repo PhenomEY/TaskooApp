@@ -5,29 +5,44 @@ export default {
   name: 'LayoutSidebar',
   components: {TaskooTaskbar},
   data: () => ({
-    projects: null
+    projects: null,
+    organisationChanged: false
   }),
-
-  mounted() {
-    this.getTestData()
-  },
-
-  watch: {
-  },
 
   computed: {
     userType: function() {
       return this.$store.state.user.user.role
+    },
+
+    currentOrganisation: function() {
+      return this.$store.state.organisations.currentOrganisation
     }
   },
+
+  mounted() {
+    this.getProjects()
+  },
+
+  watch: {
+    '$store.state.organisations.currentOrganisation': function() {
+      this.projects = null
+      this.organisationChanged = true
+     this.getProjects(true)
+    },
+  },
+
   methods: {
-    getTestData() {
+
+    getProjects(changedOrg) {
+      const orgId = this.$store.state.organisations.currentOrganisation.id;
+
       axios
-        .get('https://api.taskoo.de/api/getProjectNavTestData')
+        .get(axios.defaults.baseURL+'/organisation/'+orgId+'/projects')
         .catch(function (error) {
         })
         .then(response => {
-          this.projects = response.data.data.projects
+          if(this.organisationChanged && !changedOrg) return
+          this.projects = response.data.projects
         })
     },
 

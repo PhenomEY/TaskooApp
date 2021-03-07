@@ -30,7 +30,45 @@
   }
 
   .taskoo-select {
-    margin-right: 30px;
+    &.organisations {
+      margin-right: 30px;
+      background:$taskoo-main;
+      border-radius:20px;
+      max-width: 180px;
+      max-height: 28px;
+      min-height: auto;
+      transition: all 50ms;
+
+      &.multiselect--active {
+        border-radius: 15px 15px 0 0;
+      }
+
+      .multiselect__tags {
+        background:transparent;
+        border:none;
+        box-shadow:none;
+        min-height:auto;
+        padding: 3px 40px 0 0;
+      }
+
+      .multiselect__single, .multiselect__input {
+        background:transparent;
+        color:#ffffff;
+        text-align:center;
+        font-size:14px;
+      }
+
+      .multiselect__select {
+        height:28px;
+        top:0;
+
+        &:before {
+          top: 18px;
+          color:#ffffff;
+          border-color:#ffffff transparent transparent;
+        }
+      }
+    }
   }
 
   .icons-right {

@@ -6,10 +6,19 @@ export default {
     components: { AdminMain },
 
     data: () => ({
+      verifiedAdmin: false
     }),
 
     mounted() {
       this.setTitle(this.$t('settings.title'));
+
+      if(this.$store.state.user.user.role !== 10) {
+        this.$router.push({
+          name: 'Dashboard'
+        })
+      } else {
+        this.verifiedAdmin = true
+      }
     },
 
   methods: {

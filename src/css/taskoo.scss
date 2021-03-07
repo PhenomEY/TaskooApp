@@ -60,7 +60,7 @@ h1, h2 {
 
 .taskoo-dialog {
   .md-dialog-container {
-    border:$taskoo-border-radius;
+    border-radius:$taskoo-border-radius;
 
     .md-button {
       &.md-primary {
