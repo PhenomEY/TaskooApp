@@ -72,6 +72,15 @@
     .header {
       display: flex;
       align-items: center;
+
+      .color-brick {
+        height:10px;
+        width: 10px;
+        display:inline-block;
+        margin-right:10px;
+        background: $taskoo-main;
+      }
+
       .project-title {
         margin-right:10px;
         font-size:21px;

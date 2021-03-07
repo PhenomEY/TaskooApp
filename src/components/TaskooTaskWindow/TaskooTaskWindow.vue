@@ -23,6 +23,7 @@
   <div class="task-window" v-bind:class="{'is-done': (task.isDone)}" v-else-if="task">
     <div class="taskbar">
       <div class="header">
+        <span v-if="task.project.organisation" class="color-brick box-shadow" :title="task.project.organisation.name" v-bind:style= "[task.project.organisation.color ? {background: task.project.organisation.color} : {}]"></span>
         <h1 class="project-title">
           {{ task.project.name }}
         </h1>
