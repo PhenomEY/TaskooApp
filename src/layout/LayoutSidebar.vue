@@ -56,6 +56,11 @@ m1270 -10 c189 -30 340 -186 403 -416 29 -105 31 -334 4 -438 -47 -182 -151
 27 135 88 45 90 19 217 -57 267 -47 32 -125 32 -172 0z"/>
                   </g>
                 </svg>
+
+<!--              nav closer-->
+              <md-button class="md-icon-button md-list-action" @click="toggleMenu">
+                <md-icon>keyboard_arrow_left</md-icon>
+              </md-button>
             </md-list-item>
 
             <md-list-item v-bind:class="{'active': ($route.name === 'Dashboard')}" @click="goToName('Dashboard')">

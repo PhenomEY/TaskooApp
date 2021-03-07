@@ -8,19 +8,6 @@ html,body {
 }
 
 
-//nav open
-body {
-  &.open-menu {
-    .md-drawer {
-      &.md-permanent {
-        position: absolute;
-        transform: translate3D(0,0,0);
-        width: 100%;
-      }
-    }
-  }
-}
-
 
 .taskoo-skeleton {
   flex:1;
@@ -69,4 +56,24 @@ h1, h2 {
     }
 
   }
+}
+
+@media all and (max-width: 600px) {
+//nav open
+body {
+  .md-drawer {
+    &.md-permanent {
+      position: absolute;
+      width: 100%;
+    }
+  }
+
+  &.open-menu {
+    .md-drawer {
+      &.md-permanent {
+        transform: translate3D(0,0,0);
+      }
+    }
+  }
+}
 }

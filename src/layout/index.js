@@ -60,5 +60,14 @@ export default {
         path: target+id
       })
     },
+
+    toggleMenu() {
+      let body = document.body;
+      if(!body.classList.contains('open-menu')) {
+        body.classList.add('open-menu')
+      } else {
+        body.classList.remove('open-menu')
+      }
+    },
   }
 }
