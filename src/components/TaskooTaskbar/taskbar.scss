@@ -2,7 +2,7 @@
 
 .taskoo-taskbar {
   min-height:48px;
-  background:$taskoo-default-bg;
+  background:var(--taskoo-nav-bg);
   display:flex;
   align-items: center;
   justify-content: space-between;

@@ -38,7 +38,7 @@
     }
 
     .vt-theme-taskoo {
-      background:$taskoo-default-bg;
+      background:var(--taskoo-default-bg);
       border-left: 4px solid $taskoo-success-color;
       min-height: 70px;
       box-shadow:$taskoo-box-shadow;

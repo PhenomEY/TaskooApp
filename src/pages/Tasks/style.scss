@@ -2,7 +2,7 @@
 
 .tasks-wrapper {
   flex:1;
-  background:$taskoo-light-grey;
+  background:var(--taskoo-wrapper-bg);
   position: relative;
   display: flex;
   overflow: hidden;
@@ -31,7 +31,7 @@
         display: flex;
         align-items: center;
         cursor:pointer;
-        background: #ffffff;
+        background: transparent;
         border:1px solid $taskoo-done-color;
         color:$taskoo-done-color;
 

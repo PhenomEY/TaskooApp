@@ -28,7 +28,7 @@
     -webkit-appearance: none;
     font-family: "Noto Sans JP";
     border-radius:$taskoo-border-radius;
-    border:1px solid $taskoo-border-color;
+    border:1px solid var(--taskoo-border-default);
     padding: 5px 10px;
     width: 100%;
     height:$taskoo-input-height;
@@ -42,6 +42,23 @@
     &:focus {
       border-color:$taskoo-main;
       outline:none;
+    }
+  }
+}
+
+.taskoo-dark-theme {
+  .taskoo-input {
+    .input-label {
+      color:rgba(255,255,255,0.6);
+    }
+
+    input {
+      background:var(--taskoo-nav-bg);
+      color:rgba(255,255,255,0.6);
+
+      &::placeholder {
+        color:rgba(255,255,255,0.2);
+      }
     }
   }
 }

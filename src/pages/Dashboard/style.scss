@@ -1,9 +1,8 @@
 @import '../../scss/vars/variables';
 
-
 .dashboard-wrapper {
   padding:16px;
-  background:$taskoo-light-grey;
+  background:var(--taskoo-wrapper-bg);
   flex:1;
   display: flex;
   justify-content: center;
@@ -64,10 +63,11 @@
     }
 
     .notifications {
-      background:$taskoo-default-bg;
-      border:1px solid $taskoo-border-color;
+      background:var(--taskoo-default-bg);
+      border:1px solid var(--taskoo-border-default);
       border-radius:$taskoo-border-radius;
       margin-top:16px;
+      overflow: hidden;
 
       &.skeleton {
         background:transparent;
@@ -87,7 +87,7 @@
         height: 30px;
         font-size: 12px;
         padding:0 10px;
-        border-top:1px solid #eaeaea;
+        border-top:1px solid var(--taskoo-border-secondary);
         transition:background 100ms;
 
         .to-notification {
@@ -111,7 +111,7 @@
           height:30px;
 
           &:hover {
-            background:$taskoo-default-bg;
+            background:var(--taskoo-default-bg);
           }
         }
 
@@ -132,6 +132,25 @@
       }
     }
 
+  }
+}
+
+.taskoo-dark-theme {
+  .dashboard-wrapper {
+    .dashboard {
+      .notifications {
+        .entry {
+          border-color:var(--taskoo-wrapper-bg);
+          &:hover {
+            background: var(--taskoo-wrapper-bg);
+          }
+
+          .time {
+            color:rgba(255,255,255,0.4);
+          }
+        }
+      }
+    }
   }
 }
 

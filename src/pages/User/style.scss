@@ -5,7 +5,7 @@
   padding:16px 0;
   display: flex;
   flex:1;
-  background:$taskoo-light-grey;
+  background:var(--taskoo-wrapper-bg);
   justify-content: center;
 
   .taskoo-profile {

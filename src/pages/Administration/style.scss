@@ -4,11 +4,11 @@
   padding:16px 0;
   display: flex;
   flex:1;
-  background:$taskoo-light-grey;
+  background:var(--taskoo-wrapper-bg);
   justify-content: center;
 
   .md-tabs.md-theme-default  {
-    background:$taskoo-default-bg;
+    background:var(--taskoo-default-bg);
     box-shadow:$taskoo-box-shadow;
     border-radius: $taskoo-border-radius;
     max-width: 732px;
@@ -24,6 +24,16 @@
       display: flex;
       flex: 1;
       height: auto !important;
+    }
+  }
+}
+
+.taskoo-dark-theme {
+  .settings-wrapper {
+    .taskoo-input {
+      input {
+        background:var(--taskoo-wrapper-bg);
+      }
     }
   }
 }

@@ -30,7 +30,7 @@
       }
 
       .md-list-item {
-        border-right: 1px solid $taskoo-border-color-secondary;
+        border-right: 1px solid var(--taskoo-border-secondary);
 
         &.active {
           background:rgba(0,0,0,0.07);
@@ -38,7 +38,7 @@
 
         &.taskoo-logo {
           border:none;
-          background:$taskoo-default-bg;
+          background:var(--taskoo-nav-bg);
           box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);
           svg {
             width:100px;
@@ -53,7 +53,7 @@
       &.project-nav {
         flex:1;
         height:100%;
-        border-right: 1px solid $taskoo-border-color-secondary;
+        border-right: 1px solid var(--taskoo-border-secondary);
         padding-top:15px;
 
         .md-list-item {
@@ -72,7 +72,7 @@
               .md-list-item-text {
                 font-size:12px;
                 font-weight:bold;
-                border-bottom: 1px solid $taskoo-border-color-secondary;
+                border-bottom: 1px solid var(--taskoo-border-secondary);
                 padding-bottom: 8px;
               }
             }
@@ -105,6 +105,38 @@
 
   }
 
+  .nav-closer {
+    display:none;
+  }
+}
+
+.taskoo-dark-theme {
+  .md-drawer {
+    .md-list {
+      &.main, &.project-nav {
+        background: var(--taskoo-wrapper-bg);
+      }
+    }
+
+    .bottom-nav {
+      background:var(--taskoo-nav-bg);
+      a {
+        color:$taskoo-main;
+
+        &:hover {
+          color:$taskoo-main;
+        }
+      }
+    }
+  }
+}
+
+@media all and (max-width: 600px) {
+  .layout-sidebar {
+    .nav-closer {
+      display:block !important;
+    }
+  }
 }
 
 

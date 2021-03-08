@@ -2,7 +2,7 @@
 
 .project-wrapper {
   flex:1;
-  background:$taskoo-light-grey;
+  background:var(--taskoo-wrapper-bg);
   position: relative;
   display: flex;
   overflow: hidden;

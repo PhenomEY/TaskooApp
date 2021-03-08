@@ -41,8 +41,8 @@
       display:flex;
       flex-direction: row;
       align-items: center;
-      border-top:1px solid $taskoo-border-color-secondary;
-      background: #ffffff;
+      border-top:1px solid var(--taskoo-border-secondary);
+      background: var(--taskoo-default-bg);
 
       &.loading {
         align-items: center;

@@ -28,7 +28,7 @@
 
     .multiselect__tags {
       border-radius:$taskoo-border-radius;
-      border:1px solid $taskoo-border-color;
+      border:1px solid var(--taskoo-border-default);
       box-shadow:$taskoo-box-shadow;
     }
     .multiselect__option {
@@ -54,6 +54,21 @@
       display:block;
       width: auto;
       font-size: 14px;
+    }
+  }
+}
+
+.taskoo-dark-theme {
+  .taskoo-user-select {
+    .user-select {
+      .multiselect__tags {
+        background:var(--taskoo-nav-bg);
+      }
+
+      .multiselect__input {
+        background:transparent;
+        color:rgba(255,255,255,0.6);
+      }
     }
   }
 }

@@ -38,6 +38,10 @@ export default {
       availableOrganisations() {
         return this.$store.state.organisations.availableOrganisations
       },
+
+      isDark() {
+        return this.$store.state.misc.isDark
+      },
     },
 
 
@@ -83,5 +87,14 @@ export default {
             body.classList.remove('open-menu')
           }
       },
+
+      toggleViewMode() {
+          console.log(this.isDark)
+          if(!this.isDark || this.isDark == 'false') {
+            this.$store.commit('misc/toggleDarkMode', true);
+          } else {
+            this.$store.commit('misc/toggleDarkMode', false);
+          }
+      }
     }
 }

@@ -22,3 +22,12 @@
    }
  }
 }
+
+.taskoo-dark-theme {
+  .taskoo-search {
+    input {
+      background:var(--taskoo-wrapper-bg);
+      border-color:var(--taskoo-wrapper-bg);
+    }
+  }
+}

@@ -38,10 +38,11 @@
 
 
   .tasklist {
-    background:$taskoo-default-bg;
-    border:1px solid $taskoo-border-color;
+    background:var(--taskoo-default-bg);
+    border:1px solid var(--taskoo-border-default);
     box-shadow:$taskoo-box-shadow;
     border-radius:$taskoo-border-radius;
+    overflow: hidden;
 
     .task {
       display:flex;
@@ -49,7 +50,7 @@
       align-items: center;
       height: 40px;
       padding:0 10px;
-      border-top:1px solid #eaeaea;
+      border-top:1px solid var(--taskoo-border-secondary);
       transition:background 100ms;
 
       .md-icon-button {
@@ -90,7 +91,7 @@
         }
 
         &:hover {
-          background:$taskoo-default-bg;
+          background:var(--taskoo-default-bg);
         }
 
       }
@@ -176,6 +177,37 @@
           }
         }
       }
+    }
+  }
+}
+
+.taskoo-dark-theme {
+
+  .taskoo-tasklist {
+    .task {
+      &:hover {
+        background: var(--taskoo-wrapper-bg);
+      }
+      border-color:var(--taskoo-wrapper-bg);
+
+      .list-task-right {
+        .list-task-project {
+          color:rgba(255,255,255,0.4);
+
+          .project {
+            &:hover {
+              color:rgba(255,255,255,0.7);
+            }
+          }
+        }
+
+        .list-task-secondary {
+          .sub-date-due {
+            color:rgba(255,255,255,0.4);
+          }
+        }
+      }
+
     }
   }
 }

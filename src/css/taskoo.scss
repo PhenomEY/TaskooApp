@@ -1,4 +1,13 @@
 @import 'src/scss/vars/variables';
+@import "taskoo-dark";
+
+:root {
+  --taskoo-wrapper-bg: #{$taskoo-light-grey};
+  --taskoo-default-bg: #{$taskoo-default-bg};
+  --taskoo-nav-bg: #{$taskoo-default-bg};
+  --taskoo-border-secondary: #{$taskoo-border-color-secondary};
+  --taskoo-border-default: #{$taskoo-border-color};
+}
 
 html,body {
   text-size-adjust: none;
@@ -26,7 +35,7 @@ h1, h2 {
 
   .multiselect__tags {
     border-radius:$taskoo-border-radius;
-    border:1px solid $taskoo-border-color;
+    border:1px solid var(--taskoo-border-default);
     box-shadow:$taskoo-box-shadow;
   }
 
@@ -77,3 +86,7 @@ body {
   }
 }
 }
+
+
+
+

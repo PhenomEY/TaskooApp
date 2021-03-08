@@ -6,7 +6,7 @@
     width: $taskoo-input-width;
     font-family: "Roboto";
     border-radius: $taskoo-border-radius;
-    border: 1px solid $taskoo-border-color;
+    border: 1px solid var(--taskoo-border-default);
     margin-bottom: 10px;
     height: 40px;
     min-height: 40px;
@@ -110,5 +110,31 @@
 
   input {
 
+  }
+}
+
+
+.taskoo-dark-theme {
+  .taskoo-datepicker {
+    .datepicker {
+      &:hover {
+        border-color:var(--taskoo-border-default);
+      }
+      .datepicker-icon {
+        color:rgba(255,255,255,0.6);
+        z-index: 1;
+      }
+
+      .vdp-datepicker {
+        input {
+          background:var(--taskoo-nav-bg);
+          color:rgba(255,255,255,0.6);
+        }
+
+        .vdp-datepicker__calendar {
+          background:var(--taskoo-wrapper-bg);
+        }
+      }
+    }
   }
 }

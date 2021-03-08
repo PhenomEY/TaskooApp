@@ -40,6 +40,12 @@
     mounted() {
       axios.defaults.headers.common['Authorization'] = this.$store.state.auth.authToken
 
+      if (this.$store.state.misc.isDark === 'true') {
+        document.body.classList.add('taskoo-dark-theme');
+      } else {
+        document.body.classList.remove('taskoo-dark-theme');
+      }
+
       //if site isnt public, check for auth
       if(!this.publicUrls.includes(this.$route.name)) {
         this.checkAuth()

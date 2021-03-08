@@ -9,9 +9,9 @@
 
   .taskoo-select-options {
     border-radius: $taskoo-border-radius;
-    border:1px solid $taskoo-border-color;
+    border:1px solid var(--taskoo-border-default);
     box-shadow: 0px 1px 4px rgba(0,0,0,0.1);
-    background:$taskoo-default-bg;
+    background:var(--taskoo-default-bg);
     outline:none;
     .option {
       padding: 3px 20px;
@@ -37,8 +37,9 @@
       background: #ffffff;
       color: rgba(0,0,0,0.7);
       border-radius: $taskoo-border-radius;
-      border:1px solid $taskoo-border-color;
+      border:1px solid var(--taskoo-border-default);
       box-shadow: 0px 1px 4px rgba(0,0,0,0.1);
+      overflow: hidden;
 
       .taskoo-popover-options {
         font-size: 11px;
@@ -95,7 +96,7 @@
       border-style: solid;
       position: absolute;
       margin: 5px;
-      border-color: $taskoo-border-color;
+      border-color: var(--taskoo-border-default);
     }
 
     &[x-placement^="top"] {
@@ -175,6 +176,24 @@
 
       &:focus {
         outline:none;
+      }
+    }
+  }
+
+
+  .taskoo-dark-theme {
+    .tooltip {
+      .tooltip-inner {
+        color:rgba(255,255,255,0.67);
+        background:var(--taskoo-nav-bg);
+
+        .taskoo-popover-options {
+          .option {
+            &:hover {
+              background:var(--taskoo-wrapper-bg);
+            }
+          }
+        }
       }
     }
   }

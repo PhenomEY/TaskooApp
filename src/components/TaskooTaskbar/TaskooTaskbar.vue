@@ -25,6 +25,15 @@
     </multiselect>
 
     <div class="icons-right">
+      <md-button class="md-icon-button viewmode-switch" @click="toggleViewMode">
+        <md-icon class="dark-mode" v-if="!isDark || isDark === 'false'">
+        nightlight_round
+        </md-icon>
+        <md-icon class="light-mode" v-else>
+          light_mode
+        </md-icon>
+      </md-button>
+
       <taskoo-refresh :interval="refreshInterval"></taskoo-refresh>
 
       <md-badge :md-content="notificationCount" md-dense v-bind:class="{'no-badge': notificationCount === 0}">

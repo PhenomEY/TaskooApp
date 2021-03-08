@@ -1,7 +1,7 @@
 
 @import '../../scss/vars/variables';
 body {
-  background:$taskoo-default-bg;
+  background:var(--taskoo-default-bg);
 }
 
 
@@ -15,7 +15,7 @@ body {
     padding:16px;
     max-width: 450px;
     flex:1;
-    background:$taskoo-default-bg;
+    background:var(--taskoo-default-bg);
     border-radius:$taskoo-border-radius;
     margin-top:10%;
 
@@ -87,5 +87,13 @@ body {
 
   &:hover {
     background:#25a725;
+  }
+}
+
+.taskoo-dark-theme {
+  .offpage-wrapper {
+    .slim-container {
+      background:var(--taskoo-wrapper-bg);
+    }
   }
 }

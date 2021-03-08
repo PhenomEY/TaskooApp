@@ -4,7 +4,7 @@
   position: relative;
   display:flex;
   flex:1;
-  background:$taskoo-light-grey;
+  background:var(--taskoo-wrapper-bg);
 
   &.slideOut {
     animation-name: slideOut;
