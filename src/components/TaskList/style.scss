@@ -182,8 +182,14 @@
 }
 
 .taskoo-dark-theme {
-
   .taskoo-tasklist {
+
+    .md-empty-state {
+      .md-icon.md-empty-state-icon {
+        color:#2b2e3a;
+      }
+    }
+
     .task {
       &:hover {
         background: var(--taskoo-wrapper-bg);

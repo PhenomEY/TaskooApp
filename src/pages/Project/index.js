@@ -323,6 +323,15 @@ export default {
         },
 
       toggleDeleteDialog(data) {
+          if(!data) {
+            this.deleteData = {
+              name: null
+            }
+
+            this.showDeleteDialog = false
+            return;
+          }
+
           this.deleteData = data
           this.showDeleteDialog = !this.showDeleteDialog;
 

@@ -118,7 +118,7 @@
       :md-content="$t('prompts.delete.taskGroup.description')"
       :md-confirm-text="$t('prompts.delete.taskGroup.confirm')"
       :md-cancel-text="$t('prompts.delete.taskGroup.cancel')"
-      @md-cancel="toggleDeleteDialog"
+      @md-cancel="toggleDeleteDialog(false)"
       @md-confirm="deleteGroup"
       class="taskoo-dialog"
     />

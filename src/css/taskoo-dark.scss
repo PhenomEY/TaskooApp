@@ -13,6 +13,13 @@
     background:var(--taskoo-wrapper-bg) !important;
   }
 
+  .taskoo-dialog {
+    .md-dialog-container {
+      background:var(--taskoo-nav-bg);
+      border:1px solid var(--taskoo-wrapper-bg);
+    }
+  }
+
 
   .pu-skeleton {
     background-color: #13151b !important;
