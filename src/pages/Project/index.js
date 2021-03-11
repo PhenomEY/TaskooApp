@@ -313,6 +313,8 @@ export default {
 
             if(!this.$store.state.misc.isMobile) { return }
 
+          const scrollPosition = window.pageYOffset;
+
            if(direction === 'left' && currentX !== -(maxWidth -groupWidth)) {
                transitionGroup.style.transform = 'translateX('+(currentX-groupWidth)+'px)'
            }

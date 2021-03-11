@@ -9,7 +9,7 @@
         {{ $t('settings.users.createUser') }}
       </button>
 
-      <div class="user-list box-shadow">
+      <div class="taskoo-list box-shadow">
         <div class="actions">
           <md-button class="md-icon-button" @click="getUsers">
             <md-icon>refresh</md-icon>

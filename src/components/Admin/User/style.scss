@@ -16,7 +16,7 @@
     cursor:pointer;
   }
 
-  .user-list {
+  .taskoo-list {
     margin-top:20px;
     display:flex;
     flex-direction: column;
@@ -44,6 +44,10 @@
       border-top:1px solid var(--taskoo-border-secondary);
       background: var(--taskoo-default-bg);
 
+      &:hover {
+        background:var(--taskoo-wrapper-bg);
+      }
+
       &.loading {
         align-items: center;
         justify-content: center;
@@ -51,10 +55,6 @@
 
       &:first-child {
         border:none;
-      }
-
-      div {
-        padding:0 3px;
       }
 
       .id {
@@ -106,6 +106,23 @@
           min-width: 25px;
           width: 25px;
           height: 25px;
+        }
+      }
+    }
+  }
+}
+
+
+.taskoo-dark-theme {
+  .settings-wrapper {
+    .taskoo-list {
+      background:var(--taskoo-wrapper-bg);
+
+      .entry {
+        background:var(--taskoo-wrapper-bg);
+
+        &:hover {
+          background:var(--taskoo-nav-bg);
         }
       }
     }

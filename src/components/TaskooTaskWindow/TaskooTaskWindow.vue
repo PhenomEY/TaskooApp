@@ -96,6 +96,11 @@
         <multiselect class="taskoo-select"
                      v-model="taskPriority"
                      :options="priorityOptions"
+                     :searchable="false"
+                     selectLabel=""
+                     deselectLabel=""
+                     selectedLabel=""
+                     :allowEmpty="false"
                      @select="updatePriority"
         >
           <template slot="singleLabel" slot-scope="props"> <span>{{props.option.name}}</span></template>

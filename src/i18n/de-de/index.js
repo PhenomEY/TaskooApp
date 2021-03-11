@@ -20,7 +20,8 @@ export default {
     "admin": "Administration",
     "logout": "Abmelden",
     "myProfile": "Mein Profil",
-
+    "lightMode": "Light-Mode",
+    "darkMode": "Dark-Mode",
     "projects": {
       "title": "Deine Projekte",
       "create": "Projekt anlegen",
@@ -183,6 +184,12 @@ export default {
       "taskGroup": {
         "title": "Möchtest du die Gruppe „{name}” wirklich löschen?",
         "description": "Aufgaben in dieser Gruppe werden unwiderruflich gelöscht.",
+        "confirm": "löschen",
+        "cancel": "abbrechen"
+      },
+      "organisation": {
+        "title": "Möchtest du die Abteilung „{name}”  wirklich löschen?",
+        "description": "Alle Projekte und Aufgaben in dieser Abteilung werden unwiderruflich gelöscht.",
         "confirm": "löschen",
         "cancel": "abbrechen"
       },

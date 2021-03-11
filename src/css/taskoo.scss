@@ -39,6 +39,32 @@ h1, h2 {
     box-shadow:$taskoo-box-shadow;
   }
 
+  .multiselect__content-wrapper {
+    .multiselect__element {
+      &:first-child {
+        .multiselect__option {
+        border-top:none;
+        }
+      }
+    }
+
+
+    .multiselect__option {
+      background:var(--taskoo-default-bg);
+      border-top:1px solid var(--taskoo-border-secondary);
+
+      &.multiselect__option--highlight {
+        color:rgba(0,0,0,0.6);
+      }
+
+
+      &:hover {
+        background:var(--taskoo-wrapper-bg);
+        color:rgba(0,0,0,0.6);
+      }
+    }
+  }
+
   &.multiselect--active {
     .multiselect__tags {
       border-color:$taskoo-border-h-color;
@@ -64,6 +90,28 @@ h1, h2 {
       }
     }
 
+  }
+}
+
+
+//DARK MODE
+.taskoo-dark-theme {
+  .taskoo-select {
+    .multiselect__content-wrapper {
+
+      .multiselect__option {
+        background: var(--taskoo-wrapper-bg);
+        color:rgba(255,255,255,0.6);
+
+        &.multiselect__option--highlight {
+          color:rgba(255,255,255,0.6);
+        }
+
+        &:hover {
+          background:var(--taskoo-nav-bg);
+        }
+      }
+    }
   }
 }
 

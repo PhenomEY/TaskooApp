@@ -68,6 +68,29 @@
           border-color:#ffffff transparent transparent;
         }
       }
+
+      .multiselect__content-wrapper {
+        border-color:var(--taskoo-border-secondary);
+        background:transparent;
+
+        .multiselect__option {
+          padding:0;
+          background:transparent;
+          min-height:auto;
+
+          .organisation-entry {
+            width: 100%;
+            display:block;
+            padding:6px 10px;
+            color:#ffffff;
+            font-size:12px;
+
+            &:hover {
+              color:rgba(0,0,0,0.8);
+            }
+          }
+        }
+      }
     }
   }
 

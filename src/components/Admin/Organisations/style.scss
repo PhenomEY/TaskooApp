@@ -1,1 +1,35 @@
 @import 'src/scss/vars/variables';
+
+.organisations-wrapper {
+
+  .create-organisation {
+    display:flex;
+
+    .create-button {
+      margin-top:23px;
+    }
+  }
+
+
+  .taskoo-list {
+    margin-bottom:80px;
+    overflow:visible;
+
+    .entry {
+      .name {
+        display:flex;
+        flex-direction: row;
+        align-items: center;
+      }
+
+      .infos {
+        margin-left:15px;
+        font-size: 10px;
+
+        .members {
+          margin-left:10px;
+        }
+        }
+    }
+  }
+}

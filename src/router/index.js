@@ -63,7 +63,10 @@ export default new Router({
         {
           name: 'AdminUser',
           path: 'user',
-          component: require('components/Admin/User/User').default,
+          components: {
+            adminUsers:require('components/Admin/User/User').default,
+          } ,
+
           children: [
             {
               path: 'create',
@@ -81,7 +84,9 @@ export default new Router({
         {
           name: 'AdminOrganisations',
           path: 'organisations',
-          component: require('components/Admin/Organisations/Organisations').default,
+          components: {
+            adminOrganisations: require('components/Admin/Organisations/Organisations').default
+          }
         }
       ]
     },

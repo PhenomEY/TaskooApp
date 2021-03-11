@@ -1,0 +1,33 @@
+@import "src/scss/vars/variables";
+@import "src/scss/vars/multiselect";
+
+.taskoo-select.color-select {
+  width: 80px;
+
+  .multiselect__content-wrapper {
+    max-height:100px !important;
+  }
+
+  .multiselect__tags {
+    padding: 8px 8px 0 8px;
+  }
+
+  .multiselect__select {
+    display:none;
+  }
+
+  .multiselect__single {
+    display:flex;
+    padding:0;
+  }
+
+  .multiselect__option {
+    display:flex;
+  }
+
+  .color-brick {
+    display:inline-block;
+    width: 100%;
+  }
+
+}

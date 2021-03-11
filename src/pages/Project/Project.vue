@@ -72,12 +72,6 @@
         </div>
       </div>
 
-      <div class="add-first-group" v-if="groups.length === 0" @click="addNewGroup">
-        <md-button class="md-icon-button md-list-action">
-          <md-icon>add</md-icon>
-        </md-button>
-      </div>
-
         <draggable v-touch:swipe="swipeHandler" :disabled="isMobile" v-model="groups" class="task-groups" v-bind="dragOptions" handle=".group-drag" @change="changedGroupPositions(groups)">
           <transition-group type="transition" class="transition-group">
             <li
@@ -108,6 +102,14 @@
               ></task-group>
             </li>
           </transition-group>
+
+          <li class="task-group-item">
+            <div class="add-first-group" @click="addNewGroup">
+              <md-button class="md-icon-button md-list-action">
+                <md-icon>add</md-icon>
+              </md-button>
+            </div>
+          </li>
         </draggable>
       </div>
 
