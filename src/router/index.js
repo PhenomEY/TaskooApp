@@ -8,6 +8,11 @@ export default new Router({
 
   routes: [
     {
+      path: '/project/create',
+      name: 'CreateProject',
+      component: require('pages/Project/Create/CreateProject').default
+    },
+    {
       path: '/project/:projectId',
       name: 'Project',
       component: require('pages/Project/Project').default,
@@ -16,11 +21,6 @@ export default new Router({
       path: '/task/:taskId',
       name: 'Task',
       component: require('pages/Task/Task').default
-    },
-    {
-      path: '/project/create',
-      name: 'CreateProject',
-      component: require('pages/Project/Create/CreateProject').default
     },
     {
       path: '/',

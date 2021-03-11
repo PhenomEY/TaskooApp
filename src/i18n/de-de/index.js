@@ -169,7 +169,12 @@ export default {
     },
 
     "organisations": {
-      "title": "Abteilungen"
+      "title": "Abteilungen",
+      "create": "Neue Abteilung erstellen",
+      "list": {
+        "projects": "Projekte",
+        "users": "Mitglieder"
+      }
     }
   },
 
