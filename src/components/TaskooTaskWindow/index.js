@@ -271,7 +271,7 @@ export default {
           if(this.task.mainTask) {
             this.$router.push({ name: `Task`, params: {taskId: this.task.mainTaskId} });
           } else {
-            this.$router.push({ name: `Project`, params: {projectId: this.task.projectId} });
+            this.$router.push({ name: `Project`, params: {projectId: this.task.project.id} });
           }
         }
       },

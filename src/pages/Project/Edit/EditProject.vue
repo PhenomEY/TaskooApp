@@ -32,7 +32,6 @@
             </button>
           </div>
 
-
         </md-tab>
 
         <md-tab id="user-list" :md-disabled="!project.isClosed" md-label="Mitglieder" :to="'/project/'+projectId+'/edit/users'">
