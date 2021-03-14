@@ -30,7 +30,6 @@ export default {
     watch: {
         '$store.state.misc.contentRefresh': function() {
             if (this.$store.state.misc.contentRefresh == true) {
-                this.loading = true;
                 this.loadProject(true)
             }
 
@@ -81,6 +80,7 @@ export default {
     methods: {
         async loadProject(toggle) {
             const projectId = this.$route.params.projectId
+            this.loading = true
 
             const loaded = await ProjectService.load(projectId, this);
 
@@ -337,6 +337,10 @@ export default {
           this.deleteData = data
           this.showDeleteDialog = !this.showDeleteDialog;
 
+      },
+
+      consoleLog() {
+          console.log('SAVED')
       }
     }
 }

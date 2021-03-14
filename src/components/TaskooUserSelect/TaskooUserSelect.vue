@@ -14,6 +14,7 @@
                  @select="addUser(...arguments)"
                  :limit="3"
                  :disabled="disabled"
+                 :custom-label="firstAndLastname"
                  :limitText= "count => $t('task.userSelect.more', {count: count})"
     >
       <template v-if="multi === false" slot="singleLabel" slot-scope="props"> <span>{{props.option.firstname}} {{props.option.lastname}}</span></template>

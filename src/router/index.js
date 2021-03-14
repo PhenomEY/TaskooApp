@@ -16,6 +16,18 @@ export default new Router({
       path: '/project/:projectId',
       name: 'Project',
       component: require('pages/Project/Project').default,
+      children: [
+        {
+          path: 'edit',
+          name: 'EditProject',
+          component: require('pages/Project/Edit/EditProject').default,
+          children: [{
+            path: 'users',
+            name: 'EditProjectUsers',
+            components: {users: require('pages/Project/Edit/Users/Users').default}
+          }]
+        },
+      ]
     },
     {
       path: '/task/:taskId',

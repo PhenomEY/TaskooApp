@@ -59,7 +59,7 @@
             <md-icon>star</md-icon>
           </md-button>
 
-          <md-button class="md-icon-button md-list-action">
+          <md-button class="md-icon-button md-list-action" :to="{ name: 'EditProject'}">
             <md-icon>edit</md-icon>
           </md-button>
         </div>
@@ -124,6 +124,8 @@
       @md-confirm="deleteGroup"
       class="taskoo-dialog"
     />
+
+    <router-view @projectSaved="loadProject" :model="project"></router-view>
 
     </div>
 </template>

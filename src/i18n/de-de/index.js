@@ -57,7 +57,14 @@ export default {
     "deadline": "Geplanter Abschluss am",
     "notFound": "Projekt konnte nicht gefunden werden",
     "closed": "Projekt nur für zugewiesene Nutzer sichtbar",
-    "public": "Dieses Projekt ist öffentlich"
+    "public": "Dieses Projekt ist öffentlich",
+    "projectLead": "Projektverantwortlicher",
+    "projectName": "Projektname",
+    "create": {
+      "public": "Öffentlich",
+      "closed": "Geschlossen",
+      "deadline": "Voraussichtliches Abschlussdatum"
+    }
 },
 
   "taskGroup": {

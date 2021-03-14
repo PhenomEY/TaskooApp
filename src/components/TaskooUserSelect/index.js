@@ -13,7 +13,7 @@ export default {
     },
 
     props: {
-        model: [Array],
+        model: [Array, Object],
         options: [Array],
         multi: Boolean,
         disabled: {
@@ -37,6 +37,10 @@ export default {
 
         addUser(addedUser, id) {
             this.$emit('addedUser', addedUser)
-        }
+        },
+
+      firstAndLastname ({ firstname, lastname }) {
+        return `${firstname} ${lastname}`
+      }
     }
 }

@@ -57,6 +57,7 @@
                  :options="organisations"
                  :multiple="true"
                  track-by="id"
+                 label="name"
                  @select="setOrganisation"
                  @remove="removeOrganisation"
     >

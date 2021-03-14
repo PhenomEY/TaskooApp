@@ -6,18 +6,18 @@
 
     <form novalidate class="form" @submit.prevent="createProject">
 
-      <taskoo-input type="text" label="Projektname" placeholder="Projektname" :model="projectName" @modelChanged="setProjectName(...arguments)"></taskoo-input>
+      <taskoo-input type="text" :label="$t('project.projectName')" :placeholder="$t('project.projectName')" :model="projectName" @modelChanged="setProjectName(...arguments)"></taskoo-input>
 
-      <taskoo-datepicker label="Voraussichtliches Abschlussdatum" @modelChanged="setDeadline(...arguments)"></taskoo-datepicker>
+      <taskoo-datepicker :label="$t('project.create.deadline')" @modelChanged="setDeadline(...arguments)"></taskoo-datepicker>
 
       <div class="project-users">
-        <div class="label">Projektverantwortlicher</div>
+        <div class="label">{{ $t('project.projectLead') }}</div>
         <taskoo-user-select :multi="false" :options="availableUsers" @addedUser="userSelected"></taskoo-user-select>
       </div>
 
       <div class="project-visibility">
-        <md-radio v-model="closed" :value="false">Öffentlich</md-radio>
-        <md-radio v-model="closed" :value="true">Geschlossen</md-radio>
+        <md-radio v-model="closed" :value="false">{{ $t('project.create.public') }}</md-radio>
+        <md-radio v-model="closed" :value="true">{{ $t('project.create.closed') }}</md-radio>
       </div>
 
 

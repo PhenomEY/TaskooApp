@@ -1,0 +1,65 @@
+@import '../../../scss/vars/variables';
+
+.edit-project-wrapper {
+  position: absolute;
+  width: 100%;
+  height:100%;
+  background:rgba(0,0,0,0.3);
+  display:flex;
+  justify-content: space-around;
+  z-index:10;
+  animation-fill-mode: forwards;
+  animation-name: fadeIn;
+  animation-duration: 200ms;
+
+  .edit-project-modal {
+    flex-grow: 0;
+    background:var(--taskoo-default-bg);
+    border-radius:$taskoo-border-radius;
+    align-self: self-start;
+    margin-top: 10%;
+    width: 100%;
+    max-width: 500px;
+
+    .edit-loading {
+      .taskoo-skeleton {
+        height:40px;
+        margin-bottom: 10px;
+        display: block;
+      }
+    }
+
+
+    .label {
+      display: block;
+      font-size: 16px;
+      font-weight: bold;
+      margin-bottom: 5px;
+      color: rgba(0, 0, 0, 0.67);
+    }
+
+    .md-tabs {
+      border:1px solid var(--taskoo-border-default);
+      border-radius:$taskoo-border-radius;
+      background:var(--taskoo-default-bg);
+
+      .md-tabs-navigation {
+        background:transparent;
+        justify-content: space-evenly;
+      }
+
+      .md-content {
+        background:transparent;
+      }
+    }
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity:0;
+  }
+  100% {
+    opacity:1;
+  }
+}

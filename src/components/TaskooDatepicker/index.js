@@ -21,6 +21,9 @@ export default {
     },
 
     watch: {
+      'model': function() {
+        this.inputModel = this.model
+      }
     },
 
 
