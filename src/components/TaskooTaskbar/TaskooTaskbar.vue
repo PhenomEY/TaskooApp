@@ -67,6 +67,10 @@
           </md-avatar>
           <template slot="popover">
             <div class="taskoo-popover-options">
+              <div class="option logged-in-as">
+                Angemeldet als {{ currentUser.firstname }} {{ currentUser.lastname }}
+              </div>
+
               <div class="option dark-mode" v-if="!isDark || isDark === 'false'" @click="toggleViewMode">
                 <md-icon>
                   nightlight_round

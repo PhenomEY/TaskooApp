@@ -1,5 +1,5 @@
 import axios from "axios";
-import AdminMain from "components/Admin/Main/Main";
+import AdminMain from "./Main/Main";
 
 export default {
     name: 'Administration',

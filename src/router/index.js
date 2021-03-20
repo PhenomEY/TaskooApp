@@ -70,25 +70,27 @@ export default new Router({
     {
       path: '/admin',
       name: 'Administration',
-      component: require('pages/Administration/Administration').default,
+      components: {
+        default: require('pages/Administration/Administration').default
+      },
       children: [
         {
           name: 'AdminUser',
           path: 'user',
           components: {
-            adminUsers:require('components/Admin/User/User').default,
+            adminUsers:require('pages/Administration/User/User').default,
           } ,
 
           children: [
             {
               path: 'create',
               name: 'AdminUserCreate',
-              component: require('components/Admin/User/Create/Create').default,
+              component: require('pages/Administration/User/Create/Create').default,
             },
             {
               path: 'edit/:id',
               name: 'AdminUserEdit',
-              component: require('components/Admin/User/Edit/Edit').default,
+              component: require('pages/Administration/User/Edit/Edit').default,
             },
           ]
         },
@@ -97,7 +99,7 @@ export default new Router({
           name: 'AdminOrganisations',
           path: 'organisations',
           components: {
-            adminOrganisations: require('components/Admin/Organisations/Organisations').default
+            adminOrganisations: require('pages/Administration/Organisations/Organisations').default
           }
         }
       ]

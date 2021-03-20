@@ -1,5 +1,8 @@
 import TaskooInput from "components/TaskooInput/TaskooInput";
 import Multiselect from 'vue-multiselect'
+
+import FormValidator from "src/handlers/FormValidator";
+
 import axios from "axios";
 
 export default {
@@ -117,7 +120,7 @@ export default {
         this.updatingUser = true;
 
         //validate form
-        const form = this.formValidator(this.userForm);
+        const form = FormValidator.validate(this.userForm);
         this.userForm = form.form;
 
         if(form.hasErrors === true) {

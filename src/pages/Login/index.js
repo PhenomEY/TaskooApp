@@ -1,6 +1,8 @@
 import axios from "axios";
 import TaskooInput from "../../components/TaskooInput/TaskooInput";
 
+import AuthService from "src/services/TaskooAuthService";
+
 export default {
     name: 'login',
     components: {TaskooInput},
@@ -12,35 +14,27 @@ export default {
         formError: false
     }),
     methods: {
-        login() {
+        async login() {
             this.sending = true
 
-            axios
-                .post(axios.defaults.baseURL+'/auth/login', {
-                    login: {
-                        username: this.username,
-                        password: this.password
-                    }
-                })
-                .catch(error => {
-                  this.formError = true;
-                })
-                .then(response => {
-                  if(!response) {
-                    return
-                  }
+            const formData = {
+              login: {
+                username: this.username,
+                password: this.password
+              }
+            }
 
-                  if(response.data.success == true) {
-                        this.$store.commit('auth/setAuthToken', response.data.auth)
-                        this.$store.commit('user/setUser', response.data.user)
-                        this.$store.commit('auth/setVerifiedUser', true)
-                        this.$store.commit('organisations/setAvailableOrganisations', response.data.organisations)
-                        this.$router.push({
-                            name: 'Dashboard'
-                        });
-                    }
+            const loggedIn = await AuthService.login(formData, this);
 
-                })
+            if(loggedIn) {
+              this.$store.commit('auth/setAuthToken', loggedIn.auth)
+              this.$store.commit('user/setUser', loggedIn.user)
+              this.$store.commit('auth/setVerifiedUser', true)
+              this.$store.commit('organisations/setAvailableOrganisations', loggedIn.organisations)
+              this.$router.push({
+                name: 'Dashboard'
+              });
+            }
         },
 
         setUsername(val) {

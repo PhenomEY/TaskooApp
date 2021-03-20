@@ -16,6 +16,9 @@
   import TaskooLoader from "components/TaskooLoader/TaskooLoader";
   import axios from "axios";
   import store from "src/store";
+
+  import AuthService from "src/services/TaskooAuthService";
+
   export default {
     name: 'taskoo',
     components: {LayoutSidebar, TaskooLoader},
@@ -85,31 +88,24 @@
     },
 
     methods: {
-      checkAuth() {
-        axios
-          .get(axios.defaults.baseURL+'/auth/check')
-          .catch(function (error) {
-          })
-          .then(response => {
+      async checkAuth() {
 
-            if(!response) {
-              setTimeout(() => (
-                this.$router.push({
-                  name: 'Login'
-                })
-              ), 700);
-              return;
-            }
+        const checked = await AuthService.check(this);
 
-            else if(response.data.success == true) {
-              setTimeout(() => (
-                  this.$store.commit('auth/setVerifiedUser', true),
-                  this.$store.commit('user/setUser', response.data.user),
-                  this.$store.commit('organisations/setAvailableOrganisations', response.data.organisations)
-              ), 700);
+        if(checked) {
+          setTimeout(() => (
+            this.$store.commit('auth/setVerifiedUser', true),
+              this.$store.commit('user/setUser', checked.user),
+              this.$store.commit('organisations/setAvailableOrganisations', checked.organisations)
+          ), 700);
+        } else {
+          setTimeout(() => (
+            this.$router.push({
+              name: 'Login'
+            })
+          ), 700);
+        }
 
-            }
-          })
       }
     }
   }

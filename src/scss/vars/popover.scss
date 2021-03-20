@@ -55,6 +55,15 @@
           user-select: none; /* Non-prefixed version, currently
                                   supported by Chrome, Edge, Opera and Firefox */
 
+          &.logged-in-as{
+            cursor:default;
+            border-bottom:1px solid var(--taskoo-border-secondary);
+
+            &:hover {
+              background:transparent;
+            }
+          }
+
           &:hover {
             background:$taskoo-light-grey;
           }

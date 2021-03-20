@@ -32,7 +32,6 @@ export default {
         set: function (newValue) {
           this.$store.commit('organisations/saveOrganisation', newValue)
         }
-
       },
 
       availableOrganisations() {
@@ -42,6 +41,10 @@ export default {
       isDark() {
         return this.$store.state.misc.isDark
       },
+
+      currentUser() {
+        return this.$store.state.user.user
+      }
     },
 
 

@@ -1,4 +1,7 @@
 import TaskooInput from "components/TaskooInput/TaskooInput";
+
+import FormValidator from "src/handlers/FormValidator";
+
 import axios from "axios";
 
 export default {
@@ -91,7 +94,7 @@ export default {
         this.sendingInvite = true;
 
         //validate form
-        const form = this.formValidator(this.inviteForm);
+        const form = FormValidator.validate(this.inviteForm);
         this.inviteForm = form.form;
 
         if(form.hasErrors === true) {
@@ -129,7 +132,7 @@ export default {
         this.creatingUser = true;
 
         //validate form
-        const form = this.formValidator(this.manualForm);
+        const form = FormValidator.validate(this.manualForm);
         this.manualForm = form.form;
 
         if(form.hasErrors === true) {
