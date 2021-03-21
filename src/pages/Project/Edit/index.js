@@ -28,7 +28,8 @@ export default {
         projectData: null,
         projectDate: null,
         projectUsers: [],
-        loading:true
+        loading:true,
+        projectStatus: false
       }
     },
 
@@ -39,8 +40,9 @@ export default {
           name: 'Dashboard'
         })
       }
-      
+
       this.projectData = this.model
+      this.projectStatus = this.projectData.isClosed
 
       if(!this.projectData.id) {
         this.$router.push({
@@ -102,7 +104,7 @@ export default {
 
       async save() {
 
-        const isClosed = this.projectData.isClosed
+        const isClosed = this.projectStatus
         const name = this.projectData.name
         const deadline = this.projectDate
         const mainUser = this.projectData.mainUser
@@ -122,6 +124,7 @@ export default {
 
         if(saved) {
           this.emitChange()
+          this.projectData.isClosed = isClosed
         }
 
       },

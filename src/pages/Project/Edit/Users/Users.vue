@@ -1,6 +1,6 @@
 <template>
   <div class="edit-project-users">
-    <div class="project-users">
+    <div class="project-users" v-if="projectData.isClosed">
       <div class="add-user">
         <taskoo-user-select v-if="availableUsers" :multi="false" :options="availableUsers" @addedUser="userSelected"></taskoo-user-select>
         <md-button :disabled="!selectedUser || addingUser" class="md-icon-button md-list-action" @click="addUser">

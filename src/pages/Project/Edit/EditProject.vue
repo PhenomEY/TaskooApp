@@ -23,8 +23,8 @@
             <taskoo-datepicker :label="$t('project.create.deadline')" :model="projectDate" @modelChanged="setDeadline"></taskoo-datepicker>
 
             <div class="project-visibility">
-              <md-radio v-model="projectData.isClosed" :value="false">{{ $t('project.create.public') }}</md-radio>
-              <md-radio v-model="projectData.isClosed" :value="true">{{ $t('project.create.closed') }}</md-radio>
+              <md-radio v-model="projectStatus" :value="false">{{ $t('project.create.public') }}</md-radio>
+              <md-radio v-model="projectStatus" :value="true">{{ $t('project.create.closed') }}</md-radio>
             </div>
 
             <button class="taskoo-button" @click="save(projectData)">
@@ -34,7 +34,7 @@
 
         </md-tab>
 
-        <md-tab id="user-list" :md-disabled="!model.isClosed" md-label="Mitglieder" :to="'/project/'+projectId+'/edit/users'">
+        <md-tab id="user-list" :md-disabled="!projectData.isClosed" md-label="Mitglieder" :to="'/project/'+projectId+'/edit/users'">
           <router-view name="users" :model="model" @userAdded="emitChange"></router-view>
         </md-tab>
 
