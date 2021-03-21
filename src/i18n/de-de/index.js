@@ -178,7 +178,8 @@ export default {
       },
 
       "edit": {
-        "save": "Benutzer speichern"
+        "save": "Benutzer speichern",
+        "role": "Rolle"
       }
     },
 

@@ -28,7 +28,7 @@
             {{ user.firstname }} {{ user.lastname }}
 
             <span class="main" v-if="projectData.mainUser && (projectData.mainUser.id === user.id)">
-              STAR
+              <md-icon>star_rate</md-icon>
             </span>
           </div>
 

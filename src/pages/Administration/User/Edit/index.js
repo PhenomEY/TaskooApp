@@ -49,7 +49,13 @@ export default {
         },
 
         organisations: null,
-        assignedOrganisations: null
+        assignedOrganisations: null,
+        userRole: null,
+
+        userRoles: [
+          1,
+          10
+        ]
       }
     },
 
@@ -87,6 +93,7 @@ export default {
               this.userForm.email.value = response.data.email;
               this.userForm.active.value = response.data.active;
               this.assignedOrganisations = response.data.organisations;
+              this.userRole = response.data.role;
             }
 
           })
@@ -147,7 +154,8 @@ export default {
             firstname: form.form.firstname.value,
             lastname: form.form.lastname.value,
             password: form.form.password.value,
-            active: form.form.active.value
+            active: form.form.active.value,
+            role: this.userRole
           })
           .catch(error => {
             this.$vToastify.error(error.response.data.message);

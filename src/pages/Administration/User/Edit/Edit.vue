@@ -47,6 +47,26 @@
         <md-switch v-model="userForm.active.value" class="md-primary">Active</md-switch>
       </div>
 
+      <div class="user-role">
+        <span class="label">{{ $t('settings.users.edit.role') }}</span>
+        <multiselect class="taskoo-select"
+                     v-model="userRole"
+                     :options="userRoles"
+                     :searchable="false"
+                     selectLabel=""
+                     deselectLabel=""
+                     selectedLabel=""
+                     :allowEmpty="false"
+                     @select="updatePriority"
+        >
+          <template slot="singleLabel" slot-scope="props"> <span>{{props.option}}</span></template>
+
+          <template slot="option" slot-scope="props">
+            <span>{{ props.option }}</span>
+          </template>
+        </multiselect>
+      </div>
+
 
       <button type="submit" class="taskoo-button" :disabled="updatingUser" @click="updateUser">{{ $t('settings.users.edit.save') }}</button>
     </form>
