@@ -13,29 +13,29 @@
           </div>
 
           <div class="tab-content" v-else>
-            <taskoo-input :model="project.name" :label="$t('project.projectName')" @modelChanged="setProjectName"></taskoo-input>
+            <taskoo-input :model="projectData.name" :label="$t('project.projectName')" @modelChanged="setProjectName"></taskoo-input>
+
+            <div class="project-main-user">
+              <div class="label">{{ $t('project.projectLead') }}</div>
+              <taskoo-user-select :multi="false" :options="projectUsers"  :model="projectData.mainUser" @addedUser="setMainUser"></taskoo-user-select>
+            </div>
 
             <taskoo-datepicker :label="$t('project.create.deadline')" :model="projectDate" @modelChanged="setDeadline"></taskoo-datepicker>
 
-            <div class="project-users">
-              <div class="label">{{ $t('project.projectLead') }}</div>
-              <taskoo-user-select :multi="false" :options="projectUsers"  :model="project.mainUser" @addedUser="setMainUser"></taskoo-user-select>
-            </div>
-
             <div class="project-visibility">
-              <md-radio v-model="project.isClosed" :value="false">{{ $t('project.create.public') }}</md-radio>
-              <md-radio v-model="project.isClosed" :value="true">{{ $t('project.create.closed') }}</md-radio>
+              <md-radio v-model="projectData.isClosed" :value="false">{{ $t('project.create.public') }}</md-radio>
+              <md-radio v-model="projectData.isClosed" :value="true">{{ $t('project.create.closed') }}</md-radio>
             </div>
 
-            <button class="taskoo-button" @click="save(project)">
+            <button class="taskoo-button" @click="save(projectData)">
               {{ $t('taskoo.save') }}
             </button>
           </div>
 
         </md-tab>
 
-        <md-tab id="user-list" :md-disabled="!project.isClosed" md-label="Mitglieder" :to="'/project/'+projectId+'/edit/users'">
-          <router-view name="users"></router-view>
+        <md-tab id="user-list" :md-disabled="!model.isClosed" md-label="Mitglieder" :to="'/project/'+projectId+'/edit/users'">
+          <router-view name="users" :model="model" @userAdded="emitChange"></router-view>
         </md-tab>
 
         <md-tab id="close" md-label="Schließen" :to="'/project/'+projectId">

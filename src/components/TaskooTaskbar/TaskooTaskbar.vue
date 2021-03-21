@@ -7,7 +7,7 @@
 
     <taskoo-searchfield></taskoo-searchfield>
 
-    <multiselect v-if="availableOrganisations.length > 1" class="taskoo-select organisations"
+    <multiselect v-if="availableOrganisations && availableOrganisations.length > 1" class="taskoo-select organisations"
                  v-model="currentOrganisation"
                  :options="availableOrganisations"
                  selectLabel=""
@@ -68,7 +68,7 @@
           <template slot="popover">
             <div class="taskoo-popover-options">
               <div class="option logged-in-as">
-                Angemeldet als {{ currentUser.firstname }} {{ currentUser.lastname }}
+                {{ $t('taskoo.loggedInAs', {firstname: currentUser.firstname, lastname: currentUser.lastname}) }}
               </div>
 
               <div class="option dark-mode" v-if="!isDark || isDark === 'false'" @click="toggleViewMode">

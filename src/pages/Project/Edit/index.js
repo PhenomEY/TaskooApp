@@ -25,7 +25,7 @@ export default {
 
     data() {
       return {
-        project: this.model,
+        projectData: null,
         projectDate: null,
         projectUsers: [],
         loading:true
@@ -34,21 +34,29 @@ export default {
 
 
     mounted() {
-      if(!this.project.id) {
+      if(this.$store.state.user.user.role !== 10) {
+        this.$router.push({
+          name: 'Dashboard'
+        })
+      }
+      
+      this.projectData = this.model
+
+      if(!this.projectData.id) {
         this.$router.push({
           name: 'Project'
         })
         return;
       }
 
-      if(this.project.deadline) {
-        this.projectDate = new Date(this.project.deadline.date);
+      if(this.projectData.deadline) {
+        this.projectDate = new Date(this.projectData.deadline.date);
       }
 
-      if(!this.project.isClosed) {
+      if(!this.projectData.isClosed) {
         this.getOrganisationUsers()
       } else {
-        this.projectUsers = this.project.users
+        this.projectUsers = this.projectData.users
         this.loading = false
       }
     },
@@ -70,7 +78,7 @@ export default {
       },
 
       async getOrganisationUsers() {
-          const orgId = this.project.organisation.id
+          const orgId = this.projectData.organisation.id
 
           const loaded = await OrganisationService.users.load(orgId, this)
 
@@ -81,7 +89,7 @@ export default {
       },
 
       setMainUser(user) {
-        this.project.mainUser = user
+        this.projectData.mainUser = user
       },
 
       setDeadline(date) {
@@ -89,15 +97,15 @@ export default {
       },
 
       setProjectName(name) {
-        this.project.name = name
+        this.projectData.name = name
       },
 
       async save() {
 
-        const isClosed = this.project.isClosed
-        const name = this.project.name
+        const isClosed = this.projectData.isClosed
+        const name = this.projectData.name
         const deadline = this.projectDate
-        const mainUser = this.project.mainUser
+        const mainUser = this.projectData.mainUser
 
         let formData = {
           isClosed: isClosed,
@@ -110,12 +118,16 @@ export default {
         }
 
 
-        const saved = await ProjectService.update(this.project.id, formData, this, true)
+        const saved = await ProjectService.update(this.projectData.id, formData, this, true)
 
         if(saved) {
-          this.$emit('projectSaved');
+          this.emitChange()
         }
 
+      },
+
+      emitChange() {
+        this.$emit('projectSaved');
       }
     }
 }

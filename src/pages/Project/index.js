@@ -66,10 +66,18 @@ export default {
             };
         },
 
+      userType: function() {
+        return this.$store.state.user.user.role
+      },
+
 
       currentOrganisation: function() {
         return this.$store.state.organisations.currentOrganisation
-      }
+      },
+
+      availableOrganisations() {
+        return this.$store.state.organisations.availableOrganisations
+      },
     },
 
     mounted() {
@@ -89,7 +97,7 @@ export default {
               this.setTitle(this.project.name);
               this.groups = loaded.groups;
 
-              if(loaded.project.organisation && (loaded.project.organisation !== this.currentOrganisation.id)) {
+              if(loaded.project.organisation && (loaded.project.organisation !== this.currentOrganisation.id) && this.availableOrganisations) {
                 this.$store.commit('organisations/setOrganisation', loaded.project.organisation.id);
               }
               this.loading = false;

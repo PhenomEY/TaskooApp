@@ -140,6 +140,12 @@
             background:darkslateblue;
           }
 
+          .md-avatar {
+            width: 20px;
+            min-width: 20px;
+            height: 20px;
+          }
+
           &:first-child {
             transform: none;
             .md-avatar-icon {

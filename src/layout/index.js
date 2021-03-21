@@ -36,6 +36,10 @@ export default {
     getProjects(changedOrg) {
       const orgId = this.$store.state.organisations.currentOrganisation.id;
 
+      if(!orgId) {
+        return;
+      }
+
       axios
         .get(axios.defaults.baseURL+'/organisation/'+orgId+'/projects')
         .catch(function (error) {

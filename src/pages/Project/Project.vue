@@ -59,7 +59,7 @@
             <md-icon>star</md-icon>
           </md-button>
 
-          <md-button class="md-icon-button md-list-action" :to="{ name: 'EditProject'}">
+          <md-button class="md-icon-button md-list-action" v-if="userType == 10" :to="{ name: 'EditProject'}">
             <md-icon>edit</md-icon>
           </md-button>
         </div>

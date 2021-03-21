@@ -5,7 +5,8 @@ export default {
     "days": ["Sonntag", "Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag"],
     "shortDays": ["So", "Mo", "Di", "Mi", "Do", "Fr", "Sa"],
     "shorterDays": ["So", "Mo", "Di", "Mi", "Do", "Fr", "Sa"],
-    "save": "Speichern"
+    "save": "Speichern",
+    "loggedInAs": "Angemeldet als {firstname} {lastname}"
 },
 
   "user": {
@@ -26,7 +27,7 @@ export default {
       "title": "Deine Projekte",
       "create": "Projekt anlegen",
       "favorites": "Favoriten"
-  }
+    }
 },
 
   "login": {
@@ -40,7 +41,7 @@ export default {
 
   "links": {
     "lostPassword": "Passwort vergessen",
-      "about": "Über Taskoo"
+    "about": "Über Taskoo"
   }
 },
 
@@ -64,6 +65,12 @@ export default {
       "public": "Öffentlich",
       "closed": "Geschlossen",
       "deadline": "Voraussichtliches Abschlussdatum"
+    },
+
+    "edit": {
+      "users": {
+        "name": "Name"
+      }
     }
 },
 
@@ -117,7 +124,7 @@ export default {
 },
 
   "dashboard": {
-  "title": "Taskoo - Dashboard",
+    "title": "Taskoo - Dashboard",
     "welcome": "Willkommen {name}",
     "notifications": "Benachrichtigungen",
     "dueTasks": "Diese Aufgaben sind demnächst fällig",

@@ -93,11 +93,13 @@
         const checked = await AuthService.check(this);
 
         if(checked) {
-          setTimeout(() => (
-            this.$store.commit('auth/setVerifiedUser', true),
-              this.$store.commit('user/setUser', checked.user),
+          setTimeout(() => {
+            this.$store.commit('auth/setVerifiedUser', true)
+            this.$store.commit('user/setUser', checked.user)
+            if (checked.organisations) {
               this.$store.commit('organisations/setAvailableOrganisations', checked.organisations)
-          ), 700);
+            }
+          }, 700);
         } else {
           setTimeout(() => (
             this.$router.push({

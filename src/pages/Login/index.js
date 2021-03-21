@@ -30,7 +30,10 @@ export default {
               this.$store.commit('auth/setAuthToken', loggedIn.auth)
               this.$store.commit('user/setUser', loggedIn.user)
               this.$store.commit('auth/setVerifiedUser', true)
-              this.$store.commit('organisations/setAvailableOrganisations', loggedIn.organisations)
+              if(loggedIn.organisations) {
+                this.$store.commit('organisations/setAvailableOrganisations', loggedIn.organisations)
+              }
+
               this.$router.push({
                 name: 'Dashboard'
               });
