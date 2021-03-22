@@ -66,8 +66,8 @@ export default {
             };
         },
 
-      userType: function() {
-        return this.$store.state.user.user.role
+      userPermissions: function() {
+        return this.$store.state.user.user.permissions
       },
 
 

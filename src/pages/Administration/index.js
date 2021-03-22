@@ -12,12 +12,12 @@ export default {
     mounted() {
       this.setTitle(this.$t('settings.title'));
 
-      if(this.$store.state.user.user.role !== 10) {
+      if(this.$store.state.user.user.permissions && this.$store.state.user.user.permissions.administration) {
+        this.verifiedAdmin = true
+      } else {
         this.$router.push({
           name: 'Dashboard'
         })
-      } else {
-        this.verifiedAdmin = true
       }
     },
 

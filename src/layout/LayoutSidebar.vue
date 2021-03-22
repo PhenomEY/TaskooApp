@@ -78,7 +78,7 @@ m1270 -10 c189 -30 340 -186 403 -416 29 -105 31 -334 4 -438 -47 -182 -151
               <span class="md-list-item-text">{{ $t('navigation.settings') }}</span>
             </md-list-item>
 
-            <md-list-item v-bind:class="{'active': ($route.name === 'Administration' || $route.matched[0].name === 'Administration')}" v-if="userType == 10" class="admin-area" @click="goToName('Administration')">
+            <md-list-item v-bind:class="{'active': ($route.name === 'Administration' || $route.matched[0].name === 'Administration')}" v-if="userPermissions && userPermissions.administration" class="admin-area" @click="goToName('Administration')">
               <md-icon>settings</md-icon>
               <span class="md-list-item-text">{{ $t('navigation.admin') }}</span>
             </md-list-item>
@@ -103,7 +103,7 @@ m1270 -10 c189 -30 340 -186 403 -416 29 -105 31 -334 4 -438 -47 -182 -151
               <span class="md-list-item-text">{{ project.name }}</span>
             </md-list-item>
 
-            <md-list-item v-if="userType == 10" @click="goToName('CreateProject')">
+            <md-list-item v-if="userPermissions && (userPermissions.administration || userPermissions.projectCreate)" @click="goToName('CreateProject')">
               <span class="md-list-item-text">{{ $t('navigation.projects.create') }}</span>
             </md-list-item>
           </md-list>

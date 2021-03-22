@@ -25,7 +25,9 @@ export default {
 
     data() {
       return {
-        projectData: null,
+        projectData: {
+          isClosed: false
+        },
         projectDate: null,
         projectUsers: [],
         loading:true,
@@ -35,10 +37,14 @@ export default {
 
 
     mounted() {
-      if(this.$store.state.user.user.role !== 10) {
+
+      if(!this.$store.state.user.user.permissions || (!this.$store.state.user.user.permissions.administration && !this.$store.state.user.user.permissions.projectEdit)) {
         this.$router.push({
           name: 'Dashboard'
         })
+
+        console.log('BACK')
+        return;
       }
 
       this.projectData = this.model
