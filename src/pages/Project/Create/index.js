@@ -36,7 +36,6 @@ export default {
     methods: {
         setProjectName(val) {
             this.projectName = val
-            console.log(this.projectName)
         },
 
         setDeadline(val) {

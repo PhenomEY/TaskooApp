@@ -42,8 +42,6 @@ export default {
         this.$router.push({
           name: 'Dashboard'
         })
-
-        console.log('BACK')
         return;
       }
 

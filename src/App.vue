@@ -43,11 +43,6 @@
     mounted() {
       axios.defaults.headers.common['Authorization'] = this.$store.state.auth.authToken
 
-
-      console.log('App mounted')
-      console.log(this.alpha)
-      console.log(window.alpha)
-
       if (this.$store.state.misc.isDark === 'true') {
         document.body.classList.add('taskoo-dark-theme');
       } else {

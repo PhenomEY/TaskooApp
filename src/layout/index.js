@@ -27,13 +27,15 @@ export default {
     '$store.state.organisations.currentOrganisation': function() {
       this.projects = null
       this.organisationChanged = true
-     this.getProjects(true)
+      this.getProjects(true)
     },
   },
 
   methods: {
 
     getProjects(changedOrg) {
+      if(!this.$store.state.organisations.currentOrganisation) return;
+
       const orgId = this.$store.state.organisations.currentOrganisation.id;
 
       if(!orgId) {

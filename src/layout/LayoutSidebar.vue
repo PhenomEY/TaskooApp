@@ -91,7 +91,7 @@ m1270 -10 c189 -30 340 -186 403 -416 29 -105 31 -334 4 -438 -47 -182 -151
             </md-list-item>
 
             <md-list-item @click="goToPath('/project/', 2)">
-              <span class="color-brick" v-bind:style= "[currentOrganisation.color ? {background: currentOrganisation.color} : {}]"></span>
+              <span class="color-brick" v-bind:style= "[(currentOrganisation && currentOrganisation.color) ? {background: currentOrganisation.color} : {}]"></span>
               <span class="md-list-item-text">Fav. Project</span>
             </md-list-item>
 

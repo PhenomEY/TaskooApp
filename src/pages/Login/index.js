@@ -32,7 +32,12 @@ export default {
               this.$store.commit('auth/setVerifiedUser', true)
               if(loggedIn.organisations) {
                 this.$store.commit('organisations/setAvailableOrganisations', loggedIn.organisations)
+              } else {
+                this.$store.commit('organisations/setAvailableOrganisations', [])
               }
+
+              console.log(this.$store.state.organisations.currentOrganisation)
+              console.log(this.$store.state.organisations.availableOrganisations)
 
               this.$router.push({
                 name: 'Dashboard'
