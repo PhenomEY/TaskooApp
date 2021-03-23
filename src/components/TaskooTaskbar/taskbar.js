@@ -50,7 +50,6 @@ export default {
 
     methods: {
         logout() {
-            console.log('logout')
             this.$store.commit('auth/setAuthToken', null)
             this.$store.commit('auth/setVerifiedUser', false)
             this.$store.commit('user/setUser', null)
