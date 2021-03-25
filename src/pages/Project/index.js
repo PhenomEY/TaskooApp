@@ -90,7 +90,7 @@ export default {
             const projectId = this.$route.params.projectId
             this.loading = true
 
-            const loaded = await ProjectService.load(projectId, this);
+            const loaded = await ProjectService.load(projectId, this, false, false);
 
             if(loaded) {
               this.project = loaded.project;

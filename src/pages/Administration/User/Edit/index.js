@@ -51,11 +51,11 @@ export default {
         organisations: null,
         assignedOrganisations: null,
         userRole: null,
-
-        userRoles: [
-          1,
-          10
-        ]
+        permissions: {
+          administration: false,
+          project_edit: false,
+          project_create: false
+      },
       }
     },
 
@@ -93,7 +93,7 @@ export default {
               this.userForm.email.value = response.data.email;
               this.userForm.active.value = response.data.active;
               this.assignedOrganisations = response.data.organisations;
-              this.userRole = response.data.role;
+              this.permissions = response.data.permissions;
             }
 
           })
@@ -125,6 +125,7 @@ export default {
 
         const userId = this.$route.params.id;
         this.updatingUser = true;
+        const permissions = this.permissions;
 
         //validate form
         const form = FormValidator.validate(this.userForm);
@@ -155,7 +156,7 @@ export default {
             lastname: form.form.lastname.value,
             password: form.form.password.value,
             active: form.form.active.value,
-            role: this.userRole
+            permissions: permissions
           })
           .catch(error => {
             this.$vToastify.error(error.response.data.message);

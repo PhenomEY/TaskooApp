@@ -85,10 +85,12 @@
                 {{ $t('navigation.lightMode') }}
               </div>
 
-              <div class="option profile" v-close-popover @click="">
-                  <md-icon>settings</md-icon>
-                  {{ $t('navigation.settings') }}
-              </div>
+
+              <router-link class="option profile" :to="{name: 'Settings'}" v-close-popover>
+                <md-icon>settings</md-icon>
+                {{ $t('navigation.settings') }}
+              </router-link>
+
 
               <div class="option logout" v-close-popover @click="logout()">
                 <md-icon>logout</md-icon> {{ $t('navigation.logout') }}

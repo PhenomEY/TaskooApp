@@ -6,7 +6,7 @@
 
       <button class="create-user-button" @click="createUser()">
         <md-icon>add_circle_outline</md-icon>
-        {{ $t('settings.users.createUser') }}
+        {{ $t('administration.users.createUser') }}
       </button>
 
       <div class="taskoo-list box-shadow">
@@ -18,23 +18,23 @@
 
         <div class="entry title">
           <div class="id">
-            {{ $t('settings.users.list.id') }}
+            {{ $t('administration.users.list.id') }}
           </div>
 
           <div class="name">
-            {{ $t('settings.users.list.name') }}
+            {{ $t('administration.users.list.name') }}
           </div>
 
           <div class="email">
-            {{ $t('settings.users.list.email') }}
+            {{ $t('administration.users.list.email') }}
           </div>
 
           <div class="active">
-            {{ $t('settings.users.list.active') }}
+            {{ $t('administration.users.list.active') }}
           </div>
 
           <div class="role">
-            {{ $t('settings.users.list.role') }}
+            {{ $t('administration.users.list.role') }}
           </div>
         </div>
 
@@ -60,13 +60,13 @@
           </div>
 
           <div class="role">
-            {{ $store.state.auth.userRoles[user.role] }}
+            <span v-if="user.isAdmin" class="admin-label">{{ $t('administration.users.list.administrator') }}</span>
           </div>
 
           <div class="warnings" v-if="user.warnings">
             <md-tooltip class="warning-tooltip" md-direction="top">
-              <div v-if="user.warnings.password">{{ $t('settings.users.list.warnings.password') }}</div>
-              <div v-if="user.warnings.organisations">{{ $t('settings.users.list.warnings.organisations') }}</div>
+              <div v-if="user.warnings.password">{{ $t('administration.users.list.warnings.password') }}</div>
+              <div v-if="user.warnings.organisations">{{ $t('administration.users.list.warnings.organisations') }}</div>
             </md-tooltip>
             <md-icon>warning</md-icon>
           </div>

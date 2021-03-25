@@ -10,7 +10,7 @@ export default {
     }),
 
     mounted() {
-      this.setTitle(this.$t('settings.title'));
+      this.setTitle(this.$t('administration.title'));
 
       if(this.$store.state.user.user.permissions && this.$store.state.user.user.permissions.administration) {
         this.verifiedAdmin = true

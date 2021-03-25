@@ -38,7 +38,7 @@ export default {
 
     mounted() {
 
-      if(!this.$store.state.user.user.permissions || (!this.$store.state.user.user.permissions.administration && !this.$store.state.user.user.permissions.projectEdit)) {
+      if(!this.$store.state.user.user.permissions || (!this.$store.state.user.user.permissions.administration && !this.$store.state.user.user.permissions.project_edit)) {
         this.$router.push({
           name: 'Dashboard'
         })

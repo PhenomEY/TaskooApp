@@ -90,6 +90,14 @@
     .role {
       width: 100px;
       margin-left:10px;
+
+      .admin-label {
+        font-size: 10px;
+        background: rgba(158,206,247,0.4);
+        border-radius: $taskoo-border-radius;
+        padding:3px 5px;
+        color:#5fa8ec;
+      }
     }
 
     .warnings {
@@ -114,11 +122,21 @@
 
 
 .taskoo-dark-theme {
+    .create-user-button {
+      color:rgba(255,255,255,0.6);
+    }
+
     .taskoo-list {
       background:var(--taskoo-wrapper-bg);
 
       .entry {
         background:var(--taskoo-wrapper-bg);
+
+        .role {
+          .admin-label {
+            background: rgb(26,44,60);
+          }
+        }
 
         &:hover {
           background:var(--taskoo-nav-bg);

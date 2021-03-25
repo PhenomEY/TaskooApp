@@ -22,7 +22,7 @@ export default {
             }
           })
           .catch(error => {
-            context.$vToastify.error(error.response.data.message);
+            context.$vToastify.error(error.response.data.detail);
             resolve(false);
           })
           .then(response => {
@@ -51,7 +51,7 @@ export default {
         axios
           .put(axios.defaults.baseURL+'/task/'+taskId, data)
           .catch(error => {
-            context.$vToastify.error(error.response.data.message);
+            context.$vToastify.error(error.response.data.detail);
             resolve(false);
           })
           .then(response => {
@@ -79,7 +79,7 @@ export default {
         axios
           .post(axios.defaults.baseURL+'/task', data)
           .catch(error => {
-            context.$vToastify.error(error.response.data.message);
+            context.$vToastify.error(error.response.data.detail);
             resolve(false);
           })
           .then(response => {
@@ -100,7 +100,7 @@ export default {
         axios
           .delete(axios.defaults.baseURL+'/task/'+taskId)
           .catch(error => {
-            context.$vToastify.error(error.response.data.message);
+            context.$vToastify.error(error.response.data.detail);
             resolve(false);
           })
           .then(response => {

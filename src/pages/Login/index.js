@@ -24,7 +24,7 @@ export default {
               }
             }
 
-            const loggedIn = await AuthService.login(formData, this);
+            const loggedIn = await AuthService.login(formData, this, false, false);
 
             if(loggedIn) {
               this.$store.commit('auth/setAuthToken', loggedIn.auth)
@@ -42,6 +42,8 @@ export default {
               this.$router.push({
                 name: 'Dashboard'
               });
+            } else {
+              this.formError = true;
             }
         },
 

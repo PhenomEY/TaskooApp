@@ -5,13 +5,16 @@ import axios from "axios";
  */
 export default {
 
-  login(data, context, successMessage = false) {
+  login(data, context, successMessage = false, errorMessage = true) {
 
     return new Promise(resolve => {
         axios
           .post(axios.defaults.baseURL+'/auth/login', data)
           .catch(error => {
-            context.$vToastify.error(error.response.data.message);
+            if(errorMessage) {
+              context.$vToastify.error(error.response.data.detail);
+            }
+
             resolve(false);
           })
           .then(response => {

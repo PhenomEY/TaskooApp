@@ -11,7 +11,7 @@ users: {
         axios
           .get(axios.defaults.baseURL+'/organisation/'+organisationId+'/users')
           .catch(error => {
-            context.$vToastify.error(error.response.data.message);
+            context.$vToastify.error(error.response.data.detail);
             resolve(false);
           })
           .then(response => {

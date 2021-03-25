@@ -4,7 +4,7 @@ import Router from 'vue-router'
 Vue.use(Router)
 
 export default new Router({
-  // mode: 'history',
+  mode: 'history',
 
   routes: [
     {
@@ -91,6 +91,11 @@ export default new Router({
               path: 'edit/:id',
               name: 'AdminUserEdit',
               component: require('pages/Administration/User/Edit/Edit').default,
+              children: [{
+                path: 'permissions',
+                name: 'AdminUserEditPermissions',
+                component: require('pages/Administration/User/Edit/Permissions/Permissions').default,
+              }]
             },
           ]
         },
@@ -104,6 +109,13 @@ export default new Router({
         }
       ]
     },
+
+    {
+      path: '/settings',
+      name: 'Settings',
+      component: require('pages/Settings/Settings').default,
+    },
+
     {
       path: '*',
       redirect: '/'

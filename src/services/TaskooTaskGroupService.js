@@ -13,7 +13,7 @@ export default {
             }
           })
           .catch(error => {
-            context.$vToastify.error(error.response.data.message);
+            context.$vToastify.error(error.response.data.detail);
             resolve(false);
           })
           .then(response => {
@@ -34,7 +34,7 @@ export default {
         axios
           .put(axios.defaults.baseURL+'/taskgroup/'+groupId, data)
           .catch(error => {
-            context.$vToastify.error(error.response.data.message);
+            context.$vToastify.error(error.response.data.detail);
             resolve(false);
           })
           .then(response => {
@@ -55,7 +55,7 @@ export default {
         axios
           .post(axios.defaults.baseURL+'/taskgroup', data)
           .catch(error => {
-            context.$vToastify.error(error.response.data.message);
+            context.$vToastify.error(error.response.data.detail);
             resolve(false);
           })
           .then(response => {
@@ -76,7 +76,7 @@ export default {
       axios
         .delete(axios.defaults.baseURL+'/taskgroup/'+groupId)
         .catch(error => {
-          context.$vToastify.error(error.response.data.message);
+          context.$vToastify.error(error.response.data.detail);
           resolve(false);
         })
         .then(response => {

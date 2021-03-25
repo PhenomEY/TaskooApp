@@ -146,7 +146,7 @@ export default {
     "emptyTasks": "Deine Aufgabenliste ist aktuell leer"
   },
 
-  "settings": {
+  "administration": {
     "title": "Taskoo - Administration",
     "main": {
       "title": "Grundeinstellungen",
@@ -163,6 +163,7 @@ export default {
         "email": "E-Mail",
         "active": "Aktiv",
         "role": "Rolle",
+        "administrator": "Administrator",
         "warnings": {
           "password": "Dieser Benutzer hat noch kein Passwort definiert",
           "organisations": "Dieser Benutzer ist noch keiner Abteilung zugewiesen"
@@ -179,7 +180,14 @@ export default {
 
       "edit": {
         "save": "Benutzer speichern",
-        "role": "Rolle"
+        "role": "Rolle",
+        "organisations": "Zugwiesene Abteilungen",
+        "permissions": {
+          "title": "Benutzerrechte verwalten",
+          "administration": "Administration",
+          "project_create": "Projekte erstellen",
+          "project_edit": "Projekte bearbeiten"
+        }
       }
     },
 

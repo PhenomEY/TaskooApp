@@ -2,7 +2,7 @@
   <div class="organisations-wrapper">
 
     <div class="create-organisation">
-      <taskoo-input :label="$t('settings.organisations.create')" placeholder="Name..." :model="createName" @modelChanged="createdNameChanged"></taskoo-input>
+      <taskoo-input :label="$t('administration.organisations.create')" placeholder="Name..." :model="createName" @modelChanged="createdNameChanged"></taskoo-input>
 
       <md-button class="md-icon-button md-list-action create-button" @click="createOrganisation">
         <md-icon>add</md-icon>
@@ -12,11 +12,11 @@
     <div class="taskoo-list box-shadow">
       <div class="entry title">
         <div class="id">
-          {{ $t('settings.users.list.id') }}
+          {{ $t('administration.users.list.id') }}
         </div>
 
         <div class="name">
-          {{ $t('settings.users.list.name') }}
+          {{ $t('administration.users.list.name') }}
         </div>
 
       </div>
@@ -40,8 +40,8 @@
         </div>
 
         <div class="infos">
-          <span class="projects">{{ $t('settings.organisations.list.projects') }}: {{ organisation.projectCount }}</span>
-          <span class="members">{{ $t('settings.organisations.list.users') }}: {{ organisation.userCount }} </span>
+          <span class="projects">{{ $t('administration.organisations.list.projects') }}: {{ organisation.projectCount }}</span>
+          <span class="members">{{ $t('administration.organisations.list.users') }}: {{ organisation.userCount }} </span>
         </div>
 
         <div class="actions">

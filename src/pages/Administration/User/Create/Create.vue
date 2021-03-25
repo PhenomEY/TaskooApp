@@ -1,7 +1,7 @@
 <template>
   <div class="create-user">
     <div class="create-header">
-        <h1 class="title"> {{ $t('settings.users.createUser') }}</h1>
+        <h1 class="title"> {{ $t('administration.users.createUser') }}</h1>
 
       <div class="back">
         <md-button class="md-icon-button md-list-action" @click="returnTo">
@@ -13,18 +13,18 @@
     <div class="create-switch">
       <div class="invite" v-bind:class="{'active': (invite === true)}" @click="toggleInvite(true)">
        <md-icon>mail</md-icon>
-        {{ $t('settings.users.create.invite') }}
+        {{ $t('administration.users.create.invite') }}
       </div>
 
       <div class="manually" v-bind:class="{'active': (invite === false)}" @click="toggleInvite(false)">
         <md-icon>add</md-icon>
-        {{ $t('settings.users.create.manually') }}
+        {{ $t('administration.users.create.manually') }}
       </div>
     </div>
 
     <div class="invite-form" v-show="invite">
       <div class="error" v-if="inviteError">
-        {{ $t('settings.users.create.formError') }}
+        {{ $t('administration.users.create.formError') }}
       </div>
 
       <form novalidate class="form" @submit.prevent="sendInvite">
@@ -34,14 +34,14 @@
 
         <taskoo-input :error="inviteForm.email.error" type="email" :model="inviteForm.email.value" placeholder="user@taskoo.de" label="E-Mail" @modelChanged="setInviteFormValue('email', ...arguments)"></taskoo-input>
 
-        <button type="submit" class="taskoo-button" :disabled="sendingInvite">{{ $t('settings.users.create.submitInvite') }}</button>
+        <button type="submit" class="taskoo-button" :disabled="sendingInvite">{{ $t('administration.users.create.submitInvite') }}</button>
       </form>
     </div>
 
 
     <div class="manual-form" v-show="!invite">
       <div class="error" v-if="createError">
-        {{ $t('settings.users.create.formError') }}
+        {{ $t('administration.users.create.formError') }}
       </div>
 
       <form novalidate class="form" @submit.prevent="createUser">
@@ -55,7 +55,7 @@
 
         <taskoo-input :error="password_ver.error" type="password" :model="password_ver.value" :placeholder="$t('login.labels.password_verification')" :label="$t('login.labels.password_verification')" @modelChanged="setVerifiedPassword(...arguments)"></taskoo-input>
 
-        <button type="submit" class="taskoo-button" :disabled="creatingUser">{{ $t('settings.users.create.createUser') }}</button>
+        <button type="submit" class="taskoo-button" :disabled="creatingUser">{{ $t('administration.users.create.createUser') }}</button>
       </form>
     </div>
 

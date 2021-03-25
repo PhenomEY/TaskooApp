@@ -11,13 +11,15 @@ export default {
    * @param successMessage
    * @returns {Promise<unknown>}
    */
-  load(projectId, context, successMessage = false) {
+  load(projectId, context, successMessage = false, errorMessage = true) {
 
     return new Promise(resolve => {
         axios
           .get(axios.defaults.baseURL+'/project/'+projectId)
           .catch(error => {
-            context.$vToastify.error(error.response.data.message);
+            if(errorMessage) {
+              context.$vToastify.error(error.response.data.detail);
+            }
             resolve(false);
           })
           .then(response => {
@@ -47,7 +49,7 @@ export default {
         axios
           .put(axios.defaults.baseURL+'/project/'+projectId, data)
           .catch(error => {
-            context.$vToastify.error(error.response.data.message);
+            context.$vToastify.error(error.response.data.detail);
             resolve(false);
           })
           .then(response => {
@@ -75,7 +77,7 @@ export default {
         axios
           .post(axios.defaults.baseURL+'/project', data)
           .catch(error => {
-            context.$vToastify.error(error.response.data.message);
+            context.$vToastify.error(error.response.data.detail);
             resolve(false);
           })
           .then(response => {
