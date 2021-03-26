@@ -19,7 +19,7 @@
         <div class="entry"  v-for="(user, key) in projectData.users">
           <div class="avatar">
             <md-button class="md-icon-button task-user">
-              <md-avatar class="md-avatar-icon">{{ user.firstname.charAt(0) }}
+              <md-avatar class="md-avatar-icon taskoo-avatar" v-bind:style= "[user.hexCode ? {background: user.hexCode} : {}]">{{ user.firstname.charAt(0) }}{{ user.lastname.charAt(0) }}
                 <md-tooltip md-direction="bottom">{{ user.firstname }} {{ user.lastname }}</md-tooltip>
               </md-avatar>
             </md-button>

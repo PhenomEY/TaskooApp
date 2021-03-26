@@ -48,6 +48,8 @@
           </div>
 
           <div class="name">
+            <md-avatar class="md-avatar-icon taskoo-avatar" v-bind:style= "[(user.color && user.color.hexCode) ? {background: user.color.hexCode} : {}]">{{ user.firstname.charAt(0) }}{{ user.lastname.charAt(0) }}
+            </md-avatar>
             {{ user.firstname }} {{ user.lastname }}
           </div>
 

@@ -24,6 +24,12 @@
 
     .user-tag {
       background:$taskoo-user-select;
+
+      .multiselect__tag-icon {
+        &:after {
+          color:#ffffff;
+        }
+      }
     }
 
     .multiselect__tags {

@@ -65,7 +65,7 @@
         </div>
 
         <div class="project-users" v-if="!isMobile && project.users">
-          <md-avatar class="user md-avatar-icon" v-for="user in project.users">
+          <md-avatar class="user md-avatar-icon" v-for="user in project.users" v-bind:style= "[user.hexCode ? {background: user.hexCode} : {}]">
             <md-tooltip md-direction="top">{{ user.firstname }} {{ user.lastname }}</md-tooltip>
             {{ user.firstname.charAt(0) }}{{ user.lastname.charAt(0) }}
           </md-avatar>

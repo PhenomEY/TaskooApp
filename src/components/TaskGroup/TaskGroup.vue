@@ -79,7 +79,7 @@
 
           <span class="users">
              <md-button v-if="item.user" class="md-icon-button task-user">
-               <md-avatar class="md-avatar-icon">{{ item.user.firstname.charAt(0) }}
+               <md-avatar class="md-avatar-icon" v-bind:style= "[item.user.hexCode ? {background: item.user.hexCode} : {}]">{{ item.user.firstname.charAt(0) }}
                  <md-tooltip md-direction="bottom">{{ item.user.firstname }} {{ item.user.lastname }}</md-tooltip>
                </md-avatar>
              </md-button>

@@ -77,6 +77,7 @@ export default {
         axios
           .post(axios.defaults.baseURL+'/project', data)
           .catch(error => {
+            console.log(error.response)
             context.$vToastify.error(error.response.data.detail);
             resolve(false);
           })
