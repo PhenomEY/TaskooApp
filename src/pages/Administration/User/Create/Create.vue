@@ -1,5 +1,5 @@
 <template>
-  <div class="create-user">
+  <div class="create-user width-fix">
     <div class="create-header">
         <h1 class="title"> {{ $t('administration.users.createUser') }}</h1>
 

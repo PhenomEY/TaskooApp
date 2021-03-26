@@ -43,6 +43,10 @@ export default {
         this.$router.push({
           name: 'AdminUserCreate'
         })
+      },
+
+      reload() {
+        this.getUsers()
       }
     }
 }

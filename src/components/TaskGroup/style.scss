@@ -202,6 +202,22 @@
   }
 }
 
+
+.taskoo-scrollbar-y {
+  &::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #ddd;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: $taskoo-scrollbar-thumb;
+    border-radius: 6px;
+  }
+}
+
 .taskoo-dark-theme {
   .task-group {
     .task {
@@ -215,6 +231,8 @@
     }
   }
 }
+
+
 
 @keyframes fadeOut {
   0% {

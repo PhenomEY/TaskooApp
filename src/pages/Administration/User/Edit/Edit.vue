@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="width-fix">
     <router-view v-if="$route.name === 'AdminUserEditPermissions'"></router-view>
 
     <div class="edit-user" v-else>

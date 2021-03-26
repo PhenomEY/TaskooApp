@@ -7,6 +7,10 @@
   background:var(--taskoo-wrapper-bg);
   justify-content: center;
 
+  .width-fix {
+    flex: 0 0 100%;
+  }
+
   .md-tabs.md-theme-default  {
     background:var(--taskoo-default-bg);
     box-shadow:$taskoo-box-shadow;
@@ -14,6 +18,18 @@
     max-width: 732px;
     width: 100%;
     position: absolute;
+    max-height:90%;
+
+    .md-tabs-container {
+      max-width: 732px;
+      flex: 0 0 100%;
+    }
+
+    .md-tab {
+      display:flex;
+      max-height:100%;
+      overflow-y: auto;
+    }
 
     .md-tabs-navigation {
       background: transparent;

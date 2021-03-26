@@ -1,8 +1,8 @@
 <template>
   <div class="user-view">
-    <router-view></router-view>
+    <router-view @return="reload"></router-view>
 
-    <div v-if="$route.path === '/admin/user'">
+    <div class="user-view-inner" v-if="$route.path === '/admin/user'">
 
       <button class="create-user-button" @click="createUser()">
         <md-icon>add_circle_outline</md-icon>
@@ -42,41 +42,43 @@
           <md-progress-spinner :md-diameter="30" :md-stroke="3" md-mode="indeterminate"></md-progress-spinner>
         </div>
 
-        <div class="entry" v-if="!loading" v-for="user in users">
-          <div class="id">
-            {{ user.id }}
-          </div>
+        <div class="entries taskoo-scrollbar-y">
+          <div class="entry" v-if="!loading" v-for="user in users">
+            <div class="id">
+              {{ user.id }}
+            </div>
 
-          <div class="name">
-            <md-avatar class="md-avatar-icon taskoo-avatar" v-bind:style= "[(user.color && user.color.hexCode) ? {background: user.color.hexCode} : {}]">{{ user.firstname.charAt(0) }}{{ user.lastname.charAt(0) }}
-            </md-avatar>
-            {{ user.firstname }} {{ user.lastname }}
-          </div>
+            <div class="name">
+              <md-avatar class="md-avatar-icon taskoo-avatar" v-bind:style= "[(user.color && user.color.hexCode) ? {background: user.color.hexCode} : {}]">{{ user.firstname.charAt(0) }}{{ user.lastname.charAt(0) }}
+              </md-avatar>
+              {{ user.firstname }} {{ user.lastname }}
+            </div>
 
-          <div class="email">
-            {{ user.email }}
-          </div>
+            <div class="email">
+              {{ user.email }}
+            </div>
 
-          <div class="active" v-bind:class="{'true': (user.active === true)}">
-            <span></span>
-          </div>
+            <div class="active" v-bind:class="{'true': (user.active === true)}">
+              <span></span>
+            </div>
 
-          <div class="role">
-            <span v-if="user.isAdmin" class="admin-label">{{ $t('administration.users.list.administrator') }}</span>
-          </div>
+            <div class="role">
+              <span v-if="user.isAdmin" class="admin-label">{{ $t('administration.users.list.administrator') }}</span>
+            </div>
 
-          <div class="warnings" v-if="user.warnings">
-            <md-tooltip class="warning-tooltip" md-direction="top">
-              <div v-if="user.warnings.password">{{ $t('administration.users.list.warnings.password') }}</div>
-              <div v-if="user.warnings.organisations">{{ $t('administration.users.list.warnings.organisations') }}</div>
-            </md-tooltip>
-            <md-icon>warning</md-icon>
-          </div>
+            <div class="warnings" v-if="user.warnings">
+              <md-tooltip class="warning-tooltip" md-direction="top">
+                <div v-if="user.warnings.password">{{ $t('administration.users.list.warnings.password') }}</div>
+                <div v-if="user.warnings.organisations">{{ $t('administration.users.list.warnings.organisations') }}</div>
+              </md-tooltip>
+              <md-icon>warning</md-icon>
+            </div>
 
-          <div class="actions">
-            <md-button class="md-icon-button md-list-action" :to="{ name: 'AdminUserEdit', params: { id: user.id }}">
-              <md-icon>edit</md-icon>
-            </md-button>
+            <div class="actions">
+              <md-button class="md-icon-button md-list-action" :to="{ name: 'AdminUserEdit', params: { id: user.id }}">
+                <md-icon>edit</md-icon>
+              </md-button>
+            </div>
           </div>
         </div>
       </div>

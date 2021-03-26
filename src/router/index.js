@@ -91,11 +91,6 @@ export default new Router({
               path: 'edit/:id',
               name: 'AdminUserEdit',
               component: require('pages/Administration/User/Edit/Edit').default,
-              children: [{
-                path: 'permissions',
-                name: 'AdminUserEditPermissions',
-                component: require('pages/Administration/User/Edit/Permissions/Permissions').default,
-              }]
             },
           ]
         },

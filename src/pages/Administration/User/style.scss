@@ -15,6 +15,18 @@
     background:transparent;
     cursor:pointer;
   }
+
+  .user-view {
+    flex: 0 0 100%;
+    display: flex;
+
+    .user-view-inner {
+      display: flex;
+      flex-direction: column;
+      flex: 0 0 100%;
+    }
+  }
+
 }
 
 .taskoo-list {
@@ -23,7 +35,7 @@
   flex-direction: column;
   border-radius:$taskoo-border-radius;
   max-width: 700px;
-  overflow: hidden;
+  overflow:hidden;
 
   .actions {
     padding:3px;
@@ -34,6 +46,14 @@
       width: 20px;
       min-width: 20px;
       height:20px;
+    }
+  }
+
+  .entries {
+    overflow-y: auto;
+
+    .entry:first-child {
+      border:none;
     }
   }
 
@@ -54,8 +74,14 @@
       justify-content: center;
     }
 
-    &:first-child {
-      border:none;
+    &.title {
+      border-top:none;
+      border-bottom:1px solid var(--taskoo-border-secondary);
+      border-radius: $taskoo-border-radius;
+
+      &:hover {
+        background:inherit;
+      }
     }
 
     .id {

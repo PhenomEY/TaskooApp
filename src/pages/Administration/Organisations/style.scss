@@ -1,6 +1,9 @@
 @import 'src/scss/vars/variables';
 
 .organisations-wrapper {
+  flex: 0 0 100%;
+  display: flex;
+  flex-direction: column;
 
   .create-organisation {
     display:flex;
@@ -12,8 +15,6 @@
 
 
   .taskoo-list {
-    margin-bottom:80px;
-    overflow:visible;
 
     .entry {
       .name {

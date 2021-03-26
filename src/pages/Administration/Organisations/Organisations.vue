@@ -9,7 +9,7 @@
       </md-button>
     </div>
 
-    <div class="taskoo-list box-shadow">
+    <div class="taskoo-list taskoo-scrollbar-y box-shadow">
       <div class="entry title">
         <div class="id">
           {{ $t('administration.users.list.id') }}
@@ -25,33 +25,35 @@
         <md-progress-spinner :md-diameter="30" :md-stroke="3" md-mode="indeterminate"></md-progress-spinner>
       </div>
 
-      <div class="entry" v-else v-for="(organisation, key) in organisations">
+      <div v-else class="entries taskoo-scrollbar-y">
+        <div class="entry"  v-for="(organisation, key) in organisations">
 
-        <div class="id">
-         {{ organisation.id }}
-        </div>
+          <div class="id">
+           {{ organisation.id }}
+          </div>
 
-        <div class="name">
-          <inputfield-editable :value="organisation.name" @saveInput="changedName(key, ...arguments)"></inputfield-editable>
-        </div>
+          <div class="name">
+            <inputfield-editable :value="organisation.name" @saveInput="changedName(key, ...arguments)"></inputfield-editable>
+          </div>
 
-        <div class="color">
-          <taskoo-color-select :colors="availableColors" :model="organisation.color" @selectedColor="changedColor(key, ...arguments)"></taskoo-color-select>
-        </div>
+          <div class="color">
+            <taskoo-color-select :colors="availableColors" :model="organisation.color" @selectedColor="changedColor(key, ...arguments)"></taskoo-color-select>
+          </div>
 
-        <div class="infos">
-          <span class="projects">{{ $t('administration.organisations.list.projects') }}: {{ organisation.projectCount }}</span>
-          <span class="members">{{ $t('administration.organisations.list.users') }}: {{ organisation.userCount }} </span>
-        </div>
+          <div class="infos">
+            <span class="projects">{{ $t('administration.organisations.list.projects') }}: {{ organisation.projectCount }}</span>
+            <span class="members">{{ $t('administration.organisations.list.users') }}: {{ organisation.userCount }} </span>
+          </div>
 
-        <div class="actions">
-          <md-button class="md-icon-button md-list-action" :disabled="!organisation['saveAble'] || isUpdating" @click="updateOrganisation(organisation, key)">
-            <md-icon>done</md-icon>
-          </md-button>
+          <div class="actions">
+            <md-button class="md-icon-button md-list-action" :disabled="!organisation['saveAble'] || isUpdating" @click="updateOrganisation(organisation, key)">
+              <md-icon>done</md-icon>
+            </md-button>
 
-          <md-button class="md-icon-button md-list-action" @click="toggleDeleteDialog(organisation)">
-            <md-icon>delete</md-icon>
-          </md-button>
+            <md-button class="md-icon-button md-list-action" @click="toggleDeleteDialog(organisation)">
+              <md-icon>delete</md-icon>
+            </md-button>
+          </div>
         </div>
       </div>
     </div>

@@ -115,6 +115,8 @@ export default {
       },
 
       returnTo() {
+        this.$emit('return', true);
+
         this.$router.push({
           name: 'AdminUser'
         })

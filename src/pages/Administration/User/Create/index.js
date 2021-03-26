@@ -168,6 +168,11 @@ export default {
             if(response.data.success == true) {
               this.$vToastify.success('User created');
               this.creatingUser = false;
+              this.$emit('return', true);
+
+              this.$router.push({
+                name: 'AdminUser'
+              })
             }
 
           })
