@@ -81,7 +81,7 @@ export default {
             this.assignedUsers = data.task.users
             this.setTitle(this.task.name)
             if(data.task.dateDue) {
-              this.dateDue = new Date(this.task.dateDue.date)
+              this.dateDue = new Date(this.task.dateDue.date.replace(' ', 'T'))
             }
 
             this.taskPriority = this.getPriority(this.task.highPriority)

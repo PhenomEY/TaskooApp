@@ -9,7 +9,7 @@
       </md-button>
     </div>
 
-    <div class="taskoo-list taskoo-scrollbar-y box-shadow">
+    <div class="taskoo-list box-shadow">
       <div class="entry title">
         <div class="id">
           {{ $t('administration.users.list.id') }}

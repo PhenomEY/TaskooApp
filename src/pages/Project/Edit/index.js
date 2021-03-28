@@ -56,7 +56,7 @@ export default {
       }
 
       if(this.projectData.deadline) {
-        this.projectDate = new Date(this.projectData.deadline.date);
+        this.projectDate = new Date(this.projectData.deadline.date.replace(' ', 'T'));
       }
 
       if(!this.projectData.isClosed) {
