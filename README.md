@@ -1,7 +1,7 @@
 ![Lines of code](https://img.shields.io/tokei/lines/github/PhenomEY/TaskooApp)
 # Taskoo - Easy task management
 
-<img width="250" src="https://taskoo.de/TaskooMedia/Logo_GREEN.svg">
+<img width="250" src="https://dev.taskoo.de/TaskooMedia/Logo_GREEN.svg">
 ## Install the dependencies
 ```bash
 npm install

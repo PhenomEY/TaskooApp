@@ -3,7 +3,7 @@
 
     <div class="dashboard">
       <div class="first-row">
-        <div class="welcome tile box-shadow">
+        <div class="welcome tile">
           <span class="welcome-text">
             {{ $t('dashboard.welcome', {'name': $store.state.user.user.firstname}) }}
           </span>

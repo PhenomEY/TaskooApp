@@ -23,9 +23,7 @@
       &.welcome {
         width: 100%;
         max-width: 450px;
-        background: #fc4a1a;  /* fallback for old browsers */
-        background: -webkit-linear-gradient(to top, #fc4a1a, #f7b733);  /* Chrome 10-25, Safari 5.1-6 */
-        background: linear-gradient(to top, #fc4a1a, #f7b733); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        background: #f7b733;
         min-height:80px;
         font-size: 28px;
         font-weight:800;
@@ -39,9 +37,7 @@
         max-width: 350px;
         display: flex;
         align-items: center;
-        background: #16222A;  /* fallback for old browsers */
-        background: -webkit-linear-gradient(to top, #16222A, #3A6073);  /* Chrome 10-25, Safari 5.1-6 */
-        background: linear-gradient(to top, #16222A, #3A6073); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        background: #3A6073;
 
         .day {
           font-size: 38px;

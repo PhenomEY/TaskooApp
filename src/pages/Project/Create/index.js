@@ -18,6 +18,12 @@ export default {
         selectedUser: null
     }),
 
+    watch: {
+      '$store.state.organisations.currentOrganisation': function() {
+        this.getAvailableUsers()
+      }
+    },
+
 
     mounted() {
       this.getAvailableUsers()

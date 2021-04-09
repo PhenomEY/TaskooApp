@@ -94,6 +94,15 @@
 
       .task-group-item {
         list-style-type: none;
+
+        &.sortable-chosen {
+
+          .task-group {
+            border:1px solid $taskoo-selected;
+            border-radius: $taskoo-border-radius;
+          }
+
+        }
       }
 
 
