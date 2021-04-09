@@ -194,29 +194,34 @@ export default {
                 this.groups[groupKey]['tasks'] = []
             }
 
-            this.groups[groupKey]['tasks'].unshift({
-                'dateDue': null,
-                'id': null,
-                'name': this.$t('task.defaultName'),
-                'user': null
-            })
-
-            const addedTask = this.groups[groupKey]['tasks'][0];
-
             const formData = {
               groupId: groupId,
-              taskName: addedTask.name
+              taskName: this.$t('task.defaultName'),
             }
 
             const created = await TaskService.create(formData, this);
 
             if(created) {
+              const createdId = created.createdId
               //success
-              this.groups[groupKey]['tasks'][0]['id'] = created.createdId;
+              this.groups[groupKey]['tasks'].unshift({
+                'dateDue': null,
+                'id': createdId,
+                'name': this.$t('task.defaultName'),
+                'user': null
+              })
               this.addingTask = false
+
+              //get added task element
+              this.$nextTick(() => {
+                const addedTask = this.$refs['group-'+groupKey][0].$refs['task-'+createdId][0]
+                //select and focus input field
+                addedTask.getElementsByTagName('input')[0].focus()
+                addedTask.getElementsByTagName('input')[0].select()
+              })
+
             } else {
               //error
-              this.groups[groupKey]['tasks'].shift();
               this.addingTask = false
             }
         },

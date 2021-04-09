@@ -2,7 +2,7 @@
   <div class="settings-wrapper">
     <md-tabs  md-sync-route>
       <md-tab id="account-settings" md-label="Accounteinstellungen" to="/settings" exact>
-        ACC SETTINGS
+        <account-settings :userId="currentUser.id"></account-settings>
       </md-tab>
 
       <md-tab id="organisations" md-label="Profileinstellungen" to="" :md-disabled="true">

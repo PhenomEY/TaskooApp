@@ -99,6 +99,7 @@
                           @getDoneTasks="getDoneTasks(...arguments)"
                           @getOpenTasks="getOpenTasks(...arguments)"
                           @deleteGroup="toggleDeleteDialog(...arguments)"
+                          :ref="'group-'+key"
               ></task-group>
             </li>
             <li key="addBtn" class="task-group-item" v-if="groups.length === 0">

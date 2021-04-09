@@ -2,6 +2,7 @@ import TaskooInput from "components/TaskooInput/TaskooInput";
 import Multiselect from 'vue-multiselect'
 
 import FormValidator from "src/handlers/FormValidator";
+import UserService from "src/services/TaskooUserService";
 
 import axios from "axios";
 
@@ -122,7 +123,7 @@ export default {
         })
       },
 
-      updateUser() {
+      async updateUser() {
         if (this.updatingUser === true) return
 
         const userId = this.$route.params.id;
@@ -151,28 +152,17 @@ export default {
           this.formError = false;
         }
 
-        axios
-          .put(axios.defaults.baseURL+'/user/'+userId, {
-            email: form.form.email.value,
-            firstname: form.form.firstname.value,
-            lastname: form.form.lastname.value,
-            password: form.form.password.value,
-            active: form.form.active.value,
-            permissions: permissions
-          })
-          .catch(error => {
-            this.$vToastify.error(error.response.data.message);
-            this.updatingUser = false;
-          })
-          .then(response => {
-            if(!response) return;
+        const formData = {
+          email: form.form.email.value,
+          firstname: form.form.firstname.value,
+          lastname: form.form.lastname.value,
+          password: form.form.password.value,
+          active: form.form.active.value,
+          permissions: permissions
+        }
 
-            if(response.data.success == true) {
-              this.$vToastify.success('User updated');
-              this.updatingUser = false;
-            }
-
-          })
+        const updated = await UserService.update(userId, formData, this, true)
+        this.updatingUser = false;
       },
 
       setUserFormValue(name, value) {

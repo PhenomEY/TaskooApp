@@ -23,5 +23,10 @@
 <!--    Taskoo by Damian Plewka https://github.com/PhenomEY-->
 <!--    damian@taskoo.de-->
     <div id="q-app"></div>
+
+
+<% if (process.env.isWeb) { %>
+    <script src="/config.js"></script>
+<% } %>
   </body>
 </html>

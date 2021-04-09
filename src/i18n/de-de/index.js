@@ -36,7 +36,8 @@ export default {
       "labels": {
       "email": "E-Mail-Adresse",
       "password": "Passwort",
-      "password_verification": "Passwort bestätigen"
+      "password_verification": "Passwort bestätigen",
+      "password_current": "Aktuelles Passwort"
       },
 
   "links": {
@@ -198,6 +199,16 @@ export default {
         "projects": "Projekte",
         "users": "Mitglieder"
       }
+    }
+  },
+
+  "settings": {
+    "account_settings": {
+      "title": "Taskoo - Accounteinstellungen",
+      "save": "Daten speichern",
+      "new_password": "Neues Passwort",
+      "new_password_confirm": "Neues Passwort bestätigen",
+      "data_title": "Passwort oder E-Mail Adresse ändern"
     }
   },
 

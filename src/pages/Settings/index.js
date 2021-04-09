@@ -1,9 +1,26 @@
+import AccountSettings from "./AccountSettings/AccountSettings"
+
 export default {
     name: 'Settings',
-    components: {},
+    components: {AccountSettings},
 
     data: () => ({
+      user: null
     }),
-    methods: {
+
+  computed: {
+    currentUser() {
+      return this.$store.state.user.user
+    }
+  },
+
+  mounted() {
+      console.log(this.currentUser)
+  },
+
+  methods: {
+      loadUser() {
+
+      }
     }
 }

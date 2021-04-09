@@ -2,7 +2,8 @@
 
 .layout-sidebar {
   .md-app {
-    min-height: 100vh;
+    height: 100vh;
+    max-height:100vh;
 
     .md-app-content {
       padding:0;

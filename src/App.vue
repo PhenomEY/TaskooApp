@@ -43,6 +43,9 @@
     mounted() {
       axios.defaults.headers.common['Authorization'] = this.$store.state.auth.authToken
 
+      console.log('CONFIG:');
+      console.log(window.API_URL)
+
       if (this.$store.state.misc.isDark === 'true') {
         document.body.classList.add('taskoo-dark-theme');
       } else {
