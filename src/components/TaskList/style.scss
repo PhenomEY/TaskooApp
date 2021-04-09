@@ -72,6 +72,11 @@
             color:$taskoo-done-color;
           }
         }
+
+        &.high-priority {
+          border-color: $taskoo-high-priority-border;
+          background: $taskoo-high-priority-bg;
+        }
       }
 
       &:hover {
@@ -214,6 +219,13 @@
         }
       }
 
+
+      &.item {
+        &.high-priority {
+          border-color: #7b0c0c;
+          background: #290000;
+        }
+      }
     }
   }
 }

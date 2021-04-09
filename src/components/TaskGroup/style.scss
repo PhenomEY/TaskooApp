@@ -84,6 +84,11 @@
         opacity:0.5;
       }
 
+      &.high-priority {
+        border-color: $taskoo-high-priority-border;
+        background: $taskoo-high-priority-bg;
+      }
+
       &.is-done {
         overflow:hidden;
         animation-name: fadeOut;
@@ -226,6 +231,13 @@
           .date {
             color:rgba(255,255,255,0.4);
           }
+        }
+      }
+
+      &.item {
+        &.high-priority {
+          border-color: #7b0c0c;
+          background: #290000;
         }
       }
     }

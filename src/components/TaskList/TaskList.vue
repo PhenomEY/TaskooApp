@@ -23,7 +23,7 @@
           </md-empty-state>
         </div>
 
-      <div class="task item" v-for="(task,key) in tasks" v-bind:class="{'is-done': (task.isDone)}">
+      <div class="task item" v-for="(task,key) in tasks" v-bind:class="{'is-done': (task.isDone), 'high-priority': (task.higherPriority)}">
         <div class="list-task-left">
           <div class="list-task-dragger" v-if="!isMobile && !noDragging">
             <md-icon>swap_vert</md-icon>
