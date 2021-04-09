@@ -62,6 +62,7 @@ export default {
     "public": "Dieses Projekt ist öffentlich",
     "projectLead": "Projektverantwortlicher",
     "projectName": "Projektname",
+    "description": "Projektbeschreibung",
     "create": {
       "public": "Öffentlich",
       "closed": "Geschlossen",

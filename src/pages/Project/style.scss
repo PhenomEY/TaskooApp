@@ -72,6 +72,17 @@
       }
     }
 
+    .project-description {
+      padding: 0 32px;
+      max-height: 80px;
+      overflow: auto;
+
+      p {
+        margin:0 0 6px;
+      }
+    }
+
+
     .task-groups {
       display: flex;
       overflow-x: auto;

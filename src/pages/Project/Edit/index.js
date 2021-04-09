@@ -31,7 +31,11 @@ export default {
         projectDate: null,
         projectUsers: [],
         loading:true,
-        projectStatus: false
+        projectStatus: false,
+        descriptionIsFocused: false,
+        taskToolbar: [
+          ["bold", "italic", "underline"]
+        ],
       }
     },
 
@@ -112,11 +116,13 @@ export default {
         const name = this.projectData.name
         const deadline = this.projectDate
         const mainUser = this.projectData.mainUser
+        const description = this.projectData.description
 
         let formData = {
           isClosed: isClosed,
           name: name,
-          deadline: deadline
+          deadline: deadline,
+          description: description
         }
 
         if(mainUser) {

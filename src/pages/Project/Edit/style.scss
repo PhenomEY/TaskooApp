@@ -56,6 +56,89 @@
         background:transparent;
       }
     }
+
+    .project-description {
+      margin-top:10px;
+      margin-bottom:20px;
+
+      .label {
+        display: block;
+        margin-bottom:10px;
+      }
+
+      .quillWrapper {
+        box-shadow: $taskoo-box-shadow;
+      }
+
+
+        .ql-toolbar {
+          max-height:30px;
+          padding:4px 8px 8px 8px;
+          border-bottom: 1px solid var(--taskoo-border-secondary);
+          border-top: 1px solid $taskoo-border-h-color;
+          border-left: 1px solid $taskoo-border-h-color;
+          border-right: 1px solid $taskoo-border-h-color;
+        }
+
+        .ql-container {
+          border-radius:0;
+
+          &.ql-snow {
+            border-top:none;
+            border-color:$taskoo-border-h-color;
+          }
+
+        }
+
+      .ql-toolbar {
+        text-align: left;
+        background:var(--taskoo-default-bg);
+        border-top-left-radius: $taskoo-border-radius;
+        border-top-right-radius: $taskoo-border-radius;
+
+        .ql-formats {
+          margin-right:10px;
+          margin-bottom:0;
+          button {
+            svg {
+              width:16px;
+              height:16px;
+            }
+          }
+        }
+      }
+
+      .ql-container {
+        background:var(--taskoo-default-bg);
+        border-color:var(--taskoo-border-default);
+        transition:border-radius 100ms;
+
+        &.ql-snow {
+          border-top:1px solid var(--taskoo-border-default);
+        }
+
+        .ql-editor {
+          min-height:100px;
+          font-family:'Noto Sans JP';
+          font-size:14px;
+        }
+      }
+
+      .save-button {
+        background:$taskoo-main;
+        color:#ffffff;
+        padding: 7px 20px;
+        margin-top:10px;
+        border-radius:$taskoo-border-radius;
+        border:none;
+        font-family: "Noto Sans JP";
+        cursor:pointer;
+
+        &[disabled] {
+          cursor:not-allowed;
+        }
+      }
+    }
   }
 }
 

@@ -27,6 +27,13 @@
               <md-radio v-model="projectStatus" :value="true">{{ $t('project.create.closed') }}</md-radio>
             </div>
 
+            <div class="project-description"  v-bind:class="{'is-focused': (descriptionIsFocused)}">
+            <span class="label">
+              {{ $t('project.description') }}
+            </span>
+              <vue-editor v-model="projectData.description" :placeholder="$t('project.description')" :editor-toolbar="taskToolbar" @focus="descriptionIsFocused = true" @blur="descriptionIsFocused = false"></vue-editor>
+            </div>
+
             <button class="taskoo-button" @click="save(projectData)">
               {{ $t('taskoo.save') }}
             </button>

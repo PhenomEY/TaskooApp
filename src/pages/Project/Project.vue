@@ -72,6 +72,9 @@
         </div>
       </div>
 
+      <div class="project-description taskoo-scrollbar-y" v-if="project.description" v-html="project.description">
+      </div>
+
         <draggable v-touch:swipe="swipeHandler" :disabled="isMobile" v-model="groups" class="task-groups" v-bind="dragOptions" handle=".group-drag" @change="changedGroupPositions(groups)">
           <transition-group type="transition" class="transition-group">
             <li
