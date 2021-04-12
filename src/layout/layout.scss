@@ -57,9 +57,26 @@
         height:100%;
         border-right: 1px solid var(--taskoo-border-secondary);
         padding-top:15px;
+        overflow-y: auto;
+
+        .projects, .favorites {
+          overflow-y: auto;
+        }
 
         .md-list-item {
           border:none;
+
+
+          .md-list-item-router {
+            &.router-link-active {
+
+              .md-list-item-content {
+                color:inherit !important;
+                font-weight: bold;
+              }
+            }
+          }
+
 
           .color-brick {
             width:8px;

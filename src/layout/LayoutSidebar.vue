@@ -81,22 +81,31 @@ m1270 -10 c189 -30 340 -186 403 -416 29 -105 31 -334 4 -438 -47 -182 -151
 
           <md-list class="project-nav">
 
-            <md-list-item class="title">
+            <md-list-item class="title" v-show="favorites">
               <span class="md-list-item-text">{{ $t('navigation.projects.favorites') }}</span>
             </md-list-item>
 
-            <md-list-item @click="goToPath('/project/', 2)">
-              <span class="color-brick" v-bind:style= "[(currentOrganisation && currentOrganisation.color) ? {background: currentOrganisation.color} : {}]"></span>
-              <span class="md-list-item-text">Fav. Project</span>
-            </md-list-item>
+            <draggable v-if="favorites" :disabled="false" class="favorites taskoo-scrollbar-y" group="favorites" :list="favorites"  v-bind="dragOptions" handle=".drag" @change="updateFavorites(favorites)">
+              <md-list-item v-for="favorite in favorites" :to="{ name: 'Project', params: { projectId: favorite.id }}">
+                <span class="color-brick" v-bind:style= "[(favorite.color) ? {background: favorite.color} : {}]"></span>
+                <span class="md-list-item-text">{{ favorite.name }}</span>
+                <span class="drag"><md-icon>drag_indicator</md-icon></span>
+              </md-list-item>
+            </draggable>
+
+
 
             <md-list-item class="title">
               <span class="md-list-item-text">{{ $t('navigation.projects.title') }}</span>
             </md-list-item>
-            <md-list-item v-for="project in projects" @click="goToPath('/project/', project.id)">
-              <span class="color-brick" v-bind:style= "[currentOrganisation.color ? {background: currentOrganisation.color} : {}]"></span>
-              <span class="md-list-item-text">{{ project.name }}</span>
-            </md-list-item>
+
+            <div class="projects taskoo-scrollbar-y">
+              <md-list-item v-for="project in projects" :to="{ name: 'Project', params: { projectId: project.id }}">
+                <span class="color-brick" v-bind:style= "[currentOrganisation.color ? {background: currentOrganisation.color} : {}]"></span>
+                <span class="md-list-item-text">{{ project.name }}</span>
+              </md-list-item>
+            </div>
+
 
             <md-list-item v-if="userPermissions && (userPermissions.administration || userPermissions.project_create)" @click="goToName('CreateProject')">
               <span class="md-list-item-text">{{ $t('navigation.projects.create') }}</span>

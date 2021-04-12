@@ -130,19 +130,19 @@
 
       .users {
         .task-user {
-          transform: translateX(-50%);
-          min-width: 20px;
           width: 20px;
+          min-width: 20px;
           height: 20px;
           margin: 0;
           text-transform: none;
 
-          .md-avatar-icon {
+          .md-avatar {
             width: 20px;
             min-width: 20px;
             height: 20px;
             font-size: 14px;
-            background:darkslateblue;
+            display: flex;
+            color:#ffffff;
           }
 
           .md-avatar {

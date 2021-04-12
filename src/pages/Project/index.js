@@ -352,6 +352,20 @@ export default {
 
       },
 
+      async favorizeProject() {
+        const projectId = this.$route.params.projectId;
+
+        if(!this.project.isFavorite) {
+          const added = await ProjectService.favorite.add(projectId, this);
+          this.project.isFavorite = true;
+        } else {
+          const deleted = await ProjectService.favorite.remove(projectId, this);
+          this.project.isFavorite = false;
+        }
+
+        this.$store.commit('misc/updateSidebar', true);
+      },
+
       consoleLog() {
           console.log('SAVED')
       }

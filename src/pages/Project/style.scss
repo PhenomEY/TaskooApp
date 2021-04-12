@@ -44,6 +44,12 @@
           width: 25px;
           height:25px;
         }
+
+        .is-favorite {
+          .md-icon {
+            color:#ffbc00;
+          }
+        }
       }
 
       .project-users {
@@ -76,6 +82,7 @@
       padding: 0 32px;
       max-height: 80px;
       overflow: auto;
+      max-width: 1250px;
 
       p {
         margin:0 0 6px;

@@ -26,5 +26,29 @@ users: {
       }
     );
   },
-}
+},
+
+  projects: {
+    load(organisationId, context, successMessage = false) {
+
+      return new Promise(resolve => {
+          axios
+            .get(axios.defaults.baseURL+'/organisation/'+organisationId+'/projects')
+            .catch(error => {
+              context.$vToastify.error(error.response.data.detail);
+              resolve(false);
+            })
+            .then(response => {
+              if(!response) return;
+
+              if(successMessage === true) {
+                context.$vToastify.success(response.data.message);
+              }
+
+              resolve(response.data);
+            })
+        }
+      );
+    },
+  }
 }

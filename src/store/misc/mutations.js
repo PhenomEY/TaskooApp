@@ -27,5 +27,8 @@ export function toggleDarkMode(state, value) {
   } else {
     document.body.classList.remove('taskoo-dark-theme');
   }
+}
 
+export function updateSidebar(state, value) {
+  state.updateSidebar = value
 }

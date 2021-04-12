@@ -55,7 +55,7 @@
             public
           </md-icon>
 
-          <md-button class="md-icon-button md-list-action">
+          <md-button class="md-icon-button md-list-action" v-bind:class="{'is-favorite': (project.isFavorite)}" @click="favorizeProject">
             <md-icon>star</md-icon>
           </md-button>
 

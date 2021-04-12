@@ -3,6 +3,7 @@ export default function () {
     isMobile: false,
     contentRefresh: false,
     contentRefreshActive: false,
-    isDark: localStorage.getItem('taskooDarkMode')
+    isDark: localStorage.getItem('taskooDarkMode'),
+    updateSidebar: false
   }
 }
