@@ -116,6 +116,11 @@
         .date {
           color:rgba(0,0,0,0.7);
           font-size:9px;
+          margin-left:5px;
+
+          &.overdue {
+            color:$taskoo-error;
+          }
         }
 
         .md-icon {

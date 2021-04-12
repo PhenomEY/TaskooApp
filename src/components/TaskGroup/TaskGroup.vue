@@ -72,7 +72,7 @@
             <md-icon>view_list</md-icon>
           </span>
 
-          <span class="date" v-if="item.dateDue && !showDoneTasks">{{ item.dateDue.date | moment('LL') }}</span>
+          <span class="date" v-if="item.dateDue && !showDoneTasks" v-bind:class="{'overdue': ((new Date(item.dateDue.date.replace(' ', 'T'))) < (new Date()))}">{{ item.dateDue.date | moment('LL') }}</span>
 
             <span class="date done-at" v-else-if="item.isDone && item.doneAt">{{ $t('task.doneAt') }} {{ item.doneAt.date | moment('LL') }}</span>
           </div>

@@ -55,7 +55,7 @@
             <md-icon>notes</md-icon>
           </span>
 
-            <span class="sub-date-due" v-if="task.dateDue && !task.isDone">
+            <span class="sub-date-due" v-if="task.dateDue && !task.isDone" v-bind:class="{'overdue': ((new Date(task.dateDue.date.replace(' ', 'T'))) < (new Date()))}">
              {{ $t('task.dateDue') }} {{ task.dateDue.date | moment('LL') }}
             </span>
 
