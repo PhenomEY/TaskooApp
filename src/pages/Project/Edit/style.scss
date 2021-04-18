@@ -19,7 +19,7 @@
     align-self: self-start;
     margin-top: 10%;
     width: 100%;
-    max-width: 500px;
+    max-width: 950px;
 
     .project-main-user {
       margin-bottom:10px;
@@ -136,6 +136,42 @@
 
         &[disabled] {
           cursor:not-allowed;
+        }
+      }
+    }
+  }
+}
+
+.taskoo-dark-theme {
+  .edit-project-wrapper {
+    .edit-project-modal {
+      .label {
+        color:rgba(255,255,255,0.6);
+      }
+
+      .taskoo-input {
+        input {
+          background:var(--taskoo-wrapper-bg);
+        }
+      }
+
+      .taskoo-user-select {
+        .multiselect__tags {
+          background:var(--taskoo-wrapper-bg);
+        }
+
+        .multiselect__single {
+          background:var(--taskoo-wrapper-bg);
+        }
+      }
+
+      .taskoo-datepicker .datepicker .vdp-datepicker input {
+        background:var(--taskoo-wrapper-bg);
+      }
+
+      .project-description {
+        .ql-container {
+          background:var(--taskoo-wrapper-bg);
         }
       }
     }

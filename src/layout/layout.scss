@@ -59,13 +59,26 @@
         padding-top:15px;
         overflow-y: auto;
 
+        .favorites {
+          .md-list-item {
+            .md-list-item-router {
+              &.router-link-active {
+                .md-list-item-content {
+                  .md-icon {
+                    font-weight: normal;
+                  }
+                }
+              }
+            }
+          }
+        }
+
         .projects, .favorites {
           overflow-y: auto;
         }
 
         .md-list-item {
           border:none;
-
 
           .md-list-item-router {
             &.router-link-active {
@@ -76,7 +89,6 @@
               }
             }
           }
-
 
           .color-brick {
             width:8px;

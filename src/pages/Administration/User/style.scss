@@ -165,6 +165,15 @@
       .entry {
         background:var(--taskoo-wrapper-bg);
 
+        &.title {
+          border-bottom-left-radius: 0;
+          border-bottom-right-radius: 0;
+
+          &:hover {
+            background:var(--taskoo-wrapper-bg);
+          }
+        }
+
         .role {
           .admin-label {
             background: rgb(26,44,60);
