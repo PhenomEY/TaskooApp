@@ -114,5 +114,35 @@ export default {
           })
       }
     );
+  },
+
+  files: {
+    upload(taskId, files, context, successMessage = false) {
+      let formData = new FormData();
+      formData.append('file', files[0]);
+
+      return new Promise(resolve => {
+        axios
+          .post(axios.defaults.baseURL+'/task/'+taskId+'/file', formData,
+            {
+              headers: {
+                'Content-Type': 'multipart/form-data'
+              }
+            })
+          .catch(error => {
+            context.$vToastify.error(error.response.data.detail);
+            resolve(false);
+          })
+          .then(response => {
+            if(!response) return;
+
+            if(successMessage === true) {
+              context.$vToastify.success(response.data.message);
+            }
+
+            resolve(response.data);
+          })
+      });
+    }
   }
 }

@@ -15,6 +15,7 @@ import Skeleton from 'vue-loading-skeleton'
 import VueEditor from "vue2-editor"
 import VueMoment from 'vue-moment'
 import Vue2TouchEvents from 'vue2-touch-events'
+import VueCookies from 'vue-cookies'
 const moment = require('moment')
 require('moment/locale/de')
 
@@ -34,6 +35,7 @@ Vue.use(VTooltip)
 Vue.use(Skeleton)
 Vue.use(VueEditor)
 Vue.use(Vue2TouchEvents)
+Vue.use(VueCookies)
 
 Vue.mixin(TaskooMixins)
 

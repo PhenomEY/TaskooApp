@@ -98,6 +98,7 @@ export default {
     "priority": "Priorität",
     "hasDescription": "Enthält Beschreibung",
     "hasSubTasks": "Enthält Unteraufgaben",
+    "hasFiles": "Enthält Dateien",
     "assignedUsers": "Zugewiesene Mitarbeiter",
     "subTasks": "Weitere Aufgaben",
     "addSubTask": "Weitere Aufgabe hinzufügen",
@@ -183,7 +184,7 @@ export default {
       "edit": {
         "save": "Benutzer speichern",
         "role": "Rolle",
-        "organisations": "Zugwiesene Abteilungen",
+        "organisations": "Zugewiesene Abteilungen",
         "permissions": {
           "title": "Benutzerrechte verwalten",
           "administration": "Administration",

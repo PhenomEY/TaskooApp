@@ -55,6 +55,10 @@
             <md-icon>notes</md-icon>
           </span>
 
+          <span class="has-files" v-if="task.hasFiles" :title="$t('task.hasFiles')">
+            <md-icon>description</md-icon>
+          </span>
+
             <span class="sub-date-due" v-if="task.dateDue && !task.isDone" v-bind:class="{'overdue': ((new Date(task.dateDue.date.replace(' ', 'T'))) < (new Date()))}">
              {{ $t('task.dateDue') }} {{ task.dateDue.date | moment('LL') }}
             </span>

@@ -116,6 +116,21 @@
         <button class="save-button" :disabled="!descriptionSave" @click="update({description: task.description})">{{ $t('taskoo.save') }}</button>
       </div>
 
+      <div class="task-files">
+        <div class="file-preview" v-if="task.files.length > 0">
+          <div class="preview-box" v-for="file in task.files">
+            <a :href="apiURL+'/file/'+file.id+'?mediaToken=media'">
+              <img :src="apiURL+'/file/'+file.id+'?mediaToken=media'" target="_blank"/>
+            </a>
+          </div>
+        </div>
+
+        <div class="upload-files">
+          <input class="fileinput" type="file" name="file" id="file" ref="fileinput" @change="uploadFile"/>
+          <label for="file"><strong>Choose a file</strong><span class="box__dragndrop"> or drag it here</span>.</label>
+        </div>
+      </div>
+
       <div class="task-subtasks" v-if="!task.mainTask">
         <span class="label">{{ $t('task.subTasks') }}</span>
         <task-list :addButton="true" :addingTask="addingSubTask" :disabled="changingPositions" @finishTask="finishSubTask" @positionsChanged="changedSubPositions" @addSubTask="addSubTask" @changedTaskName="changeSubTaskName" :tasks="task.subTasks" type="sub"></task-list>

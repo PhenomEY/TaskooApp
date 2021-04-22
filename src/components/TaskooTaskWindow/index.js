@@ -61,6 +61,10 @@ export default {
     computed: {
       currentOrganisation: function() {
         return this.$store.state.organisations.currentOrganisation
+      },
+
+      apiURL: function () {
+        return window.API_URL
       }
     },
 
@@ -274,6 +278,17 @@ export default {
             this.$router.push({ name: `Project`, params: {projectId: this.task.project.id} });
           }
         }
+      },
+
+      async uploadFile() {
+          const files = this.$refs['fileinput'].files;
+          const taskId = this.$route.params.taskId;
+
+          const upload = await TaskService.files.upload(taskId, files);
+
+          if(upload) {
+             this.task.files = upload.files;
+          }
       },
 
       toggleDeleteDialog() {

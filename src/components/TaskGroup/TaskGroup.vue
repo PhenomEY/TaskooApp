@@ -64,13 +64,17 @@
 
         <div class="secondary">
           <div class="secondary-left">
-          <span class="has-description" v-if="item.isDone === false && item.description" :title="$t('task.hasDescription')">
-            <md-icon>notes</md-icon>
-          </span>
+            <span class="has-description" v-if="item.isDone === false && item.description" :title="$t('task.hasDescription')">
+              <md-icon>notes</md-icon>
+            </span>
 
-          <span class="has-subtasks" v-if="item.isDone === false && item.subTasks" :title="$t('task.hasSubTasks')">
-            <md-icon>view_list</md-icon>
-          </span>
+            <span class="has-subtasks" v-if="item.isDone === false && item.subTasks" :title="$t('task.hasSubTasks')">
+              <md-icon>view_list</md-icon>
+            </span>
+
+            <span class="has-files" v-if="item.isDone === false && item.hasFiles" :title="$t('task.hasFiles')">
+              <md-icon>description</md-icon>
+            </span>
 
           <span class="date" v-if="item.dateDue && !showDoneTasks" v-bind:class="{'overdue': ((new Date(item.dateDue.date.replace(' ', 'T'))) < (new Date()))}">{{ item.dateDue.date | moment('LL') }}</span>
 
