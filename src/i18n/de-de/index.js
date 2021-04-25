@@ -123,7 +123,11 @@ export default {
 
   "menu": {
     "delete": "Aufgabe löschen"
-  }
+  },
+
+    "files": {
+      "delete": "Datei löschen"
+    }
 },
 
   "dashboard": {

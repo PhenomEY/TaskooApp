@@ -27,7 +27,8 @@
       screenWidth: window.innerWidth,
       publicUrls: [
         'Login',
-        'Invite'
+        'Invite',
+        'File'
       ]
     }),
 

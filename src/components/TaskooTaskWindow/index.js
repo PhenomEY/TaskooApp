@@ -3,13 +3,15 @@ import Taskoo404 from '../TaskooNotFound/TaskooNotFound';
 import TaskooUserSelect from '../TaskoouserSelect/TaskooUserSelect';
 import TaskooDatepicker from "../TaskooDatepicker/TaskooDatepicker";
 import TaskList from "../TaskList/TaskList";
-import Multiselect from 'vue-multiselect'
+import Multiselect from 'vue-multiselect';
+import TaskooFileViewer from "src/components/TaskooFileViewer/TaskooFileViewer";
 
 import TaskService from 'src/services/TaskooTaskService';
+import FileService from 'src/services/TaskooFileService';
 
 export default {
     name: 'TaskooTaskWindow',
-    components: {TaskooInput, Taskoo404, TaskooUserSelect, TaskooDatepicker, TaskList, Multiselect},
+    components: {TaskooInput, Taskoo404, TaskooUserSelect, TaskooDatepicker, TaskList, Multiselect, TaskooFileViewer},
     data() {
         return {
             task: null,
@@ -62,10 +64,6 @@ export default {
       currentOrganisation: function() {
         return this.$store.state.organisations.currentOrganisation
       },
-
-      apiURL: function () {
-        return window.API_URL
-      }
     },
 
     methods: {
@@ -284,11 +282,27 @@ export default {
           const files = this.$refs['fileinput'].files;
           const taskId = this.$route.params.taskId;
 
-          const upload = await TaskService.files.upload(taskId, files);
+          if(files.length > 0) {
+            const upload = await TaskService.files.upload(taskId, files, this);
 
-          if(upload) {
-             this.task.files = upload.files;
+            if(upload) {
+              this.task.files = upload.files;
+            }
           }
+
+
+
+      },
+
+      async deleteFile(fileData) {
+        const fileId = fileData.id
+        const index = fileData.index
+
+        const deleted = await FileService.delete(fileId, this);
+
+        if(deleted) {
+          this.task.files.splice(index, 1)
+        }
       },
 
       toggleDeleteDialog() {

@@ -110,7 +110,6 @@ export default new Router({
       name: 'Settings',
       component: require('pages/Settings/Settings').default,
     },
-
     {
       path: '*',
       redirect: '/'

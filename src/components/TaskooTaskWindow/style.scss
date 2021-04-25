@@ -243,20 +243,12 @@
     }
 
     .task-files {
-      .file-preview {
-        display:flex;
-
-        .preview-box {
-          max-width: 100px;
-          margin-right:20px;
-        }
-      }
 
       .upload-files {
         border:1px dashed $taskoo-main;
         text-align: center;
         padding:20px;
-        margin:20px 0;
+        margin-bottom: 20px;
         .fileinput {
           width: 0.1px;
           height: 0.1px;

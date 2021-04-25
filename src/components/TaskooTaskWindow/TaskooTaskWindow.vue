@@ -52,7 +52,7 @@
           </md-button>
 
 
-          <template slot="popover">
+          <template slot="popover" class="file-options">
             <div class="taskoo-popover-options">
               <div class="option remove" @click="toggleDeleteDialog" v-close-popover>
                 <md-icon>delete</md-icon>
@@ -117,13 +117,7 @@
       </div>
 
       <div class="task-files">
-        <div class="file-preview" v-if="task.files.length > 0">
-          <div class="preview-box" v-for="file in task.files">
-            <a :href="apiURL+'/file/'+file.id+'?mediaToken=media'">
-              <img :src="apiURL+'/file/'+file.id+'?mediaToken=media'" target="_blank"/>
-            </a>
-          </div>
-        </div>
+        <taskoo-file-viewer :files="task.files" @delete="deleteFile"></taskoo-file-viewer>
 
         <div class="upload-files">
           <input class="fileinput" type="file" name="file" id="file" ref="fileinput" @change="uploadFile"/>

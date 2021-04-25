@@ -1,0 +1,73 @@
+@import 'src/scss/vars/variables';
+
+.file-preview {
+  display:flex;
+  flex-wrap: wrap;
+
+  .preview-box {
+    max-width: 200px;
+    max-height: 200px;
+    margin-right:20px;
+    padding:5px;
+    background:var(--taskoo-default-bg);
+    display: inline-flex;
+    position: relative;
+    flex-direction: column;
+    margin-bottom:20px;
+    border-radius: $taskoo-border-radius;
+
+    .file-informations {
+      display:flex;
+      margin-bottom:5px;
+      height:25px;
+
+      .file-name {
+        width: calc(100% - 35px);
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+      }
+    }
+
+    .file-image-wrapper {
+      display: flex;
+      height: 100%;
+      align-items: center;
+      justify-content: center;
+      max-height: calc(100% - 30px);
+
+      .file-link {
+        max-height:100%;
+        overflow: hidden;
+      }
+
+      img {
+        max-width: 100%;
+        max-height: 100%;
+      }
+    }
+
+    .file-icon-wrapper {
+      display: flex;
+
+      .file-link {
+        color:inherit;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        &:hover {
+          text-decoration: none;
+        }
+
+        .file-extension {
+          display: block;
+          width: 100%;
+          border-radius: 20px;
+          padding:10px 20px;
+          border:1px solid red;
+          text-align: center;
+        }
+      }
+    }
+  }
+}
