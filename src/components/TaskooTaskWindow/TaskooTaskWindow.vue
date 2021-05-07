@@ -119,9 +119,10 @@
       <div class="task-files">
         <taskoo-file-viewer :files="task.files" @delete="deleteFile"></taskoo-file-viewer>
 
-        <div class="upload-files">
-          <input class="fileinput" type="file" name="file" id="file" ref="fileinput" @change="uploadFile"/>
-          <label for="file"><strong>Choose a file</strong><span class="box__dragndrop"> or drag it here</span>.</label>
+        <div class="upload-files" ref="fileZone">
+          <input class="fileinput" type="file" name="file" id="file" ref="fileinput" multiple @change="defaultUpload"/>
+          <label for="file" v-if="!uploading"><strong>Choose a file</strong><span class="dragndrop"> or drag it here</span>.</label>
+          <span class="uploading" v-else>UPLOADING {{ uploadingFile }}</span>
         </div>
       </div>
 

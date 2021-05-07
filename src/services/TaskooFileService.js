@@ -6,7 +6,6 @@ import axios from "axios";
 export default {
 
   delete(fileId, context, successMessage = false, errorMessage = true) {
-
     return new Promise(resolve => {
         axios
           .delete(axios.defaults.baseURL+'/file/'+fileId)
@@ -29,5 +28,34 @@ export default {
       }
     );
   },
+
+  upload(file, taskId = null, context, successMessage = false, errorMessage = true) {
+    let formData = new FormData();
+    formData.append('file', file);
+    formData.append('taskId', taskId);
+
+    return new Promise(resolve => {
+      axios
+        .post(axios.defaults.baseURL+'/file', formData,
+          {
+            headers: {
+              'Content-Type': 'multipart/form-data'
+            }
+          })
+        .catch(error => {
+          context.$vToastify.error(error.response.data.detail);
+          resolve(false);
+        })
+        .then(response => {
+          if(!response) return;
+
+          if(successMessage === true) {
+            context.$vToastify.success(response.data.message);
+          }
+
+          resolve(response.data);
+        })
+    });
+  }
 
 }

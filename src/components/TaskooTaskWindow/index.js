@@ -39,7 +39,10 @@ export default {
               },
             ],
           taskPriority: null,
-          showDeleteDialog: false
+          showDeleteDialog: false,
+          files: null,
+          uploading: false,
+          uploadingFile: null
         }
     },
 
@@ -91,6 +94,10 @@ export default {
             if(data.task.project.organisation && (data.task.project.organisation !== this.currentOrganisation.id)) {
               this.$store.commit('organisations/setOrganisation', data.task.project.organisation.id);
             }
+
+            this.$nextTick(() => {
+              this.fileDragHandler()
+            })
 
           } else {
             //error handling
@@ -278,20 +285,11 @@ export default {
         }
       },
 
-      async uploadFile() {
-          const files = this.$refs['fileinput'].files;
-          const taskId = this.$route.params.taskId;
 
-          if(files.length > 0) {
-            const upload = await TaskService.files.upload(taskId, files, this);
+      defaultUpload() {
+        this.files = this.$refs['fileinput'].files;
 
-            if(upload) {
-              this.task.files = upload.files;
-            }
-          }
-
-
-
+        this.uploadFiles()
       },
 
       async deleteFile(fileData) {
@@ -303,6 +301,49 @@ export default {
         if(deleted) {
           this.task.files.splice(index, 1)
         }
+      },
+
+      fileDragHandler() {
+        const fileZone = this.$refs['fileZone']
+
+        fileZone.addEventListener('dragover', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          fileZone.classList.add('is-dragover');
+        })
+
+        fileZone.addEventListener('drop', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          fileZone.classList.remove('is-dragover');
+          this.files = e.dataTransfer.files;
+
+          this.uploadFiles()
+        })
+      },
+
+
+      async uploadFiles() {
+        const taskId = this.$route.params.taskId;
+        const files = this.files
+        let i;
+        const fileCount = files.length
+
+        this.uploading = true
+        console.log('UPLOADING');
+        console.log(files)
+
+        for(i=0; i<fileCount; i++) {
+          this.uploadingFile = files[i].name
+          let upload = await FileService.upload(files[i], taskId, this)
+
+          if(upload) {
+            this.task.files = upload.files;
+          }
+        }
+
+        this.uploading = false
+        this.uploadingFile = null
       },
 
       toggleDeleteDialog() {
