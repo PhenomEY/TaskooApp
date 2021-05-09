@@ -121,8 +121,12 @@
 
         <div class="upload-files" ref="fileZone">
           <input class="fileinput" type="file" name="file" id="file" ref="fileinput" multiple @change="defaultUpload"/>
-          <label for="file" v-if="!uploading"><strong>Choose a file</strong><span class="dragndrop"> or drag it here</span>.</label>
-          <span class="uploading" v-else>UPLOADING {{ uploadingFile }}</span>
+          <label for="file" v-if="!uploading">
+            <span class="upload-text">
+               <strong>Choose a file</strong><span class="dragndrop"> or drag it here</span>.
+            </span>
+          </label>
+          <div class="uploading" v-else>UPLOADING {{ uploadingFile }}</div>
         </div>
       </div>
 

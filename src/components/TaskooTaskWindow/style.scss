@@ -248,8 +248,27 @@
       .upload-files {
         border:1px dashed $taskoo-main;
         text-align: center;
-        padding:20px;
         margin-bottom: 20px;
+        display: flex;
+
+        &.is-dragover {
+          background: rgba(30,200,30,0.1);
+        }
+
+        label {
+          display:flex;
+          flex:1;
+          padding:20px;
+          justify-content: center;
+          cursor: pointer;
+        }
+
+        .uploading {
+          padding:20px;
+          text-align:center;
+          width: 100%;
+        }
+
         .fileinput {
           width: 0.1px;
           height: 0.1px;

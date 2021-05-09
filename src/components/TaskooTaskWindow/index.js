@@ -312,6 +312,12 @@ export default {
           fileZone.classList.add('is-dragover');
         })
 
+        fileZone.addEventListener('dragleave', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          fileZone.classList.remove('is-dragover');
+        })
+
         fileZone.addEventListener('drop', (e) => {
           e.preventDefault();
           e.stopPropagation();
