@@ -57,14 +57,18 @@ export default {
     },
 
     computed: {
-        dragOptions() {
-            return {
-                animation: 200,
-                group: "description",
-                disabled: false,
-                ghostClass: "ghost"
-            };
-        },
+      dragOptions() {
+          return {
+              animation: 200,
+              group: "description",
+              disabled: false,
+              ghostClass: "ghost"
+          };
+      },
+
+      API_URL: function () {
+        return window.API_URL
+      },
 
       userPermissions: function() {
         return this.$store.state.user.user.permissions

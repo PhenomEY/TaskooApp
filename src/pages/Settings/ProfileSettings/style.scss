@@ -1,0 +1,42 @@
+@import 'src/scss/vars/variables';
+
+
+#profile-settings {
+  height: 100%;
+
+  .profile-settings-inner {
+    width:100%;
+
+    .taskoo-avatar {
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+
+      .avatar {
+        position: relative;
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        overflow: hidden;
+        display: flex;
+        margin-right:20px;
+        border:3px solid $taskoo-main;
+      }
+    }
+
+    .input-label {
+      display: block;
+      font-size: 16px;
+      font-weight: bold;
+      margin-bottom: 5px;
+      color: rgba(0, 0, 0, 0.67);
+    }
+
+    .color-select {
+      width: 100%;
+      max-width: 350px;
+    }
+  }
+}
+
+

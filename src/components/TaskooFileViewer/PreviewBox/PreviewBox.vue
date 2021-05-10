@@ -24,13 +24,13 @@
       </div>
 
       <div class="file-image-wrapper" v-if="isImage(file.fileExtension)">
-        <a :href="apiURL+'/file/'+file.filePath" class="file-link" target="_blank" :title="file.fileName">
-          <img :src="apiURL+'/file/'+file.filePath"  class="file-image" :alt="file.fileName" />
+        <a :href="API_URL+'/file/'+file.filePath" class="file-link" target="_blank" :title="file.fileName">
+          <img :src="API_URL+'/file/'+file.filePath"  class="file-image" :alt="file.fileName" />
         </a>
       </div>
 
       <div class="file-icon-wrapper" v-else>
-        <a :href="apiURL+'/file/'+file.filePath" class="file-link" target="_blank" :title="file.fileName">
+        <a :href="API_URL+'/file/'+file.filePath" class="file-link" target="_blank" :title="file.fileName">
           <md-icon>file_download</md-icon>
 
           <span class="file-extension">

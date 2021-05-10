@@ -41,7 +41,11 @@ export default {
                 disabled: false,
                 ghostClass: "ghost"
             };
-        }
+        },
+
+      API_URL: function () {
+        return window.API_URL
+      },
     },
 
     watch: {

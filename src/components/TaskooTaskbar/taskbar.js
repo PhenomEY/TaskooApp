@@ -44,6 +44,10 @@ export default {
 
       currentUser() {
         return this.$store.state.user.user
+      },
+
+      API_URL: function () {
+        return window.API_URL
       }
     },
 

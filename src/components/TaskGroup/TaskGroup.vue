@@ -83,8 +83,12 @@
 
           <span class="users">
              <md-button v-if="item.user" class="md-icon-button task-user">
-               <md-avatar class="md-avatar" v-bind:style= "[item.user.hexCode ? {background: item.user.hexCode} : {}]">{{ item.user.firstname.charAt(0) }}
+               <md-avatar class="md-avatar" v-bind:style= "[item.user.hexCode ? {background: item.user.hexCode} : {}]">
                  <md-tooltip md-direction="bottom">{{ item.user.firstname }} {{ item.user.lastname }}</md-tooltip>
+                 <img v-if="item.user.filePath" :src="API_URL+'/file/'+item.user.filePath" />
+                 <span v-else>
+                 {{ item.user.firstname.charAt(0) }}
+                 </span>
                </md-avatar>
              </md-button>
 

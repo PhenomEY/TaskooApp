@@ -52,30 +52,34 @@ export default {
   },
 
   props: {
-    userId: Number
+    user: Object
+  },
+
+  watch: {
+    user: function () {
+      this.setUserData()
+    }
   },
 
   mounted() {
+    if(this.$route.name !== 'Settings') {
+      return;
+    }
+
     //set title
     this.setTitle(this.$t('settings.account_settings.title'));
-    this.loadUser()
   },
 
 
   methods: {
-    async loadUser() {
-        const userId = this.userId
-        const loaded = await UserService.load(userId , this);
-
-        if(loaded) {
-          this.userForm.firstname.value = loaded.firstname
-          this.userForm.lastname.value = loaded.lastname
-          this.dataForm.email.oldVal = loaded.email
-        }
+    setUserData() {
+      this.userForm.firstname.value = this.user.firstname
+      this.userForm.lastname.value = this.user.lastname
+      this.dataForm.email.oldVal = this.user.email
     },
 
     updateUser() {
-      const userId = this.userId
+      const userId = this.user.id
       const validated = FormValidator.validate(this.userForm)
 
       this.userForm = validated.form;
@@ -97,7 +101,7 @@ export default {
     },
 
     async updateUserData() {
-      const userId = this.userId
+      const userId = this.user.id
       const validated = FormValidator.validate(this.dataForm)
 
       this.dataForm = validated.form;

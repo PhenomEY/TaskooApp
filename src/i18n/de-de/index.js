@@ -108,6 +108,12 @@ export default {
       "taskFinished": "Aufgabe erledigt"
     },
 
+    "file": {
+      "choose": "Datei auswählen",
+      "drag": "oder hierher ziehen.",
+      "uploading": "Lade {file} hoch..."
+    },
+
     "priorities": {
       "high": "Hoch",
       "normal": "Normal"
@@ -215,6 +221,10 @@ export default {
       "new_password": "Neues Passwort",
       "new_password_confirm": "Neues Passwort bestätigen",
       "data_title": "Passwort oder E-Mail Adresse ändern"
+    },
+
+    "profile_settings": {
+      "title": "Taskoo - Profileinstellungen"
     }
   },
 

@@ -62,8 +62,11 @@
 
 
         <v-popover offset="0">
-          <md-avatar class="md-avatar-icon taskoo-avatar">
-            <img src="./avatar.gif" alt="Avatar" class="tooltip-target">
+          <md-avatar class="md-avatar-icon taskoo-avatar" v-bind:style="[(currentUser.color) ? {background: currentUser.color} : {}]">
+            <img v-if="currentUser.avatar.filePath" :src="API_URL+'/file/'+currentUser.avatar.filePath" alt="Avatar" class="tooltip-target">
+            <span v-else>
+              {{ currentUser.firstname.charAt(0) }}{{ currentUser.lastname.charAt(0) }}
+            </span>
           </md-avatar>
           <template slot="popover">
             <div class="taskoo-popover-options">

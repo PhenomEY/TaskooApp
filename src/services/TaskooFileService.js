@@ -32,7 +32,11 @@ export default {
   upload(file, taskId = null, context, successMessage = false, errorMessage = true) {
     let formData = new FormData();
     formData.append('file', file);
-    formData.append('taskId', taskId);
+
+    if(taskId) {
+      formData.append('taskId', taskId);
+    }
+
 
     return new Promise(resolve => {
       axios

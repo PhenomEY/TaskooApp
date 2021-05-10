@@ -123,10 +123,10 @@
           <input class="fileinput" type="file" name="file" id="file" ref="fileinput" multiple @change="defaultUpload"/>
           <label for="file" v-if="!uploading">
             <span class="upload-text">
-               <strong>Choose a file</strong><span class="dragndrop"> or drag it here</span>.
+               <strong>{{ $t('task.file.choose') }}</strong><span class="dragndrop"> {{ $t('task.file.drag') }}</span>
             </span>
           </label>
-          <div class="uploading" v-else>UPLOADING {{ uploadingFile }}</div>
+          <div class="uploading" v-else>{{ $t('task.file.uploading', {file: uploadingFile}) }}</div>
         </div>
       </div>
 

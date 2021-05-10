@@ -49,7 +49,7 @@ export default {
         return;
       }
 
-      this.projectData = this.model
+      this.projectData = JSON.parse(JSON.stringify(this.model));
       this.projectStatus = this.projectData.isClosed
 
       if(!this.projectData.id) {

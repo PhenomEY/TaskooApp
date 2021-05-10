@@ -3,6 +3,8 @@ import InputfieldEditable from "src/components/InputfieldEditable/InputfieldEdit
 import TaskooColorSelect from "src/components/TaskooColorSelect/TaskooColorSelect"
 import TaskooInput from "src/components/TaskooInput/TaskooInput"
 
+import ColorService from "src/services/TaskooColorService"
+
 export default {
     name: 'AdminOrganisations',
     components: {InputfieldEditable, TaskooColorSelect, TaskooInput},
@@ -55,14 +57,12 @@ export default {
           })
       },
 
-      getColors() {
-        axios
-          .get(axios.defaults.baseURL+'/colors')
-          .catch(function (error) {
-          })
-          .then(response => {
-            this.availableColors = response.data.colors
-          })
+      async getColors() {
+        const loaded = await ColorService.load(this)
+
+        if(loaded) {
+          this.availableColors = loaded.colors
+        }
       },
 
       changedName(key, name) {

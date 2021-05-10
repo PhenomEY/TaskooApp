@@ -109,6 +109,13 @@ export default new Router({
       path: '/settings',
       name: 'Settings',
       component: require('pages/Settings/Settings').default,
+      children: [
+        {
+          path: 'profile',
+          name: 'ProfileSettings',
+          component: require('pages/Settings/ProfileSettings/ProfileSettings').default,
+        }
+      ]
     },
     {
       path: '*',

@@ -21,7 +21,7 @@ export default {
     },
 
     computed: {
-      apiURL: function () {
+      API_URL: function () {
         return window.API_URL
       }
     },
