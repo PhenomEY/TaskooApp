@@ -224,7 +224,10 @@ export default {
     },
 
     "profile_settings": {
-      "title": "Taskoo - Profileinstellungen"
+      "title": "Taskoo - Profileinstellungen",
+      "avatar": "Avatar",
+      "profile_color": "Profilfarbe",
+      "avatar_upload": "Avatar hochladen"
     }
   },
 

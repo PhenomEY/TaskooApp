@@ -60,7 +60,7 @@ export default {
         color: colorId
       };
 
-      const updated = UserService.update(userId, formData, this);
+      const updated = UserService.update(userId, formData, this, true);
 
       if(updated) {
         this.$emit('colorChanged', color);
