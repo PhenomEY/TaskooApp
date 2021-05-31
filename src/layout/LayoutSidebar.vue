@@ -87,7 +87,7 @@ m1270 -10 c189 -30 340 -186 403 -416 29 -105 31 -334 4 -438 -47 -182 -151
 
             <draggable v-if="favorites" :disabled="false" class="favorites taskoo-scrollbar-y" group="favorites" :list="favorites"  v-bind="dragOptions" handle=".drag" @change="updateFavorites(favorites)">
               <md-list-item v-for="favorite in favorites" :to="{ name: 'Project', params: { projectId: favorite.id }}">
-                <span class="color-brick" v-bind:style= "[(favorite.color) ? {background: favorite.color} : {}]"></span>
+                <span class="color-brick" v-bind:style= "[(favorite.color) ? {background: favorite.color.hexCode} : {}]"></span>
                 <span class="md-list-item-text">{{ favorite.name }}</span>
                 <span class="drag"><md-icon>drag_indicator</md-icon></span>
               </md-list-item>
@@ -101,7 +101,7 @@ m1270 -10 c189 -30 340 -186 403 -416 29 -105 31 -334 4 -438 -47 -182 -151
 
             <div class="projects taskoo-scrollbar-y">
               <md-list-item v-for="project in projects" :to="{ name: 'Project', params: { projectId: project.id }}">
-                <span class="color-brick" v-bind:style= "[currentOrganisation.color ? {background: currentOrganisation.color} : {}]"></span>
+                <span class="color-brick" v-bind:style= "[currentOrganisation.color ? {background: currentOrganisation.color.hexCode} : {}]"></span>
                 <span class="md-list-item-text">{{ project.name }}</span>
               </md-list-item>
             </div>

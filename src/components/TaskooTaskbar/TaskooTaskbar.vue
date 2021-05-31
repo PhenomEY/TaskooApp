@@ -15,7 +15,7 @@
                  selectedLabel=""
                  :searchable="false"
                  :allowEmpty="false"
-                 v-bind:style= "[currentOrganisation.color ? {background: currentOrganisation.color} : {}]"
+                 v-bind:style= "[currentOrganisation.color ? {background: currentOrganisation.color.hexCode} : {}]"
     >
       <template slot="singleLabel" slot-scope="props">
         <span>
@@ -24,7 +24,7 @@
       </template>
 
       <template slot="option" slot-scope="props" style="background:red">
-        <span class="organisation-entry" v-bind:style= "[props.option.color ? {background: props.option.color} : {}]">{{ props.option.name }}</span>
+        <span class="organisation-entry" v-bind:style= "[props.option.color ? {background: props.option.color.hexCode} : {}]">{{ props.option.name }}</span>
       </template>
     </multiselect>
 

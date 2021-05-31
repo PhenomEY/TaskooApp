@@ -37,7 +37,7 @@
 
     <div v-else class="project-content">
       <div class="project-header">
-        <span v-if="project.organisation" class="color-brick box-shadow" :title="project.organisation.name" v-bind:style= "[project.organisation.color ? {background: project.organisation.color} : {}]"></span>
+        <span v-if="project.organisation" class="color-brick box-shadow" :title="project.organisation.name" v-bind:style= "[project.organisation.color ? {background: project.organisation.color.hexCode} : {}]"></span>
         <h1 class="title">
             {{ project.name }}
         </h1>
@@ -64,10 +64,10 @@
           </md-button>
         </div>
 
-        <div class="project-users" v-if="!isMobile && project.users">
-          <md-avatar class="user md-avatar-icon" v-for="user in project.users" v-bind:style= "[user.hexCode ? {background: user.hexCode} : {}]">
+        <div class="project-users" v-if="!isMobile && project.users && project.users.length > 0">
+          <md-avatar class="user md-avatar-icon" v-for="user in project.users" v-bind:style= "[user.color ? {background: user.color.hexCode} : {}]">
             <md-tooltip md-direction="top">{{ user.firstname }} {{ user.lastname }}</md-tooltip>
-            <img v-if="user.filePath" :src="API_URL+'/file/'+user.filePath" />
+            <img v-if="user.avatar" :src="API_URL+'/file/'+user.avatar.filePath" />
             <span v-else>
             {{ user.firstname.charAt(0) }}{{ user.lastname.charAt(0) }}
             </span>

@@ -20,7 +20,13 @@
       <template v-if="multi === false" slot="singleLabel" slot-scope="props"> <span>{{props.option.firstname}} {{props.option.lastname}}</span></template>
 
       <template slot="tag" slot-scope="props">
-                  <span class="multiselect__tag user-tag" v-bind:style= "[props.option.hexCode ? {background: props.option.hexCode} : {}]">
+                  <span class="multiselect__tag user-tag" v-bind:style= "[props.option.color ? {background: props.option.color.hexCode} : {}]">
+<!--                    //todo: implement avatar-->
+<!--                    <span class="avatar" >-->
+<!--                           <md-avatar class="md-avatar">-->
+<!--                               <img v-if="props.option.avatar" :src="API_URL+'/file/'+props.option.avatar.filePath" />-->
+<!--                           </md-avatar>-->
+<!--                    </span>-->
                   <span>{{props.option.firstname}} {{props.option.lastname}}</span>
                   <i aria-hidden="true" tabindex="1" @mousedown.prevent="props.remove(props.option)" class="multiselect__tag-icon"></i>
                 </span>

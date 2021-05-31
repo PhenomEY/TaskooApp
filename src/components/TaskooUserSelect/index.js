@@ -29,6 +29,9 @@ export default {
 
     },
     computed: {
+      API_URL: function () {
+        return window.API_URL
+      },
     },
     methods: {
         removeUser(removedUser, id) {
