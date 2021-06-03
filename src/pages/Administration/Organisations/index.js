@@ -126,6 +126,7 @@ export default {
           })
           .then(response => {
             this.load()
+            this.$vToastify.success(response.data.message)
           })
       },
 
