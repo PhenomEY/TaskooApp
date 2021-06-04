@@ -26,12 +26,11 @@ quasar build
 ```
 
 ### Connecting to your API
-after building your app you will find a config.js file inside your application folder
-  this file contains your API URL
-```javascript
-var API_URL="https://api.your-api.com";
+After building your app you must create a config.js file inside your public folder
+```bash
+# This file contains your API URL - E.g. use:
+echo 'var API_URL="https://api.your-api.com";' > public/config.js
 ```
-
 
 ### Customize the configuration
 See [Configuring quasar.conf.js](https://quasar.dev/quasar-cli/quasar-conf-js).
