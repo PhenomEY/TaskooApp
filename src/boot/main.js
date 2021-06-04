@@ -51,5 +51,5 @@ Vue.material.locale = {
 Vue.http = Vue.prototype.$http = axios
 Vue.config.productionTip = false
 
-axios.defaults.baseURL = 'https://api.taskoo.de'
+
 

@@ -27,7 +27,7 @@ quasar build
 
 ### Connecting to your API
 after building your app you will find a config.js file inside your application folder
-this file contains your API URL
+  this file contains your API URL
 ```javascript
 var API_URL="https://api.your-api.com";
 ```

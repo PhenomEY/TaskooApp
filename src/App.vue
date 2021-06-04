@@ -43,6 +43,7 @@
 
     mounted() {
       axios.defaults.headers.common['Authorization'] = this.$store.state.auth.authToken
+      axios.defaults.baseURL = window.API_URL
 
       console.log('CONFIG:');
       console.log(window.API_URL)
