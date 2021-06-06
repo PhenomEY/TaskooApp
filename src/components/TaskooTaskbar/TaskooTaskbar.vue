@@ -5,7 +5,7 @@
       <md-icon>menu</md-icon>
     </div>
 
-    <taskoo-searchfield></taskoo-searchfield>
+    <taskoo-searchfield />
 
     <multiselect v-if="availableOrganisations && availableOrganisations.length > 1" class="taskoo-select organisations"
                  v-model="currentOrganisation"
