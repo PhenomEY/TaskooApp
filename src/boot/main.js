@@ -3,11 +3,7 @@ import axios from 'axios'
 
 import TaskooMixins from '../mixins/TaskooMixins'
 
-import store from '../store'
-
-import VueMaterial from 'vue-material'
 import VTooltip from 'v-tooltip'
-import draggable from 'vuedraggable'
 import VueToastify from "vue-toastify"
 import Skeleton from 'vue-loading-skeleton'
 import VueEditor from "vue2-editor"
@@ -28,7 +24,6 @@ Vue.use(VueMoment, {
   moment
 });
 
-Vue.use(VueMaterial)
 Vue.use(VTooltip)
 Vue.use(Skeleton)
 Vue.use(VueEditor)
