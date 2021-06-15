@@ -9,6 +9,7 @@
       <taskoo-boxed-nav-entry to-name="Administration" :name="$t('administration.main.title')" />
       <taskoo-boxed-nav-entry to-name="AdminUser" :has-subs="true" :name="$t('administration.users.title')" />
       <taskoo-boxed-nav-entry to-name="AdminOrganisations" :name="$t('administration.teams.title')" />
+      <taskoo-boxed-nav-entry to-name="AdminTeamRoles" :name="$t('administration.teamroles.title')" />
     </template>
 
     <template #content>

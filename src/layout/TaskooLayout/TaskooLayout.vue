@@ -15,8 +15,8 @@
             {{ currentUser.firstname }} <strong>{{ currentUser.lastname }}</strong>
           </span>
 
-          <span class="user-role">
-            Administrator
+          <span class="user-role" v-if="currentUser.teamrole">
+            {{ currentUser.teamrole.name }}
           </span>
         </div>
       </div>
@@ -37,7 +37,7 @@
             {{ $t('navigation.tasks') }}
           </router-link>
 
-          <router-link class="drawer-entry" :to="{ name: 'Dashboard'}">
+          <router-link class="drawer-entry" :to="{ name: 'Teams'}">
                   <span class="drawer-entry-icon">
             <q-icon name="o_groups" />
           </span>

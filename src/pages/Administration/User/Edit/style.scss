@@ -4,6 +4,31 @@
       height:var(--taskoo-input-height);
       margin-bottom: 10px;
     }
+
+    .skeleton-bottom {
+      height:90px;
+    }
+  }
+
+  .taskoo-avatar {
+    margin-bottom:20px;
+    height:100px;
+    width: 100px;
+  }
+
+  .role-label {
+    display: block;
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+
+  .taskoo-select.role-select {
+    margin-bottom:10px;
+  }
+
+  .taskoo-select.team-select {
+    margin-bottom:20px;
   }
 
   .taskoo-button {

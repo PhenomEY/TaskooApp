@@ -95,10 +95,10 @@ export default {
             if(loaded) {
               this.project = loaded.project;
               this.setTitle(this.project.name);
-              this.groups = loaded.groups;
+              this.groups = Object.values(loaded.groups);
 
               if(loaded.project.team && (loaded.project.team !== this.currentTeam.id) && this.availableTeams) {
-                this.$store.commit('organisations/setTeam', loaded.project.team.id);
+                this.$store.commit('teams/setTeam', loaded.project.team.id);
               }
               this.loading = false;
 

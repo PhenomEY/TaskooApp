@@ -30,10 +30,10 @@ export default {
               this.$store.commit('auth/setAuthToken', loggedIn.auth)
               this.$store.commit('user/setUser', loggedIn.user)
               this.$store.commit('auth/setVerifiedUser', true)
-              if(loggedIn.organisations) {
-                this.$store.commit('organisations/setAvailableOrganisations', loggedIn.organisations)
+              if(loggedIn.teams) {
+                this.$store.commit('teams/setAvailableTeams', loggedIn.teams)
               } else {
-                this.$store.commit('organisations/setAvailableOrganisations', [])
+                this.$store.commit('teams/setAvailableTeams', [])
               }
 
               console.log(this.$store.state.teams.currentOrganisation)

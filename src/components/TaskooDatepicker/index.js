@@ -28,9 +28,6 @@ export default {
 
 
     mounted() {
-        this.$material.locale.days = this.$t('taskoo.days');
-        this.$material.locale.shortDays = this.$t('taskoo.shortDays');
-        this.$material.locale.shorterDays = this.$t('taskoo.shorterDays');
     },
 
     computed: {

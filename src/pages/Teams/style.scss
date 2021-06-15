@@ -1,0 +1,113 @@
+.teampage-wrapper {
+  flex-direction: column;
+  .header {
+    padding:0 16px;
+    .title {
+      font-size: 21px;
+    }
+  }
+
+  .teampage-content {
+    padding:16px;
+
+    .color-brick {
+      width: 8px;
+      height:8px;
+      display: block;
+      margin-right:10px;
+    }
+
+    .team-entry {
+      border:1px dashed var(--taskoo-border-l);
+      border-radius: var(--taskoo-border-radius);
+      padding:16px;
+      margin-top:20px;
+
+      &:first-child {
+        margin:0;
+      }
+
+      &.active {
+        .team-title {
+          .team-opener {
+            i {
+              transform: rotate(180deg);
+            }
+          }
+        }
+
+        .team-role-columns {
+          display:block;
+        }
+      }
+
+      .team-title {
+        display:flex;
+        align-items: center;
+        font-size: 18px;
+
+        .team-opener {
+          margin-left:10px;
+          font-size: 18px;
+          cursor: pointer;
+          i {
+            transition: all .2s ease;
+          }
+        }
+      }
+
+      .team-role-columns {
+        display:none;
+      }
+
+      .team-role-column {
+        display:flex;
+        width: 100%;
+        justify-content: center;
+
+        .team-role-column-user {
+          display: flex;
+          align-items: center;
+          border-radius: var(--taskoo-border-radius);
+          border:1px solid var(--taskoo-border-h);
+          width: 350px;
+          margin:20px;
+          padding:16px;
+          background: var(--taskoo-boxed-bg);
+          flex-shrink: 0;
+
+          .taskoo-avatar {
+            margin-right:10px;
+          }
+
+          .user-information {
+            display: flex;
+            flex-direction: column;
+
+            .user-role {
+              font-size: 12px;
+            }
+
+            .user-email {
+              transition: all .2s ease;
+              &:hover {
+                color:var(--taskoo-primary);
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .loader {
+      .team-column-skeleton {
+        height:95px;
+        margin-top:20px;
+
+        &:first-child {
+          margin:0;
+        }
+      }
+    }
+  }
+}

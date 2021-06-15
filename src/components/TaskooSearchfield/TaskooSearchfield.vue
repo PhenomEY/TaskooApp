@@ -25,7 +25,7 @@
 
       <div class="searchresults" v-if="results && !loading">
 
-        <div class="no-results" v-if="results.mediaResultCount === 0 && results.taskResultCount === 0">
+        <div class="no-results" v-if="(type === 'media' && results.medias.length === 0) || (type === 'task' && results.tasks.length === 0) || (type === 'all' && results.tasks.length === 0 && results.medias.length === 0)">
           Keine Ergebnisse
         </div>
 
@@ -43,7 +43,7 @@
                 <span class="label">
                   Projekt:
                     <router-link class="project" :to="{ name: 'Project', params: { projectId: task.project.id }}">
-                      <span v-if="task.project.organisation" class="color-brick box-shadow" :title="task.project.organisation.name" v-bind:style= "[task.project.organisation.color ? {background: task.project.organisation.color.hexCode} : {}]"></span>
+                      <span v-if="task.project.team" class="color-brick box-shadow" :title="task.project.team.name" v-bind:style= "[task.project.team.color ? {background: task.project.team.color.hexCode} : {}]"></span>
                       {{ task.project.name }}
                     </router-link>
                 </span>
@@ -74,7 +74,7 @@
               <div class="task">
                 Aufgabe:
                 <router-link :to="{name: 'Task', params: { taskId: media.task.id}}">
-                  <span v-if="media.task.project.organisation" class="color-brick box-shadow" :title="media.task.project.organisation.name" v-bind:style= "[media.task.project.organisation.color ? {background: media.task.project.organisation.color.hexCode} : {}]"></span>
+                  <span v-if="media.task.project.team" class="color-brick box-shadow" :title="media.task.project.team.name" v-bind:style= "[media.task.project.team.color ? {background: media.task.project.team.color.hexCode} : {}]"></span>
                   {{ media.task.name }}
                 </router-link>
               </div>

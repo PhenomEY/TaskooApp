@@ -215,6 +215,15 @@ export default {
         "projects": "Projekte",
         "users": "Mitglieder"
       }
+    },
+
+    "teamroles": {
+      "title": "Teamrollen",
+      "create": "Neue Rolle erstellen",
+      "priority_placeholder": "Priorität...",
+      "list": {
+        "priority": "Priorität"
+      }
     }
   },
 
@@ -251,7 +260,7 @@ export default {
         "confirm": "löschen",
         "cancel": "abbrechen"
       },
-      "organisation": {
+      "team": {
         "title": "Möchtest du die Abteilung „{name}”  wirklich löschen?",
         "description": "Alle Projekte und Aufgaben in dieser Abteilung werden unwiderruflich gelöscht.",
         "confirm": "löschen",
@@ -259,6 +268,12 @@ export default {
       },
       "file": {
         "title": "Möchtest du die Datei „{name}”  wirklich löschen?",
+        "description": "Sie wird unwiderruflich gelöscht.",
+        "confirm": "löschen",
+        "cancel": "abbrechen"
+      },
+      "teamrole": {
+        "title": "Möchtest du die Rolle „{name}” wirklich löschen?",
         "description": "Sie wird unwiderruflich gelöscht.",
         "confirm": "löschen",
         "cancel": "abbrechen"

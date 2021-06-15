@@ -1,0 +1,45 @@
+.teamroles-wrapper {
+  flex: 0 0 100%;
+  display: flex;
+  flex-direction: column;
+
+  .create-teamrole {
+    display:flex;
+
+    .taskoo-input {
+      &.priority {
+        margin-top:29px;
+        margin-left:10px;
+      }
+    }
+
+    .create-button {
+      margin-top:30px;
+    }
+  }
+
+
+  .taskoo-list {
+
+    .entry {
+      &.title {
+        border-top:none;
+      }
+
+      .name {
+        display:flex;
+        flex-direction: row;
+        align-items: center;
+      }
+
+      .infos {
+        margin-left:15px;
+        font-size: 10px;
+
+        .members {
+          margin-left:10px;
+        }
+        }
+    }
+  }
+}

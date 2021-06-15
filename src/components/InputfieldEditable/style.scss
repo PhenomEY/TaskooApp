@@ -7,7 +7,8 @@
   user-select: none;
   input {
     background: transparent;
-    border: none;
+    border: 1px solid transparent;
+    border-radius: var(--taskoo-border-radius);
     resize: none;
     flex: 1;
     font-family: unset;
@@ -16,8 +17,12 @@
     width: 100%;
     text-overflow: ellipsis;
 
+    &:hover {
+      border-color: var(--taskoo-border-l);
+    }
+
     &:focus {
-      border: none;
+      border-color: var(--taskoo-tab-active);
       outline: none;
     }
   }

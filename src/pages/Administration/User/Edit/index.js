@@ -2,6 +2,7 @@ import TaskooInput from "components/TaskooInput/TaskooInput";
 import Multiselect from 'vue-multiselect'
 import TaskooSwitch from "components/TaskooSwitch/TaskooSwitch";
 import TaskooIconButton from "components/TaskooIconButton/TaskooIconButton";
+import TaskooAvatar from 'src/components/TaskooAvatar/TaskooAvatar';
 
 import FormValidator from "src/handlers/FormValidator";
 import UserService from "src/services/TaskooUserService";
@@ -10,7 +11,7 @@ import axios from "axios";
 
 export default {
     name: 'AdminUserEdit',
-    components: { TaskooInput, Multiselect, TaskooSwitch, TaskooIconButton },
+    components: { TaskooInput, Multiselect, TaskooSwitch, TaskooIconButton, TaskooAvatar },
 
     data() {
       return {
@@ -53,12 +54,14 @@ export default {
 
         teams: null,
         assignedTeams: null,
+        availableRoles: null,
         userRole: null,
         permissions: {
           administration: false,
           project_edit: false,
           project_create: false
-      },
+       },
+        user: null
       }
     },
 
@@ -97,6 +100,9 @@ export default {
               this.userForm.active.value = response.data.active;
               this.assignedTeams = response.data.teams;
               this.permissions = response.data.permissions;
+              this.availableRoles = response.data.availableRoles;
+              this.userRole = response.data.teamrole;
+              this.user = response.data;
             }
 
           })
@@ -160,7 +166,8 @@ export default {
           lastname: form.form.lastname.value,
           password: form.form.password.value,
           active: form.form.active.value,
-          permissions: permissions
+          permissions: permissions,
+          teamRole: this.userRole.id
         }
 
         const updated = await UserService.update(userId, formData, this, true)

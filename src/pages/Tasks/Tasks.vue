@@ -2,7 +2,7 @@
   <div class="tasks-wrapper content-wrapper">
     <div class="tasks-content">
       <div class="tasks-header">
-        <h1 class="title">{{ $t('tasks.title') }}</h1>
+        <h1 class="title">{{ $t('navigation.tasks') }}</h1>
 
         <div class="tasks-options">
           <div class="finish-button" v-bind:class="{'done': (doneTasks)}" @click="showDoneTasks">

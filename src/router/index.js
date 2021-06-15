@@ -50,6 +50,11 @@ export default new Router({
       component: require('pages/Login/Login').default
     },
     {
+      path: '/teams',
+      name: 'Teams',
+      component: require('pages/Teams/Teams').default
+    },
+    {
       path: '/invite/:id',
       name: 'Invite',
       component: require('pages/Invite/Invite').default
@@ -102,7 +107,14 @@ export default new Router({
           path: 'organisations',
           component: require('pages/Administration/Teams/Teams').default
 
-        }
+        },
+
+        {
+          name: 'AdminTeamRoles',
+          path: 'teamroles',
+          component: require('pages/Administration/TeamRoles/TeamRoles').default
+
+        },
       ]
     },
 

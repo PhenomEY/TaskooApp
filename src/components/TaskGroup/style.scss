@@ -56,9 +56,6 @@
     transition: border-color 100ms ease-in-out;
 
     &.item {
-      //max-height:64px;
-      //opacity:1;
-
       &:hover {
       border-color:var(--taskoo-border-h);
       }
@@ -85,6 +82,10 @@
 
     .main {
       display:flex;
+
+      .inputfield-editable {
+        margin-right:5px;
+      }
     }
 
     .secondary {
