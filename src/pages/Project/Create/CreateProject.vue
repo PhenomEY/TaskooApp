@@ -1,7 +1,7 @@
 <template>
   <taskoo-boxed-content class="create-project">
     <template #title>
-      {{ $t('project.create.title', { team: currentOrganisation.name }) }}
+      {{ $t('project.create.title', { team: currentTeam.name }) }}
     </template>
 
     <template #content>

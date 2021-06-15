@@ -15,27 +15,20 @@ export default {
         notifications: null
     }),
 
-    mounted() {
-        this.getNotifications()
-    },
-
-    props: {
-    },
-
     computed: {
-      currentOrganisation: {
+      currentTeam: {
         // getter
         get: function () {
-          return this.$store.state.organisations.currentOrganisation
+          return this.$store.state.teams.currentTeam
         },
         // setter
         set: function (newValue) {
-          this.$store.commit('organisations/saveOrganisation', newValue)
+          this.$store.commit('teams/saveTeam', newValue)
         }
       },
 
-      availableOrganisations() {
-        return this.$store.state.organisations.availableOrganisations
+      availableTeams() {
+        return this.$store.state.teams.availableTeams
       },
 
       isDark() {
@@ -49,6 +42,13 @@ export default {
       API_URL: function () {
         return window.API_URL
       }
+    },
+
+    props: {
+    },
+
+    mounted() {
+      this.getNotifications()
     },
 
 

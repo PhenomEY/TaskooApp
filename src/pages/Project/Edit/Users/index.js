@@ -2,7 +2,7 @@ import TaskooUserSelect from 'src/components/TaskoouserSelect/TaskooUserSelect';
 import TaskooIconButton from 'src/components/TaskooIconButton/TaskooIconButton';
 import TaskooAvatar from 'src/components/TaskooAvatar/TaskooAvatar';
 
-import OrganisationService from "src/services/TaskooOrganisationService";
+import TeamService from "src/services/TaskooTeamService";
 import ProjectService from "src/services/TaskooProjectService";
 
 export default {
@@ -39,7 +39,7 @@ export default {
       async getAvailableUsers() {
         const orgId = this.projectData.organisation.id
 
-        const loaded = await OrganisationService.users.load(orgId, this)
+        const loaded = await TeamService.users.load(orgId, this)
 
         if(loaded) {
           this.availableUsers = loaded.users;

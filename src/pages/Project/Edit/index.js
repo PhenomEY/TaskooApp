@@ -6,7 +6,7 @@ import TaskooBoxedNavEntry from "src/components/TaskooBoxedContent/TaskooBoxedNa
 import TaskooIconButton from 'src/components/TaskooIconButton/TaskooIconButton'
 import TaskooSwitch from 'src/components/TaskooSwitch/TaskooSwitch'
 
-import OrganisationService from "src/services/TaskooOrganisationService"
+import TeamService from "src/services/TaskooTeamService"
 import ProjectService from "src/services/TaskooProjectService"
 
 export default {
@@ -84,7 +84,7 @@ export default {
       async getOrganisationUsers() {
           const orgId = this.projectData.organisation.id
 
-          const loaded = await OrganisationService.users.load(orgId, this)
+          const loaded = await TeamService.users.load(orgId, this)
 
           if(loaded) {
             this.projectUsers = loaded.users

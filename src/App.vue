@@ -99,8 +99,8 @@
           setTimeout(() => {
             this.$store.commit('auth/setVerifiedUser', true)
             this.$store.commit('user/setUser', checked.user)
-            if (checked.organisations) {
-              this.$store.commit('organisations/setAvailableOrganisations', checked.organisations)
+            if (checked.teams) {
+              this.$store.commit('teams/setAvailableTeams', checked.teams)
             }
           }, 700);
         } else {

@@ -5,7 +5,7 @@ import Vuex from 'vuex'
 import auth from './auth'
 import user from './user'
 import misc from './misc'
-import organisations from './organisations'
+import teams from './teams'
 
 Vue.use(Vuex)
 
@@ -15,7 +15,7 @@ export default function (/* { ssrContext } */) {
       auth,
       user,
       misc,
-      organisations
+      teams
     },
 
     // enable strict mode (adds overhead!)

@@ -9,13 +9,13 @@ import TaskooDialog from 'src/components/TaskooDialog/TaskooDialog';
 import ColorService from "src/services/TaskooColorService"
 
 export default {
-    name: 'AdminOrganisations',
+    name: 'Adminteams',
     components: {InputfieldEditable, TaskooColorSelect, TaskooInput, TaskooIconButton, TaskooLoaderCircle, TaskooDialog},
 
     data() {
         return {
           loading: true,
-          organisations: null,
+          teams: null,
           saveButtons: [],
           availableColors: [],
           createName: null,
@@ -48,11 +48,11 @@ export default {
         this.loading = true
 
         axios
-          .get(axios.defaults.baseURL+'/organisation')
+          .get(axios.defaults.baseURL+'/team')
           .catch(function (error) {
           })
           .then(response => {
-            this.organisations = response.data.organisations.map(function(el) {
+            this.teams = response.data.teams.map(function(el) {
               var o = Object.assign({}, el);
               o.saveAble = false;
               return o;
@@ -69,17 +69,17 @@ export default {
       },
 
       changedName(key, name) {
-        this.organisations[key].saveAble = name.length > 0;
-        this.organisations[key].name = name
+        this.teams[key].saveAble = name.length > 0;
+        this.teams[key].name = name
       },
 
-      createOrganisation() {
+      createTeam() {
         if(!this.createName && this.createName.length === 0) {
           return;
         }
 
         axios
-          .post(axios.defaults.baseURL+'/organisation', {
+          .post(axios.defaults.baseURL+'/team', {
             name: this.createName
           })
           .catch(function (error) {
@@ -90,22 +90,22 @@ export default {
           })
       },
 
-      updateOrganisation(data, orgKey) {
-        const organisation = data
+      updateTeam(data, orgKey) {
+        const team = data
         const key = orgKey
 
         this.isUpdating = true
 
         axios
-          .put(axios.defaults.baseURL+'/organisation/'+organisation.id, {
-            name: organisation.name,
-            color: organisation.color.id
+          .put(axios.defaults.baseURL+'/team/'+team.id, {
+            name: team.name,
+            color: team.color.id
           })
           .catch(function (error) {
           })
           .then(response => {
             this.isUpdating = false
-            this.organisations[key].saveAble = false
+            this.teams[key].saveAble = false
             this.$vToastify.success(response.data.message)
           })
       },
@@ -115,16 +115,16 @@ export default {
       },
 
       changedColor(key, color) {
-        this.organisations[key].color.id = color.id
-        this.organisations[key].color.hexCode = color.hexCode
-        this.organisations[key].saveAble = this.organisations[key].name.length > 0
+        this.teams[key].color.id = color.id
+        this.teams[key].color.hexCode = color.hexCode
+        this.teams[key].saveAble = this.teams[key].name.length > 0
       },
 
-      deleteOrganisation() {
-        const orgId = this.deleteData.id
+      deleteTeam() {
+        const teamId = this.deleteData.id
 
         axios
-          .delete(axios.defaults.baseURL+'/organisation/'+orgId)
+          .delete(axios.defaults.baseURL+'/team/'+teamId)
           .catch(function (error) {
           })
           .then(response => {

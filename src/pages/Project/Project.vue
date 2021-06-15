@@ -43,7 +43,7 @@
 
     <div v-else class="project-content">
       <div class="project-header">
-        <span v-if="project.organisation" class="color-brick box-shadow" :title="project.organisation.name" v-bind:style= "[project.organisation.color ? {background: project.organisation.color.hexCode} : {}]"></span>
+        <span v-if="project.team" class="color-brick box-shadow" :title="project.team.name" v-bind:style= "[project.team.color ? {background: project.team.color.hexCode} : {}]"></span>
         <h1 class="title">
             {{ project.name }}
         </h1>

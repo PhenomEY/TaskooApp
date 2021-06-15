@@ -4,7 +4,7 @@ import TaskooLogo from 'src/components/TaskooLogo/TaskooLogo';
 import TaskooAvatar from 'src/components/TaskooAvatar/TaskooAvatar';
 import TaskooTaskbar from 'src/components/TaskooTaskbar/TaskooTaskbar'
 
-import OrganisationService from "src/services/TaskooOrganisationService";
+import TeamService from "src/services/TaskooTeamService";
 import ProjectService from "src/services/TaskooProjectService";
 
 export default {
@@ -22,7 +22,7 @@ export default {
     },
 
     currentOrganisation: function() {
-      return this.$store.state.organisations.currentOrganisation
+      return this.$store.state.teams.currentOrganisation
     },
 
     currentUser() {
@@ -46,7 +46,7 @@ export default {
   },
 
   watch: {
-    '$store.state.organisations.currentOrganisation': function() {
+    '$store.state.teams.currentTeam': function() {
       this.projects = null
       this.organisationChanged = true
       this.getProjects(true)
@@ -62,15 +62,15 @@ export default {
   methods: {
 
     async getProjects(changedOrg) {
-      if(!this.$store.state.organisations.currentOrganisation) return;
-      const orgId = this.$store.state.organisations.currentOrganisation.id;
+      if(!this.$store.state.teams.currentTeam) return;
+      const orgId = this.$store.state.teams.currentTeam.id;
       if(!orgId) {
         return;
       }
 
       this.$store.commit('misc/updateSidebar', false);
 
-      const loaded = await OrganisationService.projects.load(orgId, this)
+      const loaded = await TeamService.projects.load(orgId, this)
 
       if(loaded) {
         this.projects = loaded.projects

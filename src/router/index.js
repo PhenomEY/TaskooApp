@@ -100,7 +100,7 @@ export default new Router({
         {
           name: 'AdminOrganisations',
           path: 'organisations',
-          component: require('pages/Administration/Organisations/Organisations').default
+          component: require('pages/Administration/Teams/Teams').default
 
         }
       ]

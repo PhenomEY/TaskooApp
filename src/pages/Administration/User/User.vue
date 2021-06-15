@@ -66,7 +66,7 @@
             <div class="warnings" v-if="user.warnings">
               <q-tooltip class="warning-tooltip" self="center middle" anchor="top middle">
                 <div v-if="user.warnings.password">{{ $t('administration.users.list.warnings.password') }}</div>
-                <div v-if="user.warnings.organisations">{{ $t('administration.users.list.warnings.organisations') }}</div>
+                <div v-if="user.warnings.teams">{{ $t('administration.users.list.warnings.teams') }}</div>
               </q-tooltip>
               <q-icon name="warning"></q-icon>
             </div>

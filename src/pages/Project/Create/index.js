@@ -5,7 +5,7 @@ import TaskooBoxedContent from 'src/components/TaskooBoxedContent/TaskooBoxedCon
 import TaskooSwitch from 'src/components/TaskooSwitch/TaskooSwitch'
 
 import ProjectService from "src/services/TaskooProjectService";
-import OrganisationService from "src/services/TaskooOrganisationService";
+import TeamService from "src/services/TaskooTeamService";
 
 export default {
     name: 'CreateProject',
@@ -20,7 +20,7 @@ export default {
     }),
 
     watch: {
-      '$store.state.organisations.currentOrganisation': function() {
+      '$store.state.teams.currentTeam': function() {
         this.getAvailableUsers()
       }
     },
@@ -31,12 +31,12 @@ export default {
     },
 
     computed: {
-      currentOrganisation() {
-          return this.$store.state.organisations.currentOrganisation
+      currentTeam() {
+          return this.$store.state.teams.currentTeam
       },
 
-      availableOrganisations() {
-        return this.$store.state.organisations.availableOrganisations
+      availableTeams() {
+        return this.$store.state.teams.availableTeams
       },
     },
 
@@ -50,9 +50,9 @@ export default {
         },
 
         async getAvailableUsers() {
-          const orgId = this.currentOrganisation.id
+          const teamId = this.currentTeam.id
 
-          const loaded = await OrganisationService.users.load(orgId, this)
+          const loaded = await TeamService.users.load(teamId, this)
 
           if(loaded) {
             this.availableUsers = loaded.users;
@@ -66,7 +66,7 @@ export default {
               deadline: this.deadline,
               closed: this.closed,
               mainUser: this.selectedUser,
-              organisationId: this.currentOrganisation.id
+              teamId: this.currentTeam.id
             }
 
             const created = await ProjectService.create(formData, this);

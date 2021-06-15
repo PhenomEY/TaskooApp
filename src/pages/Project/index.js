@@ -71,12 +71,12 @@ export default {
       },
 
 
-      currentOrganisation: function() {
-        return this.$store.state.organisations.currentOrganisation
+      currentTeam: function() {
+        return this.$store.state.teams.currentTeam
       },
 
-      availableOrganisations() {
-        return this.$store.state.organisations.availableOrganisations
+      availableTeams() {
+        return this.$store.state.teams.availableTeams
       },
     },
 
@@ -97,8 +97,8 @@ export default {
               this.setTitle(this.project.name);
               this.groups = loaded.groups;
 
-              if(loaded.project.organisation && (loaded.project.organisation !== this.currentOrganisation.id) && this.availableOrganisations) {
-                this.$store.commit('organisations/setOrganisation', loaded.project.organisation.id);
+              if(loaded.project.team && (loaded.project.team !== this.currentTeam.id) && this.availableTeams) {
+                this.$store.commit('organisations/setTeam', loaded.project.team.id);
               }
               this.loading = false;
 

@@ -64,7 +64,7 @@ export default new Vuex.Store({
     },
 
     setOrganisations(state, value) {
-      state.organisations = value
+      state.teams = value
     },
 
     setCurrentOrg(state, value) {

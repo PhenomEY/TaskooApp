@@ -66,8 +66,8 @@ export default {
     },
 
     computed: {
-      currentOrganisation: function() {
-        return this.$store.state.organisations.currentOrganisation
+      currentTeam: function() {
+        return this.$store.state.teams.currentTeam
       },
     },
 
@@ -93,8 +93,8 @@ export default {
 
             this.taskPriority = this.getPriority(this.task.highPriority)
 
-            if(data.task.project.organisation && (data.task.project.organisation !== this.currentOrganisation.id)) {
-              this.$store.commit('organisations/setOrganisation', data.task.project.organisation.id);
+            if(data.task.project.team && (data.task.project.team !== this.currentTeam.id)) {
+              this.$store.commit('teams/setTeam', data.task.project.team.id);
             }
 
             this.$nextTick(() => {

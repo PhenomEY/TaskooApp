@@ -36,8 +36,8 @@ export default {
                 this.$store.commit('organisations/setAvailableOrganisations', [])
               }
 
-              console.log(this.$store.state.organisations.currentOrganisation)
-              console.log(this.$store.state.organisations.availableOrganisations)
+              console.log(this.$store.state.teams.currentOrganisation)
+              console.log(this.$store.state.teams.availableOrganisations)
 
               this.$router.push({
                 name: 'Dashboard'

@@ -7,15 +7,15 @@
 
     <taskoo-searchfield />
 
-    <multiselect v-if="availableOrganisations && availableOrganisations.length > 1" class="taskoo-select organisations"
-                 v-model="currentOrganisation"
-                 :options="availableOrganisations"
+    <multiselect v-if="availableTeams && availableTeams.length > 1" class="taskoo-select organisations"
+                 v-model="currentTeam"
+                 :options="availableTeams"
                  selectLabel=""
                  deselectLabel=""
                  selectedLabel=""
                  :searchable="false"
                  :allowEmpty="false"
-                 v-bind:style= "[currentOrganisation.color ? {borderColor: currentOrganisation.color.hexCode} : {}]"
+                 v-bind:style= "[currentTeam.color ? {borderColor: currentTeam.color.hexCode} : {}]"
     >
       <template slot="singleLabel" slot-scope="props">
         <span>

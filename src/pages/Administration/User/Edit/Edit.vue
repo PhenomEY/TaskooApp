@@ -70,14 +70,14 @@
       </form>
 
       <span class="label">{{ $t('administration.users.edit.organisations') }}</span>
-      <multiselect v-if="organisations" class="taskoo-select"
-                   v-model="assignedOrganisations"
-                   :options="organisations"
+      <multiselect v-if="teams" class="taskoo-select"
+                   v-model="assignedTeams"
+                   :options="teams"
                    :multiple="true"
                    track-by="id"
                    label="name"
-                   @select="setOrganisation"
-                   @remove="removeOrganisation"
+                   @select="setTeam"
+                   @remove="removeTeam"
       >
 
         <template slot="tag" slot-scope="props">

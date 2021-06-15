@@ -68,8 +68,8 @@
             <draggable group="favorites" :list="favorites" v-bind="dragOptions" handle=".drag" @change="updateFavorites(favorites)">
             <router-link v-for="favorite in favorites" class="drawer-entry favorite" :to="{ name: 'Project', params: { projectId: favorite.id }}">
               <div class="project-entry">
-                     <span class="drawer-entry-icon" :title="favorite.organisation.name">
-                      <q-icon name="star" v-bind:style= "[favorite.organisation.color ? {color: favorite.organisation.color.hexCode} : {}]" />
+                     <span class="drawer-entry-icon" :title="favorite.team.name">
+                      <q-icon name="star" v-bind:style= "[favorite.team.color ? {color: favorite.team.color.hexCode} : {}]" />
                   </span>
                 {{ favorite.name }}
               </div>
@@ -87,8 +87,8 @@
             </div>
 
             <router-link v-if="projects" v-for="project in projects" class="drawer-entry" :to="{ name: 'Project', params: { projectId: project.id }}">
-                  <span class="drawer-entry-icon" :title="project.organisation.name">
-                     <q-icon name="play_arrow" v-bind:style= "[project.organisation.color ? {color: project.organisation.color.hexCode} : {}]" />
+                  <span class="drawer-entry-icon" :title="project.team.name">
+                     <q-icon name="play_arrow" v-bind:style= "[project.team.color ? {color: project.team.color.hexCode} : {}]" />
                   </span>
               {{ project.name }}
             </router-link>

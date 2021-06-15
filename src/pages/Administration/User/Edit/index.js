@@ -51,8 +51,8 @@ export default {
           }
         },
 
-        organisations: null,
-        assignedOrganisations: null,
+        teams: null,
+        assignedTeams: null,
         userRole: null,
         permissions: {
           administration: false,
@@ -64,7 +64,7 @@ export default {
 
     mounted() {
       this.getUser()
-      this.getOrganisations()
+      this.getTeams()
     },
 
     watch: {
@@ -95,7 +95,7 @@ export default {
               this.userForm.lastname.value = response.data.lastname;
               this.userForm.email.value = response.data.email;
               this.userForm.active.value = response.data.active;
-              this.assignedOrganisations = response.data.organisations;
+              this.assignedTeams = response.data.teams;
               this.permissions = response.data.permissions;
             }
 
@@ -103,13 +103,13 @@ export default {
 
       },
 
-      getOrganisations() {
+      getTeams() {
         axios
-          .get(axios.defaults.baseURL+'/organisation')
+          .get(axios.defaults.baseURL+'/team')
           .catch(function (error) {
           })
           .then(response => {
-            this.organisations = response.data.organisations
+            this.teams = response.data.teams
           })
       },
 
@@ -180,12 +180,12 @@ export default {
 
       },
 
-      setOrganisation(organisation) {
+      setTeam(team) {
         const userId = this.$route.params.id;
 
         axios
           .put(axios.defaults.baseURL+'/user/'+userId, {
-            addOrganisation: organisation.id
+            addTeam: team.id
           })
           .catch(error => {
           })
@@ -194,12 +194,12 @@ export default {
           })
       },
 
-      removeOrganisation(organisation) {
+      removeTeam(team) {
         const userId = this.$route.params.id;
 
         axios
           .put(axios.defaults.baseURL+'/user/'+userId, {
-            removeOrganisation: organisation.id
+            removeTeam: team.id
           })
           .catch(error => {
           })

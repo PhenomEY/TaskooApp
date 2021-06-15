@@ -1,7 +1,7 @@
 import axios from "axios";
 
 /**
- * OrganisationService
+ * TeamService
  */
 export default {
 users: {
@@ -9,7 +9,7 @@ users: {
 
     return new Promise(resolve => {
         axios
-          .get(axios.defaults.baseURL+'/organisation/'+organisationId+'/users')
+          .get(axios.defaults.baseURL+'/team/'+organisationId+'/users')
           .catch(error => {
             context.$vToastify.error(error.response.data.detail);
             resolve(false);
@@ -33,7 +33,7 @@ users: {
 
       return new Promise(resolve => {
           axios
-            .get(axios.defaults.baseURL+'/organisation/'+organisationId+'/projects')
+            .get(axios.defaults.baseURL+'/team/'+organisationId+'/projects')
             .catch(error => {
               context.$vToastify.error(error.response.data.detail);
               resolve(false);

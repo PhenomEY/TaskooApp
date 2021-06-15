@@ -182,7 +182,7 @@ export default {
         "administrator": "Administrator",
         "warnings": {
           "password": "Dieser Benutzer hat noch kein Passwort definiert",
-          "organisations": "Dieser Benutzer ist noch keinem Team zugewiesen"
+          "teams": "Dieser Benutzer ist noch keinem Team zugewiesen"
         }
       },
 
@@ -208,7 +208,7 @@ export default {
       }
     },
 
-    "organisations": {
+    "teams": {
       "title": "Teams",
       "create": "Neues Team erstellen",
       "list": {
