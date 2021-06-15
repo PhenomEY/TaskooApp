@@ -1,15 +1,17 @@
-import axios from "axios";
 import TaskooInput from "../../../components/TaskooInput/TaskooInput"
 import TaskooDatepicker from "../../../components/TaskooDatepicker/TaskooDatepicker"
 import TaskooUserSelect from '../../../components/TaskoouserSelect/TaskooUserSelect';
+import TaskooBoxedContent from "src/components/TaskooBoxedContent/TaskooBoxedContent"
+import TaskooBoxedNavEntry from "src/components/TaskooBoxedContent/TaskooBoxedNavEntry/TaskooBoxedNavEntry"
+import TaskooIconButton from 'src/components/TaskooIconButton/TaskooIconButton'
+import TaskooSwitch from 'src/components/TaskooSwitch/TaskooSwitch'
 
 import OrganisationService from "src/services/TaskooOrganisationService"
 import ProjectService from "src/services/TaskooProjectService"
-import form from "quasar/src/mixins/form";
 
 export default {
     name: 'EditProject',
-    components: {TaskooInput, TaskooDatepicker, TaskooUserSelect},
+    components: {TaskooInput, TaskooDatepicker, TaskooUserSelect, TaskooBoxedContent, TaskooBoxedNavEntry, TaskooIconButton, TaskooSwitch},
 
     props: {
       model: [Object]
@@ -17,6 +19,7 @@ export default {
 
     watch: {
       '$route.params.projectId': function() {
+        console.log('triggered1')
         this.$router.push({
           name: 'Project'
         })
@@ -41,7 +44,6 @@ export default {
 
 
     mounted() {
-
       if(!this.$store.state.user.user.permissions || (!this.$store.state.user.user.permissions.administration && !this.$store.state.user.user.permissions.project_edit)) {
         this.$router.push({
           name: 'Dashboard'
@@ -53,6 +55,7 @@ export default {
       this.projectStatus = this.projectData.isClosed
 
       if(!this.projectData.id) {
+        console.log('triggered2')
         this.$router.push({
           name: 'Project'
         })
@@ -78,15 +81,6 @@ export default {
     },
 
     methods: {
-      close(e) {
-        //trigger close on wrapper click
-        if (e.target.classList.contains('edit-project-wrapper')) {
-          this.$router.push({
-            name: 'Project'
-          })
-        }
-      },
-
       async getOrganisationUsers() {
           const orgId = this.projectData.organisation.id
 

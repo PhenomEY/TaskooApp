@@ -1,10 +1,11 @@
 import axios from "axios";
 import draggable from 'vuedraggable'
 import InputfieldEditable from "../InputfieldEditable/InputfieldEditable";
+import TaskooIconButton from "src/components/TaskooIconButton/TaskooIconButton";
 
 export default {
     name: 'TaskList',
-    components: {InputfieldEditable, draggable},
+    components: {InputfieldEditable, draggable, TaskooIconButton},
 
     data() {
         return {

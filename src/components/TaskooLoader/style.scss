@@ -1,12 +1,10 @@
-@import 'src/scss/vars/variables';
-
 .taskoo-loading {
   display:flex;
   flex-direction: column;
   align-items: center;
 
   .loading-logo {
-    color:$taskoo-main;
+    color: var(--taskoo-loader-color);
     font-family: "Noto Sans JP";
     font-size:16px;
     margin-top:20px;
@@ -16,7 +14,7 @@
       width:70px;
       margin:0 auto;
       display: block;
-      fill:$taskoo-main;
+      fill: var(--taskoo-loader-color);
     }
   }
 }
@@ -31,7 +29,7 @@
 .sk-cube-grid .sk-cube {
   width: 33%;
   height: 33%;
-  background-color: $taskoo-main;
+  background-color: var(--taskoo-loader-color);
   float: left;
   -webkit-animation: sk-cubeGridScaleDelay 1.3s infinite ease-in-out;
   animation: sk-cubeGridScaleDelay 1.3s infinite ease-in-out;

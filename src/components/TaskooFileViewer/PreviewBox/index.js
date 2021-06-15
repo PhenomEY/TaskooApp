@@ -1,6 +1,8 @@
+import TaskooIconButton from "src/components/TaskooIconButton/TaskooIconButton"
+
 export default {
     name: 'PreviewBox',
-    components: {},
+    components: {TaskooIconButton},
 
     data() {
         return {

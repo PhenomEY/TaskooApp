@@ -1,0 +1,35 @@
+:root {
+  //defaults
+  --taskoo-bg: #f5f5f5;
+  --taskoo-primary:#31353d;
+  --taskoo-color: #6f6e6e;
+  --taskoo-light-h: #e5e5e5;
+  --taskoo-box-shadow: 0px 1px 4px rgba(0,0,0,0.2);
+  --taskoo-border-radius: 5px;
+  --taskoo-error-color: #ff5e5e;
+  --taskoo-success-color: limegreen;
+  --taskoo-selected-color: #00c8d4;
+  --taskoo-done-color: #2eb97b;
+  --taskoo-high-priority-color: #ffbc00;
+  --taskoo-high-priority-bg: #fbefe1;
+  --taskoo-taskgroup-width:280px;
+  --taskoo-boxed-bg: #ffffff;
+  --taskoo-boxed-width: 800px;
+  --taskoo-border-h: #c1c1c1;
+  --taskoo-border-l: #eaeaea;
+  --taskoo-border-d: #ffffff;
+  --taskoo-button-p: #31353d;
+  --taskoo-button-p-h: #474c56;
+  --taskoo-tab-active: #00a6ff;
+  --taskoo-input-width: 350px;
+  --taskoo-input-height: 40px;
+
+  //drawer
+  --taskoo-drawer-bg: #31353d;
+  --taskoo-drawer-b: #3a3f48;
+  --taskoo-drawer-color: #818896;
+  --taskoo-drawer-color-h: #b8bfce;
+  --taskoo-drawer-icon-bg: #3a3f48;
+
+  --taskoo-loader-color: #7c8390;
+}

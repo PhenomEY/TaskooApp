@@ -2,7 +2,7 @@
   <div class="taskoo-taskbar">
 
     <div class="menu-toggle" @click="toggleMenu">
-      <md-icon>menu</md-icon>
+      <q-icon name="menu"></q-icon>
     </div>
 
     <taskoo-searchfield />
@@ -15,7 +15,7 @@
                  selectedLabel=""
                  :searchable="false"
                  :allowEmpty="false"
-                 v-bind:style= "[currentOrganisation.color ? {background: currentOrganisation.color.hexCode} : {}]"
+                 v-bind:style= "[currentOrganisation.color ? {borderColor: currentOrganisation.color.hexCode} : {}]"
     >
       <template slot="singleLabel" slot-scope="props">
         <span>
@@ -23,24 +23,22 @@
         </span>
       </template>
 
-      <template slot="option" slot-scope="props" style="background:red">
-        <span class="organisation-entry" v-bind:style= "[props.option.color ? {background: props.option.color.hexCode} : {}]">{{ props.option.name }}</span>
+      <template slot="option" slot-scope="props">
+        <span class="organisation-entry" v-bind:style= "[props.option.color ? {color: props.option.color.hexCode} : {}]">{{ props.option.name }}</span>
       </template>
     </multiselect>
 
     <div class="icons-right">
-      <taskoo-refresh :interval="refreshInterval"></taskoo-refresh>
-
-      <md-badge :md-content="notificationCount" md-dense v-bind:class="{'no-badge': notificationCount === 0}">
         <v-popover offset="16" @hide="closedNotifications">
-          <md-button class="md-icon-button notification tooltip-target">
-            <md-icon>notifications</md-icon>
-          </md-button>
+          <taskoo-icon-button class="notification tooltip-target">
+            <q-icon name="notifications"></q-icon>
+            <div v-if="notificationCount" class="notifications-count">{{ notificationCount }}</div>
+          </taskoo-icon-button>
 
           <template slot="popover">
             <div class="notification-popover">
               <div class="no-notifications" v-if="!notifications || notifications.length === 0">
-                <md-icon>sentiment_dissatisfied</md-icon>
+                <q-icon name="sentiment_dissatisfied" />
                 Keine neuen Benachrichtigungen
               </div>
 
@@ -57,51 +55,6 @@
             </div>
           </template>
         </v-popover>
-
-      </md-badge>
-
-
-        <v-popover offset="0">
-          <md-avatar class="md-avatar-icon taskoo-avatar" v-bind:style="[(currentUser.color) ? {background: currentUser.color} : {}]">
-            <img v-if="currentUser.avatar.filePath" :src="API_URL+'/file/'+currentUser.avatar.filePath" alt="Avatar" class="tooltip-target">
-            <span v-else>
-              {{ currentUser.firstname.charAt(0) }}{{ currentUser.lastname.charAt(0) }}
-            </span>
-          </md-avatar>
-          <template slot="popover">
-            <div class="taskoo-popover-options">
-              <div class="option logged-in-as">
-                {{ $t('taskoo.loggedInAs', {firstname: currentUser.firstname, lastname: currentUser.lastname}) }}
-              </div>
-
-              <div class="option dark-mode" v-if="!isDark || isDark === 'false'" @click="toggleViewMode">
-                <md-icon>
-                  nightlight_round
-                </md-icon>
-                {{ $t('navigation.darkMode') }}
-              </div>
-
-              <div class="option light-mode" @click="toggleViewMode" v-else>
-                <md-icon>
-                  light_mode
-                </md-icon>
-                {{ $t('navigation.lightMode') }}
-              </div>
-
-
-              <router-link class="option profile" :to="{name: 'Settings'}" v-close-popover>
-                <md-icon>settings</md-icon>
-                {{ $t('navigation.settings') }}
-              </router-link>
-
-
-              <div class="option logout" v-close-popover @click="logout()">
-                <md-icon>logout</md-icon> {{ $t('navigation.logout') }}
-              </div>
-            </div>
-          </template>
-        </v-popover>
-
     </div>
   </div>
 </template>

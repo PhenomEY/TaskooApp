@@ -1,24 +1,33 @@
-@import "src/scss/vars/variables";
 @import "src/scss/vars/multiselect";
 
+$taskoo-user-select:#0094ff;
+
 .taskoo-user-select {
+  .input-label {
+    display:block;
+    font-size:16px;
+    font-weight:bold;
+    margin-bottom:5px;
+  }
+
   .user-select {
     display:inline-block;
     width: auto;
-    min-width: $taskoo-input-width;
+    min-width: var(--taskoo-input-width);
     height: 40px;
+    margin-bottom: 10px;
 
     &.multiselect--active {
       .multiselect__tags {
-        border-color:$taskoo-border-h-color;
+        border-color:var(--taskoo-border-h);
         border-bottom-left-radius: 0;
         border-bottom-right-radius: 0;
       }
 
       .multiselect__content-wrapper {
-        border:1px solid $taskoo-border-h-color;
+        border:1px solid var(--taskoo-border-h);
         border-top:none;
-        box-shadow:$taskoo-box-shadow;
+        box-shadow:var(--taskoo-box-shadow);
       }
     }
 
@@ -33,9 +42,9 @@
     }
 
     .multiselect__tags {
-      border-radius:$taskoo-border-radius;
-      border:1px solid var(--taskoo-border-default);
-      box-shadow:$taskoo-box-shadow;
+      border-radius:var(--taskoo-border-radius);
+      border:1px solid var(--taskoo-border-d);
+      box-shadow:var(--taskoo-box-shadow);
     }
     .multiselect__option {
       padding: 6px 12px;
@@ -68,11 +77,11 @@
   .taskoo-user-select {
     .user-select {
       .multiselect__tags {
-        background:var(--taskoo-nav-bg);
+        background:var(--taskoo-boxed-bg);
       }
 
       .multiselect__single {
-        background:var(--taskoo-nav-bg);
+        background:var(--taskoo-boxed-bg);
         color: rgba(255,255,255,0.6);
       }
 

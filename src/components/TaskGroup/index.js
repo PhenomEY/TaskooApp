@@ -1,11 +1,12 @@
 import draggable from 'vuedraggable'
 import TextareaEditable from "../TextareaEditable/TextareaEditable";
 import InputfieldEditable from "../InputfieldEditable/InputfieldEditable";
-import axios from "axios";
+import TaskooIconButton from "src/components/TaskooIconButton/TaskooIconButton"
+import TaskooAvatar from "src/components/TaskooAvatar/TaskooAvatar"
 
 export default {
     name: 'TaskGroup',
-    components: {draggable, TextareaEditable, InputfieldEditable},
+    components: {draggable, TextareaEditable, InputfieldEditable, TaskooIconButton, TaskooAvatar},
 
     data() {
         return {

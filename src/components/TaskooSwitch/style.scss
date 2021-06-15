@@ -1,0 +1,68 @@
+$taskoo-switch-disabled-color: #d1d9e0;
+$taskoo-switch-active-color: #1ec81e;
+
+
+
+.taskoo-switch-field {
+  display: flex;
+  align-items: center;
+  height: 30px;
+
+  &.disabled {
+    opacity: 0.5;
+  }
+
+  .taskoo-switch {
+    position: relative;
+    width: 30px;
+    height: 17px;
+
+    input[type="checkbox"] {
+      opacity: 0;
+      display: block;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      border: 0;
+      background: none;
+      -webkit-appearance: none;
+      z-index: 2;
+      cursor: pointer;
+
+      &:checked ~ .switch-state {
+        background: $taskoo-switch-active-color;
+
+        .switch-knob {
+          left: 14px;
+        }
+      }
+    }
+
+    .switch-state {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      text-align: center;
+      background: $taskoo-switch-disabled-color;
+      border-radius: 8px;
+
+      .switch-knob {
+        transition: all .3s ease-in-out;
+        width: 13px;
+        height: 13px;
+        position: absolute;
+        top: 2px;
+        left: 3px;
+        background: #ffffff;
+        border-radius: 7px;
+      }
+    }
+  }
+
+  .taskoo-switch-label {
+    margin-left: 20px;
+  }
+}

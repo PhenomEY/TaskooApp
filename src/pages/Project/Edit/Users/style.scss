@@ -1,13 +1,26 @@
-@import 'src/scss/vars/variables';
-
-
 .edit-project-users {
   .add-user {
     display:flex;
-  }
-}
+    align-items: center;
 
-.md-avatar.md-theme-default.md-avatar-icon.taskoo-avatar {
-  background:$taskoo-main;
-  font-size:18px;
+    .taskoo-icon-button {
+      margin-bottom:10px;
+      margin-left:10px;
+    }
+  }
+
+  .taskoo-avatar {
+    width: 30px;
+    height:30px;
+    margin-right:10px;
+  }
+
+  .main {
+    display:flex;
+    align-items: center;
+
+    i {
+      margin-left:10px;
+    }
+  }
 }

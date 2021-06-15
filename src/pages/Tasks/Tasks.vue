@@ -1,12 +1,12 @@
 <template>
-  <div class="tasks-wrapper">
+  <div class="tasks-wrapper content-wrapper">
     <div class="tasks-content">
       <div class="tasks-header">
         <h1 class="title">{{ $t('tasks.title') }}</h1>
 
         <div class="tasks-options">
           <div class="finish-button" v-bind:class="{'done': (doneTasks)}" @click="showDoneTasks">
-            <md-icon>check_circle_outline</md-icon>
+            <q-icon name="check_circle_outline"></q-icon>
             <span>{{ $t('tasks.doneTasks') }}</span>
           </div>
         </div>

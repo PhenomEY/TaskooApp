@@ -1,13 +1,16 @@
 import axios from "axios";
-import InputfieldEditable from "src/components/InputfieldEditable/InputfieldEditable"
-import TaskooColorSelect from "src/components/TaskooColorSelect/TaskooColorSelect"
-import TaskooInput from "src/components/TaskooInput/TaskooInput"
+import InputfieldEditable from "src/components/InputfieldEditable/InputfieldEditable";
+import TaskooColorSelect from "src/components/TaskooColorSelect/TaskooColorSelect";
+import TaskooInput from "src/components/TaskooInput/TaskooInput";
+import TaskooIconButton from "components/TaskooIconButton/TaskooIconButton";
+import TaskooLoaderCircle from "src/components/TaskooLoaderCircle/TaskooLoaderCircle";
+import TaskooDialog from 'src/components/TaskooDialog/TaskooDialog';
 
 import ColorService from "src/services/TaskooColorService"
 
 export default {
     name: 'AdminOrganisations',
-    components: {InputfieldEditable, TaskooColorSelect, TaskooInput},
+    components: {InputfieldEditable, TaskooColorSelect, TaskooInput, TaskooIconButton, TaskooLoaderCircle, TaskooDialog},
 
     data() {
         return {
@@ -127,6 +130,8 @@ export default {
           .then(response => {
             this.load()
             this.$vToastify.success(response.data.message)
+
+            this.toggleDeleteDialog(false);
           })
       },
 

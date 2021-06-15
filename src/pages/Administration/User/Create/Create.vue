@@ -4,20 +4,20 @@
         <h1 class="title"> {{ $t('administration.users.createUser') }}</h1>
 
       <div class="back">
-        <md-button class="md-icon-button md-list-action" @click="returnTo">
-          <md-icon>arrow_back</md-icon>
-        </md-button>
+        <taskoo-icon-button @click="returnTo">
+          <q-icon name="arrow_back"></q-icon>
+        </taskoo-icon-button>
       </div>
     </div>
 
     <div class="create-switch">
-      <div class="invite" v-bind:class="{'active': (invite === true)}" @click="toggleInvite(true)">
-       <md-icon>mail</md-icon>
+      <div class="entry invite" v-bind:class="{'active': (invite === true)}" @click="toggleInvite(true)">
+       <q-icon name="o_mail"></q-icon>
         {{ $t('administration.users.create.invite') }}
       </div>
 
-      <div class="manually" v-bind:class="{'active': (invite === false)}" @click="toggleInvite(false)">
-        <md-icon>add</md-icon>
+      <div class="entry manually" v-bind:class="{'active': (invite === false)}" @click="toggleInvite(false)">
+        <q-icon name="add"></q-icon>
         {{ $t('administration.users.create.manually') }}
       </div>
     </div>

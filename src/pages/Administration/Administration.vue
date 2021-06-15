@@ -1,19 +1,21 @@
 <template>
-  <div class="settings-wrapper">
-    <md-tabs v-if="verifiedAdmin" md-sync-route>
-      <md-tab id="system" :md-label="$t('administration.main.title')" to="/admin" exact>
-        <admin-main></admin-main>
-      </md-tab>
 
-      <md-tab id="user-list" :md-label="$t('administration.users.title')" to="/admin/user">
-        <router-view name="adminUsers"></router-view>
-      </md-tab>
+  <taskoo-boxed-content class="administration-wrapper">
+    <template #title>
+      {{ $t('navigation.admin') }}
+    </template>
 
-      <md-tab id="organisations" :md-label="$t('administration.organisations.title')" to="/admin/organisations">
-        <router-view name="adminOrganisations"></router-view>
-      </md-tab>
-    </md-tabs>
-  </div>
+    <template #navigation>
+      <taskoo-boxed-nav-entry to-name="Administration" :name="$t('administration.main.title')" />
+      <taskoo-boxed-nav-entry to-name="AdminUser" :has-subs="true" :name="$t('administration.users.title')" />
+      <taskoo-boxed-nav-entry to-name="AdminOrganisations" :name="$t('administration.organisations.title')" />
+    </template>
+
+    <template #content>
+      <admin-main v-if="$route.name === 'Administration'"></admin-main>
+      <router-view></router-view>
+    </template>
+  </taskoo-boxed-content>
 </template>
 
 <script src="./index.js"></script>

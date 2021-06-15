@@ -1,8 +1,12 @@
 import axios from "axios";
 
+import TaskooIconButton from 'src/components/TaskooIconButton/TaskooIconButton'
+import TaskooAvatar from 'src/components/TaskooAvatar/TaskooAvatar'
+import TaskooLoaderCircle from 'src/components/TaskooLoaderCircle/TaskooLoaderCircle'
+
 export default {
     name: 'AdminUser',
-    components: {},
+    components: { TaskooIconButton, TaskooAvatar, TaskooLoaderCircle },
 
     data() {
         return {

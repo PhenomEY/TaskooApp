@@ -89,6 +89,8 @@ export default {
         lastname: this.userForm.lastname.value
       }
 
+      if(validated.hasErrors) return;
+
       const updated = UserService.update(userId, formData, this, true);
     },
 

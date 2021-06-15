@@ -1,31 +1,15 @@
-@import 'src/scss/vars/variables';
-
-
-#profile-settings {
-  height: 100%;
-
-  .profile-settings-inner {
+.profile-settings-inner {
     width:100%;
 
-    .taskoo-avatar {
+    .user-avatar {
       margin-bottom: 20px;
       display: flex;
       align-items: center;
 
-      .avatar {
-        position: relative;
-        width: 150px;
-        height: 150px;
-        border-radius: 50%;
-        overflow: hidden;
-        display: flex;
-        margin-right:20px;
-        border:3px solid $taskoo-main;
-
-        img {
-          width: 100%;
-          height:auto;
-        }
+      .taskoo-avatar {
+        width:100px;
+        height:100px;
+        margin-right:10px;
       }
 
       .change {
@@ -57,6 +41,5 @@
       max-width: 350px;
     }
   }
-}
 
 

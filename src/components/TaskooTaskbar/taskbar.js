@@ -1,5 +1,5 @@
-import TaskooRefresh from "./TaskooRefresh/TaskooRefresh"
-import TaskooSearchfield from "../TaskooSearchfield/TaskooSearchfield";
+import TaskooSearchfield from "src/components/TaskooSearchfield/TaskooSearchfield";
+import TaskooIconButton from "src/components/TaskooIconButton/TaskooIconButton"
 import Multiselect from 'vue-multiselect'
 import axios from "axios";
 
@@ -7,7 +7,7 @@ import axios from "axios";
 export default {
     name: 'TaskooTaskbar',
 
-    components: {TaskooRefresh, TaskooSearchfield, Multiselect},
+    components: {TaskooSearchfield, Multiselect, TaskooIconButton},
 
     data: () => ({
         refreshInterval: 10,
@@ -53,15 +53,6 @@ export default {
 
 
     methods: {
-        logout() {
-            this.$store.commit('auth/setAuthToken', null)
-            this.$store.commit('auth/setVerifiedUser', false)
-            this.$store.commit('user/setUser', null)
-            this.$router.push({
-                name: 'Login'
-            })
-        },
-
         getNotifications() {
             axios
                 .get(axios.defaults.baseURL+'/user/notifications')

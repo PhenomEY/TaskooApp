@@ -8,6 +8,11 @@ export default new Router({
 
   routes: [
     {
+      path: '/test',
+      name: 'Test',
+      component: require('pages/Test/Test').default
+    },
+    {
       path: '/project/create',
       name: 'CreateProject',
       component: require('pages/Project/Create/CreateProject').default
@@ -24,7 +29,7 @@ export default new Router({
           children: [{
             path: 'users',
             name: 'EditProjectUsers',
-            components: {users: require('pages/Project/Edit/Users/Users').default}
+            component:require('pages/Project/Edit/Users/Users').default
           }]
         },
       ]
@@ -77,10 +82,7 @@ export default new Router({
         {
           name: 'AdminUser',
           path: 'user',
-          components: {
-            adminUsers:require('pages/Administration/User/User').default,
-          } ,
-
+          component: require('pages/Administration/User/User').default,
           children: [
             {
               path: 'create',
@@ -98,9 +100,8 @@ export default new Router({
         {
           name: 'AdminOrganisations',
           path: 'organisations',
-          components: {
-            adminOrganisations: require('pages/Administration/Organisations/Organisations').default
-          }
+          component: require('pages/Administration/Organisations/Organisations').default
+
         }
       ]
     },

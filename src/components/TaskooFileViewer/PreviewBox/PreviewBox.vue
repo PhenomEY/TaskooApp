@@ -7,15 +7,15 @@
         </div>
 
         <v-popover offset="16">
-          <md-button class="md-icon-button md-list-action tooltip-target">
-            <md-icon>more_vert</md-icon>
-          </md-button>
 
+          <taskoo-icon-button class="tooltip-target">
+            <q-icon name="more_vert"></q-icon>
+          </taskoo-icon-button>
 
           <template slot="popover">
             <div class="taskoo-popover-options">
               <div class="option remove" @click="deleteFile(file.id)" v-close-popover>
-                <md-icon>delete</md-icon>
+                <q-icon name="delete"></q-icon>
                 {{ $t('task.files.delete') }}
               </div>
             </div>
@@ -31,7 +31,9 @@
 
       <div class="file-icon-wrapper" v-else>
         <a :href="API_URL+'/file/'+file.filePath" class="file-link" target="_blank" :title="file.fileName">
-          <md-icon>file_download</md-icon>
+          <div class="file-icon">
+            <q-icon name="file_download"></q-icon>
+          </div>
 
           <span class="file-extension">
             {{ file.fileExtension }}

@@ -1,14 +1,12 @@
-@import './scss/vars/variables';
 @import './scss/vars/popover';
 @import './scss/vars/base';
+
+@import 'src/scss/Taskoo/variables';
+@import 'src/scss/Taskoo/global';
 
 
 #q-app {
   font-family: "Noto Sans JP";
-}
-
-.box-shadow {
-  box-shadow: $taskoo-box-shadow;
 }
 
 //Skeleton
@@ -38,10 +36,10 @@
     }
 
     .vt-theme-taskoo {
-      background:var(--taskoo-default-bg);
-      border-left: 4px solid $taskoo-success-color;
+      background:var(--taskoo-boxed-bg);
+      border-left: 4px solid var(--taskoo-success-color);
       min-height: 70px;
-      box-shadow:$taskoo-box-shadow;
+      box-shadow:var(--taskoo-box-shadow);
 
       .vt-circle {
         width: 35px;

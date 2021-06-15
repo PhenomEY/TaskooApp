@@ -1,18 +1,18 @@
 <template>
-  <div id="q-app">
+  <div class="taskoo-app" id="q-app">
 
     <router-view v-if="publicUrls.includes($route.name)"></router-view>
 
-    <layout-sidebar #content v-else-if="verifiedUser">
+    <taskoo-layout #content v-else-if="verifiedUser">
       <router-view></router-view>
-    </layout-sidebar>
+    </taskoo-layout>
 
     <taskoo-loader v-else></taskoo-loader>
   </div>
 </template>
 
 <script>
-  import LayoutSidebar from "./layout/LayoutSidebar";
+  import TaskooLayout from "./layout/TaskooLayout/TaskooLayout";
   import TaskooLoader from "components/TaskooLoader/TaskooLoader";
   import axios from "axios";
   import store from "src/store";
@@ -21,7 +21,7 @@
 
   export default {
     name: 'taskoo',
-    components: {LayoutSidebar, TaskooLoader},
+    components: {TaskooLayout, TaskooLoader},
     data: () => ({
       test: true,
       screenWidth: window.innerWidth,
@@ -75,6 +75,9 @@
           this.$store.commit('misc/toggleMobile', false)
         }
       }
+
+      console.log('ROUTE:');
+      console.log(this.$route)
     },
 
     computed: {

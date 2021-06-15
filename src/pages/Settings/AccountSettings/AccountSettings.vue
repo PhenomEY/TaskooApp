@@ -14,7 +14,7 @@
 
     <taskoo-input :error="dataForm.email.error" type="email" :model="dataForm.email.value" :placeholder="dataForm.email.oldVal" label="E-Mail" @modelChanged="setDataFormValue('email', ...arguments)"></taskoo-input>
 
-    <taskoo-input :error="dataForm.password.error" type="password" :model="dataForm.password.value" :placeholder="$t('settings.account_settings.new_password')" :label="$t('settings.account_settings.new_password')" @modelChanged="setDataFormValue('password', ...arguments)"></taskoo-input>
+    <taskoo-input :info-text="$t('settings.account_settings.new_password_info')" :error="dataForm.password.error" type="password" :model="dataForm.password.value" :placeholder="$t('settings.account_settings.new_password')" :label="$t('settings.account_settings.new_password')" @modelChanged="setDataFormValue('password', ...arguments)"></taskoo-input>
 
     <taskoo-input :error="dataForm.password_ver.error" type="password" :model="dataForm.password_ver.value" :placeholder="$t('settings.account_settings.new_password_confirm')" :label="$t('settings.account_settings.new_password_confirm')" @modelChanged="setDataFormValue('password_ver', ...arguments)"></taskoo-input>
 

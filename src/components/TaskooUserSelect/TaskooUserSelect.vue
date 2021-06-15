@@ -1,5 +1,6 @@
 <template>
   <div class="taskoo-user-select">
+    <span v-if="label" class="input-label" >{{ label }}</span>
     <multiselect class="user-select" v-model="data"
                  :options="options"
                  :multiple="multi"

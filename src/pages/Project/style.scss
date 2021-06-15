@@ -1,18 +1,5 @@
-@import '../../scss/vars/variables';
-
 .project-wrapper {
-  flex:1;
-  background:var(--taskoo-wrapper-bg);
-  position: relative;
-  display: flex;
-  overflow: hidden;
-  max-height: calc(100vh - 48px);
-
   .project-content {
-    padding:16px 0 0 0;
-    max-width: 100%;
-    display: flex;
-    flex-direction: column;
 
     .project-header {
       display: flex;
@@ -25,7 +12,7 @@
         width: 10px;
         display:inline-block;
         margin-right:10px;
-        background: $taskoo-main;
+        background: var(--taskoo-primary);
       }
 
       .title {
@@ -40,33 +27,30 @@
 
       .project-options {
         margin-left:15px;
-        .md-icon-button {
-          min-width: 25px;
-          width: 25px;
-          height:25px;
-        }
+        display: flex;
+        align-items: center;
 
         .is-favorite {
-          .md-icon {
             color:#ffbc00;
-          }
+        }
+
+        .taskoo-icon-button {
+          margin-left:5px;
         }
       }
 
       .project-users {
         display:flex;
         flex-direction: row;
+        margin-left: 20px;
+
         .user {
-          margin-left:-40%;
+          margin-left:-10px;
           height:30px;
           width: 30px;
           min-width: 30px;
-          background:limegreen;
+          background:var(--taskoo-light-h);
           font-size:14px;
-
-          &:nth-child(even) {
-            background:orange;
-          }
 
           &:first-child {
             margin-left:0;
@@ -105,28 +89,12 @@
         display: flex;
 
         &.sortable-chosen {
-
           .task-group {
-            border:1px solid $taskoo-selected;
-            border-radius: $taskoo-border-radius;
+            border:1px solid var(--taskoo-selected-color);
+            border-radius: var(--taskoo-border-radius);
           }
 
         }
-      }
-
-
-      &::-webkit-scrollbar {
-        width: 5px;
-        height:8px;
-      }
-
-      &::-webkit-scrollbar-track {
-        background: #ddd;
-      }
-
-      &::-webkit-scrollbar-thumb {
-        background: $taskoo-scrollbar-thumb;
-        border-radius: 6px;
       }
     }
   }
@@ -141,7 +109,7 @@
     .task-groups {
       overflow: hidden;
       .task-group {
-        width: $taskgroup-width;
+        width: var(--taskoo-taskgroup-width);
         min-height: 400px;
       }
     }

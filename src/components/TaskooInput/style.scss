@@ -1,19 +1,26 @@
-@import 'src/scss/vars/variables';
-
 .taskoo-input {
   font-family: "Noto Sans JP";
   color:rgba(0,0,0,0.67);
   width: 100%;
-  max-width: $taskoo-input-width;
+  max-width: var(--taskoo-input-width);
+
+  .input-field-container {
+    display:flex;
+    align-items: center;
+    margin-bottom:10px;
+  }
+
+  .info-text {
+    font-size: 11px;
+  }
 
   &.error {
-
     .input-label {
-      color:$taskoo-error;
+      color:var(--taskoo-error-color);
     }
 
     input {
-      border-color:$taskoo-error;
+      border-color:var(--taskoo-error-color);
     }
   }
 
@@ -27,20 +34,20 @@
   input {
     -webkit-appearance: none;
     font-family: "Noto Sans JP";
-    border-radius:$taskoo-border-radius;
-    border:1px solid var(--taskoo-border-default);
+    border-radius:var(--taskoo-border-radius);
+    border:1px solid var(--taskoo-border-d);
     padding: 5px 10px;
     width: 100%;
-    height:$taskoo-input-height;
-    margin-bottom:10px;
+    height:var(--taskoo-input-height);
     font-size:16px;
+    margin-right: 10px;
 
     &::placeholder {
       color:rgba(0,0,0,0.3);
     }
 
     &:focus {
-      border-color:$taskoo-main;
+      border-color:var(--taskoo-primary);
       outline:none;
     }
   }
@@ -53,7 +60,7 @@
     }
 
     input {
-      background:var(--taskoo-nav-bg);
+      background:var(--taskoo-boxed-bg);
       color:rgba(255,255,255,0.6);
 
       &::placeholder {

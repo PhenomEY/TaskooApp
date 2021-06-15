@@ -10,9 +10,9 @@
       </div>
 
       <div class="right">
-        <md-button class="md-icon-button md-list-action" @click="returnTo">
-          <md-icon>arrow_back</md-icon>
-        </md-button>
+        <taskoo-icon-button @click="returnTo">
+          <q-icon name="arrow_back"></q-icon>
+        </taskoo-icon-button>
       </div>
     </div>
 
@@ -28,7 +28,7 @@
           {{ task.project.name }}
         </h1>
 
-        <md-icon v-if="task.mainTask">chevron_right</md-icon>
+        <q-icon name="chevron_right" v-if="task.mainTask"></q-icon>
         <h2 class="main-task" v-if="task.mainTask">
            {{ task.mainTask }}
         </h2>
@@ -41,30 +41,29 @@
       <div class="right">
 
         <div class="finish-button" v-bind:class="{'done': (task.isDone)}" @click="finishTask(task.isDone)">
-          <md-icon>check_circle_outline</md-icon>
+          <q-icon name="check_circle_outline"></q-icon>
           <span v-if="task.isDone">{{ $t('task.detail.taskFinished') }}</span>
           <span v-else>{{ $t('task.detail.finishTask') }}</span>
         </div>
 
         <v-popover offset="16">
-          <md-button class="md-icon-button md-list-action tooltip-target">
-            <md-icon>more_vert</md-icon>
-          </md-button>
-
+          <taskoo-icon-button class="tooltip-target">
+            <q-icon name="more_vert"></q-icon>
+          </taskoo-icon-button>
 
           <template slot="popover" class="file-options">
             <div class="taskoo-popover-options">
               <div class="option remove" @click="toggleDeleteDialog" v-close-popover>
-                <md-icon>delete</md-icon>
+                <q-icon name="delete"></q-icon>
                 {{ $t('task.menu.delete') }}
               </div>
             </div>
           </template>
         </v-popover>
 
-        <md-button class="md-icon-button md-list-action" @click="returnTo">
-          <md-icon>arrow_back</md-icon>
-        </md-button>
+        <taskoo-icon-button @click="returnTo">
+          <q-icon name="arrow_back"></q-icon>
+        </taskoo-icon-button>
       </div>
     </div>
 
@@ -136,17 +135,16 @@
       </div>
     </div>
 
-<!--    delete task dialog-->
-    <md-dialog-confirm
-      :md-active.sync="showDeleteDialog"
-      :md-title="$t('prompts.delete.task.title')"
-      :md-content="$t('prompts.delete.task.description')"
-      :md-confirm-text="$t('prompts.delete.task.confirm')"
-      :md-cancel-text="$t('prompts.delete.task.cancel')"
-      @md-cancel="toggleDeleteDialog"
-      @md-confirm="deleteTask"
-      class="taskoo-dialog"
-    />
+    <taskoo-dialog class="taskoo-dialog"
+      :active="showDeleteDialog"
+      :title="$t('prompts.delete.task.title')"
+      :content="$t('prompts.delete.task.description')"
+      :confirm-text="$t('prompts.delete.task.confirm')"
+      :cancel-text="$t('prompts.delete.task.cancel')"
+      @close="toggleDeleteDialog"
+      @confirm="deleteTask"
+    >
+    </taskoo-dialog>
   </div>
 
 

@@ -1,16 +1,14 @@
-@import 'src/scss/vars/variables';
-
-
 .edit-user {
   .loader {
     .taskoo-input {
-      height:$taskoo-input-height;
+      height:var(--taskoo-input-height);
       margin-bottom: 10px;
     }
   }
 
   .taskoo-button {
     margin-bottom:25px;
+    margin-top:16px;
   }
 
   .label {

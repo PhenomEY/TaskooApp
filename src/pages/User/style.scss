@@ -1,11 +1,8 @@
-@import 'src/scss/vars/variables';
-
-
 .user-wrapper {
   padding:16px 0;
   display: flex;
   flex:1;
-  background:var(--taskoo-wrapper-bg);
+  background:var(--taskoo-bg);
   justify-content: center;
 
   .taskoo-profile {

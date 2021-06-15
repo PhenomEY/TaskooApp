@@ -1,5 +1,3 @@
-@import './variables';
-
 //TaskooSelect Menu
 .taskoo-select-menu {
   display: block !important;
@@ -8,10 +6,10 @@
   outline:none;
 
   .taskoo-select-options {
-    border-radius: $taskoo-border-radius;
-    border:1px solid var(--taskoo-border-default);
+    border-radius: var(--taskoo-border-radius);
+    border:1px solid var(--taskoo-border-d);
     box-shadow: 0px 1px 4px rgba(0,0,0,0.1);
-    background:var(--taskoo-default-bg);
+    background:var(--taskoo-boxed-bg);
     outline:none;
     .option {
       padding: 3px 20px;
@@ -21,7 +19,7 @@
       text-align: center;
 
       &:hover {
-        color:$taskoo-main;
+        color:var(--taskoo-primary);
       }
     }
   }
@@ -36,8 +34,8 @@
     .tooltip-inner {
       background: #ffffff;
       color: rgba(0,0,0,0.7);
-      border-radius: $taskoo-border-radius;
-      border:1px solid var(--taskoo-border-default);
+      border-radius: var(--taskoo-border-radius);
+      border:1px solid var(--taskoo-border-d);
       box-shadow: 0px 1px 4px rgba(0,0,0,0.1);
       overflow: hidden;
 
@@ -50,7 +48,8 @@
         }
 
         .option {
-          display:block;
+          display:flex;
+          align-items: center;
           padding: 3px 6px;
           cursor:pointer;
           -webkit-touch-callout: none; /* iOS Safari */
@@ -61,10 +60,14 @@
           user-select: none; /* Non-prefixed version, currently
                                   supported by Chrome, Edge, Opera and Firefox */
 
+          i {
+            font-size: 22px;
+          }
+
 
           &.logged-in-as{
             cursor:default;
-            border-bottom:1px solid var(--taskoo-border-secondary);
+            border-bottom:1px solid var(--taskoo-border-l);
 
             &:hover {
               background:transparent;
@@ -72,7 +75,7 @@
           }
 
           &:hover {
-            background:$taskoo-light-grey;
+            background:var(--taskoo-bg);
             color:inherit;
           }
 
@@ -121,7 +124,7 @@
       border-style: solid;
       position: absolute;
       margin: 5px;
-      border-color: var(--taskoo-border-default);
+      border-color: var(--taskoo-border-d);
     }
 
     &[x-placement^="top"] {
@@ -210,12 +213,12 @@
     .tooltip {
       .tooltip-inner {
         color:rgba(255,255,255,0.67);
-        background:var(--taskoo-nav-bg);
+        background:var(--taskoo-boxed-bg);
 
         .taskoo-popover-options {
           .option {
             &:hover {
-              background:var(--taskoo-wrapper-bg);
+              background:var(--taskoo-bg);
             }
           }
         }

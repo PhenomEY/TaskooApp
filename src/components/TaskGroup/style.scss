@@ -1,8 +1,6 @@
-@import '../../scss/vars/variables';
-
 .task-group {
   flex:1;
-  width:$taskgroup-width;
+  width:var(--taskoo-taskgroup-width);
   margin-right: 11px;
   display: flex;
   flex-direction: column;
@@ -17,8 +15,8 @@
   &.done-tasks {
     .task {
       &.add {
-        border-color:$taskoo-done-color;
-        color:$taskoo-done-color;
+        border-color:var(--taskoo-done-color);
+        color:var(--taskoo-done-color);
         font-size: 12px;
       }
     }
@@ -42,34 +40,18 @@
 
   .task-group-inner {
       display: block;
-      max-height:710px;
-      overflow-y: auto;
       padding: 0 5px 5px 5px;
-
-      &::-webkit-scrollbar {
-        width: 5px;
-      }
-
-      &::-webkit-scrollbar-track {
-        background: #ddd;
-      }
-
-      &::-webkit-scrollbar-thumb {
-        background: $taskoo-scrollbar-thumb;
-        border-radius: 6px;
-      }
-
   }
 
   .task {
-    background:var(--taskoo-default-bg);
+    background:var(--taskoo-boxed-bg);
     cursor: -webkit-grab;
     cursor: grab;
     padding:6px 10px;
     margin: 5px 0;
     display:flex;
-    border:1px solid var(--taskoo-border-default);
-    border-radius:$taskoo-border-radius;
+    border:1px solid var(--taskoo-border-d);
+    border-radius:var(--taskoo-border-radius);
     flex-direction: column;
     transition: border-color 100ms ease-in-out;
 
@@ -78,17 +60,17 @@
       //opacity:1;
 
       &:hover {
-      border-color:$taskoo-border-h-color;
+      border-color:var(--taskoo-border-h);
       }
 
       &.sortable-chosen {
-        border-color:$taskoo-selected;
+        border-color:var(--taskoo-selected-color);
         opacity:0.5;
       }
 
       &.high-priority {
-        border-color: $taskoo-high-priority-border;
-        background: $taskoo-high-priority-bg;
+        border-color: var(--taskoo-high-priority-color);
+        background: var(--taskoo-high-priority-bg);
       }
 
       &.is-done {
@@ -97,11 +79,7 @@
         animation-duration: 300ms;
         animation-fill-mode: forwards;
         animation-iteration-count: 1;
-        border-color:$taskoo-done-color !important;
-
-        .md-icon {
-          color:$taskoo-done-color;
-        }
+        border-color:var(--taskoo-done-color) !important;
       }
     }
 
@@ -121,58 +99,19 @@
           margin-left:5px;
 
           &.overdue {
-            color:$taskoo-error;
+            color:var(--taskoo-error-color);
           }
-        }
-
-        .md-icon {
-          font-size: 14px !important;
-          width: auto;
-          min-width: auto;
-          height: auto;
-          opacity:0.6;
         }
       }
 
 
       .users {
-        .task-user {
-          width: 20px;
-          min-width: 20px;
-          height: 20px;
-          margin: 0;
-          text-transform: none;
-
-          .md-avatar {
-            width: 20px;
-            min-width: 20px;
-            height: 20px;
-            font-size: 14px;
-            display: flex;
-            color:#ffffff;
-          }
-
-          .md-avatar {
-            width: 20px;
-            min-width: 20px;
-            height: 20px;
-          }
-
-          &:first-child {
-            transform: none;
-            .md-avatar-icon {
-              background:orange;
-            }
-
-          }
+        .taskoo-avatar {
+          width: 30px;
+          height:30px;
+          font-size:16px;
         }
       }
-    }
-
-    .md-icon-button {
-      min-width: 25px;
-      width: 25px;
-      height:25px;
     }
 
     &.name {
@@ -191,8 +130,9 @@
     }
 
     &.add {
-      text-align: center;
-      cursor:default;
+      display: flex;
+      justify-content: center;
+      align-items: center;
 
       button {
         margin:0 auto;
@@ -211,22 +151,6 @@
         height:64px;
       }
     }
-  }
-}
-
-
-.taskoo-scrollbar-y {
-  &::-webkit-scrollbar {
-    width: 5px;
-  }
-
-  &::-webkit-scrollbar-track {
-    background: #ddd;
-  }
-
-  &::-webkit-scrollbar-thumb {
-    background: $taskoo-scrollbar-thumb;
-    border-radius: 6px;
   }
 }
 

@@ -1,9 +1,12 @@
-import AccountSettings from "./AccountSettings/AccountSettings"
+import TaskooBoxedContent from 'src/components/TaskooBoxedContent/TaskooBoxedContent';
+import TaskooBoxedNavEntry from 'src/components/TaskooBoxedContent/TaskooBoxedNavEntry/TaskooBoxedNavEntry';
+
+import AccountSettings from "./AccountSettings/AccountSettings";
 import UserService from "src/services/TaskooUserService";
 
 export default {
     name: 'Settings',
-    components: {AccountSettings},
+    components: {AccountSettings, TaskooBoxedContent, TaskooBoxedNavEntry},
 
     data: () => ({
       user: null
@@ -12,6 +15,12 @@ export default {
   computed: {
     currentUser() {
       return this.$store.state.user.user
+    }
+  },
+
+  watch: {
+    "$route": function () {
+      this.loadUser()
     }
   },
 

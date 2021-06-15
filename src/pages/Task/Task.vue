@@ -1,5 +1,5 @@
 <template>
-  <div class="task-wrapper" v-bind:class="{'slideOut': (fadeOut == true)}" >
+  <div class="task-wrapper content-wrapper" v-bind:class="{'slideOut': (fadeOut == true)}" >
       <taskoo-task-window></taskoo-task-window>
   </div>
 </template>

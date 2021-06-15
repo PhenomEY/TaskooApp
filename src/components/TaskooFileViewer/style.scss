@@ -1,5 +1,3 @@
-@import 'src/scss/vars/variables';
-
 .file-preview {
   display:flex;
   flex-wrap: wrap;
@@ -9,12 +7,12 @@
     max-height: 200px;
     margin-right:20px;
     padding:5px;
-    background:var(--taskoo-default-bg);
+    background:var(--taskoo-boxed-bg);
     display: inline-flex;
     position: relative;
     flex-direction: column;
     margin-bottom:20px;
-    border-radius: $taskoo-border-radius;
+    border-radius: var(--taskoo-border-radius);
 
     .file-informations {
       display:flex;
@@ -60,6 +58,15 @@
         flex:1;
         &:hover {
           text-decoration: none;
+        }
+
+        .file-icon {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex: 1;
+          font-size:36px;
+          padding:10px;
         }
 
         .file-extension {

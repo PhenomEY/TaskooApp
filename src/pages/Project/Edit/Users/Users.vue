@@ -3,9 +3,10 @@
     <div class="project-users" v-if="projectData.isClosed">
       <div class="add-user">
         <taskoo-user-select v-if="availableUsers" :multi="false" :options="availableUsers" @addedUser="userSelected"></taskoo-user-select>
-        <md-button :disabled="!selectedUser || addingUser" class="md-icon-button md-list-action" @click="addUser">
-          <md-icon>add</md-icon>
-        </md-button>
+
+        <taskoo-icon-button :disabled="!selectedUser || addingUser" @click="addUser">
+          <q-icon name="add"></q-icon>
+        </taskoo-icon-button>
       </div>
 
 
@@ -18,24 +19,21 @@
 
         <div class="entry"  v-for="(user, key) in projectData.users">
           <div class="avatar">
-            <md-button class="md-icon-button task-user">
-              <md-avatar class="md-avatar-icon taskoo-avatar" v-bind:style= "[user.hexCode ? {background: user.hexCode} : {}]">{{ user.firstname.charAt(0) }}{{ user.lastname.charAt(0) }}
-                <md-tooltip md-direction="bottom">{{ user.firstname }} {{ user.lastname }}</md-tooltip>
-              </md-avatar>
-            </md-button>
+            <taskoo-avatar :user="user">
+            </taskoo-avatar>
           </div>
           <div class="name">
             {{ user.firstname }} {{ user.lastname }}
 
             <span class="main" v-if="projectData.mainUser && (projectData.mainUser.id === user.id)">
-              <md-icon>star_rate</md-icon>
+              <q-icon name="star_rate"></q-icon>
             </span>
           </div>
 
           <div class="actions">
-            <md-button class="md-icon-button md-list-action" :disabled="removingUser" @click="removeUser(user.id, key)">
-              <md-icon>remove_circle_outline</md-icon>
-            </md-button>
+            <taskoo-icon-button :disabled="removingUser" @click="removeUser(user.id, key)">
+              <q-icon name="remove_circle_outline"></q-icon>
+            </taskoo-icon-button>
           </div>
         </div>
       </div>

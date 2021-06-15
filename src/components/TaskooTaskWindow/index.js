@@ -5,13 +5,15 @@ import TaskooDatepicker from "../TaskooDatepicker/TaskooDatepicker";
 import TaskList from "../TaskList/TaskList";
 import Multiselect from 'vue-multiselect';
 import TaskooFileViewer from "src/components/TaskooFileViewer/TaskooFileViewer";
+import TaskooIconButton from "src/components/TaskooIconButton/TaskooIconButton";
+import TaskooDialog from 'src/components/TaskooDialog/TaskooDialog';
 
 import TaskService from 'src/services/TaskooTaskService';
 import FileService from 'src/services/TaskooFileService';
 
 export default {
     name: 'TaskooTaskWindow',
-    components: {TaskooInput, Taskoo404, TaskooUserSelect, TaskooDatepicker, TaskList, Multiselect, TaskooFileViewer},
+    components: {TaskooInput, Taskoo404, TaskooUserSelect, TaskooDatepicker, TaskList, Multiselect, TaskooFileViewer, TaskooIconButton, TaskooDialog},
     data() {
         return {
             task: null,
@@ -336,8 +338,6 @@ export default {
         const fileCount = files.length
 
         this.uploading = true
-        console.log('UPLOADING');
-        console.log(files)
 
         for(i=0; i<fileCount; i++) {
           this.uploadingFile = files[i].name

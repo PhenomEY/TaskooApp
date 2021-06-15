@@ -1,6 +1,9 @@
-@import 'src/scss/vars/variables';
-
 .taskoo-tasklist {
+
+  .title {
+    padding:20px 0;
+    font-weight: bold;
+  }
 
   &.dashboard {
     .tasklist {
@@ -16,7 +19,6 @@
   &.my-tasks {
     .tasklist {
       .task {
-
         &:first-child {
           border:none;
         }
@@ -38,11 +40,21 @@
 
 
   .tasklist {
-    background:var(--taskoo-default-bg);
-    border:1px solid var(--taskoo-border-default);
-    box-shadow:$taskoo-box-shadow;
-    border-radius:$taskoo-border-radius;
+    background:var(--taskoo-boxed-bg);
+    border:1px solid var(--taskoo-border-d);
+    border-radius:var(--taskoo-border-radius);
     overflow: hidden;
+
+    .empty {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      i {
+        font-size: 54px;
+      }
+    }
 
     .task {
       display:flex;
@@ -50,32 +62,26 @@
       align-items: center;
       height: 40px;
       padding:0 10px;
-      border-top:1px solid var(--taskoo-border-secondary);
+      border-top:1px solid var(--taskoo-border-l);
       transition:background 100ms;
 
-      .md-icon-button {
-        min-width: 25px;
-        width: 25px;
-        height: 25px;
-      }
-
       &.item {
+        &:first-child {
+          border:none;
+        }
+
         &.is-done {
-          border-top:1px solid $taskoo-done-color;
-          color:$taskoo-done-color;
+          border-top:1px solid var(--taskoo-done-color);
+          color:var(--taskoo-done-color);
 
           &:first-child {
             border:none;
           }
-
-          .md-icon {
-            color:$taskoo-done-color;
-          }
         }
 
         &.high-priority {
-          border-color: $taskoo-high-priority-border;
-          background: $taskoo-high-priority-bg;
+          border-color: var(--taskoo-high-priority-color);
+          background: var(--taskoo-high-priority-bg);
         }
       }
 
@@ -91,12 +97,12 @@
         .add-button {
           display:inline-flex;
           justify-content: center;
-          border-radius:$taskoo-border-radius;
+          border-radius:var(--taskoo-border-radius);
           padding:5px;
         }
 
         &:hover {
-          background:var(--taskoo-default-bg);
+          background:var(--taskoo-boxed-bg);
         }
 
       }
@@ -143,7 +149,7 @@
               width: 8px;
               display:inline-block;
               margin-left:5px;
-              background:$taskoo-main;
+              background:var(--taskoo-primary);
             }
 
             &:hover {
@@ -157,6 +163,9 @@
           display: flex;
           align-items: center;
 
+          .task-options {
+            display:flex;
+          }
           .list-task-done {
             font-size: 11px;
           }
@@ -167,7 +176,7 @@
             margin-right:10px;
 
             &.overdue {
-              color:$taskoo-error;
+              color:var(--taskoo-error-color);
             }
           }
 
@@ -208,9 +217,9 @@
 
     .task {
       &:hover {
-        background: var(--taskoo-wrapper-bg);
+        background: var(--taskoo-bg);
       }
-      border-color:var(--taskoo-wrapper-bg);
+      border-color:var(--taskoo-bg);
 
       .list-task-right {
         .list-task-project {

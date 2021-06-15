@@ -1,22 +1,15 @@
-@import '../../scss/vars/variables';
-
 .dashboard-wrapper {
-  padding:16px;
-  background:var(--taskoo-wrapper-bg);
-  flex:1;
-  display: flex;
   justify-content: center;
-
   .dashboard {
     width:100%;
-    max-width: 800px;
+    max-width: var(--taskoo-boxed-width);
 
     .first-row {
       display:flex;
     }
 
     .tile {
-      border-radius:$taskoo-border-radius;
+      border-radius:var(--taskoo-border-radius);
       color:#ffffff;
       padding:0 20px;
 
@@ -58,16 +51,21 @@
       }
     }
 
+    .notifications-title {
+      padding: 20px 0;
+      font-weight: bold;
+    }
+
     .notifications {
-      background:var(--taskoo-default-bg);
-      border:1px solid var(--taskoo-border-default);
-      border-radius:$taskoo-border-radius;
-      margin-top:16px;
+      background:var(--taskoo-boxed-bg);
+      border:1px solid var(--taskoo-border-d);
+      border-radius:var(--taskoo-border-radius);
       overflow: hidden;
 
       &.skeleton {
         background:transparent;
         border:none;
+        margin-top: 16px;
 
         .entry {
           border:none;
@@ -83,8 +81,12 @@
         height: 30px;
         font-size: 12px;
         padding:0 10px;
-        border-top:1px solid var(--taskoo-border-secondary);
+        border-top:1px solid var(--taskoo-border-l);
         transition:background 100ms;
+
+        &:first-child {
+          border:none;
+        }
 
         .to-notification {
           font-weight:bold;
@@ -98,17 +100,6 @@
 
         .time {
           color:rgba(0,0,0,0.5);
-        }
-
-        &.title {
-          flex:1;
-          border:none;
-          font-weight:bold;
-          height:30px;
-
-          &:hover {
-            background:var(--taskoo-default-bg);
-          }
         }
 
         &:hover {
@@ -136,9 +127,9 @@
     .dashboard {
       .notifications {
         .entry {
-          border-color:var(--taskoo-wrapper-bg);
+          border-color:var(--taskoo-bg);
           &:hover {
-            background: var(--taskoo-wrapper-bg);
+            background: var(--taskoo-bg);
           }
 
           .time {

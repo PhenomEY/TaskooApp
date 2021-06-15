@@ -1,4 +1,5 @@
 import TaskooInput from "components/TaskooInput/TaskooInput";
+import TaskooIconButton from 'src/components/TaskooIconButton/TaskooIconButton'
 
 import FormValidator from "src/handlers/FormValidator";
 
@@ -6,7 +7,7 @@ import axios from "axios";
 
 export default {
     name: 'AdminUserCreate',
-    components: { TaskooInput },
+    components: { TaskooInput, TaskooIconButton },
 
     data() {
         return {

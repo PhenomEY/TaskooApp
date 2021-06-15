@@ -1,7 +1,10 @@
-import draggable from 'vuedraggable'
+import draggable from 'vuedraggable';
 import TaskGroup from '../../components/TaskGroup/TaskGroup';
 import Taskoo404 from '../../components/TaskooNotFound/TaskooNotFound';
 import Skeleton from 'vue-loading-skeleton';
+import TaskooIconButton from "src/components/TaskooIconButton/TaskooIconButton";
+import TaskooAvatar from "src/components/TaskooAvatar/TaskooAvatar";
+import TaskooDialog from 'src/components/TaskooDialog/TaskooDialog';
 
 import TaskService from "src/services/TaskooTaskService";
 import ProjectService from "src/services/TaskooProjectService";
@@ -10,7 +13,7 @@ import TaskGroupService from "src/services/TaskooTaskGroupService";
 
 export default {
     name: 'Project',
-    components: {TaskGroup, draggable, Taskoo404, Skeleton},
+    components: {TaskGroup, draggable, Taskoo404, Skeleton, TaskooIconButton, TaskooAvatar, TaskooDialog},
 
     data: () => ({
         loading: true,
@@ -28,14 +31,6 @@ export default {
     }),
 
     watch: {
-        '$store.state.misc.contentRefresh': function() {
-            if (this.$store.state.misc.contentRefresh == true) {
-                this.loadProject(true)
-            }
-
-            return this.$store.state.misc.contentRefresh;
-        },
-
         '$store.state.misc.isMobile': function() {
           this.isMobile = this.$store.state.misc.isMobile
             if(this.isMobile === false) {
@@ -52,6 +47,7 @@ export default {
             }
             this.notFound = false
             this.loading = true
+          console.log('triggered3')
             this.loadProject()
         }
     },
@@ -110,10 +106,6 @@ export default {
               this.loading = false;
               this.notFound = true;
             }
-
-          if(toggle === true) {
-            this.$store.commit('toggleRefresh', false);
-          }
         },
 
         async changedGroupPositions(model) {
@@ -310,9 +302,7 @@ export default {
             if(deleted) {
               this.groups.splice(groupKey, 1)
 
-              this.deleteData = {
-                name: null
-              }
+              this.toggleDeleteDialog(false)
             }
         },
 

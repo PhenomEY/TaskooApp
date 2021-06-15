@@ -1,188 +1,111 @@
-@import '../../../scss/vars/variables';
+.project-edit {
+  .boxed-content-title {
+    font-size:21px;
+    display: flex;
+    align-items: center;
+    .project-name {
+      display: flex;
+      align-items: center;
+      flex:1;
 
-.edit-project-wrapper {
-  position: absolute;
-  width: 100%;
-  height:100%;
-  background:rgba(0,0,0,0.3);
-  display:flex;
-  justify-content: space-around;
-  z-index:10;
-  animation-fill-mode: forwards;
-  animation-name: fadeIn;
-  animation-duration: 200ms;
+      .color-brick {
+        height:10px;
+        width: 10px;
+        display:inline-block;
+        margin-right:10px;
+      }
 
-  .edit-project-modal {
-    flex-grow: 0;
-    background:var(--taskoo-default-bg);
-    border-radius:$taskoo-border-radius;
-    align-self: self-start;
-    margin-top: 10%;
-    width: 100%;
-    max-width: 950px;
-
-    .project-main-user {
-      margin-bottom:10px;
-    }
-
-    .edit-loading {
-      .taskoo-skeleton {
-        height:40px;
-        margin-bottom: 10px;
-        display: block;
+      i {
+        margin:0 5px;
       }
     }
+  }
 
+  .project-main-user {
+    margin-bottom: 10px;
+  }
+
+  .edit-loading {
+    .taskoo-skeleton {
+      height: 40px;
+      margin-bottom: 10px;
+      display: block;
+    }
+  }
+
+
+  .label {
+    display: block;
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: rgba(0, 0, 0, 0.67);
+  }
+
+  .project-description {
+    margin-top: 10px;
+    margin-bottom: 20px;
 
     .label {
       display: block;
-      font-size: 16px;
-      font-weight: bold;
-      margin-bottom: 5px;
-      color: rgba(0, 0, 0, 0.67);
+      margin-bottom: 10px;
     }
 
-    .md-tabs {
-      border:1px solid var(--taskoo-border-default);
-      border-radius:$taskoo-border-radius;
-      background:var(--taskoo-default-bg);
-
-      .md-tabs-navigation {
-        background:transparent;
-        justify-content: space-evenly;
-      }
-
-      .md-content {
-        background:transparent;
-      }
+    .ql-snow.ql-toolbar {
+      max-height: 30px;
+      padding: 4px 8px 8px 8px;
+      border-bottom: 1px solid var(--taskoo-border-l);
+      border-top: 1px solid var(--taskoo-border-h);
+      border-left: 1px solid var(--taskoo-border-h);
+      border-right: 1px solid var(--taskoo-border-h);
     }
 
-    .project-description {
-      margin-top:10px;
-      margin-bottom:20px;
+    .ql-container {
+      border-radius: 0;
 
-      .label {
-        display: block;
-        margin-bottom:10px;
+      &.ql-snow {
+        border-top: none;
+        border-color: var(--taskoo-border-h);
       }
 
-      .quillWrapper {
-        box-shadow: $taskoo-box-shadow;
-      }
+    }
 
+    .ql-toolbar {
+      text-align: left;
+      background: var(--taskoo-boxed-bg);
+      border-top-left-radius: var(--taskoo-border-radius);
+      border-top-right-radius: var(--taskoo-border-radius);
 
-        .ql-toolbar {
-          max-height:30px;
-          padding:4px 8px 8px 8px;
-          border-bottom: 1px solid var(--taskoo-border-secondary);
-          border-top: 1px solid $taskoo-border-h-color;
-          border-left: 1px solid $taskoo-border-h-color;
-          border-right: 1px solid $taskoo-border-h-color;
-        }
+      .ql-formats {
+        margin-right: 10px;
+        margin-bottom: 0;
 
-        .ql-container {
-          border-radius:0;
-
-          &.ql-snow {
-            border-top:none;
-            border-color:$taskoo-border-h-color;
-          }
-
-        }
-
-      .ql-toolbar {
-        text-align: left;
-        background:var(--taskoo-default-bg);
-        border-top-left-radius: $taskoo-border-radius;
-        border-top-right-radius: $taskoo-border-radius;
-
-        .ql-formats {
-          margin-right:10px;
-          margin-bottom:0;
-          button {
-            svg {
-              width:16px;
-              height:16px;
-            }
+        button {
+          svg {
+            width: 16px;
+            height: 16px;
           }
         }
       }
+    }
 
-      .ql-container {
-        background:var(--taskoo-default-bg);
-        border-color:var(--taskoo-border-default);
-        transition:border-radius 100ms;
+    .ql-container {
+      background: var(--taskoo-boxed-bg);
+      border-color: var(--taskoo-border-d);
+      transition: border-radius 100ms;
 
-        &.ql-snow {
-          border-top:1px solid var(--taskoo-border-default);
-        }
-
-        .ql-editor {
-          min-height:100px;
-          font-family:'Noto Sans JP';
-          font-size:14px;
-        }
+      &.ql-snow {
+        border-top: 1px solid var(--taskoo-border-d);
       }
 
-      .save-button {
-        background:$taskoo-main;
-        color:#ffffff;
-        padding: 7px 20px;
-        margin-top:10px;
-        border-radius:$taskoo-border-radius;
-        border:none;
-        font-family: "Noto Sans JP";
-        cursor:pointer;
-
-        &[disabled] {
-          cursor:not-allowed;
-        }
+      .ql-editor {
+        min-height: 100px;
+        font-family: 'Noto Sans JP';
+        font-size: 14px;
       }
     }
   }
 }
 
-.taskoo-dark-theme {
-  .edit-project-wrapper {
-    .edit-project-modal {
-      .label {
-        color:rgba(255,255,255,0.6);
-      }
 
-      .taskoo-input {
-        input {
-          background:var(--taskoo-wrapper-bg);
-        }
-      }
 
-      .taskoo-user-select {
-        .multiselect__tags {
-          background:var(--taskoo-wrapper-bg);
-        }
-
-        .multiselect__single {
-          background:var(--taskoo-wrapper-bg);
-        }
-      }
-
-      .taskoo-datepicker .datepicker .vdp-datepicker input {
-        background:var(--taskoo-wrapper-bg);
-      }
-
-      .project-description {
-        .ql-container {
-          background:var(--taskoo-wrapper-bg);
-        }
-      }
-    }
-  }
-}
-
-@keyframes fadeIn {
-  0% {
-    opacity:0;
-  }
-  100% {
-    opacity:1;
-  }
-}

@@ -1,22 +1,21 @@
-@import '../../scss/vars/variables';
-
 .taskoo-datepicker {
 
   .datepicker {
-    width: $taskoo-input-width;
+    width: var(--taskoo-input-width);
     font-family: "Roboto";
     margin-bottom: 10px;
     height: 40px;
     min-height: 40px;
     position: relative;
-    box-shadow: $taskoo-box-shadow;
+    box-shadow: var(--taskoo-box-shadow);
     background: #ffffff;
-    border-radius: $taskoo-border-radius;
+    border-radius: var(--taskoo-border-radius);
 
     .datepicker-icon {
       position: absolute;
       left: 10px;
-      top: 8px;
+      top: 11px;
+      font-size: 19px;
     }
 
     .vdp-datepicker {
@@ -33,12 +32,12 @@
         height: 40px;
         font-family: "Noto Sans JP";
         cursor: pointer;
-        border: 1px solid var(--taskoo-border-default);
-        border-radius: $taskoo-border-radius;
+        border: 1px solid var(--taskoo-border-d);
+        border-radius: var(--taskoo-border-radius);
         background:transparent;
 
         &:hover {
-          border-color: $taskoo-border-h-color;
+          border-color: var(--taskoo-border-h);
         }
       }
 
@@ -56,12 +55,13 @@
       }
 
       .vdp-datepicker__calendar {
-        border:1px solid $taskoo-border-h-color;
-        box-shadow:$taskoo-box-shadow;
+        border:1px solid var(--taskoo-border-h);
+        box-shadow:var(--taskoo-box-shadow);
+        width: 100%;
 
         header {
           .prev {
-            background:$taskoo-main;
+            background:var(--taskoo-drawer-bg);
             color:#ffffff;
 
             &:after {
@@ -70,12 +70,12 @@
           }
 
           .day__month_btn {
-            background:$taskoo-main;
+            background: var(--taskoo-drawer-bg);
             color:#ffffff;
           }
 
           .next {
-            background:$taskoo-main;
+            background: var(--taskoo-drawer-bg);
             color:#ffffff;
 
 
@@ -87,12 +87,12 @@
 
         .cell {
           &.selected {
-            background:$taskoo-main;
+            background: var(--taskoo-drawer-bg);
             color:#ffffff;
           }
 
           &:not(.blank):not(.disabled).day:hover {
-            border:1px solid $taskoo-main;
+            border:1px solid var(--taskoo-primary);
           }
         }
       }
@@ -106,7 +106,6 @@
     font-size: 16px;
     font-weight: bold;
     margin-bottom: 5px;
-    color: rgba(0, 0, 0, 0.67);
   }
 }
 
@@ -121,7 +120,7 @@
     .datepicker {
       background:transparent;
       &:hover {
-        border-color:var(--taskoo-border-default);
+        border-color:var(--taskoo-border-d);
       }
       .datepicker-icon {
         color:rgba(255,255,255,0.6);
@@ -130,12 +129,12 @@
 
       .vdp-datepicker {
         input {
-          background:var(--taskoo-nav-bg);
+          background:var(--taskoo-boxed-bg);
           color:rgba(255,255,255,0.6);
         }
 
         .vdp-datepicker__calendar {
-          background:var(--taskoo-wrapper-bg);
+          background:var(--taskoo-bg);
         }
       }
     }

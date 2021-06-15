@@ -1,44 +1,36 @@
-@import 'src/scss/vars/variables';
-
-
-.settings-wrapper {
-
-
+.administration-wrapper {
   .create-user {
     .create-switch {
       display:inline-flex;
       flex-direction: row;
-      border:1px solid $taskoo-done-color;
-      border-radius:$taskoo-border-radius;
       margin-bottom:20px;
       width: 100%;
-      max-width: $taskoo-input-width;
       font-size: 12px;
-      div {
-        padding:6px 6px;
+
+      .entry {
+        flex:2;
+        padding:10px;
+        border-bottom:2px solid var(--taskoo-border-l);
+        transition: all .2s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         cursor:pointer;
+        font-size: 14px;
+
+        i {
+          margin-right:5px;
+          font-size: 20px;
+        }
 
         &.active {
-          background:$taskoo-done-color;
-          color:#ffffff;
-
-          .md-icon {
-            color:#ffffff;
-          }
+          border-color: var(--taskoo-tab-active);
         }
       }
-
-      .invite {
-        display: flex;
-        flex: 1;
-        border-right:1px solid $taskoo-done-color;
-      }
-
     }
   }
 
   .create-header {
-    max-width: $taskoo-input-width;
     display:flex;
     flex-direction: row;
     align-items: center;
@@ -48,6 +40,4 @@
       font-size: 21px;
     }
   }
-
-
 }

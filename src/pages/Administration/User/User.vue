@@ -1,19 +1,17 @@
 <template>
   <div class="user-view">
     <router-view @return="reload"></router-view>
-
     <div class="user-view-inner" v-if="$route.path === '/admin/user'">
-
       <button class="create-user-button" @click="createUser()">
-        <md-icon>add_circle_outline</md-icon>
+        <q-icon name="add_circle_outline"></q-icon>
         {{ $t('administration.users.createUser') }}
       </button>
 
       <div class="taskoo-list box-shadow">
         <div class="actions">
-          <md-button class="md-icon-button" @click="getUsers">
-            <md-icon>refresh</md-icon>
-          </md-button>
+          <taskoo-icon-button @click="getUsers">
+            <q-icon name="refresh"></q-icon>
+          </taskoo-icon-button>
         </div>
 
         <div class="entry title">
@@ -39,7 +37,7 @@
         </div>
 
         <div class="entry loading" v-if="loading">
-          <md-progress-spinner :md-diameter="30" :md-stroke="3" md-mode="indeterminate"></md-progress-spinner>
+          <taskoo-loader-circle></taskoo-loader-circle>
         </div>
 
         <div class="entries taskoo-scrollbar-y">
@@ -49,8 +47,7 @@
             </div>
 
             <div class="name">
-              <md-avatar class="md-avatar-icon taskoo-avatar" v-bind:style= "[(user.color && user.color.hexCode) ? {background: user.color.hexCode} : {}]">{{ user.firstname.charAt(0) }}{{ user.lastname.charAt(0) }}
-              </md-avatar>
+              <taskoo-avatar :user="user"></taskoo-avatar>
               {{ user.firstname }} {{ user.lastname }}
             </div>
 
@@ -67,17 +64,19 @@
             </div>
 
             <div class="warnings" v-if="user.warnings">
-              <md-tooltip class="warning-tooltip" md-direction="top">
+              <q-tooltip class="warning-tooltip" self="center middle" anchor="top middle">
                 <div v-if="user.warnings.password">{{ $t('administration.users.list.warnings.password') }}</div>
                 <div v-if="user.warnings.organisations">{{ $t('administration.users.list.warnings.organisations') }}</div>
-              </md-tooltip>
-              <md-icon>warning</md-icon>
+              </q-tooltip>
+              <q-icon name="warning"></q-icon>
             </div>
 
             <div class="actions">
-              <md-button class="md-icon-button md-list-action" :to="{ name: 'AdminUserEdit', params: { id: user.id }}">
-                <md-icon>edit</md-icon>
-              </md-button>
+              <router-link :to="{ name: 'AdminUserEdit', params: { id: user.id }}">
+                <taskoo-icon-button>
+                  <q-icon name="edit"></q-icon>
+                </taskoo-icon-button>
+              </router-link>
             </div>
           </div>
         </div>

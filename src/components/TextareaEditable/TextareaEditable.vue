@@ -1,6 +1,6 @@
 <template>
   <div class="textarea-editable">
-    <textarea name="kommentar" class="md-scrollbar" :rows="rows" :value="value" @dblclick="editComment($event)" @blur="saveComment($event)" readonly></textarea>
+    <textarea name="kommentar" :rows="rows" :value="value" @dblclick="editComment($event)" @blur="saveComment($event)" readonly></textarea>
   </div>
 </template>
 

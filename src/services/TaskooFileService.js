@@ -5,7 +5,7 @@ import axios from "axios";
  */
 export default {
 
-  delete(fileId, context, successMessage = false, errorMessage = true) {
+  delete(fileId, context, successMessage = true, errorMessage = true) {
     return new Promise(resolve => {
         axios
           .delete(axios.defaults.baseURL+'/file/'+fileId)

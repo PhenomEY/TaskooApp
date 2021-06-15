@@ -1,17 +1,6 @@
-@import '../../scss/vars/variables';
-
 .tasks-wrapper {
-  flex:1;
-  background:var(--taskoo-wrapper-bg);
-  position: relative;
-  display: flex;
-  overflow: hidden;
-
   .tasks-content {
-    padding:16px 0 0 0;
     width: 100%;
-    display: flex;
-    flex-direction: column;
 
     .tasks-header {
       display: flex;
@@ -32,20 +21,21 @@
         align-items: center;
         cursor:pointer;
         background: transparent;
-        border:1px solid $taskoo-done-color;
-        color:$taskoo-done-color;
+        border:1px solid var(--taskoo-done-color);
+        color:var(--taskoo-done-color);
 
-        .md-icon {
-          color:$taskoo-done-color;
-          margin-right:3px;
+        i {
+          color:var(--taskoo-done-color);
+          font-size: 24px;
+          margin-right: 5px;
         }
 
         &.done {
-          background: $taskoo-done-color;
-          border-color:$taskoo-done-color;
+          background: var(--taskoo-done-color);
+          border-color:var(--taskoo-done-color);
           color:#ffffff;
 
-          .md-icon {
+          i {
             color:#ffffff;
           }
         }

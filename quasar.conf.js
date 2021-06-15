@@ -25,7 +25,6 @@ module.exports = function (/* ctx */) {
 
     // https://quasar.dev/quasar-cli/quasar-conf-js#Property%3A-css
     css: [
-      'taskoo.scss'
     ],
 
     // https://github.com/quasarframework/quasar/tree/dev/extras
@@ -39,7 +38,8 @@ module.exports = function (/* ctx */) {
       // 'roboto-font-latin-ext', // this or either 'roboto-font', NEVER both!
 
       'roboto-font', // optional, you are not bound to it
-      'material-icons' // optional, you are not bound to it
+      'material-icons', // optional, you are not bound to it
+      'material-icons-outlined'
     ],
 
     // Full list of options: https://quasar.dev/quasar-cli/quasar-conf-js#Property%3A-build

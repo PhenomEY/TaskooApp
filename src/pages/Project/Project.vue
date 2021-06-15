@@ -1,5 +1,11 @@
 <template>
-  <div class="project-wrapper" ref="contentType">
+  <div class="content-wrapper" v-if="$route.name !== 'Project'">
+    <router-view @projectSaved="loadProject" :model="project"></router-view>
+  </div>
+
+  <div class="project-wrapper content-wrapper" v-else ref="contentType">
+
+
     <taskoo404 v-if="notFound" :label="$t('project.notFound')"></taskoo404>
 
     <div class="project-loader" v-else-if="loading">
@@ -45,34 +51,35 @@
           {{ $t('project.deadline') }} {{ project.deadline.date | moment('LL') }}
         </span>
         <div class="project-options">
-          <md-icon v-show="project.isClosed">
-            <md-tooltip md-direction="top">{{ $t('project.closed') }}</md-tooltip>
-            lock
-          </md-icon>
+          <q-icon class="taskoo-icon" name="lock" v-show="project.isClosed">
+            <q-tooltip anchor="top middle" :offset="[0,30]">
+              {{ $t('project.closed') }}
+            </q-tooltip>
+          </q-icon>
 
-          <md-icon v-show="!project.isClosed">
-            <md-tooltip md-direction="top">{{ $t('project.public') }}</md-tooltip>
-            public
-          </md-icon>
+          <q-icon v-show="!project.isClosed" name="public" class="taskoo-icon">
+            <q-tooltip anchor="top middle" :offset="[0,30]">
+              {{ $t('project.public') }}
+            </q-tooltip>
+          </q-icon>
 
-          <md-button class="md-icon-button md-list-action" v-bind:class="{'is-favorite': (project.isFavorite)}" @click="favorizeProject">
-            <md-icon>star</md-icon>
-          </md-button>
+          <taskoo-icon-button v-bind:class="{'is-favorite': (project.isFavorite)}" @click="favorizeProject">
+            <q-icon name="star"></q-icon>
+          </taskoo-icon-button>
 
-          <md-button class="md-icon-button md-list-action" v-if="userPermissions && (userPermissions.administration || userPermissions.project_edit)" :to="{ name: 'EditProject'}">
-            <md-icon>edit</md-icon>
-          </md-button>
+          <router-link :to="{ name: 'EditProject'}" v-if="userPermissions && (userPermissions.administration || userPermissions.project_edit)">
+            <taskoo-icon-button>
+              <q-icon name="edit"></q-icon>
+            </taskoo-icon-button>
+          </router-link>
         </div>
 
         <div class="project-users" v-if="!isMobile && project.users && project.users.length > 0">
-          <md-avatar class="user md-avatar-icon" v-for="user in project.users" v-bind:style= "[user.color ? {background: user.color.hexCode} : {}]">
-            <md-tooltip md-direction="top">{{ user.firstname }} {{ user.lastname }}</md-tooltip>
-            <img v-if="user.avatar" :src="API_URL+'/file/'+user.avatar.filePath" />
-            <span v-else>
-            {{ user.firstname.charAt(0) }}{{ user.lastname.charAt(0) }}
-            </span>
-
-          </md-avatar>
+          <taskoo-avatar class="user" v-for="user in project.users" :user="user">
+            <q-tooltip anchor="top middle" :offset="[0,30]">
+              {{ user.firstname }} {{ user.lastname }}
+            </q-tooltip>
+          </taskoo-avatar>
         </div>
       </div>
 
@@ -111,9 +118,9 @@
             </li>
             <li key="addBtn" class="task-group-item" v-if="groups.length === 0">
               <div class="add-first-group" @click="addNewGroup">
-                <md-button class="md-icon-button md-list-action">
-                  <md-icon>add</md-icon>
-                </md-button>
+                <taskoo-icon-button>
+                  <q-icon name="add"></q-icon>
+                </taskoo-icon-button>
               </div>
             </li>
           </transition-group>
@@ -121,19 +128,16 @@
       </div>
 
     <!--    delete taskgroup dialog-->
-    <md-dialog-confirm
-      :md-active.sync="showDeleteDialog"
-      :md-title="$t('prompts.delete.taskGroup.title', {name: deleteData.name})"
-      :md-content="$t('prompts.delete.taskGroup.description')"
-      :md-confirm-text="$t('prompts.delete.taskGroup.confirm')"
-      :md-cancel-text="$t('prompts.delete.taskGroup.cancel')"
-      @md-cancel="toggleDeleteDialog(false)"
-      @md-confirm="deleteGroup"
-      class="taskoo-dialog"
-    />
-
-    <router-view @projectSaved="loadProject" :model="project"></router-view>
-
+    <taskoo-dialog class="taskoo-dialog"
+                   :active="showDeleteDialog"
+                   :title="$t('prompts.delete.taskGroup.title', {name: deleteData.name})"
+                   :content="$t('prompts.delete.taskGroup.description')"
+                   :confirm-text="$t('prompts.delete.taskGroup.confirm')"
+                   :cancel-text="$t('prompts.delete.taskGroup.cancel')"
+                   @close="toggleDeleteDialog(false)"
+                   @confirm="deleteGroup"
+    >
+    </taskoo-dialog>
     </div>
 </template>
 

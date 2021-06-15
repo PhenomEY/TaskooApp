@@ -1,4 +1,5 @@
 import TaskooColorSelect from "components/TaskooColorSelect/TaskooColorSelect";
+import TaskooAvatar from "components/TaskooAvatar/TaskooAvatar";
 
 import FileService from "src/services/TaskooFileService"
 import ColorService from "src/services/TaskooColorService";
@@ -6,7 +7,7 @@ import UserService from "src/services/TaskooUserService";
 
 export default {
   name: 'ProfileSettings',
-  components: {TaskooColorSelect},
+  components: {TaskooColorSelect, TaskooAvatar},
 
   data() {
     return {

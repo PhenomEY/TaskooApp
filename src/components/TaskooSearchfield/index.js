@@ -1,8 +1,9 @@
 import SearchService from 'src/services/TaskooSearchService';
+import TaskooLoaderCircle from 'src/components/TaskooLoaderCircle/TaskooLoaderCircle'
 
 export default {
     name: 'TaskooSearch',
-    components: {},
+    components: { TaskooLoaderCircle },
 
     data() {
         return {

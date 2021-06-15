@@ -1,11 +1,13 @@
-import axios from "axios";
 import TaskooUserSelect from 'src/components/TaskoouserSelect/TaskooUserSelect';
+import TaskooIconButton from 'src/components/TaskooIconButton/TaskooIconButton';
+import TaskooAvatar from 'src/components/TaskooAvatar/TaskooAvatar';
+
 import OrganisationService from "src/services/TaskooOrganisationService";
 import ProjectService from "src/services/TaskooProjectService";
 
 export default {
     name: 'EditProjectUsers',
-    components: {TaskooUserSelect},
+    components: {TaskooUserSelect, TaskooIconButton, TaskooAvatar},
 
     props: {
       model: [Object]
@@ -23,6 +25,7 @@ export default {
 
 
     mounted() {
+      console.log('users')
       this.getAvailableUsers()
     },
 

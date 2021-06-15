@@ -1,0 +1,71 @@
+.boxed-content {
+  flex-direction: column;
+  align-items: center;
+
+  .boxed-content-title {
+    padding: 20px 0;
+    font-weight: bold;
+    width: 100%;
+    max-width: var(--taskoo-boxed-width);
+  }
+
+  .content-inner {
+    padding:16px;
+    box-shadow: var(--taskoo-box-shadow);
+    background: var(--taskoo-boxed-bg);
+    width: 100%;
+    max-width: var(--taskoo-boxed-width);
+    border-radius: var(--taskoo-border-radius);
+
+    .boxed-content-navigation {
+      margin-bottom:16px;
+      white-space: nowrap;
+      overflow-y: auto;
+
+      .boxed-content-nav-entry {
+        padding:10px;
+        border-bottom:2px solid var(--taskoo-border-l);
+        transition: all .2s ease;
+        display:inline-block;
+
+        &.nav-entry-active {
+          border-color: var(--taskoo-tab-active);
+        }
+      }
+    }
+
+    .box-shadow {
+      box-shadow: none;
+    }
+
+    .input-field {
+      width:100%;
+    }
+
+    .taskoo-input {
+      max-width: 100%;
+      input {
+        border:1px solid var(--taskoo-border-h);
+      }
+    }
+
+    .taskoo-user-select {
+      .user-select {
+        .multiselect__tags {
+          box-shadow: none;
+          border:1px solid var(--taskoo-border-h);
+        }
+      }
+    }
+
+    .taskoo-datepicker {
+      .datepicker {
+        box-shadow: none;
+
+        input {
+          border:1px solid var(--taskoo-border-h);
+        }
+      }
+    }
+  }
+}

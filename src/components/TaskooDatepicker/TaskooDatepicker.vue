@@ -2,11 +2,9 @@
   <div class="taskoo-datepicker">
     <span v-if="label" class="input-label" >{{ label }}</span>
     <div class="datepicker">
-      <md-icon class="datepicker-icon">
-        event
-      </md-icon>
+      <q-icon class="datepicker-icon" name="event"></q-icon>
 
-      <datepicker :disabled-dates="disabledDates" :format="customFormatter" v-model="inputModel" clear-button-icon="md-icon md-icon-font close-datepicker" @selected="dateChanged(...arguments)" :clear-button="true" :language="this.de"></datepicker>
+      <datepicker :disabled-dates="disabledDates" :format="customFormatter" v-model="inputModel" clear-button-icon="material-icons q-icon close-datepicker" @selected="dateChanged(...arguments)" :clear-button="true" :language="this.de"></datepicker>
     </div>
     </div>
 </template>

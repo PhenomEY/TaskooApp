@@ -1,5 +1,5 @@
 <template>
-  <div class="dashboard-wrapper">
+  <div class="dashboard-wrapper content-wrapper">
 
     <div class="dashboard">
       <div class="first-row">
@@ -35,11 +35,10 @@
         </div>
       </div>
 
+      <div class="notifications-title" v-show="notifications && !loadingNotifications && notifications.length > 0">
+        {{ $t('dashboard.notifications') }}
+      </div>
       <div class="notifications box-shadow" v-if="notifications && !loadingNotifications && notifications.length > 0">
-        <div class="entry title">
-          {{ $t('dashboard.notifications') }}
-        </div>
-
         <div class="entry" v-for="notification in notifications">
           <span class="message" v-if="notification.message === 'task_assigned'">{{ notification.firstname }} {{ notification.lastname }} {{ $t('dashboard.notification.task.first') }} <span class="to-notification" @click="goToTask(notification.taskId)">{{ notification.taskName }}</span> {{ $t('dashboard.notification.task.assigned') }}.</span>
           <span class="message" v-if="notification.message === 'project_assigned'">{{ notification.firstname }} {{ notification.lastname }} {{ $t('dashboard.notification.project.first') }} <span class="to-notification" @click="goToProject(notification.projectId)">{{ notification.projectName }}</span> {{ $t('dashboard.notification.project.assigned') }}.</span>

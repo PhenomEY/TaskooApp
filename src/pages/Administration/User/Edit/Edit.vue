@@ -1,5 +1,4 @@
 <template>
-  <div class="width-fix">
     <router-view v-if="$route.name === 'AdminUserEditPermissions'"></router-view>
 
     <div class="edit-user" v-else>
@@ -7,9 +6,9 @@
         <h1 class="title"> {{ $t('administration.users.editUser') }}</h1>
 
         <div class="back">
-          <md-button class="md-icon-button md-list-action" @click="returnTo">
-            <md-icon>arrow_back</md-icon>
-          </md-button>
+          <taskoo-icon-button @click="returnTo">
+            <q-icon name="arrow_back"></q-icon>
+          </taskoo-icon-button>
         </div>
       </div>
 
@@ -41,12 +40,12 @@
 
         <taskoo-input :error="userForm.email.error" type="email" :model="userForm.email.value" placeholder="user@taskoo.de" label="E-Mail" @modelChanged="setUserFormValue('email', ...arguments)"></taskoo-input>
 
-        <taskoo-input :error="userForm.password.error" type="password" :model="userForm.password.value" :placeholder="$t('login.labels.password')" :label="$t('login.labels.password')" @modelChanged="setUserFormValue('password', ...arguments)"></taskoo-input>
+        <taskoo-input :info-text="$t('settings.account_settings.new_password_info')" :error="userForm.password.error" type="password" :model="userForm.password.value" :placeholder="$t('login.labels.password')" :label="$t('login.labels.password')" @modelChanged="setUserFormValue('password', ...arguments)"></taskoo-input>
 
         <taskoo-input :error="password_ver.error" type="password" :model="password_ver.value" :placeholder="$t('login.labels.password_verification')" :label="$t('login.labels.password_verification')" @modelChanged="setVerifiedPassword(...arguments)"></taskoo-input>
 
         <div>
-          <md-switch v-model="userForm.active.value" class="md-primary">Active</md-switch>
+          <taskoo-switch v-model="userForm.active.value" :label="$t('administration.users.edit.active')"></taskoo-switch>
         </div>
 
         <div class="edit-user-rights">
@@ -55,15 +54,15 @@
         </span>
 
         <div class="entry">
-          <md-switch v-model="permissions.administration" class="md-primary">{{ $t('administration.users.edit.permissions.administration') }}</md-switch>
+          <taskoo-switch v-model="permissions.administration" :label="$t('administration.users.edit.permissions.administration')"></taskoo-switch>
         </div>
 
         <div class="entry">
-          <md-switch v-model="permissions.project_create" :disabled="permissions.administration" class="md-primary">{{ $t('administration.users.edit.permissions.project_create') }}</md-switch>
+          <taskoo-switch v-model="permissions.project_create" :disabled="permissions.administration" :label="$t('administration.users.edit.permissions.project_create')"></taskoo-switch>
         </div>
 
         <div class="entry">
-          <md-switch v-model="permissions.project_edit" :disabled="permissions.administration" class="md-primary">{{ $t('administration.users.edit.permissions.project_edit') }}</md-switch>
+          <taskoo-switch v-model="permissions.project_edit" :disabled="permissions.administration" :label="$t('administration.users.edit.permissions.project_edit')"></taskoo-switch>
         </div>
       </div>
 
@@ -93,7 +92,6 @@
         </template>
       </multiselect>
     </div>
-  </div>
 </template>
 
 

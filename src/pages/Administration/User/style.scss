@@ -1,29 +1,24 @@
-@import 'src/scss/vars/variables';
-
-.warning-tooltip.md-tooltip {
-  height:auto !important;
-}
-
-.settings-wrapper {
+.administration-wrapper {
 
   .create-user-button {
     padding:6px 10px;
-    border:1px solid $taskoo-done-color;
+    border:1px solid var(--taskoo-button-p);
     width: 250px;
     text-align: center;
-    border-radius: $taskoo-border-radius;
+    border-radius: var(--taskoo-border-radius);
     background:transparent;
     cursor:pointer;
+    color: var(--taskoo-button-p);
+
+    i {
+      font-size:22px;
+    }
   }
 
   .user-view {
-    flex: 0 0 100%;
-    display: flex;
-
     .user-view-inner {
       display: flex;
       flex-direction: column;
-      flex: 0 0 100%;
     }
   }
 
@@ -33,9 +28,9 @@
   margin-top:20px;
   display:flex;
   flex-direction: column;
-  border-radius:$taskoo-border-radius;
-  max-width: 700px;
+  border-radius:var(--taskoo-border-radius);
   overflow:hidden;
+  border:1px solid var(--taskoo-border-l);
 
   .actions {
     padding:3px;
@@ -62,11 +57,11 @@
     display:flex;
     flex-direction: row;
     align-items: center;
-    border-top:1px solid var(--taskoo-border-secondary);
-    background: var(--taskoo-default-bg);
+    border-top:1px solid var(--taskoo-border-l);
+    background: var(--taskoo-boxed-bg);
 
     &:hover {
-      background:var(--taskoo-wrapper-bg);
+      background:var(--taskoo-bg);
     }
 
     &.loading {
@@ -75,9 +70,7 @@
     }
 
     &.title {
-      border-bottom:1px solid var(--taskoo-border-secondary);
-      border-radius: $taskoo-border-radius;
-
+      border-bottom:1px solid var(--taskoo-border-l);
       &:hover {
         background:inherit;
       }
@@ -93,10 +86,11 @@
       white-space: nowrap;
       text-overflow: ellipsis;
       overflow: hidden;
+      display: flex;
+      align-items: center;
 
-      .taskoo-avatar.md-avatar {
+      .taskoo-avatar {
         width:30px;
-        min-width:30px;
         height:30px;
         font-size:14px;
         margin-right:5px;
@@ -106,14 +100,14 @@
     .active {
       &.true {
         span {
-          background:$taskoo-main;
+          background:var(--taskoo-success-color);
         }
       }
 
       span {
         display: block;
         border-radius: 50%;
-        background: $taskoo-error;
+        background: var(--taskoo-error-color);
         width: 10px;
         height:10px;
         margin:0 10px;
@@ -127,14 +121,15 @@
       .admin-label {
         font-size: 10px;
         background: rgba(158,206,247,0.4);
-        border-radius: $taskoo-border-radius;
+        border-radius: var(--taskoo-border-radius);
         padding:3px 5px;
         color:#5fa8ec;
       }
     }
 
     .warnings {
-      .md-icon {
+      i {
+        font-size: 21px;
         color:#dabc4e;
       }
     }
@@ -144,45 +139,11 @@
       flex: 1;
       justify-content: flex-end;
 
-      .md-icon-button {
-        min-width: 25px;
+      .taskoo-icon-button {
         width: 25px;
         height: 25px;
+        font-size: 22px;
       }
     }
   }
-}
-
-
-.taskoo-dark-theme {
-    .create-user-button {
-      color:rgba(255,255,255,0.6);
-    }
-
-    .taskoo-list {
-      background:var(--taskoo-wrapper-bg);
-
-      .entry {
-        background:var(--taskoo-wrapper-bg);
-
-        &.title {
-          border-bottom-left-radius: 0;
-          border-bottom-right-radius: 0;
-
-          &:hover {
-            background:var(--taskoo-wrapper-bg);
-          }
-        }
-
-        .role {
-          .admin-label {
-            background: rgb(26,44,60);
-          }
-        }
-
-        &:hover {
-          background:var(--taskoo-nav-bg);
-        }
-      }
-    }
 }

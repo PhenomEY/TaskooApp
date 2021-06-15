@@ -1,33 +1,11 @@
-@import "src/scss/vars/variables";
-
 .task-window {
-  width:100%;
-  height:100%;
-  background:var(--taskoo-wrapper-bg);
-  padding: 16px 0;
-  overflow-y: auto;
-  position: absolute;
-  top:0;
-  left:0;
-
-  &::-webkit-scrollbar {
-    width: 5px;
-  }
-
-  &::-webkit-scrollbar-track {
-    background: #ddd;
-  }
-
-  &::-webkit-scrollbar-thumb {
-    background: $taskoo-scrollbar-thumb;
-    border-radius: 6px;
-  }
+  flex:1;
 
   textarea {
     -webkit-appearance: none;
     resize: none;
-    border-radius: $taskoo-border-radius;
-    border:1px solid var(--taskoo-border-default);
+    border-radius: var(--taskoo-border-radius);
+    border:1px solid var(--taskoo-border-d);
     font-family: 'Roboto', sans-serif;
     font-size:16px;
     width: 100%;
@@ -41,7 +19,7 @@
 
     &:focus {
       outline: none;
-      border-color:$taskoo-border-h-color;
+      border-color:var(--taskoo-border-h);
     }
   }
 
@@ -53,9 +31,9 @@
   }
 
   .done-info {
-    border-radius:$taskoo-border-radius;
-    border:1px solid $taskoo-done-color;
-    color:$taskoo-done-color;
+    border-radius:var(--taskoo-border-radius);
+    border:1px solid var(--taskoo-done-color);
+    color:var(--taskoo-done-color);
     font-size: 12px;
     background: transparent;
     padding: 10px 20px;
@@ -77,7 +55,7 @@
         width: 10px;
         display:inline-block;
         margin-right:10px;
-        background: $taskoo-main;
+        background: var(--taskoo-primary);
       }
 
       .project-title {
@@ -87,13 +65,6 @@
 
       .main-task {
         font-size:14px;
-
-        .md-icon {
-          font-size:18px !important;
-          width: 15px;
-          height:15px;
-          min-width: 15px;
-        }
       }
 
       .deadline {
@@ -109,33 +80,35 @@
 
       .finish-button {
         color:#ffffff;
-        border:1px solid $taskoo-done-color;
+        border:1px solid var(--taskoo-done-color);
         font-size: 12px;
         padding: 2px 10px;
         border-radius: 6px;
-        background: $taskoo-done-color;
+        background: var(--taskoo-done-color);
         display: flex;
         align-items: center;
         cursor:pointer;
+        margin-right:10px;
+
+        i {
+          font-size: 24px;
+          margin-right: 5px;
+        }
 
         &.done {
           background:transparent;
-          border-color:$taskoo-done-color;
-          color:$taskoo-done-color;
-
-          .md-icon {
-            color:$taskoo-done-color;
-          }
+          border-color:var(--taskoo-done-color);
+          color:var(--taskoo-done-color);
         }
 
 
         &:hover {
           background:transparent;
-          border-color:$taskoo-done-color;
-          color:$taskoo-done-color;
+          border-color:var(--taskoo-done-color);
+          color:var(--taskoo-done-color);
 
           .md-icon {
-            color:$taskoo-done-color;
+            color:var(--taskoo-done-color);
           }
 
         }
@@ -159,7 +132,7 @@
       margin-bottom:20px;
 
       .quillWrapper {
-        box-shadow: $taskoo-box-shadow;
+        box-shadow: var(--taskoo-box-shadow);
       }
 
 
@@ -167,10 +140,10 @@
         .ql-toolbar {
           max-height:30px;
           padding:4px 8px 8px 8px;
-          border-bottom: 1px solid var(--taskoo-border-secondary);
-          border-top: 1px solid $taskoo-border-h-color;
-          border-left: 1px solid $taskoo-border-h-color;
-          border-right: 1px solid $taskoo-border-h-color;
+          border-bottom: 1px solid var(--taskoo-border-l);
+          border-top: 1px solid var(--taskoo-border-h);
+          border-left: 1px solid var(--taskoo-border-h);
+          border-right: 1px solid var(--taskoo-border-h);
         }
 
         .ql-container {
@@ -178,7 +151,7 @@
 
           &.ql-snow {
             border-top:none;
-            border-color:$taskoo-border-h-color;
+            border-color:var(--taskoo-border-h);
           }
 
         }
@@ -186,10 +159,10 @@
 
       .ql-toolbar {
         text-align: left;
-        background:var(--taskoo-default-bg);
-        border-top-left-radius: $taskoo-border-radius;
-        border-top-right-radius: $taskoo-border-radius;
-        border-color:var(--taskoo-border-default);
+        background:var(--taskoo-boxed-bg);
+        border-top-left-radius: var(--taskoo-border-radius);
+        border-top-right-radius: var(--taskoo-border-radius);
+        border-color:var(--taskoo-border-d);
         border:none;
 
         //not focused - hide it
@@ -211,13 +184,13 @@
       }
 
       .ql-container {
-        background:var(--taskoo-default-bg);
-        border-color:var(--taskoo-border-default);
+        background:var(--taskoo-boxed-bg);
+        border-color:var(--taskoo-border-d);
         border-radius: 6px;
         transition:border-radius 100ms;
 
         &.ql-snow {
-          border-top:1px solid var(--taskoo-border-default);
+          border-top:1px solid var(--taskoo-border-d);
         }
 
         .ql-editor {
@@ -228,11 +201,11 @@
       }
 
       .save-button {
-        background:$taskoo-main;
+        background:var(--taskoo-primary);
         color:#ffffff;
         padding: 7px 20px;
         margin-top:10px;
-        border-radius:$taskoo-border-radius;
+        border-radius:var(--taskoo-border-radius);
         border:none;
         font-family: "Noto Sans JP";
         cursor:pointer;
@@ -246,7 +219,7 @@
     .task-files {
 
       .upload-files {
-        border:1px dashed $taskoo-main;
+        border:1px dashed var(--taskoo-primary);
         text-align: center;
         margin-bottom: 20px;
         display: flex;
@@ -346,7 +319,7 @@
     }
 
     textarea.name {
-      background:var(--taskoo-nav-bg);
+      background:var(--taskoo-boxed-bg);
       color:rgba(255,255,255,0.6);
     }
 
@@ -368,7 +341,7 @@
 
   .taskoo-select {
     .multiselect__tags {
-      background:var(--taskoo-nav-bg);
+      background:var(--taskoo-boxed-bg);
       color:rgba(255,255,255,0.6);
 
       .multiselect__single, .multiselect__input {

@@ -1,5 +1,7 @@
 import TaskooInput from "components/TaskooInput/TaskooInput";
 import Multiselect from 'vue-multiselect'
+import TaskooSwitch from "components/TaskooSwitch/TaskooSwitch";
+import TaskooIconButton from "components/TaskooIconButton/TaskooIconButton";
 
 import FormValidator from "src/handlers/FormValidator";
 import UserService from "src/services/TaskooUserService";
@@ -8,7 +10,7 @@ import axios from "axios";
 
 export default {
     name: 'AdminUserEdit',
-    components: { TaskooInput, Multiselect },
+    components: { TaskooInput, Multiselect, TaskooSwitch, TaskooIconButton },
 
     data() {
       return {

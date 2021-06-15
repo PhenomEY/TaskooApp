@@ -1,10 +1,7 @@
-@import '../../scss/vars/variables';
-
-
 .invite-wrapper {
   .invite-header {
-    color: $taskoo-main;
-    max-width: $taskoo-input-width;
+    color: var(--taskoo-primary);
+    max-width: var(--taskoo-input-width);
     margin:0 auto;
 
     .headline {
@@ -13,7 +10,7 @@
   }
 
   .invite-success {
-    color:$taskoo-main;
+    color:var(--taskoo-primary);
     text-align:center;
     font-weight:bold;
     margin-top:35px;

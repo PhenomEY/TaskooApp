@@ -1,14 +1,15 @@
-import axios from "axios";
-import TaskooInput from "../../../components/TaskooInput/TaskooInput"
-import TaskooDatepicker from "../../../components/TaskooDatepicker/TaskooDatepicker"
-import TaskooUserSelect from '../../../components/TaskoouserSelect/TaskooUserSelect';
+import TaskooInput from "src/components/TaskooInput/TaskooInput";
+import TaskooDatepicker from "src/components/TaskooDatepicker/TaskooDatepicker";
+import TaskooUserSelect from 'src/components/TaskoouserSelect/TaskooUserSelect';
+import TaskooBoxedContent from 'src/components/TaskooBoxedContent/TaskooBoxedContent';
+import TaskooSwitch from 'src/components/TaskooSwitch/TaskooSwitch'
 
-import ProjectService from "src/services/TaskooProjectService"
-import OrganisationService from "src/services/TaskooOrganisationService"
+import ProjectService from "src/services/TaskooProjectService";
+import OrganisationService from "src/services/TaskooOrganisationService";
 
 export default {
     name: 'CreateProject',
-    components: {TaskooInput, TaskooDatepicker, TaskooUserSelect},
+    components: {TaskooInput, TaskooDatepicker, TaskooUserSelect, TaskooBoxedContent, TaskooSwitch},
 
     data: () => ({
         projectName: null,

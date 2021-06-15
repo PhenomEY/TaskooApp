@@ -1,8 +1,8 @@
-import axios from "axios";
+import TaskooHelpIcon from "src/components/TaskooHelpIcon/TaskooHelpIcon"
 
 export default {
     name: 'TaskooInput',
-    components: {},
+    components: {TaskooHelpIcon},
 
     data() {
         return {
@@ -19,7 +19,9 @@ export default {
         label: String,
         placeholder: String,
         required: Boolean,
-        type: String
+        type: String,
+        helpText: String,
+        infoText: String
     },
 
     watch: {

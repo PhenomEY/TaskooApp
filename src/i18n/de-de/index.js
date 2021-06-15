@@ -21,6 +21,7 @@ export default {
     "admin": "Administration",
     "logout": "Abmelden",
     "myProfile": "Mein Profil",
+    "teams": "Meine Teams",
     "lightMode": "Light-Mode",
     "darkMode": "Dark-Mode",
     "projects": {
@@ -64,12 +65,13 @@ export default {
     "projectName": "Projektname",
     "description": "Projektbeschreibung",
     "create": {
-      "public": "Öffentlich",
-      "closed": "Geschlossen",
-      "deadline": "Voraussichtliches Abschlussdatum"
+      "title": "Neues Projekt in {team} anlegen",
+      "deadline": "Voraussichtliches Abschlussdatum",
+      "submit": "Erstellen"
     },
 
     "edit": {
+      "title": "Bearbeiten",
       "users": {
         "name": "Name"
       }
@@ -164,7 +166,8 @@ export default {
     "main": {
       "title": "Grundeinstellungen",
       "appurl": "App URL",
-      "appurl_placeholder": "https://app.taskoo.de"
+      "appurl_placeholder": "https://app.taskoo.de",
+      "appurl_helptext": "Die URL zu deiner Taskoo App. Diese wird in E-Mail Vorlagen verwendet."
     },
     "users": {
       "title": "Benutzer",
@@ -179,7 +182,7 @@ export default {
         "administrator": "Administrator",
         "warnings": {
           "password": "Dieser Benutzer hat noch kein Passwort definiert",
-          "organisations": "Dieser Benutzer ist noch keiner Abteilung zugewiesen"
+          "organisations": "Dieser Benutzer ist noch keinem Team zugewiesen"
         }
       },
 
@@ -194,7 +197,8 @@ export default {
       "edit": {
         "save": "Benutzer speichern",
         "role": "Rolle",
-        "organisations": "Zugewiesene Abteilungen",
+        "organisations": "Zugewiesene Teams",
+        "active": "Aktiv",
         "permissions": {
           "title": "Benutzerrechte verwalten",
           "administration": "Administration",
@@ -205,8 +209,8 @@ export default {
     },
 
     "organisations": {
-      "title": "Abteilungen",
-      "create": "Neue Abteilung erstellen",
+      "title": "Teams",
+      "create": "Neues Team erstellen",
       "list": {
         "projects": "Projekte",
         "users": "Mitglieder"
@@ -215,16 +219,18 @@ export default {
   },
 
   "settings": {
+    "title": "Einstellungen",
     "account_settings": {
-      "title": "Taskoo - Accounteinstellungen",
+      "title": "Accounteinstellungen",
       "save": "Daten speichern",
       "new_password": "Neues Passwort",
+      "new_password_info": "mindestens 8 Zeichen",
       "new_password_confirm": "Neues Passwort bestätigen",
       "data_title": "Passwort oder E-Mail Adresse ändern"
     },
 
     "profile_settings": {
-      "title": "Taskoo - Profileinstellungen",
+      "title": "Profileinstellungen",
       "avatar": "Avatar",
       "profile_color": "Profilfarbe",
       "avatar_upload": "Avatar hochladen"
@@ -248,6 +254,12 @@ export default {
       "organisation": {
         "title": "Möchtest du die Abteilung „{name}”  wirklich löschen?",
         "description": "Alle Projekte und Aufgaben in dieser Abteilung werden unwiderruflich gelöscht.",
+        "confirm": "löschen",
+        "cancel": "abbrechen"
+      },
+      "file": {
+        "title": "Möchtest du die Datei „{name}”  wirklich löschen?",
+        "description": "Sie wird unwiderruflich gelöscht.",
         "confirm": "löschen",
         "cancel": "abbrechen"
       },
