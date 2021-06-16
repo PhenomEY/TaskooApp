@@ -52,6 +52,7 @@ export default {
     "headline": "Hallo {name}!",
     "inviteText": "Schließe deine Anmeldung ab um Zugang zu Taskoo zu erhalten.",
     "passwordError": "Überprüfe deine Eingabe",
+    "new_password_info": "mindestens 8 Zeichen",
     "successText": "Deine Anmeldung wurde erfolgreich abgeschlossen.",
     "redirect": "Du wirst zum Login weitergeleitet."
   },

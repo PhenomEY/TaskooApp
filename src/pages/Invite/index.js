@@ -1,10 +1,13 @@
 import axios from "axios";
 import TaskooInput from "components/TaskooInput/TaskooInput";
 import TaskooLoader from "components/TaskooLoader/TaskooLoader";
+import TaskooLogo from "components/TaskooLogo/TaskooLogo";
+
+import TaskooInviteService from "src/services/TaskooInviteService";
 
 export default {
     name: 'invite',
-    components: {TaskooInput, TaskooLoader},
+    components: {TaskooInput, TaskooLoader, TaskooLogo},
 
     data: () => ({
       verifying: true,
@@ -25,6 +28,7 @@ export default {
     }),
 
     mounted() {
+      axios.defaults.baseURL = window.API_URL;
       this.checkInvite()
     },
 
@@ -36,20 +40,17 @@ export default {
 
 
   methods: {
-      checkInvite() {
+      async checkInvite() {
         const inviteId = this.$route.params.id;
 
-        axios
-          .get(axios.defaults.baseURL+'/invite/'+inviteId)
-          .catch(error => {
-            this.$router.push({ name: `Dashboard`});
-          })
-          .then(response => {
-              if(response) {
-                this.verifying = false;
-                this.invitedUser = response.data.user;
-              }
-          })
+        const loaded = await TaskooInviteService.load(inviteId, this);
+
+        if(loaded) {
+          this.verifying = false;
+          this.invitedUser = loaded.user;
+        } else {
+          this.$router.push({ name: `Dashboard`});
+        }
       },
 
       setPassword(value) {
@@ -61,7 +62,7 @@ export default {
         this.inviteForm.password_ver.error = this.inviteForm.password_ver.value !== this.inviteForm.password.value;
       },
 
-      finishInvite() {
+      async finishInvite() {
         this.loading = true;
 
         if(this.inviteForm.password_ver.value !== this.inviteForm.password.value || !this.inviteForm.password.value) {
@@ -72,27 +73,23 @@ export default {
 
         const inviteId = this.$route.params.id;
 
-        axios
-          .post(axios.defaults.baseURL+'/invite/'+inviteId, {
-            password: this.inviteForm.password.value
-          })
-          .catch(error => {
-          })
-          .then(response => {
-            if(response) {
-              this.inviteSuccess = true;
+        const data = {
+          password: this.inviteForm.password.value
+        }
 
-              setTimeout(() => (
-                this.$router.push({
-                  name: 'Login'
-                })
-              ), 1500);
-            }
-          })
+        const finished = await TaskooInviteService.finish(inviteId, data, this);
 
+        if(finished) {
+          this.inviteSuccess = true;
 
+          setTimeout(() => (
+            this.$router.push({
+              name: 'Login'
+            })
+          ), 2500);
+        }
 
+        this.loading = false;
       }
-
     }
 }

@@ -1,11 +1,11 @@
-import axios from "axios";
 import TaskooInput from "../../components/TaskooInput/TaskooInput";
+import TaskooLogo from "components/TaskooLogo/TaskooLogo";
 
 import AuthService from "src/services/TaskooAuthService";
 
 export default {
     name: 'login',
-    components: {TaskooInput},
+    components: {TaskooInput, TaskooLogo},
 
     data: () => ({
         username: null,

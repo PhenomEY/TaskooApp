@@ -11,6 +11,7 @@
     background:var(--taskoo-boxed-bg);
     border-radius:var(--taskoo-border-radius);
     margin-top:10%;
+    box-shadow: var(--taskoo-box-shadow);
 
     .header {
       text-align:center;
@@ -34,6 +35,15 @@
       align-items: center;
       flex-direction: column;
       margin-top:30px;
+
+      .input-field {
+        width: 100%;
+
+        input {
+          box-shadow: none;
+          border:1px solid var(--taskoo-border-h);
+        }
+      }
 
       .error-message {
         font-family: "Noto Sans JP";
