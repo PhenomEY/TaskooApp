@@ -5,13 +5,14 @@ import TaskooBoxedContent from "src/components/TaskooBoxedContent/TaskooBoxedCon
 import TaskooBoxedNavEntry from "src/components/TaskooBoxedContent/TaskooBoxedNavEntry/TaskooBoxedNavEntry"
 import TaskooIconButton from 'src/components/TaskooIconButton/TaskooIconButton'
 import TaskooSwitch from 'src/components/TaskooSwitch/TaskooSwitch'
+import TaskooDialog from 'src/components/TaskooDialog/TaskooDialog'
 
 import TeamService from "src/services/TaskooTeamService"
 import ProjectService from "src/services/TaskooProjectService"
 
 export default {
     name: 'EditProject',
-    components: {TaskooInput, TaskooDatepicker, TaskooUserSelect, TaskooBoxedContent, TaskooBoxedNavEntry, TaskooIconButton, TaskooSwitch},
+    components: {TaskooInput, TaskooDatepicker, TaskooUserSelect, TaskooBoxedContent, TaskooBoxedNavEntry, TaskooIconButton, TaskooSwitch, TaskooDialog},
 
     props: {
       model: [Object]
@@ -32,13 +33,14 @@ export default {
           isClosed: false
         },
         projectDate: null,
-        projectUsers: [],
+        projectUsers: null,
         loading:true,
         projectStatus: false,
         descriptionIsFocused: false,
         taskToolbar: [
           ["bold", "italic", "underline"]
         ],
+        showDeleteDialog: false
       }
     },
 
@@ -55,7 +57,6 @@ export default {
       this.projectStatus = this.projectData.isClosed
 
       if(!this.projectData.id) {
-        console.log('triggered2')
         this.$router.push({
           name: 'Project'
         })
@@ -77,12 +78,15 @@ export default {
     computed: {
       projectId() {
         return this.$route.params.projectId
-      }
+      },
+      currentUser() {
+        return this.$store.state.user.user
+      },
     },
 
     methods: {
       async getOrganisationUsers() {
-          const orgId = this.projectData.organisation.id
+          const orgId = this.projectData.team.id
 
           const loaded = await TeamService.users.load(orgId, this)
 
@@ -135,6 +139,23 @@ export default {
 
       emitChange() {
         this.$emit('projectSaved');
+      },
+
+      async deleteProject() {
+        const deleted = await ProjectService.delete(this.projectData.id, this);
+
+        if(deleted) {
+          console.log('DELETED');
+          console.log(deleted)
+
+          this.$router.push({
+            name: 'Dashboard'
+          });
+        }
+      },
+
+      toggleDeleteDialog() {
+        this.showDeleteDialog = !this.showDeleteDialog
       }
     }
 }

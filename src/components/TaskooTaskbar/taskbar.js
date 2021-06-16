@@ -3,6 +3,8 @@ import TaskooIconButton from "src/components/TaskooIconButton/TaskooIconButton"
 import Multiselect from 'vue-multiselect'
 import axios from "axios";
 
+import TaskooNotificationService from "src/services/TaskooNotificationService";
+
 
 export default {
     name: 'TaskooTaskbar',
@@ -53,28 +55,33 @@ export default {
 
 
     methods: {
-        getNotifications() {
-            axios
-                .get(axios.defaults.baseURL+'/user/notifications')
-                .catch(error => {
-                    this.notFound = true
-                })
-                .then(response => {
-                    if(!response) {
-                        return
-                    }
+        async getNotifications() {
+            const loaded = await TaskooNotificationService.load(false, this);
 
-                    if(response.data.success == true) {
-                        this.notifications = response.data.notifications
-                        this.notificationCount = this.notifications.length
-                    }
+            if(loaded) {
+              this.notifications = loaded.notifications
+              this.notificationCount = this.notifications.length
+            }
 
-                })
+          setTimeout(() => (
+            this.getNotifications()
+          ), 10000);
         },
 
-        closedNotifications() {
-            this.notificationCount = 0;
-            this.notifications = null;
+        async closedNotifications() {
+          const notifications = this.notifications;
+          if(!notifications) return;
+
+          setTimeout(() => {
+            this.notificationCount = 0
+            this.notifications = null
+          }, 200);
+
+          const data = {
+            notifications: notifications
+          }
+
+          const update = await TaskooNotificationService.update(data, this);
         },
 
       toggleMenu() {

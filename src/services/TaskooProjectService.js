@@ -77,7 +77,6 @@ export default {
         axios
           .post(axios.defaults.baseURL+'/project', data)
           .catch(error => {
-            console.log(error.response)
             context.$vToastify.error(error.response.data.detail);
             resolve(false);
           })
@@ -95,10 +94,22 @@ export default {
   },
 
   delete(projectId, context, successMessage = true) {
-    return new Promise(resolve => {
-        //delete project request
-      }
-    );
+      return new Promise(resolve => {
+          axios
+            .delete(axios.defaults.baseURL+'/project/'+projectId)
+            .catch(error => {
+              context.$vToastify.error(error.response.data.detail);
+              resolve(false);
+            })
+            .then(response => {
+              if(!response) return;
+              if(successMessage === true) {
+                context.$vToastify.success(response.data.message);
+              }
+              resolve(response.data);
+            })
+        }
+      );
   },
 
   favorite: {

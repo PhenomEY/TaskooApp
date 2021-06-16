@@ -129,6 +129,23 @@
 
         <button type="submit" class="taskoo-button" :disabled="updatingUser" @click="updateUser">{{ $t('administration.users.edit.save') }}</button>
       </form>
+
+
+      <button class="taskoo-button delete" @click="toggleDeleteDialog">
+        {{ $t('administration.users.edit.delete') }}
+      </button>
+
+      <!--    delete project dialog-->
+      <taskoo-dialog class="taskoo-dialog"
+                     :active="showDeleteDialog"
+                     :title="$t('prompts.delete.user.title', {firstname: user.firstname, lastname: user.lastname})"
+                     :content="$t('prompts.delete.user.description')"
+                     :confirm-text="$t('prompts.delete.user.confirm')"
+                     :cancel-text="$t('prompts.delete.user.cancel')"
+                     @close="toggleDeleteDialog"
+                     @confirm="deleteUser"
+      >
+      </taskoo-dialog>
     </div>
 </template>
 

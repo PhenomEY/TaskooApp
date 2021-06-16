@@ -1,10 +1,13 @@
 import axios from "axios";
 import TaskList from "../../components/TaskList/TaskList";
 import TaskService from "src/services/TaskooTaskService";
+import TaskooAvatar from 'src/components/TaskooAvatar/TaskooAvatar';
+
+import TaskooNotificationService from "src/services/TaskooNotificationService";
 
 export default {
     name: 'Dashboard',
-    components: {TaskList},
+    components: {TaskList, TaskooAvatar},
 
     data: () => ({
         currentTime: new Date(),
@@ -22,30 +25,16 @@ export default {
         this.setTitle(this.$t('dashboard.title'));
     },
     methods: {
-
-        getNotifications() {
+        async getNotifications() {
             this.loadingNotifications = true
 
-            axios
-                .get(axios.defaults.baseURL+'/user/notifications', {params: {
-                        dashboard: true
-                    }
-                })
-                .catch(error => {
-                    this.notFound = true
-                })
-                .then(response => {
-                    if(!response) {
-                        this.loadingNotifications = false
-                        return
-                    }
+            const loaded = await TaskooNotificationService.load(true, this);
 
-                    if(response.data.success == true) {
-                        this.notifications = response.data.notifications
-                        this.loadingNotifications = false
-                    }
+            if(loaded) {
+              this.notifications = loaded.notifications
+            }
 
-                })
+            this.loadingNotifications = false
         },
 
         getUserTasks() {

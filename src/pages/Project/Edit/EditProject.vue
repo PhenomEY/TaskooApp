@@ -31,7 +31,7 @@
         <taskoo-input :model="projectData.name" :label="$t('project.projectName')" @modelChanged="setProjectName"></taskoo-input>
 
         <div class="project-main-user">
-          <taskoo-user-select :label="$t('project.projectLead')" :multi="false" :options="projectUsers"  :model="projectData.mainUser" @addedUser="setMainUser"></taskoo-user-select>
+          <taskoo-user-select v-if="projectUsers" :label="$t('project.projectLead')" :multi="false" :options="projectUsers"  :model="projectData.mainUser" @addedUser="setMainUser"></taskoo-user-select>
         </div>
 
         <taskoo-datepicker :label="$t('project.create.deadline')" :model="projectDate" @modelChanged="setDeadline"></taskoo-datepicker>
@@ -51,6 +51,22 @@
         <button class="taskoo-button" @click="save(projectData)">
           {{ $t('taskoo.save') }}
         </button>
+
+        <button class="taskoo-button delete" @click="toggleDeleteDialog" v-if="currentUser.permissions.project_create || currentUser.permissions.administration">
+          {{ $t('project.edit.delete') }}
+        </button>
+
+        <!--    delete project dialog-->
+        <taskoo-dialog class="taskoo-dialog"
+                       :active="showDeleteDialog"
+                       :title="$t('prompts.delete.project.title', {name: projectData.name})"
+                       :content="$t('prompts.delete.project.description')"
+                       :confirm-text="$t('prompts.delete.project.confirm')"
+                       :cancel-text="$t('prompts.delete.project.cancel')"
+                       @close="toggleDeleteDialog"
+                       @confirm="deleteProject"
+        >
+        </taskoo-dialog>
       </div>
     </template>
   </taskoo-boxed-content>

@@ -44,8 +44,18 @@
 
               <div class="notifications" v-else>
                 <div class="entry" v-for="notification in notifications">
-                  <span class="message" v-if="notification.message === 'task_assigned'">{{ notification.firstname }} {{ notification.lastname }} {{ $t('dashboard.notification.task.first') }} <span class="to-notification" @click="goToTask(notification.taskId)">{{ notification.taskName }}</span> {{ $t('dashboard.notification.task.assigned') }}.</span>
-                  <span class="message" v-if="notification.message === 'project_assigned'">{{ notification.firstname }} {{ notification.lastname }} {{ $t('dashboard.notification.project.first') }} <span class="to-notification" @click="goToProject(notification.projectId)">{{ notification.projectName }}</span> {{ $t('dashboard.notification.project.assigned') }}.</span>
+                  <span class="message" v-if="notification.message === 'task_assigned'">{{ notification.byUser.firstname }} {{ $t('dashboard.notification.task.first') }}
+                    <router-link :to="{name: 'Task', params: {taskId: notification.task.id}}">
+                      <span class="to-notification">{{ notification.task.name }}</span>
+                    </router-link>
+                    {{ $t('dashboard.notification.task.assigned') }}.</span>
+
+                  <span class="message" v-if="notification.message === 'project_assigned'">
+                    {{ notification.byUser.firstname }} {{ $t('dashboard.notification.project.first') }}
+                    <router-link :to="{name: 'Project', params: {projectId: notification.project.id}}">
+                    <span class="to-notification">{{ notification.project.name }}</span>
+                    </router-link>
+                    {{ $t('dashboard.notification.project.assigned') }}.</span>
 
                   <span class="time">
             {{ notification.time.date | moment("from", "now") }}

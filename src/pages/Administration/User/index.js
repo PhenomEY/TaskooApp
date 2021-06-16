@@ -20,6 +20,9 @@ export default {
     },
 
     watch: {
+      "$route.name": function () {
+        this.getUsers()
+      }
     },
 
     props: {

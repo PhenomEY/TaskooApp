@@ -3,15 +3,17 @@ import Multiselect from 'vue-multiselect'
 import TaskooSwitch from "components/TaskooSwitch/TaskooSwitch";
 import TaskooIconButton from "components/TaskooIconButton/TaskooIconButton";
 import TaskooAvatar from 'src/components/TaskooAvatar/TaskooAvatar';
+import TaskooDialog from 'src/components/TaskooDialog/TaskooDialog';
 
 import FormValidator from "src/handlers/FormValidator";
 import UserService from "src/services/TaskooUserService";
 
 import axios from "axios";
+import TaskooUserService from "src/services/TaskooUserService";
 
 export default {
     name: 'AdminUserEdit',
-    components: { TaskooInput, Multiselect, TaskooSwitch, TaskooIconButton, TaskooAvatar },
+    components: { TaskooInput, Multiselect, TaskooSwitch, TaskooIconButton, TaskooAvatar, TaskooDialog },
 
     data() {
       return {
@@ -61,7 +63,8 @@ export default {
           project_edit: false,
           project_create: false
        },
-        user: null
+        user: null,
+        showDeleteDialog: false
       }
     },
 
@@ -160,14 +163,18 @@ export default {
           this.formError = false;
         }
 
-        const formData = {
+        let formData = {
           email: form.form.email.value,
           firstname: form.form.firstname.value,
           lastname: form.form.lastname.value,
           password: form.form.password.value,
           active: form.form.active.value,
           permissions: permissions,
-          teamRole: this.userRole.id
+          teamRole: null
+        }
+
+        if(this.userRole) {
+          formData.teamRole = this.userRole.id
         }
 
         const updated = await UserService.update(userId, formData, this, true)
@@ -213,6 +220,22 @@ export default {
           .then(response => {
             console.log(response)
           })
+      },
+
+      async deleteUser() {
+        const userId = this.$route.params.id;
+
+        const deleted = await TaskooUserService.delete(userId, this);
+
+        if(deleted) {
+          this.$router.push({
+            name: 'AdminUser'
+          });
+        }
+      },
+
+      toggleDeleteDialog() {
+        this.showDeleteDialog = !this.showDeleteDialog
       }
     }
 }

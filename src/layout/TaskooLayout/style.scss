@@ -126,6 +126,8 @@
 
         .drag {
           font-size: 18px;
+          display: flex;
+          align-items: center;
         }
       }
 
@@ -149,6 +151,16 @@
         font-size: 18px;
         align-items: center;
         justify-content: center;
+      }
+
+      .is-locked {
+        margin-left:5px;
+      }
+
+      .project-name {
+        max-width: 125px;
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
     }
   }

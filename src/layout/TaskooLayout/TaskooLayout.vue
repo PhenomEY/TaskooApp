@@ -71,7 +71,8 @@
                      <span class="drawer-entry-icon" :title="favorite.team.name">
                       <q-icon name="star" v-bind:style= "[favorite.team.color ? {color: favorite.team.color.hexCode} : {}]" />
                   </span>
-                {{ favorite.name }}
+                <span class="project-name">{{ favorite.name }}</span>
+                <q-icon class="is-locked" name="lock" v-if="favorite.isClosed"></q-icon>
               </div>
 
               <span class="drag">
@@ -90,7 +91,8 @@
                   <span class="drawer-entry-icon" :title="project.team.name">
                      <q-icon name="play_arrow" v-bind:style= "[project.team.color ? {color: project.team.color.hexCode} : {}]" />
                   </span>
-              {{ project.name }}
+              <span class="project-name">{{ project.name }}</span>
+              <q-icon class="is-locked" name="lock" v-if="project.isClosed"></q-icon>
             </router-link>
           </div>
 

@@ -96,6 +96,14 @@
           .entry {
             border-top:1px solid #eaeaea;
             font-size:12px;
+            display: flex;
+            align-items: center;
+
+            .message {
+              flex:1;
+              line-height:25px;
+              margin-right:10px;
+            }
 
             &:first-child {
               border:none;

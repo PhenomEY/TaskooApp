@@ -37,9 +37,9 @@ export default {
 
     methods: {
       async getAvailableUsers() {
-        const orgId = this.projectData.organisation.id
+        const teamId = this.projectData.team.id
 
-        const loaded = await TeamService.users.load(orgId, this)
+        const loaded = await TeamService.users.load(teamId, this)
 
         if(loaded) {
           this.availableUsers = loaded.users;

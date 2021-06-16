@@ -170,4 +170,9 @@ h1, h2 {
   }
 }
 
+.taskoo-button.delete {
+  background:var(--taskoo-error-color);
+  color:#ffffff;
+}
+
 

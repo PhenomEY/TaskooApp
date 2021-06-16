@@ -59,6 +59,24 @@ export default {
   create(data, context, successMessage = false) {
   },
 
-  delete(taskId, context, successMessage = true) {
+  delete(userId, context, successMessage = true) {
+    return new Promise(resolve => {
+        axios
+          .delete(axios.defaults.baseURL+'/user/'+userId)
+          .catch(error => {
+            context.$vToastify.error(error.response.data.detail);
+            resolve(false);
+          })
+          .then(response => {
+            if(!response) return;
+
+            if(successMessage === true) {
+              context.$vToastify.success(response.data.message);
+            }
+
+            resolve(response.data);
+          })
+      }
+    );
   }
 }

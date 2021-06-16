@@ -75,7 +75,8 @@ export default {
       "title": "Bearbeiten",
       "users": {
         "name": "Name"
-      }
+      },
+      "delete": "Projekt löschen"
     }
 },
 
@@ -205,7 +206,8 @@ export default {
           "administration": "Administration",
           "project_create": "Projekte erstellen",
           "project_edit": "Projekte bearbeiten"
-        }
+        },
+        "delete": "Benutzer löschen"
       }
     },
 
@@ -276,6 +278,18 @@ export default {
       "teamrole": {
         "title": "Möchtest du die Rolle „{name}” wirklich löschen?",
         "description": "Sie wird unwiderruflich gelöscht.",
+        "confirm": "löschen",
+        "cancel": "abbrechen"
+      },
+      "project": {
+        "title": "Möchtest du das Projekt „{name}” wirklich löschen?",
+        "description": "Alle Aufgaben werden unwiderruflich gelöscht.",
+        "confirm": "löschen",
+        "cancel": "abbrechen"
+      },
+      "user": {
+        "title": "Möchtest du den Benutzer „{firstname} {lastname}” wirklich löschen?",
+        "description": "Diese Aktion kann nicht widerrufen werden.",
         "confirm": "löschen",
         "cancel": "abbrechen"
       },
