@@ -30,7 +30,7 @@
 
     <div class="icons-right">
         <v-popover offset="16" @hide="closedNotifications">
-          <taskoo-icon-button class="notification tooltip-target">
+          <taskoo-icon-button class="notification tooltip-target" @click="updateNotifications">
             <q-icon name="notifications"></q-icon>
             <div v-if="notificationCount" class="notifications-count">{{ notificationCount }}</div>
           </taskoo-icon-button>

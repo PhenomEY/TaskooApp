@@ -7,9 +7,7 @@ export default {
 
     data() {
         return {
-          settings: {
-            app_url: null
-          },
+          settings: null,
           loading: true
         }
     },
@@ -33,6 +31,7 @@ export default {
         axios
           .get(axios.defaults.baseURL+'/admin/main')
           .catch(error => {
+            this.$vToastify.error(error.response.data.detail);
           })
           .then(response => {
             if(!response) {
@@ -40,15 +39,19 @@ export default {
             }
 
             if(response.data.success == true) {
-              this.settings.app_url = response.data.app_url;
-              this.loading = false
+              this.settings = response.data.settings;
             }
-
           })
+
+        this.loading = false
       },
 
       setAppURL(value) {
         this.settings.app_url = value
+      },
+
+      setMailSender(value) {
+        this.settings.sender = value
       },
 
       saveMainSettings() {
@@ -64,7 +67,7 @@ export default {
           })
           .then(response => {
             if(response.data.success === true) {
-              this.$vToastify.success("Saved");
+              this.$vToastify.success("settings_saved");
             }
           })
       }

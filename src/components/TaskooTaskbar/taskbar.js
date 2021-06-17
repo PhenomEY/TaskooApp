@@ -68,21 +68,22 @@ export default {
           ), 10000);
         },
 
-        async closedNotifications() {
-          const notifications = this.notifications;
-          if(!notifications) return;
-
+        closedNotifications() {
           setTimeout(() => {
             this.notificationCount = 0
             this.notifications = null
           }, 200);
-
-          const data = {
-            notifications: notifications
-          }
-
-          const update = await TaskooNotificationService.update(data, this);
         },
+
+      async updateNotifications() {
+        const notifications = this.notifications;
+        if(!notifications) return;
+        const data = {
+          notifications: notifications
+        }
+
+        const update = await TaskooNotificationService.update(data, this);
+      },
 
       toggleMenu() {
         let body = document.body;

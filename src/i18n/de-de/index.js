@@ -169,7 +169,13 @@ export default {
       "title": "Grundeinstellungen",
       "appurl": "App URL",
       "appurl_placeholder": "https://app.taskoo.de",
-      "appurl_helptext": "Die URL zu deiner Taskoo App. Diese wird in E-Mail Vorlagen verwendet."
+      "appurl_helptext": "Die URL zu deiner Taskoo App. Diese wird in E-Mail Vorlagen verwendet.",
+      "mailer": {
+        "title": "E-Mails",
+        "sender": "Absender",
+        "sender_placeholder": "Taskoo <noreply@taskoo.de>",
+        "sender_helptext": "Der Absender wird für von Taskoo versendete Mails angezeigt."
+      }
     },
     "users": {
       "title": "Benutzer",
