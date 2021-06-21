@@ -43,9 +43,8 @@ export default {
             if(response.data.success == true) {
               this.settings = response.data.settings;
             }
+            this.loading = false
           })
-
-        this.loading = false
       },
 
       setAppURL(value) {

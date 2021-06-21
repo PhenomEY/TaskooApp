@@ -51,20 +51,7 @@ export default {
 
     this.setTitle(this.$t('taskoo.title'));
 
-    if(this.screenWidth < 600) {
-      this.$store.commit('misc/toggleMobile', true)
-    }
-
-    //check if screen is mobile to disable dragging
-    window.onresize = () => {
-      this.screenWidth = window.innerWidth
-
-      if(this.screenWidth < 600) {
-        this.$store.commit('misc/toggleMobile', true)
-      } else {
-        this.$store.commit('misc/toggleMobile', false)
-      }
-    }
+    this.handleMobile()
 
     console.log('ROUTE:');
     console.log(this.$route)
@@ -111,6 +98,23 @@ export default {
         }
 
         this.$store.commit('misc/updateAppData', false);
+      }
+    },
+
+    handleMobile() {
+      if(this.screenWidth < 600) {
+        this.$store.commit('misc/toggleMobile', true)
+      }
+
+      //check if screen is mobile to disable dragging
+      window.onresize = () => {
+        this.screenWidth = window.innerWidth
+
+        if(this.screenWidth < 600) {
+          this.$store.commit('misc/toggleMobile', true)
+        } else {
+          this.$store.commit('misc/toggleMobile', false)
+        }
       }
     }
   }

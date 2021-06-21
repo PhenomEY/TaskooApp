@@ -66,9 +66,14 @@ export default {
   methods: {
 
     async getProjects(changedOrg) {
-      if(!this.$store.state.teams.currentTeam) return;
+      if(!this.$store.state.teams.currentTeam) {
+        this.loadingProjects = false;
+        return;
+      }
+
       const orgId = this.$store.state.teams.currentTeam.id;
       if(!orgId) {
+        this.loadingProjects = false;
         return;
       }
       this.loadingProjects = true;
