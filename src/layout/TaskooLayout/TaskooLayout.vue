@@ -63,7 +63,29 @@
           </router-link>
         </div>
 
-        <div class="projects t-s-v_dark">
+        <div class="projects loader" v-if="loadingProjects">
+          <div class="drawer-headline">
+            {{ $t('navigation.projects.title') }}
+          </div>
+
+          <div class="drawer-entry">
+            <PuSkeleton class="taskoo-skeleton" />
+          </div>
+
+          <div class="drawer-entry">
+            <PuSkeleton class="taskoo-skeleton" />
+          </div>
+
+          <div class="drawer-entry">
+            <PuSkeleton class="taskoo-skeleton" />
+          </div>
+
+          <div class="drawer-entry">
+            <PuSkeleton class="taskoo-skeleton" />
+          </div>
+        </div>
+
+        <div class="projects t-s-v_dark" v-else>
           <div class="favorites" v-if="favorites">
             <div class="drawer-headline">
               {{ $t('navigation.projects.favorites') }}

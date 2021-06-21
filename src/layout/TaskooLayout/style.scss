@@ -88,6 +88,20 @@
         border-top: 1px solid var(--taskoo-drawer-b);
         margin-top: 5px;
 
+        &.loader {
+          .drawer-entry {
+            .pu-skeleton {
+              height: 20px;
+              background-color: var(--taskoo-drawer-b) !important;
+              background-image: linear-gradient(
+                  90deg
+                , var(--taskoo-drawer-b), var(--taskoo-drawer-bg), var(--taskoo-drawer-b)) !important;
+              animation: 1.5s ease-in-out 0s infinite normal none running SkeletonLoading;
+            }
+          }
+        }
+
+
         .drawer-entry {
           &.router-link-active {
             color: var(--taskoo-drawer-color-h);

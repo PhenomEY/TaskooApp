@@ -15,7 +15,8 @@ export default {
     projects: null,
     organisationChanged: false,
     favorites: null,
-    version: version
+    version: version,
+    loadingProjects: true
   }),
 
   computed: {
@@ -70,7 +71,7 @@ export default {
       if(!orgId) {
         return;
       }
-
+      this.loadingProjects = true;
       this.$store.commit('misc/updateProjects', false);
 
       const loaded = await TeamService.projects.load(orgId, this)
@@ -84,6 +85,8 @@ export default {
           this.favorites = false
         }
       }
+
+      this.loadingProjects = false;
     },
 
 
