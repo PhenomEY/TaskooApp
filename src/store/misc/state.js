@@ -4,6 +4,7 @@ export default function () {
     contentRefresh: false,
     contentRefreshActive: false,
     isDark: localStorage.getItem('taskooDarkMode'),
-    updateSidebar: false
+    updateProjects: false,
+    updateAppData: false
   }
 }

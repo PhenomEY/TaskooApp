@@ -40,10 +40,12 @@ export default {
 
     setAvatar(avatar) {
       this.user.avatar = avatar;
+      this.$store.commit('misc/updateAppData', true);
     },
 
     setColor(color) {
       this.user.color = color;
+      this.$store.commit('misc/updateAppData', true);
     }
 
     }

@@ -357,7 +357,7 @@ export default {
           this.project.isFavorite = false;
         }
 
-        this.$store.commit('misc/updateSidebar', true);
+        this.$store.commit('misc/updateProjects', true);
       },
 
       consoleLog() {

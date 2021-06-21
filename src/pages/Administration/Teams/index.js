@@ -46,7 +46,6 @@ export default {
     methods: {
       load() {
         this.loading = true
-
         axios
           .get(axios.defaults.baseURL+'/team')
           .catch(function (error) {
@@ -87,6 +86,7 @@ export default {
           .then(response => {
             this.createName = null
             this.load()
+            this.$store.commit('misc/updateAppData', true);
           })
       },
 
@@ -107,6 +107,7 @@ export default {
             this.isUpdating = false
             this.teams[key].saveAble = false
             this.$vToastify.success(response.data.message)
+            this.$store.commit('misc/updateAppData', true);
           })
       },
 
@@ -130,8 +131,8 @@ export default {
           .then(response => {
             this.load()
             this.$vToastify.success(response.data.message)
-
             this.toggleDeleteDialog(false);
+            this.$store.commit('misc/updateAppData', true);
           })
       },
 

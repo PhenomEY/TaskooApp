@@ -29,6 +29,10 @@ export function toggleDarkMode(state, value) {
   }
 }
 
-export function updateSidebar(state, value) {
-  state.updateSidebar = value
+export function updateProjects(state, value) {
+  state.updateProjects = value
+}
+
+export function updateAppData(state, value) {
+  state.updateAppData = value
 }

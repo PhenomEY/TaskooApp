@@ -44,6 +44,7 @@ export default {
 
 
   mounted() {
+    console.log('sidebar mountedd');
     this.getProjects()
   },
 
@@ -54,8 +55,8 @@ export default {
       this.getProjects(true)
     },
 
-    '$store.state.misc.updateSidebar': function() {
-      if(this.$store.state.misc.updateSidebar == true) {
+    '$store.state.misc.updateProjects': function() {
+      if(this.$store.state.misc.updateProjects == true) {
         this.getProjects()
       }
     },
@@ -70,7 +71,7 @@ export default {
         return;
       }
 
-      this.$store.commit('misc/updateSidebar', false);
+      this.$store.commit('misc/updateProjects', false);
 
       const loaded = await TeamService.projects.load(orgId, this)
 

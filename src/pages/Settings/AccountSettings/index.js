@@ -78,7 +78,7 @@ export default {
       this.dataForm.email.oldVal = this.user.email
     },
 
-    updateUser() {
+    async updateUser() {
       const userId = this.user.id
       const validated = FormValidator.validate(this.userForm)
 
@@ -91,7 +91,9 @@ export default {
 
       if(validated.hasErrors) return;
 
-      const updated = UserService.update(userId, formData, this, true);
+      const updated = await UserService.update(userId, formData, this, true);
+
+      if(updated) this.$store.commit('misc/updateAppData', true);
     },
 
     setUserFormValue(name, value) {

@@ -51,4 +51,19 @@ export default {
   },
   logout(data) {
   },
+
+  update() {
+    return new Promise(resolve => {
+        axios
+          .get(axios.defaults.baseURL+'/auth/update')
+          .catch(error => {
+            resolve(false);
+          })
+          .then(response => {
+            if(!response) return;
+            resolve(response.data);
+          })
+      }
+    );
+  }
 }

@@ -75,6 +75,8 @@ export default {
               this.$router.push({
                 path: '/project/'+created.projectId
               })
+
+              this.$store.commit('misc/updateProjects', true);
             }
         },
 

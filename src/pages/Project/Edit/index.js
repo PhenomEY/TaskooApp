@@ -20,7 +20,6 @@ export default {
 
     watch: {
       '$route.params.projectId': function() {
-        console.log('triggered1')
         this.$router.push({
           name: 'Project'
         })
@@ -109,7 +108,6 @@ export default {
       },
 
       async save() {
-
         const isClosed = this.projectStatus
         const name = this.projectData.name
         const deadline = this.projectDate
@@ -127,14 +125,13 @@ export default {
           formData.mainUser = mainUser.id
         }
 
-
         const saved = await ProjectService.update(this.projectData.id, formData, this, true)
 
         if(saved) {
           this.emitChange()
           this.projectData.isClosed = isClosed
+          this.$store.commit('misc/updateProjects', true);
         }
-
       },
 
       emitChange() {
@@ -145,12 +142,10 @@ export default {
         const deleted = await ProjectService.delete(this.projectData.id, this);
 
         if(deleted) {
-          console.log('DELETED');
-          console.log(deleted)
-
           this.$router.push({
             name: 'Dashboard'
           });
+          this.$store.commit('misc/updateProjects', true);
         }
       },
 
