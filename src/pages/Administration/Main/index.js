@@ -28,6 +28,8 @@ export default {
 
     methods: {
       getMainSettings() {
+        this.loading = true
+
         axios
           .get(axios.defaults.baseURL+'/admin/main')
           .catch(error => {

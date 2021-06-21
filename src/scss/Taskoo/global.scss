@@ -107,6 +107,14 @@ html,body {
   }
 }
 
+.loader {
+  .taskoo-input {
+    .taskoo-skeleton {
+      height:40px;
+    }
+  }
+}
+
 
 .taskoo-skeleton {
   flex:1;
