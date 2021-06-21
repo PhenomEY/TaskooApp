@@ -5,6 +5,10 @@
         <router-link :to="{name: 'Dashboard'}">
         <taskoo-logo />
         </router-link>
+
+        <span class="app-version">
+          v{{ version }}
+        </span>
       </div>
 
       <div class="drawer-account">

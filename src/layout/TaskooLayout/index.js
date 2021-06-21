@@ -6,6 +6,7 @@ import TaskooTaskbar from 'src/components/TaskooTaskbar/TaskooTaskbar'
 
 import TeamService from "src/services/TaskooTeamService";
 import ProjectService from "src/services/TaskooProjectService";
+import {version} from '../../../package.json'
 
 export default {
   name: 'TaskooLayout',
@@ -13,7 +14,8 @@ export default {
   data: () => ({
     projects: null,
     organisationChanged: false,
-    favorites: null
+    favorites: null,
+    version: version
   }),
 
   computed: {
